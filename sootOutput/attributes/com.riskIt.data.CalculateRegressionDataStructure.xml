@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="8" eline="8" spos="0" epos="0"/>
+<text info="[slopeALl, interceptAll, slopeMiddleTwoThirds, interceptMiddleTwoThirds]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="26" eline="26" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="36" eline="36" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="46" eline="46" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="56" eline="56" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+</attributes>

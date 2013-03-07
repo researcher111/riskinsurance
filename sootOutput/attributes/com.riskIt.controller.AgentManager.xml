@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="6" eline="6" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="23" eline="23" spos="0" epos="0"/>
+<text info="[zm]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="34" eline="34" spos="0" epos="0"/>
+<text info="[name, zipcode, ssn, age, sex, marital, race, taxStatus, taxDetails, houseHoldDetails, fatherOrigin, motherOrigin, birthCountry, citizenship, capitalGains, capitalLosses, stockDividend, parents, unEmploymentReason, employmentStatus, education, eduEnroll, workClass, unionMember, industryCode, occupationCode, employerSize, weekWage, selfEmployed, workWeeks]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="468" eline="468" spos="0" epos="0"/>
+<text info="[userSSN]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: occupationValue, Annotation Element: kind: s name: default value: workweeks, Annotation Element: kind: s name: default value: gains, Annotation Element: kind: s name: default value: loss, Annotation Element: kind: s name: default value: stocks, Annotation Element: kind: s name: default value: zipcode, Annotation Element: kind: s name: default value: gender, Annotation Element: kind: s name: default value: unionMember, Annotation Element: kind: s name: default value: edu, Annotation Element: kind: s name: default value: noOfEmp, Annotation Element: kind: s name: default value: selfEmp, Annotation Element: kind: s name: default value: marital_status, Annotation Element: kind: s name: default value: age]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: occupation.occupation, Annotation Element: kind: s name: default value: job.workweeks, Annotation Element: kind: s name: default value: investment.capitalgains, Annotation Element: kind: s name: default value: investment.capitallosses, Annotation Element: kind: s name: default value: investment.stockdividends, Annotation Element: kind: s name: default value: userrecord.zip, Annotation Element: kind: s name: default value: userrecord.sex, Annotation Element: kind: s name: default value: job.unionmember, Annotation Element: kind: s name: default value: education.education, Annotation Element: kind: s name: default value: job.employersize, Annotation Element: kind: s name: default value: job.selfemployed, Annotation Element: kind: s name: default value: userrecord.marital, Annotation Element: kind: s name: default value: userrecord.age]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="676" eline="676" spos="0" epos="0"/>
+<text info="[ssn]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="856" eline="856" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="920" eline="920" spos="0" epos="0"/>
+<text info="[inv]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="958" eline="958" spos="0" epos="0"/>
+<text info="[inv]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="996" eline="996" spos="0" epos="0"/>
+<text info="[inv, premium, expo]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="1020" eline="1020" spos="0" epos="0"/>
+<text info="[inv, premium]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="1349" eline="1349" spos="0" epos="0"/>
+<text info="[inv]" aType="ParamNamesTag"/>
+</attribute>
+</attributes>

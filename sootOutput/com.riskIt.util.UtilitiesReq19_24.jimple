@@ -1,0 +1,109 @@
+public class com.riskIt.util.UtilitiesReq19_24 extends java.lang.Object
+{
+
+    public static double CalculateIncomePercentageDifference(double, double)
+    {
+        double MaxAverageIncome, MinAverageIncome, temp$1, temp$2, temp$3, temp$4;
+        int temp$0;
+
+        MaxAverageIncome := @parameter0: double;
+        MinAverageIncome := @parameter1: double;
+        temp$0 = MaxAverageIncome cmpl MinAverageIncome;
+        if temp$0 <= 0 goto label1;
+
+        goto label0;
+
+     label0:
+        nop;
+        temp$1 = 100.0 * MinAverageIncome;
+        temp$2 = temp$1 / MaxAverageIncome;
+        return temp$2;
+
+     label1:
+        nop;
+        temp$3 = 100.0 * MaxAverageIncome;
+        temp$4 = temp$3 / MinAverageIncome;
+        return temp$4;
+    }
+
+    public static void reportFailure(java.lang.String)
+    {
+        java.lang.String message, temp$3;
+        java.io.PrintStream temp$0, temp$1;
+        java.lang.StringBuffer temp$2;
+
+        message := @parameter0: java.lang.String;
+        temp$0 = <java.lang.System: java.io.PrintStream err>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println(java.lang.String)>("\nData verification failed:");
+        temp$1 = <java.lang.System: java.io.PrintStream err>;
+        temp$2 = new java.lang.StringBuffer;
+        specialinvoke temp$2.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>(9);
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(message);
+        temp$3 = virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>(temp$3);
+        return;
+    }
+
+    public static void printExceptionText(java.sql.SQLException)
+    {
+        java.sql.SQLException e, temp$13;
+        java.io.PrintStream temp$0, temp$1, temp$5, temp$9;
+        java.lang.StringBuffer temp$2, temp$6, temp$10;
+        java.lang.String temp$3, temp$4, temp$8, temp$11, temp$12;
+        int temp$7;
+
+        e := @parameter0: java.sql.SQLException;
+
+     label0:
+        nop;
+        if e != null goto label1;
+
+        goto label2;
+
+     label1:
+        nop;
+        temp$0 = <java.lang.System: java.io.PrintStream err>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println(java.lang.String)>("\n----- SQLException -----");
+        temp$1 = <java.lang.System: java.io.PrintStream err>;
+        temp$2 = new java.lang.StringBuffer;
+        specialinvoke temp$2.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  SQL State:  ");
+        temp$3 = virtualinvoke e.<java.sql.SQLException: java.lang.String getSQLState()>();
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$3);
+        temp$4 = virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>(temp$4);
+        temp$5 = <java.lang.System: java.io.PrintStream err>;
+        temp$6 = new java.lang.StringBuffer;
+        specialinvoke temp$6.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Error Code: ");
+        temp$7 = virtualinvoke e.<java.sql.SQLException: int getErrorCode()>();
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$7);
+        temp$8 = virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$5.<java.io.PrintStream: void println(java.lang.String)>(temp$8);
+        temp$9 = <java.lang.System: java.io.PrintStream err>;
+        temp$10 = new java.lang.StringBuffer;
+        specialinvoke temp$10.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Message:    ");
+        temp$11 = virtualinvoke e.<java.sql.SQLException: java.lang.String getMessage()>();
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$11);
+        temp$12 = virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>(temp$12);
+        temp$13 = virtualinvoke e.<java.sql.SQLException: java.sql.SQLException getNextException()>();
+        e = temp$13;
+        goto label0;
+
+     label2:
+        nop;
+        return;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.util.UtilitiesReq19_24 this;
+
+        this := @this: com.riskIt.util.UtilitiesReq19_24;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

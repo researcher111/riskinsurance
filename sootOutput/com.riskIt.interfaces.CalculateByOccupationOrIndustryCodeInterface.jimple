@@ -1,0 +1,23 @@
+public interface  com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface extends java.lang.Object
+{
+
+    public abstract java.util.ArrayList getOccupationCodeList();
+
+    public abstract java.util.ArrayList getIndustryCodeList();
+
+    public abstract java.util.HashMap getOccupationCodeAndNameMap();
+
+    public abstract java.util.HashMap getIndustryCodeAndNameMap();
+
+    public abstract boolean isValidOccupationCode(int);
+
+    public abstract boolean isValidIndustryCode(int);
+
+    public abstract double calculateIncomeByOccupationCode(int);
+
+    public abstract double calculateWeeklyWageByOccupationCode(int);
+
+    public abstract double calculateIncomeByIndustryCode(int);
+
+    public abstract double calculateWeeklyWageByIndustryCode(int);
+}

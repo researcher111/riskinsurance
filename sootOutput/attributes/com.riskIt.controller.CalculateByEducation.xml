@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="6" eline="6" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: education]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: education.education]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="130" eline="130" spos="0" epos="0"/>
+<text info="[education]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="182" eline="182" spos="0" epos="0"/>
+<text info="[education]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="196" eline="196" spos="0" epos="0"/>
+<text info="[education]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="210" eline="210" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="222" eline="222" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="234" eline="234" spos="0" epos="0"/>
+<text info="[educationIn, type]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: ssn1, Annotation Element: kind: s name: default value: education1, Annotation Element: kind: s name: default value: weekWage, Annotation Element: kind: s name: default value: workWeeks, Annotation Element: kind: s name: default value: ssn2]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: education.ssn, Annotation Element: kind: s name: default value: education.education, Annotation Element: kind: s name: default value: job.weekwage, Annotation Element: kind: s name: default value: job.workweeks, Annotation Element: kind: s name: default value: job.ssn]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="479" eline="479" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+</attributes>

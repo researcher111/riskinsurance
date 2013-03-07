@@ -1,0 +1,30 @@
+public class com.riskIt.util.RoundValue extends java.lang.Object
+{
+
+    public double roundValue(double)
+    {
+        com.riskIt.util.RoundValue this;
+        double value, temp$2, temp$3;
+        java.math.BigDecimal bd, temp$0, temp$1;
+
+        this := @this: com.riskIt.util.RoundValue;
+        value := @parameter0: double;
+        temp$0 = new java.math.BigDecimal;
+        specialinvoke temp$0.<java.math.BigDecimal: void <init>(double)>(value);
+        bd = temp$0;
+        temp$1 = virtualinvoke bd.<java.math.BigDecimal: java.math.BigDecimal setScale(int,int)>(2, 6);
+        bd = temp$1;
+        temp$2 = virtualinvoke bd.<java.math.BigDecimal: double doubleValue()>();
+        temp$3 = virtualinvoke bd.<java.math.BigDecimal: double doubleValue()>();
+        return temp$3;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.util.RoundValue this;
+
+        this := @this: com.riskIt.util.RoundValue;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

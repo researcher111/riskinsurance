@@ -1,0 +1,73 @@
+public class com.riskIt.util.RiskItConstants extends java.lang.Object
+{
+    public static final int THRESHOLD;
+    public static final int INCOME_GAIN_PERCENTAGE_REDUCTION;
+    public static final int TEN_PERCENT;
+    public static final int TWENTY_PERCENT;
+    public static final int THIRTY_PERCENT;
+    public static final int FIFTY_PERCENT;
+    public static final int MAX_EMP_COUNT;
+    public static final int SIXTY_AGE;
+    public static final int FIFTY_AGE;
+    public static final int PROFIT_CONTINGENCY_FACTOR;
+    public static final int RISK_ZONE;
+    public static final int COMPENSATE_AGENT;
+    public static final int ACCEPT;
+    public static final int DENY;
+    public static final int MAIN_INVALID;
+    public static final int SUB_INVALID;
+    public static final int AGENT_INVALID;
+    public static final int INVALID_VALUE;
+
+    static void <clinit>()
+    {
+        int temp$0, temp$1, temp$2, temp$3, temp$4, temp$5, temp$6, temp$7, temp$8, temp$9, temp$10, temp$11, temp$12, temp$13, temp$14, temp$15, temp$16, temp$17;
+
+        temp$0 = 60;
+        <com.riskIt.util.RiskItConstants: int THRESHOLD> = temp$0;
+        temp$1 = 20;
+        <com.riskIt.util.RiskItConstants: int INCOME_GAIN_PERCENTAGE_REDUCTION> = temp$1;
+        temp$2 = 10;
+        <com.riskIt.util.RiskItConstants: int TEN_PERCENT> = temp$2;
+        temp$3 = 20;
+        <com.riskIt.util.RiskItConstants: int TWENTY_PERCENT> = temp$3;
+        temp$4 = 30;
+        <com.riskIt.util.RiskItConstants: int THIRTY_PERCENT> = temp$4;
+        temp$5 = 50;
+        <com.riskIt.util.RiskItConstants: int FIFTY_PERCENT> = temp$5;
+        temp$6 = 5;
+        <com.riskIt.util.RiskItConstants: int MAX_EMP_COUNT> = temp$6;
+        temp$7 = 60;
+        <com.riskIt.util.RiskItConstants: int SIXTY_AGE> = temp$7;
+        temp$8 = 60;
+        <com.riskIt.util.RiskItConstants: int FIFTY_AGE> = temp$8;
+        temp$9 = 3;
+        <com.riskIt.util.RiskItConstants: int PROFIT_CONTINGENCY_FACTOR> = temp$9;
+        temp$10 = 20;
+        <com.riskIt.util.RiskItConstants: int RISK_ZONE> = temp$10;
+        temp$11 = 20;
+        <com.riskIt.util.RiskItConstants: int COMPENSATE_AGENT> = temp$11;
+        temp$12 = 1;
+        <com.riskIt.util.RiskItConstants: int ACCEPT> = temp$12;
+        temp$13 = 0;
+        <com.riskIt.util.RiskItConstants: int DENY> = temp$13;
+        temp$14 = 25;
+        <com.riskIt.util.RiskItConstants: int MAIN_INVALID> = temp$14;
+        temp$15 = 6;
+        <com.riskIt.util.RiskItConstants: int SUB_INVALID> = temp$15;
+        temp$16 = 3;
+        <com.riskIt.util.RiskItConstants: int AGENT_INVALID> = temp$16;
+        temp$17 = 0;
+        <com.riskIt.util.RiskItConstants: int INVALID_VALUE> = temp$17;
+        return;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.util.RiskItConstants this;
+
+        this := @this: com.riskIt.util.RiskItConstants;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

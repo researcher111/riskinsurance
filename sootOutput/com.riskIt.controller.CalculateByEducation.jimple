@@ -1,0 +1,487 @@
+public class com.riskIt.controller.CalculateByEducation extends java.lang.Object implements com.riskIt.interfaces.CalculateByEducationInterface
+{
+    java.sql.ResultSet results;
+    java.sql.Statement statement;
+
+    public java.util.ArrayList getEducationLevelList()
+    {
+        com.riskIt.controller.CalculateByEducation this;
+        java.util.ArrayList educationList, temp$0;
+        java.lang.String education, temp$8, temp$9, temp$15, temp$16, temp$20, temp$23, temp$24;
+        java.sql.Connection temp$1;
+        java.sql.Statement temp$2, temp$3;
+        java.sql.ResultSet temp$4, temp$5, temp$7;
+        boolean temp$6, temp$10, temp$11;
+        java.sql.SQLException e, temp$25;
+        java.io.PrintStream temp$12, temp$13, temp$17, temp$21;
+        java.lang.StringBuffer temp$14, temp$18, temp$22;
+        int temp$19;
+
+        this := @this: com.riskIt.controller.CalculateByEducation;
+        temp$0 = new java.util.ArrayList;
+        specialinvoke temp$0.<java.util.ArrayList: void <init>()>();
+        educationList = temp$0;
+
+     label0:
+        nop;
+        temp$1 = staticinvoke <com.riskIt.util.Factory: java.sql.Connection getConnection()>();
+        temp$2 = interfaceinvoke temp$1.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.CalculateByEducation: java.sql.Statement statement> = temp$2;
+        temp$3 = this.<com.riskIt.controller.CalculateByEducation: java.sql.Statement statement>;
+        temp$4 = interfaceinvoke temp$3.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT DISTINCT EDUCATION from education");
+        this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results> = temp$4;
+
+     label1:
+        nop;
+        temp$5 = this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results>;
+        temp$6 = interfaceinvoke temp$5.<java.sql.ResultSet: boolean next()>();
+        if temp$6 == 0 goto label7;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$7 = this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results>;
+        temp$8 = interfaceinvoke temp$7.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("EDUCATION");
+        education = temp$8;
+        if education != null goto label3;
+
+        goto label6;
+
+     label3:
+        nop;
+        temp$9 = virtualinvoke education.<java.lang.String: java.lang.String trim()>();
+        education = temp$9;
+        temp$10 = virtualinvoke educationList.<java.util.ArrayList: boolean contains(java.lang.Object)>(education);
+        if temp$10 == 0 goto label4;
+
+        goto label5;
+
+     label4:
+        nop;
+        temp$11 = virtualinvoke educationList.<java.util.ArrayList: boolean add(java.lang.Object)>(education);
+
+     label5:
+        nop;
+
+     label6:
+        nop;
+        goto label1;
+
+     label7:
+        nop;
+        goto label12;
+
+     label8:
+        nop;
+        e := @caughtexception;
+
+     label9:
+        nop;
+        if e != null goto label10;
+
+        goto label11;
+
+     label10:
+        nop;
+        temp$12 = <java.lang.System: java.io.PrintStream err>;
+        virtualinvoke temp$12.<java.io.PrintStream: void println(java.lang.String)>("\n----- SQLException -----");
+        temp$13 = <java.lang.System: java.io.PrintStream err>;
+        temp$14 = new java.lang.StringBuffer;
+        specialinvoke temp$14.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  SQL State:  ");
+        temp$15 = virtualinvoke e.<java.sql.SQLException: java.lang.String getSQLState()>();
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$15);
+        temp$16 = virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$13.<java.io.PrintStream: void println(java.lang.String)>(temp$16);
+        temp$17 = <java.lang.System: java.io.PrintStream err>;
+        temp$18 = new java.lang.StringBuffer;
+        specialinvoke temp$18.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Error Code: ");
+        temp$19 = virtualinvoke e.<java.sql.SQLException: int getErrorCode()>();
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$19);
+        temp$20 = virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$17.<java.io.PrintStream: void println(java.lang.String)>(temp$20);
+        temp$21 = <java.lang.System: java.io.PrintStream err>;
+        temp$22 = new java.lang.StringBuffer;
+        specialinvoke temp$22.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$22.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Message:    ");
+        temp$23 = virtualinvoke e.<java.sql.SQLException: java.lang.String getMessage()>();
+        virtualinvoke temp$22.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$23);
+        temp$24 = virtualinvoke temp$22.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$21.<java.io.PrintStream: void println(java.lang.String)>(temp$24);
+        temp$25 = virtualinvoke e.<java.sql.SQLException: java.sql.SQLException getNextException()>();
+        e = temp$25;
+        goto label9;
+
+     label11:
+        nop;
+        nop;
+        goto label12;
+
+     label12:
+        nop;
+        staticinvoke <java.util.Collections: void sort(java.util.List)>(educationList);
+        return educationList;
+
+        catch java.sql.SQLException from label0 to label8 with label8;
+    }
+
+    public boolean isInEducationList(java.lang.String)
+    {
+        com.riskIt.controller.CalculateByEducation this;
+        java.lang.String education, i, temp$4;
+        java.util.ArrayList educationList, temp$0;
+        java.util.Iterator temp$1;
+        boolean temp$2, temp$5, temp$6, temp$7;
+        java.lang.Object temp$3;
+
+        this := @this: com.riskIt.controller.CalculateByEducation;
+        education := @parameter0: java.lang.String;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.CalculateByEducation: java.util.ArrayList getEducationLevelList()>();
+        educationList = temp$0;
+        temp$1 = interfaceinvoke educationList.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label0:
+        nop;
+        temp$2 = interfaceinvoke temp$1.<java.util.Iterator: boolean hasNext()>();
+        if temp$2 == 0 goto label4;
+
+        temp$3 = interfaceinvoke temp$1.<java.util.Iterator: java.lang.Object next()>();
+        i = (java.lang.String) temp$3;
+        if education != null goto label1;
+
+        goto label3;
+
+     label1:
+        nop;
+        temp$4 = virtualinvoke education.<java.lang.String: java.lang.String trim()>();
+        temp$5 = virtualinvoke i.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(temp$4);
+        if temp$5 == 0 goto label3;
+
+        goto label2;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$6 = 1;
+        return temp$6;
+
+     label3:
+        nop;
+        nop;
+        goto label0;
+
+     label4:
+        nop;
+        temp$7 = 0;
+        return temp$7;
+    }
+
+    public double calculateIncomeByEducationLevel(java.lang.String)
+    {
+        com.riskIt.controller.CalculateByEducation this;
+        java.lang.String education;
+        com.riskIt.interfaces.CalcImplInterface temp$0;
+        double temp$1;
+
+        this := @this: com.riskIt.controller.CalculateByEducation;
+        education := @parameter0: java.lang.String;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalcImplInterface getYearlyImpl()>();
+        temp$1 = virtualinvoke this.<com.riskIt.controller.CalculateByEducation: double calculateValue(java.lang.String,com.riskIt.interfaces.CalcImplInterface)>(education, temp$0);
+        return temp$1;
+    }
+
+    public double calculateWeeklyWageByEducationLevel(java.lang.String)
+    {
+        com.riskIt.controller.CalculateByEducation this;
+        java.lang.String education;
+        com.riskIt.interfaces.CalcImplInterface temp$0;
+        double temp$1;
+
+        this := @this: com.riskIt.controller.CalculateByEducation;
+        education := @parameter0: java.lang.String;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalcImplInterface getWeeklyImpl()>();
+        temp$1 = virtualinvoke this.<com.riskIt.controller.CalculateByEducation: double calculateValue(java.lang.String,com.riskIt.interfaces.CalcImplInterface)>(education, temp$0);
+        return temp$1;
+    }
+
+    public double calculateIncomeByAllEducationLevels()
+    {
+        com.riskIt.controller.CalculateByEducation this;
+        com.riskIt.interfaces.CalcImplInterface temp$0;
+        double temp$1;
+
+        this := @this: com.riskIt.controller.CalculateByEducation;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalcImplInterface getYearlyImpl()>();
+        temp$1 = virtualinvoke this.<com.riskIt.controller.CalculateByEducation: double calculateValue(java.lang.String,com.riskIt.interfaces.CalcImplInterface)>("all", temp$0);
+        return temp$1;
+    }
+
+    public double calculateWeeklyWageByAllEducationLevels()
+    {
+        com.riskIt.controller.CalculateByEducation this;
+        com.riskIt.interfaces.CalcImplInterface temp$0;
+        double temp$1;
+
+        this := @this: com.riskIt.controller.CalculateByEducation;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalcImplInterface getWeeklyImpl()>();
+        temp$1 = virtualinvoke this.<com.riskIt.controller.CalculateByEducation: double calculateValue(java.lang.String,com.riskIt.interfaces.CalcImplInterface)>("all", temp$0);
+        return temp$1;
+    }
+
+    private final double calculateValue(java.lang.String, com.riskIt.interfaces.CalcImplInterface)
+    {
+        com.riskIt.controller.CalculateByEducation this;
+        java.lang.String educationIn, education1, education2, temp$2, temp$3, temp$11, temp$13, temp$17, temp$18, temp$21, temp$34, temp$51, temp$52, temp$56, temp$59, temp$60;
+        com.riskIt.interfaces.CalcImplInterface type;
+        java.util.HashMap ssnEducation, temp$0;
+        java.util.ArrayList educationWageAL, temp$1;
+        int ssn1, ssn2, weekWage, workWeeks, temp$15, temp$27, temp$29, temp$31, temp$39, temp$45, temp$55;
+        double sum, count, returnValue, result, temp$38, temp$40, temp$41, temp$42, temp$43, temp$44, temp$46, temp$47, temp$62;
+        java.sql.Connection temp$4;
+        java.sql.Statement temp$5, temp$6, temp$22;
+        java.sql.ResultSet temp$7, temp$8, temp$10, temp$12, temp$14, temp$16, temp$23, temp$24, temp$26, temp$28, temp$30;
+        boolean temp$9, temp$25, temp$36;
+        java.lang.Integer temp$19, temp$32;
+        java.lang.Object temp$20, temp$33, temp$37;
+        java.util.Iterator temp$35;
+        com.riskIt.interfaces.TypeWageDataStructureInterface i;
+        java.sql.SQLException e, temp$61;
+        java.io.PrintStream temp$48, temp$49, temp$53, temp$57;
+        java.lang.StringBuffer temp$50, temp$54, temp$58;
+
+        this := @this: com.riskIt.controller.CalculateByEducation;
+        educationIn := @parameter0: java.lang.String;
+        type := @parameter1: com.riskIt.interfaces.CalcImplInterface;
+        temp$0 = new java.util.HashMap;
+        specialinvoke temp$0.<java.util.HashMap: void <init>()>();
+        ssnEducation = temp$0;
+        temp$1 = new java.util.ArrayList;
+        specialinvoke temp$1.<java.util.ArrayList: void <init>()>();
+        educationWageAL = temp$1;
+        sum = 0.0;
+        count = 0.0;
+        returnValue = 0.0;
+        if educationIn == null goto label0;
+
+        goto label1;
+
+     label0:
+        nop;
+        temp$2 = "";
+        educationIn = temp$2;
+        goto label2;
+
+     label1:
+        nop;
+        temp$3 = virtualinvoke educationIn.<java.lang.String: java.lang.String trim()>();
+        educationIn = temp$3;
+
+     label2:
+        nop;
+
+     label3:
+        nop;
+        temp$4 = staticinvoke <com.riskIt.util.Factory: java.sql.Connection getConnection()>();
+        temp$5 = interfaceinvoke temp$4.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.CalculateByEducation: java.sql.Statement statement> = temp$5;
+        temp$6 = this.<com.riskIt.controller.CalculateByEducation: java.sql.Statement statement>;
+        temp$7 = interfaceinvoke temp$6.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT SSN, EDUCATION from education");
+        this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results> = temp$7;
+
+     label4:
+        nop;
+        temp$8 = this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results>;
+        temp$9 = interfaceinvoke temp$8.<java.sql.ResultSet: boolean next()>();
+        if temp$9 == 0 goto label9;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$10 = this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results>;
+        temp$11 = interfaceinvoke temp$10.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("SSN");
+        if temp$11 != null goto label6;
+
+        goto label8;
+
+     label6:
+        nop;
+        temp$12 = this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results>;
+        temp$13 = interfaceinvoke temp$12.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("EDUCATION");
+        if temp$13 != null goto label7;
+
+        goto label8;
+
+        goto label7;
+
+     label7:
+        nop;
+        temp$14 = this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results>;
+        temp$15 = interfaceinvoke temp$14.<java.sql.ResultSet: int getInt(java.lang.String)>("SSN");
+        ssn1 = temp$15;
+        temp$16 = this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results>;
+        temp$17 = interfaceinvoke temp$16.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("EDUCATION");
+        temp$18 = virtualinvoke temp$17.<java.lang.String: java.lang.String trim()>();
+        education1 = temp$18;
+        temp$19 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(ssn1);
+        temp$20 = virtualinvoke ssnEducation.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(temp$19, education1);
+        temp$21 = (java.lang.String) temp$20;
+
+     label8:
+        nop;
+        goto label4;
+
+     label9:
+        nop;
+        temp$22 = this.<com.riskIt.controller.CalculateByEducation: java.sql.Statement statement>;
+        temp$23 = interfaceinvoke temp$22.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT SSN, WEEKWAGE, WORKWEEKS from job");
+        this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results> = temp$23;
+
+     label10:
+        nop;
+        temp$24 = this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results>;
+        temp$25 = interfaceinvoke temp$24.<java.sql.ResultSet: boolean next()>();
+        if temp$25 == 0 goto label12;
+
+        goto label11;
+
+     label11:
+        nop;
+        temp$26 = this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results>;
+        temp$27 = interfaceinvoke temp$26.<java.sql.ResultSet: int getInt(java.lang.String)>("WEEKWAGE");
+        weekWage = temp$27;
+        temp$28 = this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results>;
+        temp$29 = interfaceinvoke temp$28.<java.sql.ResultSet: int getInt(java.lang.String)>("WORKWEEKS");
+        workWeeks = temp$29;
+        temp$30 = this.<com.riskIt.controller.CalculateByEducation: java.sql.ResultSet results>;
+        temp$31 = interfaceinvoke temp$30.<java.sql.ResultSet: int getInt(java.lang.String)>("SSN");
+        ssn2 = temp$31;
+        temp$32 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(ssn2);
+        temp$33 = virtualinvoke ssnEducation.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$32);
+        temp$34 = (java.lang.String) temp$33;
+        education2 = temp$34;
+        interfaceinvoke type.<com.riskIt.interfaces.CalcImplInterface: void addToArrayList(java.util.ArrayList,java.lang.String,int,int)>(educationWageAL, education2, weekWage, workWeeks);
+        goto label10;
+
+     label12:
+        nop;
+        temp$35 = interfaceinvoke educationWageAL.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label13:
+        nop;
+        temp$36 = interfaceinvoke temp$35.<java.util.Iterator: boolean hasNext()>();
+        if temp$36 == 0 goto label16;
+
+        temp$37 = interfaceinvoke temp$35.<java.util.Iterator: java.lang.Object next()>();
+        i = (com.riskIt.interfaces.TypeWageDataStructureInterface) temp$37;
+        temp$38 = interfaceinvoke type.<com.riskIt.interfaces.CalcImplInterface: double calculateAverage(java.lang.String,com.riskIt.interfaces.TypeWageDataStructureInterface)>(educationIn, i);
+        result = temp$38;
+        temp$39 = result cmpl 0.0;
+        if temp$39 <= 0 goto label15;
+
+        goto label14;
+
+     label14:
+        nop;
+        temp$40 = sum;
+        temp$41 = temp$40 + result;
+        sum = temp$41;
+        temp$42 = count;
+        temp$43 = (double) 1;
+        temp$44 = temp$42 + temp$43;
+        count = temp$44;
+
+     label15:
+        nop;
+        nop;
+        goto label13;
+
+     label16:
+        nop;
+        temp$45 = count cmpg 0.0;
+        if temp$45 != 0 goto label18;
+
+        goto label17;
+
+     label17:
+        nop;
+        temp$46 = 0.0;
+        returnValue = temp$46;
+        goto label19;
+
+     label18:
+        nop;
+        temp$47 = sum / count;
+        returnValue = temp$47;
+
+     label19:
+        nop;
+        goto label24;
+
+     label20:
+        nop;
+        e := @caughtexception;
+
+     label21:
+        nop;
+        if e != null goto label22;
+
+        goto label23;
+
+     label22:
+        nop;
+        temp$48 = <java.lang.System: java.io.PrintStream err>;
+        virtualinvoke temp$48.<java.io.PrintStream: void println(java.lang.String)>("\n----- SQLException -----");
+        temp$49 = <java.lang.System: java.io.PrintStream err>;
+        temp$50 = new java.lang.StringBuffer;
+        specialinvoke temp$50.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$50.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  SQL State:  ");
+        temp$51 = virtualinvoke e.<java.sql.SQLException: java.lang.String getSQLState()>();
+        virtualinvoke temp$50.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$51);
+        temp$52 = virtualinvoke temp$50.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$49.<java.io.PrintStream: void println(java.lang.String)>(temp$52);
+        temp$53 = <java.lang.System: java.io.PrintStream err>;
+        temp$54 = new java.lang.StringBuffer;
+        specialinvoke temp$54.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Error Code: ");
+        temp$55 = virtualinvoke e.<java.sql.SQLException: int getErrorCode()>();
+        virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$55);
+        temp$56 = virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$53.<java.io.PrintStream: void println(java.lang.String)>(temp$56);
+        temp$57 = <java.lang.System: java.io.PrintStream err>;
+        temp$58 = new java.lang.StringBuffer;
+        specialinvoke temp$58.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$58.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Message:    ");
+        temp$59 = virtualinvoke e.<java.sql.SQLException: java.lang.String getMessage()>();
+        virtualinvoke temp$58.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$59);
+        temp$60 = virtualinvoke temp$58.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$57.<java.io.PrintStream: void println(java.lang.String)>(temp$60);
+        temp$61 = virtualinvoke e.<java.sql.SQLException: java.sql.SQLException getNextException()>();
+        e = temp$61;
+        goto label21;
+
+     label23:
+        nop;
+        nop;
+        goto label24;
+
+     label24:
+        nop;
+        temp$62 = staticinvoke <com.riskIt.util.Factory: double getRoundMethod(double)>(returnValue);
+        return temp$62;
+
+        catch java.sql.SQLException from label3 to label20 with label20;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.controller.CalculateByEducation this;
+
+        this := @this: com.riskIt.controller.CalculateByEducation;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

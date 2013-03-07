@@ -1,0 +1,962 @@
+public class com.riskIt.ui.SubMenuChoices19_24 extends java.lang.Object
+{
+    private java.util.Scanner in;
+    private com.riskIt.controller.Requirements19_24 RequestManager;
+
+    public void <init>()
+    {
+        com.riskIt.ui.SubMenuChoices19_24 this;
+        java.util.Scanner temp$0;
+        java.io.InputStream temp$1;
+        com.riskIt.controller.Requirements19_24 temp$2;
+
+        this := @this: com.riskIt.ui.SubMenuChoices19_24;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        temp$0 = new java.util.Scanner;
+        temp$1 = <java.lang.System: java.io.InputStream in>;
+        specialinvoke temp$0.<java.util.Scanner: void <init>(java.io.InputStream)>(temp$1);
+        this.<com.riskIt.ui.SubMenuChoices19_24: java.util.Scanner in> = temp$0;
+        temp$2 = new com.riskIt.controller.Requirements19_24;
+        specialinvoke temp$2.<com.riskIt.controller.Requirements19_24: void <init>()>();
+        this.<com.riskIt.ui.SubMenuChoices19_24: com.riskIt.controller.Requirements19_24 RequestManager> = temp$2;
+        return;
+    }
+
+    public void FindTopStatesMenu(java.lang.String)
+    {
+        com.riskIt.ui.SubMenuChoices19_24 this;
+        java.lang.String selection, getChoice, category, temp$3, temp$6, temp$9, temp$13, temp$22, temp$28, temp$29, temp$31, temp$36, temp$38;
+        int choice, temp$15, temp$16, temp$17, temp$19, temp$39, temp$40, temp$43;
+        java.util.ArrayList code, temp$0, temp$33, temp$47;
+        java.io.PrintStream temp$1, temp$4, temp$7, temp$10, temp$11, temp$14, temp$18, temp$20, temp$25, temp$34, temp$48, temp$50;
+        java.lang.StringBuffer temp$2, temp$5, temp$8, temp$21, temp$26, temp$35;
+        java.util.Scanner temp$12, temp$23, temp$27, temp$30, temp$37;
+        java.lang.NumberFormatException e, e;
+        boolean temp$24, temp$42, temp$45, temp$49;
+        com.riskIt.controller.Requirements19_24 temp$32, temp$46;
+        java.lang.Integer temp$41, temp$44;
+
+        this := @this: com.riskIt.ui.SubMenuChoices19_24;
+        selection := @parameter0: java.lang.String;
+        choice = 0;
+        getChoice = "";
+        category = "";
+        temp$0 = new java.util.ArrayList;
+        specialinvoke temp$0.<java.util.ArrayList: void <init>()>();
+        code = temp$0;
+
+     label0:
+        nop;
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        temp$2 = new java.lang.StringBuffer;
+        specialinvoke temp$2.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\n\n1. Find the top 5 states that have the most workers for given ");
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" category");
+        temp$3 = virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>(temp$3);
+        temp$4 = <java.lang.System: java.io.PrintStream out>;
+        temp$5 = new java.lang.StringBuffer;
+        specialinvoke temp$5.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("2. Find the top 5 states that have the most workers for given ");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" code");
+        temp$6 = virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$4.<java.io.PrintStream: void println(java.lang.String)>(temp$6);
+        temp$7 = <java.lang.System: java.io.PrintStream out>;
+        temp$8 = new java.lang.StringBuffer;
+        specialinvoke temp$8.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("3. Display all ");
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" codes with associated ");
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" category names");
+        temp$9 = virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$7.<java.io.PrintStream: void println(java.lang.String)>(temp$9);
+        temp$10 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>("0. Return to the previous menu");
+        temp$11 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$11.<java.io.PrintStream: void print(java.lang.String)>("Enter your choice : ");
+
+     label1:
+        nop;
+        temp$12 = this.<com.riskIt.ui.SubMenuChoices19_24: java.util.Scanner in>;
+        temp$13 = virtualinvoke temp$12.<java.util.Scanner: java.lang.String nextLine()>();
+        getChoice = temp$13;
+        temp$14 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$14.<java.io.PrintStream: void println(java.lang.String)>("");
+        temp$15 = virtualinvoke getChoice.<java.lang.String: int length()>();
+        if temp$15 > 0 goto label2;
+
+        goto label3;
+
+     label2:
+        nop;
+        temp$16 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getChoice);
+        choice = temp$16;
+        goto label4;
+
+     label3:
+        nop;
+        temp$17 = 0;
+        choice = temp$17;
+
+     label4:
+        nop;
+        goto label6;
+
+     label5:
+        nop;
+        e := @caughtexception;
+        temp$18 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$18.<java.io.PrintStream: void println(java.lang.String)>("Invalid input!!");
+        temp$19 = 0;
+        choice = temp$19;
+        nop;
+        goto label6;
+
+     label6:
+        nop;
+        goto label24;
+
+     label7:
+        nop;
+        goto label25;
+
+     label8:
+        nop;
+        temp$20 = <java.lang.System: java.io.PrintStream out>;
+        temp$21 = new java.lang.StringBuffer;
+        specialinvoke temp$21.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Please enter the ");
+        virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" category: ");
+        temp$22 = virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$20.<java.io.PrintStream: void print(java.lang.String)>(temp$22);
+        temp$23 = this.<com.riskIt.ui.SubMenuChoices19_24: java.util.Scanner in>;
+        temp$24 = virtualinvoke temp$23.<java.util.Scanner: boolean hasNextInt()>();
+        if temp$24 == 0 goto label10;
+
+        goto label9;
+
+     label9:
+        nop;
+        temp$25 = <java.lang.System: java.io.PrintStream out>;
+        temp$26 = new java.lang.StringBuffer;
+        specialinvoke temp$26.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Invalid Input: ");
+        temp$27 = this.<com.riskIt.ui.SubMenuChoices19_24: java.util.Scanner in>;
+        temp$28 = virtualinvoke temp$27.<java.util.Scanner: java.lang.String nextLine()>();
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$28);
+        temp$29 = virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$25.<java.io.PrintStream: void println(java.lang.String)>(temp$29);
+        goto label11;
+
+     label10:
+        nop;
+        temp$30 = this.<com.riskIt.ui.SubMenuChoices19_24: java.util.Scanner in>;
+        temp$31 = virtualinvoke temp$30.<java.util.Scanner: java.lang.String nextLine()>();
+        category = temp$31;
+        temp$32 = this.<com.riskIt.ui.SubMenuChoices19_24: com.riskIt.controller.Requirements19_24 RequestManager>;
+        temp$33 = virtualinvoke temp$32.<com.riskIt.controller.Requirements19_24: java.util.ArrayList FindTopStatesByCategory(java.lang.String,java.lang.String)>(selection, category);
+
+     label11:
+        nop;
+        goto label25;
+
+     label12:
+        nop;
+
+     label13:
+        nop;
+        temp$34 = <java.lang.System: java.io.PrintStream out>;
+        temp$35 = new java.lang.StringBuffer;
+        specialinvoke temp$35.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$35.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Please enter the ");
+        virtualinvoke temp$35.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$35.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" code: ");
+        temp$36 = virtualinvoke temp$35.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$34.<java.io.PrintStream: void print(java.lang.String)>(temp$36);
+        temp$37 = this.<com.riskIt.ui.SubMenuChoices19_24: java.util.Scanner in>;
+        temp$38 = virtualinvoke temp$37.<java.util.Scanner: java.lang.String nextLine()>();
+        getChoice = temp$38;
+        temp$39 = virtualinvoke getChoice.<java.lang.String: int length()>();
+        if temp$39 > 0 goto label14;
+
+        goto label15;
+
+     label14:
+        nop;
+        temp$40 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getChoice);
+        temp$41 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(temp$40);
+        temp$42 = virtualinvoke code.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$41);
+        goto label16;
+
+     label15:
+        nop;
+        temp$43 = 0;
+        temp$44 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(temp$43);
+        temp$45 = virtualinvoke code.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$44);
+
+     label16:
+        nop;
+        temp$46 = this.<com.riskIt.ui.SubMenuChoices19_24: com.riskIt.controller.Requirements19_24 RequestManager>;
+        temp$47 = virtualinvoke temp$46.<com.riskIt.controller.Requirements19_24: java.util.ArrayList FindTopStatesByCode(java.lang.String,java.util.ArrayList)>(selection, code);
+        virtualinvoke code.<java.util.ArrayList: void clear()>();
+        goto label18;
+
+     label17:
+        nop;
+        e := @caughtexception;
+        temp$48 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$48.<java.io.PrintStream: void println(java.lang.String)>("Invalid input!!");
+        nop;
+        goto label18;
+
+     label18:
+        nop;
+        goto label25;
+
+     label19:
+        nop;
+        temp$49 = virtualinvoke selection.<java.lang.String: boolean equals(java.lang.Object)>("occupation");
+        if temp$49 == 0 goto label21;
+
+        goto label20;
+
+     label20:
+        nop;
+        virtualinvoke this.<com.riskIt.ui.SubMenuChoices19_24: void displayOccupationMap()>();
+        goto label22;
+
+     label21:
+        nop;
+        virtualinvoke this.<com.riskIt.ui.SubMenuChoices19_24: void displayIndustryMap()>();
+
+     label22:
+        nop;
+        goto label25;
+
+     label23:
+        nop;
+        temp$50 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$50.<java.io.PrintStream: void println(java.lang.String)>("You chose invalid option. Please try again...");
+        goto label25;
+
+        goto label25;
+
+     label24:
+        nop;
+        nop;
+        tableswitch(choice)
+        {
+            case 0: goto label7;
+            case 1: goto label8;
+            case 2: goto label12;
+            case 3: goto label19;
+            default: goto label23;
+        };
+
+     label25:
+        nop;
+        nop;
+        if choice > 0 goto label26;
+
+        goto label27;
+
+     label26:
+        nop;
+        if choice < 4 goto label0;
+
+        goto label27;
+
+        goto label0;
+
+     label27:
+        nop;
+        return;
+
+        catch java.lang.NumberFormatException from label1 to label5 with label5;
+        catch java.lang.NumberFormatException from label13 to label17 with label17;
+    }
+
+    public void RecommendBestStateToWorkMenu()
+    {
+        com.riskIt.ui.SubMenuChoices19_24 this;
+        int ssn, temp$4, temp$5, temp$8, temp$9;
+        java.lang.String getChoice, temp$2;
+        java.io.PrintStream temp$0, temp$3, temp$10, temp$11;
+        java.util.Scanner temp$1;
+        com.riskIt.controller.Requirements19_24 temp$6;
+        java.util.ArrayList temp$7;
+        java.lang.NumberFormatException e;
+
+        this := @this: com.riskIt.ui.SubMenuChoices19_24;
+        ssn = 0;
+        getChoice = "";
+
+     label0:
+        nop;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void print(java.lang.String)>("Please enter 9 digits user\'s SSN or enter 0 to return to previous menu: ");
+        temp$1 = this.<com.riskIt.ui.SubMenuChoices19_24: java.util.Scanner in>;
+        temp$2 = virtualinvoke temp$1.<java.util.Scanner: java.lang.String nextLine()>();
+        getChoice = temp$2;
+        temp$3 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$3.<java.io.PrintStream: void println(java.lang.String)>("");
+
+     label1:
+        nop;
+        temp$4 = virtualinvoke getChoice.<java.lang.String: int length()>();
+        if temp$4 == 9 goto label2;
+
+        goto label3;
+
+     label2:
+        nop;
+        temp$5 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getChoice);
+        ssn = temp$5;
+        temp$6 = this.<com.riskIt.ui.SubMenuChoices19_24: com.riskIt.controller.Requirements19_24 RequestManager>;
+        temp$7 = virtualinvoke temp$6.<com.riskIt.controller.Requirements19_24: java.util.ArrayList RecommendBestStateToWork(int)>(ssn);
+        goto label8;
+
+     label3:
+        nop;
+        temp$8 = virtualinvoke getChoice.<java.lang.String: int length()>();
+        if temp$8 > 0 goto label4;
+
+        goto label7;
+
+     label4:
+        nop;
+        temp$9 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getChoice);
+        ssn = temp$9;
+        if ssn != 0 goto label5;
+
+        goto label6;
+
+     label5:
+        nop;
+        temp$10 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>("You entered invalid SSN.");
+
+     label6:
+        nop;
+
+     label7:
+        nop;
+
+     label8:
+        nop;
+        goto label10;
+
+     label9:
+        nop;
+        e := @caughtexception;
+        temp$11 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$11.<java.io.PrintStream: void println(java.lang.String)>("Invalid input!!");
+        nop;
+        goto label10;
+
+     label10:
+        nop;
+        nop;
+        if ssn > 0 goto label0;
+
+        goto label11;
+
+     label11:
+        nop;
+        return;
+
+        catch java.lang.NumberFormatException from label1 to label9 with label9;
+    }
+
+    public void ComputeAverageEducationMenu()
+    {
+        com.riskIt.ui.SubMenuChoices19_24 this;
+        java.lang.String getChoice, selection, temp$7, temp$16, temp$18, temp$22, temp$26, temp$28, temp$32;
+        int choice, code, temp$9, temp$10, temp$11, temp$13, temp$19, temp$20, temp$29, temp$30;
+        java.io.PrintStream temp$0, temp$1, temp$2, temp$3, temp$4, temp$5, temp$8, temp$12, temp$14, temp$17, temp$23, temp$24, temp$27, temp$33, temp$34;
+        java.util.Scanner temp$6, temp$15, temp$25;
+        java.lang.NumberFormatException e, e, e;
+        com.riskIt.controller.Requirements19_24 temp$21, temp$31;
+
+        this := @this: com.riskIt.ui.SubMenuChoices19_24;
+        getChoice = "";
+        choice = 0;
+        code = 0;
+        selection = "";
+
+     label0:
+        nop;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println(java.lang.String)>("1. Compute average education level by industry");
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>("2. Compute average education level by occupation");
+        temp$2 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$2.<java.io.PrintStream: void println(java.lang.String)>("3. Display all industry codes with associated industry category names");
+        temp$3 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$3.<java.io.PrintStream: void println(java.lang.String)>("4. Display all occupation codes with associated occupation category names");
+        temp$4 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$4.<java.io.PrintStream: void println(java.lang.String)>("0. Return to the previous menu");
+        temp$5 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$5.<java.io.PrintStream: void print(java.lang.String)>("Enter your choice : ");
+        temp$6 = this.<com.riskIt.ui.SubMenuChoices19_24: java.util.Scanner in>;
+        temp$7 = virtualinvoke temp$6.<java.util.Scanner: java.lang.String nextLine()>();
+        getChoice = temp$7;
+        temp$8 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$8.<java.io.PrintStream: void println(java.lang.String)>("");
+
+     label1:
+        nop;
+        temp$9 = virtualinvoke getChoice.<java.lang.String: int length()>();
+        if temp$9 > 0 goto label2;
+
+        goto label3;
+
+     label2:
+        nop;
+        temp$10 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getChoice);
+        choice = temp$10;
+        goto label4;
+
+     label3:
+        nop;
+        temp$11 = 0;
+        choice = temp$11;
+
+     label4:
+        nop;
+        goto label6;
+
+     label5:
+        nop;
+        e := @caughtexception;
+        temp$12 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$12.<java.io.PrintStream: void println(java.lang.String)>("Invalid input!!");
+        temp$13 = 0;
+        choice = temp$13;
+        nop;
+        goto label6;
+
+     label6:
+        nop;
+        goto label23;
+
+     label7:
+        nop;
+        goto label24;
+
+     label8:
+        nop;
+        temp$14 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$14.<java.io.PrintStream: void print(java.lang.String)>("Please enter the industry code:");
+        temp$15 = this.<com.riskIt.ui.SubMenuChoices19_24: java.util.Scanner in>;
+        temp$16 = virtualinvoke temp$15.<java.util.Scanner: java.lang.String nextLine()>();
+        getChoice = temp$16;
+        temp$17 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$17.<java.io.PrintStream: void println(java.lang.String)>("");
+        temp$18 = "industry";
+        selection = temp$18;
+
+     label9:
+        nop;
+        temp$19 = virtualinvoke getChoice.<java.lang.String: int length()>();
+        if temp$19 > 0 goto label10;
+
+        goto label11;
+
+     label10:
+        nop;
+        temp$20 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getChoice);
+        code = temp$20;
+
+     label11:
+        nop;
+        temp$21 = this.<com.riskIt.ui.SubMenuChoices19_24: com.riskIt.controller.Requirements19_24 RequestManager>;
+        temp$22 = virtualinvoke temp$21.<com.riskIt.controller.Requirements19_24: java.lang.String ComputeAverageEducationString(java.lang.String,int)>(selection, code);
+        goto label13;
+
+     label12:
+        nop;
+        e := @caughtexception;
+        temp$23 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$23.<java.io.PrintStream: void println(java.lang.String)>("Invalid input!!");
+        nop;
+        goto label13;
+
+     label13:
+        nop;
+        goto label24;
+
+     label14:
+        nop;
+        temp$24 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$24.<java.io.PrintStream: void print(java.lang.String)>("Please enter the occupation code:");
+        temp$25 = this.<com.riskIt.ui.SubMenuChoices19_24: java.util.Scanner in>;
+        temp$26 = virtualinvoke temp$25.<java.util.Scanner: java.lang.String nextLine()>();
+        getChoice = temp$26;
+        temp$27 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$27.<java.io.PrintStream: void println(java.lang.String)>("");
+        temp$28 = "occupation";
+        selection = temp$28;
+
+     label15:
+        nop;
+        temp$29 = virtualinvoke getChoice.<java.lang.String: int length()>();
+        if temp$29 > 0 goto label16;
+
+        goto label17;
+
+     label16:
+        nop;
+        temp$30 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getChoice);
+        code = temp$30;
+
+     label17:
+        nop;
+        temp$31 = this.<com.riskIt.ui.SubMenuChoices19_24: com.riskIt.controller.Requirements19_24 RequestManager>;
+        temp$32 = virtualinvoke temp$31.<com.riskIt.controller.Requirements19_24: java.lang.String ComputeAverageEducationString(java.lang.String,int)>(selection, code);
+        goto label19;
+
+     label18:
+        nop;
+        e := @caughtexception;
+        temp$33 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$33.<java.io.PrintStream: void println(java.lang.String)>("Invalid input!!");
+        nop;
+        goto label19;
+
+     label19:
+        nop;
+        goto label24;
+
+     label20:
+        nop;
+        virtualinvoke this.<com.riskIt.ui.SubMenuChoices19_24: void displayIndustryMap()>();
+        goto label24;
+
+     label21:
+        nop;
+        virtualinvoke this.<com.riskIt.ui.SubMenuChoices19_24: void displayOccupationMap()>();
+        goto label24;
+
+     label22:
+        nop;
+        temp$34 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$34.<java.io.PrintStream: void println(java.lang.String)>("Invalid option. Please try again...");
+        goto label24;
+
+        goto label24;
+
+     label23:
+        nop;
+        nop;
+        tableswitch(choice)
+        {
+            case 0: goto label7;
+            case 1: goto label8;
+            case 2: goto label14;
+            case 3: goto label20;
+            case 4: goto label21;
+            default: goto label22;
+        };
+
+     label24:
+        nop;
+        nop;
+        if choice > 0 goto label25;
+
+        goto label26;
+
+     label25:
+        nop;
+        if choice < 5 goto label0;
+
+        goto label26;
+
+        goto label0;
+
+     label26:
+        nop;
+        return;
+
+        catch java.lang.NumberFormatException from label1 to label5 with label5;
+        catch java.lang.NumberFormatException from label9 to label12 with label12;
+        catch java.lang.NumberFormatException from label15 to label18 with label18;
+    }
+
+    public void FindOccIndustryWithHighestLowestEducationMenu()
+    {
+        com.riskIt.ui.SubMenuChoices19_24 this;
+        java.lang.String getChoice, temp$5;
+        int choice, temp$8, temp$9, temp$10, temp$12;
+        java.io.PrintStream temp$0, temp$1, temp$2, temp$3, temp$6, temp$7, temp$11, temp$17;
+        java.util.Scanner temp$4;
+        java.lang.NumberFormatException e;
+        com.riskIt.controller.Requirements19_24 temp$13, temp$15;
+        java.util.ArrayList temp$14, temp$16;
+
+        this := @this: com.riskIt.ui.SubMenuChoices19_24;
+        getChoice = "";
+        choice = 0;
+
+     label0:
+        nop;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println(java.lang.String)>("\n\n1. Find industries in which workers have the highest and lowest education");
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>("2. Find occupations in which workers have the highest and lowest education");
+        temp$2 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$2.<java.io.PrintStream: void println(java.lang.String)>("0. Return to the previous menu");
+        temp$3 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$3.<java.io.PrintStream: void print(java.lang.String)>("Enter your choice : ");
+        temp$4 = this.<com.riskIt.ui.SubMenuChoices19_24: java.util.Scanner in>;
+        temp$5 = virtualinvoke temp$4.<java.util.Scanner: java.lang.String nextLine()>();
+        getChoice = temp$5;
+        temp$6 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$6.<java.io.PrintStream: void println(java.lang.String)>("");
+        temp$7 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$7.<java.io.PrintStream: void println(java.lang.String)>("");
+
+     label1:
+        nop;
+        temp$8 = virtualinvoke getChoice.<java.lang.String: int length()>();
+        if temp$8 > 0 goto label2;
+
+        goto label3;
+
+     label2:
+        nop;
+        temp$9 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getChoice);
+        choice = temp$9;
+        goto label4;
+
+     label3:
+        nop;
+        temp$10 = 0;
+        choice = temp$10;
+
+     label4:
+        nop;
+        goto label6;
+
+     label5:
+        nop;
+        e := @caughtexception;
+        temp$11 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$11.<java.io.PrintStream: void println(java.lang.String)>("Invalid input!!");
+        temp$12 = 0;
+        choice = temp$12;
+        nop;
+        goto label6;
+
+     label6:
+        nop;
+        goto label11;
+
+     label7:
+        nop;
+        goto label12;
+
+     label8:
+        nop;
+        temp$13 = this.<com.riskIt.ui.SubMenuChoices19_24: com.riskIt.controller.Requirements19_24 RequestManager>;
+        temp$14 = virtualinvoke temp$13.<com.riskIt.controller.Requirements19_24: java.util.ArrayList FindCccupationIndustryWithHighestLowestEducation(java.lang.String)>("industry");
+        goto label12;
+
+     label9:
+        nop;
+        temp$15 = this.<com.riskIt.ui.SubMenuChoices19_24: com.riskIt.controller.Requirements19_24 RequestManager>;
+        temp$16 = virtualinvoke temp$15.<com.riskIt.controller.Requirements19_24: java.util.ArrayList FindCccupationIndustryWithHighestLowestEducation(java.lang.String)>("occupation");
+        goto label12;
+
+     label10:
+        nop;
+        temp$17 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$17.<java.io.PrintStream: void println(java.lang.String)>("Invalid option. Please try again...");
+        goto label12;
+
+        goto label12;
+
+     label11:
+        nop;
+        nop;
+        tableswitch(choice)
+        {
+            case 0: goto label7;
+            case 1: goto label8;
+            case 2: goto label9;
+            default: goto label10;
+        };
+
+     label12:
+        nop;
+        nop;
+        if choice > 0 goto label13;
+
+        goto label14;
+
+     label13:
+        nop;
+        if choice < 3 goto label0;
+
+        goto label14;
+
+        goto label0;
+
+     label14:
+        nop;
+        return;
+
+        catch java.lang.NumberFormatException from label1 to label5 with label5;
+    }
+
+    public void CalculateLikelinessToMoveFactorMenu()
+    {
+        com.riskIt.ui.SubMenuChoices19_24 this;
+        int ssn, temp$4, temp$5, temp$8, temp$9;
+        java.lang.String getChoice, temp$2, temp$7;
+        java.io.PrintStream temp$0, temp$3, temp$10, temp$11;
+        java.util.Scanner temp$1;
+        com.riskIt.controller.Requirements19_24 temp$6;
+        java.lang.NumberFormatException e;
+
+        this := @this: com.riskIt.ui.SubMenuChoices19_24;
+        ssn = 0;
+        getChoice = "";
+
+     label0:
+        nop;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void print(java.lang.String)>("Please enter 9 digits user\'s SSN or enter 0 to return to previous menu: ");
+        temp$1 = this.<com.riskIt.ui.SubMenuChoices19_24: java.util.Scanner in>;
+        temp$2 = virtualinvoke temp$1.<java.util.Scanner: java.lang.String nextLine()>();
+        getChoice = temp$2;
+        temp$3 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$3.<java.io.PrintStream: void println(java.lang.String)>("");
+
+     label1:
+        nop;
+        temp$4 = virtualinvoke getChoice.<java.lang.String: int length()>();
+        if temp$4 == 9 goto label2;
+
+        goto label3;
+
+     label2:
+        nop;
+        temp$5 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getChoice);
+        ssn = temp$5;
+        temp$6 = this.<com.riskIt.ui.SubMenuChoices19_24: com.riskIt.controller.Requirements19_24 RequestManager>;
+        temp$7 = virtualinvoke temp$6.<com.riskIt.controller.Requirements19_24: java.lang.String CalculateLikelinessToMoveFactor(int)>(ssn);
+        goto label8;
+
+     label3:
+        nop;
+        temp$8 = virtualinvoke getChoice.<java.lang.String: int length()>();
+        if temp$8 > 0 goto label4;
+
+        goto label7;
+
+     label4:
+        nop;
+        temp$9 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getChoice);
+        ssn = temp$9;
+        if ssn != 0 goto label5;
+
+        goto label6;
+
+     label5:
+        nop;
+        temp$10 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>("You entered invalid SSN.");
+
+     label6:
+        nop;
+
+     label7:
+        nop;
+
+     label8:
+        nop;
+        goto label10;
+
+     label9:
+        nop;
+        e := @caughtexception;
+        temp$11 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$11.<java.io.PrintStream: void println(java.lang.String)>("Invalid input!!");
+        nop;
+        goto label10;
+
+     label10:
+        nop;
+        nop;
+        if ssn > 0 goto label0;
+
+        goto label11;
+
+     label11:
+        nop;
+        return;
+
+        catch java.lang.NumberFormatException from label1 to label9 with label9;
+    }
+
+    private final void displayOccupationMap()
+    {
+        com.riskIt.ui.SubMenuChoices19_24 this;
+        java.util.HashMap occupationMap, temp$1;
+        com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface temp$0;
+        int i, temp$2, temp$11, temp$12;
+        java.lang.String stringToInsert, temp$4, temp$9, temp$10;
+        java.lang.StringBuffer temp$3, temp$6;
+        java.io.PrintStream temp$5, temp$13;
+        java.lang.Integer temp$7;
+        java.lang.Object temp$8;
+
+        this := @this: com.riskIt.ui.SubMenuChoices19_24;
+        occupationMap = null;
+        if occupationMap == null goto label0;
+
+        goto label1;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface getCalculateByOccupationOrIndustryCode()>();
+        temp$1 = interfaceinvoke temp$0.<com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface: java.util.HashMap getOccupationCodeAndNameMap()>();
+        occupationMap = temp$1;
+
+     label1:
+        nop;
+        i = 0;
+
+     label2:
+        nop;
+        temp$2 = virtualinvoke occupationMap.<java.util.HashMap: int size()>();
+        if i < temp$2 goto label3;
+
+        goto label6;
+
+     label3:
+        nop;
+        stringToInsert = " : ";
+        if i < 10 goto label4;
+
+        goto label5;
+
+     label4:
+        nop;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(stringToInsert);
+        temp$4 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        stringToInsert = temp$4;
+
+     label5:
+        nop;
+        temp$5 = <java.lang.System: java.io.PrintStream out>;
+        temp$6 = new java.lang.StringBuffer;
+        specialinvoke temp$6.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Occupation code ");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(i);
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(stringToInsert);
+        temp$7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i);
+        temp$8 = virtualinvoke occupationMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$7);
+        temp$9 = (java.lang.String) temp$8;
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$9);
+        temp$10 = virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$5.<java.io.PrintStream: void println(java.lang.String)>(temp$10);
+        nop;
+        temp$11 = i;
+        temp$12 = temp$11 + 1;
+        i = temp$12;
+        goto label2;
+
+     label6:
+        nop;
+        temp$13 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$13.<java.io.PrintStream: void println()>();
+        return;
+    }
+
+    private final void displayIndustryMap()
+    {
+        com.riskIt.ui.SubMenuChoices19_24 this;
+        java.util.HashMap industryMap, temp$1;
+        com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface temp$0;
+        int i, temp$2, temp$11, temp$12;
+        java.lang.String stringToInsert, temp$4, temp$9, temp$10;
+        java.lang.StringBuffer temp$3, temp$6;
+        java.io.PrintStream temp$5, temp$13;
+        java.lang.Integer temp$7;
+        java.lang.Object temp$8;
+
+        this := @this: com.riskIt.ui.SubMenuChoices19_24;
+        industryMap = null;
+        if industryMap == null goto label0;
+
+        goto label1;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface getCalculateByOccupationOrIndustryCode()>();
+        temp$1 = interfaceinvoke temp$0.<com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface: java.util.HashMap getIndustryCodeAndNameMap()>();
+        industryMap = temp$1;
+
+     label1:
+        nop;
+        i = 0;
+
+     label2:
+        nop;
+        temp$2 = virtualinvoke industryMap.<java.util.HashMap: int size()>();
+        if i < temp$2 goto label3;
+
+        goto label6;
+
+     label3:
+        nop;
+        stringToInsert = " : ";
+        if i < 10 goto label4;
+
+        goto label5;
+
+     label4:
+        nop;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(stringToInsert);
+        temp$4 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        stringToInsert = temp$4;
+
+     label5:
+        nop;
+        temp$5 = <java.lang.System: java.io.PrintStream out>;
+        temp$6 = new java.lang.StringBuffer;
+        specialinvoke temp$6.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Industry code ");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(i);
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(stringToInsert);
+        temp$7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i);
+        temp$8 = virtualinvoke industryMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$7);
+        temp$9 = (java.lang.String) temp$8;
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$9);
+        temp$10 = virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$5.<java.io.PrintStream: void println(java.lang.String)>(temp$10);
+        nop;
+        temp$11 = i;
+        temp$12 = temp$11 + 1;
+        i = temp$12;
+        goto label2;
+
+     label6:
+        nop;
+        temp$13 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$13.<java.io.PrintStream: void println()>();
+        return;
+    }
+}

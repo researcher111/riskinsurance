@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="3" eline="3" spos="0" epos="0"/>
+<text info="ConstantValue: org.apache.derby.jdbc.ClientDriver" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="ConstantValue: jdbc:mysql://th101c-4.cs.wm.edu:33061/preist_riskinsurance" aType="StringConstantValueTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="22" eline="22" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="31" eline="31" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="82" eline="82" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+</attributes>

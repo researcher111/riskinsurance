@@ -1,0 +1,419 @@
+public class com.riskIt.ui.IncomeByRaceUI extends java.lang.Object implements com.riskIt.interfaces.StartInterface
+{
+    private int listCount;
+    private java.util.ArrayList raceList;
+    java.text.DecimalFormat myFormatter;
+    java.lang.String type;
+    java.lang.String fillData;
+
+    public void <init>(java.lang.String)
+    {
+        com.riskIt.ui.IncomeByRaceUI this;
+        java.lang.String type, temp$2, temp$3, temp$5, temp$6;
+        java.util.ArrayList temp$0;
+        java.text.DecimalFormat temp$1;
+        boolean temp$4;
+
+        this := @this: com.riskIt.ui.IncomeByRaceUI;
+        type := @parameter0: java.lang.String;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        temp$0 = new java.util.ArrayList;
+        specialinvoke temp$0.<java.util.ArrayList: void <init>()>();
+        this.<com.riskIt.ui.IncomeByRaceUI: java.util.ArrayList raceList> = temp$0;
+        temp$1 = new java.text.DecimalFormat;
+        specialinvoke temp$1.<java.text.DecimalFormat: void <init>(java.lang.String)>("$###,###,###.00");
+        this.<com.riskIt.ui.IncomeByRaceUI: java.text.DecimalFormat myFormatter> = temp$1;
+        if type != null goto label0;
+
+        goto label1;
+
+     label0:
+        nop;
+        temp$2 = virtualinvoke type.<java.lang.String: java.lang.String trim()>();
+        this.<com.riskIt.ui.IncomeByRaceUI: java.lang.String type> = temp$2;
+        goto label2;
+
+     label1:
+        nop;
+        temp$3 = "income";
+        type = temp$3;
+
+     label2:
+        nop;
+        temp$4 = virtualinvoke type.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("income");
+        if temp$4 == 0 goto label4;
+
+        goto label3;
+
+     label3:
+        nop;
+        temp$5 = "income";
+        this.<com.riskIt.ui.IncomeByRaceUI: java.lang.String fillData> = temp$5;
+        goto label5;
+
+     label4:
+        nop;
+        temp$6 = "weekly wage";
+        this.<com.riskIt.ui.IncomeByRaceUI: java.lang.String fillData> = temp$6;
+
+     label5:
+        nop;
+        return;
+    }
+
+    public void start()
+    {
+        com.riskIt.ui.IncomeByRaceUI this;
+        java.util.Scanner in, temp$0;
+        java.io.InputStream temp$1;
+        double returnValue, temp$48, temp$49, temp$56, temp$57;
+        java.lang.String raceSelection, temp$6, temp$7, temp$12, temp$19, temp$24, temp$27, temp$28, temp$33, temp$45, temp$46, temp$53, temp$54, temp$60, temp$61, temp$65, temp$67, temp$68, temp$71, temp$73, temp$74, temp$79;
+        com.riskIt.interfaces.CalculateByRaceInterface calc, temp$2;
+        java.util.ArrayList temp$3, temp$37, temp$41, temp$50;
+        java.io.PrintStream temp$4, temp$8, temp$17, temp$20, temp$25, temp$29, temp$58, temp$63, temp$69, temp$75;
+        java.lang.StringBuffer temp$5, temp$9, temp$18, temp$21, temp$26, temp$30, temp$59, temp$64, temp$70, temp$76;
+        int temp$10, temp$11, intChoice, temp$14, temp$15, temp$16, temp$22, temp$23, temp$31, temp$32, temp$34, temp$35, temp$36, temp$38, temp$39, temp$40, temp$42, temp$43, temp$44, temp$51, temp$62, temp$77, temp$78;
+        boolean temp$13, temp$47, temp$55;
+        java.lang.Object temp$52;
+        java.text.DecimalFormat temp$66, temp$72;
+
+        this := @this: com.riskIt.ui.IncomeByRaceUI;
+        temp$0 = new java.util.Scanner;
+        temp$1 = <java.lang.System: java.io.InputStream in>;
+        specialinvoke temp$0.<java.util.Scanner: void <init>(java.io.InputStream)>(temp$1);
+        in = temp$0;
+        temp$2 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalculateByRaceInterface getCalculateByRace()>();
+        calc = temp$2;
+        temp$3 = interfaceinvoke calc.<com.riskIt.interfaces.CalculateByRaceInterface: java.util.ArrayList getRaceList()>();
+        this.<com.riskIt.ui.IncomeByRaceUI: java.util.ArrayList raceList> = temp$3;
+        temp$4 = <java.lang.System: java.io.PrintStream out>;
+        temp$5 = new java.lang.StringBuffer;
+        specialinvoke temp$5.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\nEnter a race catigory to show the average ");
+        temp$6 = this.<com.riskIt.ui.IncomeByRaceUI: java.lang.String fillData>;
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$6);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" for that race.");
+        temp$7 = virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$4.<java.io.PrintStream: void println(java.lang.String)>(temp$7);
+        virtualinvoke this.<com.riskIt.ui.IncomeByRaceUI: void displayMenu()>();
+        temp$8 = <java.lang.System: java.io.PrintStream out>;
+        temp$9 = new java.lang.StringBuffer;
+        specialinvoke temp$9.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Please enter a selection 1 ~");
+        temp$10 = this.<com.riskIt.ui.IncomeByRaceUI: int listCount>;
+        temp$11 = temp$10 - 1;
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$11);
+        temp$12 = virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$8.<java.io.PrintStream: void println(java.lang.String)>(temp$12);
+        intChoice = 0;
+
+     label0:
+        nop;
+
+     label1:
+        nop;
+        temp$13 = virtualinvoke in.<java.util.Scanner: boolean hasNextInt()>();
+        if temp$13 == 0 goto label6;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$14 = virtualinvoke in.<java.util.Scanner: int nextInt()>();
+        intChoice = temp$14;
+        if intChoice < 1 goto label4;
+
+        goto label3;
+
+     label3:
+        nop;
+        temp$15 = this.<com.riskIt.ui.IncomeByRaceUI: int listCount>;
+        temp$16 = temp$15 - 1;
+        if intChoice > temp$16 goto label4;
+
+        goto label5;
+
+        goto label5;
+
+     label4:
+        nop;
+        virtualinvoke this.<com.riskIt.ui.IncomeByRaceUI: void displayMenu()>();
+        temp$17 = <java.lang.System: java.io.PrintStream out>;
+        temp$18 = new java.lang.StringBuffer;
+        specialinvoke temp$18.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(intChoice);
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$19 = virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$17.<java.io.PrintStream: void println(java.lang.String)>(temp$19);
+        temp$20 = <java.lang.System: java.io.PrintStream out>;
+        temp$21 = new java.lang.StringBuffer;
+        specialinvoke temp$21.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Please enter a selection 1 ~");
+        temp$22 = this.<com.riskIt.ui.IncomeByRaceUI: int listCount>;
+        temp$23 = temp$22 - 1;
+        virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$23);
+        temp$24 = virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$20.<java.io.PrintStream: void println(java.lang.String)>(temp$24);
+
+     label5:
+        nop;
+        goto label7;
+
+     label6:
+        nop;
+        virtualinvoke this.<com.riskIt.ui.IncomeByRaceUI: void displayMenu()>();
+        temp$25 = <java.lang.System: java.io.PrintStream out>;
+        temp$26 = new java.lang.StringBuffer;
+        specialinvoke temp$26.<java.lang.StringBuffer: void <init>()>();
+        temp$27 = virtualinvoke in.<java.util.Scanner: java.lang.String next()>();
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$27);
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$28 = virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$25.<java.io.PrintStream: void println(java.lang.String)>(temp$28);
+        temp$29 = <java.lang.System: java.io.PrintStream out>;
+        temp$30 = new java.lang.StringBuffer;
+        specialinvoke temp$30.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$30.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Please enter a selection 1 ~");
+        temp$31 = this.<com.riskIt.ui.IncomeByRaceUI: int listCount>;
+        temp$32 = temp$31 - 1;
+        virtualinvoke temp$30.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$32);
+        temp$33 = virtualinvoke temp$30.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$29.<java.io.PrintStream: void println(java.lang.String)>(temp$33);
+        temp$34 = 0;
+        intChoice = temp$34;
+
+     label7:
+        nop;
+        nop;
+        if intChoice < 1 goto label1;
+
+        goto label8;
+
+     label8:
+        nop;
+        temp$35 = this.<com.riskIt.ui.IncomeByRaceUI: int listCount>;
+        temp$36 = temp$35 - 1;
+        if intChoice > temp$36 goto label1;
+
+        goto label9;
+
+        goto label9;
+
+     label9:
+        nop;
+        temp$37 = this.<com.riskIt.ui.IncomeByRaceUI: java.util.ArrayList raceList>;
+        temp$38 = virtualinvoke temp$37.<java.util.ArrayList: int size()>();
+        temp$39 = temp$38;
+        temp$40 = temp$39 + 2;
+        if intChoice == temp$40 goto label10;
+
+        goto label11;
+
+     label10:
+        nop;
+        goto label24;
+
+     label11:
+        nop;
+        temp$41 = this.<com.riskIt.ui.IncomeByRaceUI: java.util.ArrayList raceList>;
+        temp$42 = virtualinvoke temp$41.<java.util.ArrayList: int size()>();
+        temp$43 = temp$42;
+        temp$44 = temp$43 + 1;
+        if intChoice == temp$44 goto label12;
+
+        goto label16;
+
+     label12:
+        nop;
+        temp$45 = "all races";
+        raceSelection = temp$45;
+        temp$46 = this.<com.riskIt.ui.IncomeByRaceUI: java.lang.String type>;
+        temp$47 = virtualinvoke temp$46.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("income");
+        if temp$47 == 0 goto label14;
+
+        goto label13;
+
+     label13:
+        nop;
+        temp$48 = interfaceinvoke calc.<com.riskIt.interfaces.CalculateByRaceInterface: double calculateIncomeByRace(java.lang.String)>("All");
+        returnValue = temp$48;
+        goto label15;
+
+     label14:
+        nop;
+        temp$49 = interfaceinvoke calc.<com.riskIt.interfaces.CalculateByRaceInterface: double calculateWeeklyWageByRace(java.lang.String)>("All");
+        returnValue = temp$49;
+
+     label15:
+        nop;
+        goto label20;
+
+     label16:
+        nop;
+        temp$50 = this.<com.riskIt.ui.IncomeByRaceUI: java.util.ArrayList raceList>;
+        temp$51 = intChoice - 1;
+        temp$52 = virtualinvoke temp$50.<java.util.ArrayList: java.lang.Object get(int)>(temp$51);
+        temp$53 = (java.lang.String) temp$52;
+        raceSelection = temp$53;
+        temp$54 = this.<com.riskIt.ui.IncomeByRaceUI: java.lang.String type>;
+        temp$55 = virtualinvoke temp$54.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("income");
+        if temp$55 == 0 goto label18;
+
+        goto label17;
+
+     label17:
+        nop;
+        temp$56 = interfaceinvoke calc.<com.riskIt.interfaces.CalculateByRaceInterface: double calculateIncomeByRace(java.lang.String)>(raceSelection);
+        returnValue = temp$56;
+        goto label19;
+
+     label18:
+        nop;
+        temp$57 = interfaceinvoke calc.<com.riskIt.interfaces.CalculateByRaceInterface: double calculateWeeklyWageByRace(java.lang.String)>(raceSelection);
+        returnValue = temp$57;
+
+     label19:
+        nop;
+
+     label20:
+        nop;
+        temp$58 = <java.lang.System: java.io.PrintStream out>;
+        temp$59 = new java.lang.StringBuffer;
+        specialinvoke temp$59.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$59.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Please enter a race catigory to show the average ");
+        temp$60 = this.<com.riskIt.ui.IncomeByRaceUI: java.lang.String fillData>;
+        virtualinvoke temp$59.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$60);
+        virtualinvoke temp$59.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" for that race.");
+        temp$61 = virtualinvoke temp$59.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$58.<java.io.PrintStream: void println(java.lang.String)>(temp$61);
+        virtualinvoke this.<com.riskIt.ui.IncomeByRaceUI: void displayMenu()>();
+        temp$62 = returnValue cmpg 0.0;
+        if temp$62 > 0 goto label22;
+
+        goto label21;
+
+     label21:
+        nop;
+        temp$63 = <java.lang.System: java.io.PrintStream out>;
+        temp$64 = new java.lang.StringBuffer;
+        specialinvoke temp$64.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$64.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\nAverage ");
+        temp$65 = this.<com.riskIt.ui.IncomeByRaceUI: java.lang.String fillData>;
+        virtualinvoke temp$64.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$65);
+        virtualinvoke temp$64.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" for ");
+        virtualinvoke temp$64.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(raceSelection);
+        virtualinvoke temp$64.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is not available. Actual value = ");
+        temp$66 = this.<com.riskIt.ui.IncomeByRaceUI: java.text.DecimalFormat myFormatter>;
+        temp$67 = virtualinvoke temp$66.<java.text.DecimalFormat: java.lang.String format(double)>(returnValue);
+        virtualinvoke temp$64.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$67);
+        virtualinvoke temp$64.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\n");
+        temp$68 = virtualinvoke temp$64.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$63.<java.io.PrintStream: void println(java.lang.String)>(temp$68);
+        goto label23;
+
+     label22:
+        nop;
+        temp$69 = <java.lang.System: java.io.PrintStream out>;
+        temp$70 = new java.lang.StringBuffer;
+        specialinvoke temp$70.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\nAverage ");
+        temp$71 = this.<com.riskIt.ui.IncomeByRaceUI: java.lang.String fillData>;
+        virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$71);
+        virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" for ");
+        virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(raceSelection);
+        virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is ");
+        temp$72 = this.<com.riskIt.ui.IncomeByRaceUI: java.text.DecimalFormat myFormatter>;
+        temp$73 = virtualinvoke temp$72.<java.text.DecimalFormat: java.lang.String format(double)>(returnValue);
+        virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$73);
+        virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(".\n");
+        temp$74 = virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$69.<java.io.PrintStream: void println(java.lang.String)>(temp$74);
+
+     label23:
+        nop;
+        temp$75 = <java.lang.System: java.io.PrintStream out>;
+        temp$76 = new java.lang.StringBuffer;
+        specialinvoke temp$76.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$76.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Please enter a selection 1 ~");
+        temp$77 = this.<com.riskIt.ui.IncomeByRaceUI: int listCount>;
+        temp$78 = temp$77 - 1;
+        virtualinvoke temp$76.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$78);
+        temp$79 = virtualinvoke temp$76.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$75.<java.io.PrintStream: void println(java.lang.String)>(temp$79);
+        nop;
+        goto label0;
+
+     label24:
+        nop;
+        return;
+    }
+
+    private final void displayMenu()
+    {
+        com.riskIt.ui.IncomeByRaceUI this;
+        int temp$0, temp$7, temp$8, temp$12, temp$13, temp$17, temp$18;
+        java.util.ArrayList temp$1;
+        java.util.Iterator temp$2;
+        java.lang.String i, temp$9, temp$14, temp$19;
+        boolean temp$3;
+        java.lang.Object temp$4;
+        java.io.PrintStream temp$5, temp$10, temp$15;
+        java.lang.StringBuffer temp$6, temp$11, temp$16;
+
+        this := @this: com.riskIt.ui.IncomeByRaceUI;
+        temp$0 = 1;
+        this.<com.riskIt.ui.IncomeByRaceUI: int listCount> = temp$0;
+        temp$1 = this.<com.riskIt.ui.IncomeByRaceUI: java.util.ArrayList raceList>;
+        temp$2 = interfaceinvoke temp$1.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label0:
+        nop;
+        temp$3 = interfaceinvoke temp$2.<java.util.Iterator: boolean hasNext()>();
+        if temp$3 == 0 goto label1;
+
+        temp$4 = interfaceinvoke temp$2.<java.util.Iterator: java.lang.Object next()>();
+        i = (java.lang.String) temp$4;
+        temp$5 = <java.lang.System: java.io.PrintStream out>;
+        temp$6 = new java.lang.StringBuffer;
+        specialinvoke temp$6.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("[");
+        temp$7 = this.<com.riskIt.ui.IncomeByRaceUI: int listCount>;
+        temp$8 = temp$7 + 1;
+        this.<com.riskIt.ui.IncomeByRaceUI: int listCount> = temp$8;
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$7);
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("] ");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(i);
+        temp$9 = virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$5.<java.io.PrintStream: void println(java.lang.String)>(temp$9);
+        nop;
+        goto label0;
+
+     label1:
+        nop;
+        temp$10 = <java.lang.System: java.io.PrintStream out>;
+        temp$11 = new java.lang.StringBuffer;
+        specialinvoke temp$11.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("[");
+        temp$12 = this.<com.riskIt.ui.IncomeByRaceUI: int listCount>;
+        temp$13 = temp$12 + 1;
+        this.<com.riskIt.ui.IncomeByRaceUI: int listCount> = temp$13;
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$12);
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("] ");
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("All Races");
+        temp$14 = virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>(temp$14);
+        temp$15 = <java.lang.System: java.io.PrintStream out>;
+        temp$16 = new java.lang.StringBuffer;
+        specialinvoke temp$16.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("[");
+        temp$17 = this.<com.riskIt.ui.IncomeByRaceUI: int listCount>;
+        temp$18 = temp$17 + 1;
+        this.<com.riskIt.ui.IncomeByRaceUI: int listCount> = temp$18;
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$17);
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("] ");
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Return");
+        temp$19 = virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$15.<java.io.PrintStream: void println(java.lang.String)>(temp$19);
+        return;
+    }
+}

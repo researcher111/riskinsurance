@@ -1,0 +1,123 @@
+public class com.riskIt.implObjects.YearlyImplWithDescription extends java.lang.Object implements com.riskIt.interfaces.CalcImplWithDescriptionInterface
+{
+    private final java.lang.String description;
+
+    public void <init>(java.lang.String)
+    {
+        com.riskIt.implObjects.YearlyImplWithDescription this;
+        java.lang.String description;
+
+        this := @this: com.riskIt.implObjects.YearlyImplWithDescription;
+        description := @parameter0: java.lang.String;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        this.<com.riskIt.implObjects.YearlyImplWithDescription: java.lang.String description> = description;
+        return;
+    }
+
+    public java.lang.String getDescription()
+    {
+        com.riskIt.implObjects.YearlyImplWithDescription this;
+        java.lang.String temp$0;
+
+        this := @this: com.riskIt.implObjects.YearlyImplWithDescription;
+        temp$0 = this.<com.riskIt.implObjects.YearlyImplWithDescription: java.lang.String description>;
+        return temp$0;
+    }
+
+    public void addToArrayList(java.util.ArrayList, java.lang.String, int, int)
+    {
+        com.riskIt.implObjects.YearlyImplWithDescription this;
+        java.util.ArrayList dataAL;
+        java.lang.String code;
+        int weekWage, workWeeks;
+        double temp$0;
+        com.riskIt.interfaces.TypeWageDataStructureInterface temp$1;
+        boolean temp$2;
+
+        this := @this: com.riskIt.implObjects.YearlyImplWithDescription;
+        dataAL := @parameter0: java.util.ArrayList;
+        code := @parameter1: java.lang.String;
+        weekWage := @parameter2: int;
+        workWeeks := @parameter3: int;
+        if weekWage > 0 goto label0;
+
+        goto label2;
+
+     label0:
+        nop;
+        if workWeeks > 0 goto label1;
+
+        goto label2;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$0 = (double) weekWage;
+        temp$1 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.TypeWageDataStructureInterface getTypeWageDataStructure(java.lang.String,double,int)>(code, temp$0, workWeeks);
+        temp$2 = virtualinvoke dataAL.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$1);
+
+     label2:
+        nop;
+        return;
+    }
+
+    public double calculateAverage(java.lang.String, com.riskIt.interfaces.TypeWageDataStructureInterface)
+    {
+        com.riskIt.implObjects.YearlyImplWithDescription this;
+        java.lang.String code, temp$1, temp$2, temp$3;
+        com.riskIt.interfaces.TypeWageDataStructureInterface i;
+        double temp$0, temp$5, temp$6, temp$7, temp$8;
+        boolean temp$4;
+
+        this := @this: com.riskIt.implObjects.YearlyImplWithDescription;
+        code := @parameter0: java.lang.String;
+        i := @parameter1: com.riskIt.interfaces.TypeWageDataStructureInterface;
+        if code == null goto label0;
+
+        goto label1;
+
+     label0:
+        nop;
+        temp$0 = (double) 0;
+        return temp$0;
+
+     label1:
+        nop;
+        temp$1 = interfaceinvoke i.<com.riskIt.interfaces.TypeWageDataStructureInterface: java.lang.String getType()>();
+        if temp$1 != null goto label2;
+
+        goto label5;
+
+     label2:
+        nop;
+        if code != null goto label3;
+
+        goto label5;
+
+        goto label3;
+
+     label3:
+        nop;
+        temp$2 = interfaceinvoke i.<com.riskIt.interfaces.TypeWageDataStructureInterface: java.lang.String getType()>();
+        temp$3 = virtualinvoke temp$2.<java.lang.String: java.lang.String trim()>();
+        temp$4 = virtualinvoke temp$3.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(code);
+        if temp$4 == 0 goto label5;
+
+        goto label4;
+
+        goto label4;
+
+     label4:
+        nop;
+        temp$5 = interfaceinvoke i.<com.riskIt.interfaces.TypeWageDataStructureInterface: double getWeekWage()>();
+        temp$6 = interfaceinvoke i.<com.riskIt.interfaces.TypeWageDataStructureInterface: double getWorkWeeks()>();
+        temp$7 = temp$5 * temp$6;
+        return temp$7;
+
+     label5:
+        nop;
+        temp$8 = (double) 0;
+        return temp$8;
+    }
+}

@@ -1,0 +1,26 @@
+public class com.riskIt.app.MainClass extends java.lang.Object
+{
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] args;
+        com.riskIt.ui.MenuChoices mc, temp$0;
+
+        args := @parameter0: java.lang.String[];
+        temp$0 = new com.riskIt.ui.MenuChoices;
+        specialinvoke temp$0.<com.riskIt.ui.MenuChoices: void <init>()>();
+        mc = temp$0;
+        virtualinvoke mc.<com.riskIt.ui.MenuChoices: void mainMenu()>();
+        staticinvoke <com.riskIt.db.DatabaseConnection: void closeConnection()>();
+        return;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.app.MainClass this;
+
+        this := @this: com.riskIt.app.MainClass;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

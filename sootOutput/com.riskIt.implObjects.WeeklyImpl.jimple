@@ -1,0 +1,116 @@
+public class com.riskIt.implObjects.WeeklyImpl extends java.lang.Object implements com.riskIt.interfaces.CalcImplInterface
+{
+
+    public void addToArrayList(java.util.ArrayList, java.lang.String, int, int)
+    {
+        com.riskIt.implObjects.WeeklyImpl this;
+        java.util.ArrayList typeWageAL;
+        java.lang.String type;
+        int weekWage, workWeeks;
+        double temp$0;
+        com.riskIt.interfaces.TypeWageDataStructureInterface temp$1;
+        boolean temp$2;
+
+        this := @this: com.riskIt.implObjects.WeeklyImpl;
+        typeWageAL := @parameter0: java.util.ArrayList;
+        type := @parameter1: java.lang.String;
+        weekWage := @parameter2: int;
+        workWeeks := @parameter3: int;
+        if type != null goto label0;
+
+        goto label2;
+
+     label0:
+        nop;
+        if weekWage > 0 goto label1;
+
+        goto label2;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$0 = (double) weekWage;
+        temp$1 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.TypeWageDataStructureInterface getTypeWageDataStructure(java.lang.String,double,int)>(type, temp$0, workWeeks);
+        temp$2 = virtualinvoke typeWageAL.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$1);
+
+     label2:
+        nop;
+        return;
+    }
+
+    public double calculateAverage(java.lang.String, com.riskIt.interfaces.TypeWageDataStructureInterface)
+    {
+        com.riskIt.implObjects.WeeklyImpl this;
+        java.lang.String type, temp$2, temp$3, temp$4;
+        com.riskIt.interfaces.TypeWageDataStructureInterface i;
+        boolean temp$0, temp$5;
+        double temp$1, temp$6, temp$7;
+
+        this := @this: com.riskIt.implObjects.WeeklyImpl;
+        type := @parameter0: java.lang.String;
+        i := @parameter1: com.riskIt.interfaces.TypeWageDataStructureInterface;
+        if type != null goto label0;
+
+        goto label2;
+
+     label0:
+        nop;
+        temp$0 = virtualinvoke type.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("all");
+        if temp$0 == 0 goto label2;
+
+        goto label1;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$1 = interfaceinvoke i.<com.riskIt.interfaces.TypeWageDataStructureInterface: double getWeekWage()>();
+        return temp$1;
+
+     label2:
+        nop;
+        temp$2 = interfaceinvoke i.<com.riskIt.interfaces.TypeWageDataStructureInterface: java.lang.String getType()>();
+        if temp$2 != null goto label3;
+
+        goto label6;
+
+     label3:
+        nop;
+        if type != null goto label4;
+
+        goto label6;
+
+        goto label4;
+
+     label4:
+        nop;
+        temp$3 = interfaceinvoke i.<com.riskIt.interfaces.TypeWageDataStructureInterface: java.lang.String getType()>();
+        temp$4 = virtualinvoke temp$3.<java.lang.String: java.lang.String trim()>();
+        temp$5 = virtualinvoke temp$4.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(type);
+        if temp$5 == 0 goto label6;
+
+        goto label5;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$6 = interfaceinvoke i.<com.riskIt.interfaces.TypeWageDataStructureInterface: double getWeekWage()>();
+        return temp$6;
+
+     label6:
+        nop;
+        temp$7 = (double) 0;
+        return temp$7;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.implObjects.WeeklyImpl this;
+
+        this := @this: com.riskIt.implObjects.WeeklyImpl;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

@@ -1,0 +1,532 @@
+public class com.riskIt.ui.MenuChoices extends java.lang.Object
+{
+    private com.riskIt.controller.UserManager user;
+    private com.riskIt.controller.AgentManager agent;
+    private java.util.Scanner in;
+    private com.riskIt.util.AccessorMethods acc;
+    private com.riskIt.ui.SubMenuChoices subMenu;
+    private com.riskIt.ui.SubMenuChoices19_24 subMenu19To24;
+
+    public void <init>()
+    {
+        com.riskIt.ui.MenuChoices this;
+        com.riskIt.controller.UserManager temp$0;
+        com.riskIt.controller.AgentManager temp$1;
+        com.riskIt.util.AccessorMethods temp$2;
+        java.util.Scanner temp$3;
+        java.io.InputStream temp$4;
+        com.riskIt.ui.SubMenuChoices temp$5;
+        com.riskIt.ui.SubMenuChoices19_24 temp$6;
+
+        this := @this: com.riskIt.ui.MenuChoices;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        temp$0 = new com.riskIt.controller.UserManager;
+        specialinvoke temp$0.<com.riskIt.controller.UserManager: void <init>()>();
+        this.<com.riskIt.ui.MenuChoices: com.riskIt.controller.UserManager user> = temp$0;
+        temp$1 = new com.riskIt.controller.AgentManager;
+        specialinvoke temp$1.<com.riskIt.controller.AgentManager: void <init>()>();
+        this.<com.riskIt.ui.MenuChoices: com.riskIt.controller.AgentManager agent> = temp$1;
+        temp$2 = new com.riskIt.util.AccessorMethods;
+        specialinvoke temp$2.<com.riskIt.util.AccessorMethods: void <init>()>();
+        this.<com.riskIt.ui.MenuChoices: com.riskIt.util.AccessorMethods acc> = temp$2;
+        temp$3 = new java.util.Scanner;
+        temp$4 = <java.lang.System: java.io.InputStream in>;
+        specialinvoke temp$3.<java.util.Scanner: void <init>(java.io.InputStream)>(temp$4);
+        this.<com.riskIt.ui.MenuChoices: java.util.Scanner in> = temp$3;
+        temp$5 = new com.riskIt.ui.SubMenuChoices;
+        specialinvoke temp$5.<com.riskIt.ui.SubMenuChoices: void <init>()>();
+        this.<com.riskIt.ui.MenuChoices: com.riskIt.ui.SubMenuChoices subMenu> = temp$5;
+        temp$6 = new com.riskIt.ui.SubMenuChoices19_24;
+        specialinvoke temp$6.<com.riskIt.ui.SubMenuChoices19_24: void <init>()>();
+        this.<com.riskIt.ui.MenuChoices: com.riskIt.ui.SubMenuChoices19_24 subMenu19To24> = temp$6;
+        return;
+    }
+
+    public void mainMenu()
+    {
+        com.riskIt.ui.MenuChoices this;
+        java.lang.String getInput, zip, temp$28, temp$33, temp$40, stateName, temp$48, temp$49, temp$62, temp$66, temp$73, temp$78, temp$82, temp$89, temp$94, temp$98, temp$105, temp$108, temp$112, state, temp$119, temp$120, statename, temp$125, temp$126;
+        int choice, ind, occ, temp$30, temp$34, temp$63, temp$67, temp$74, temp$79, temp$83, temp$90, temp$95, temp$99, temp$109, temp$113, temp$115, temp$122, temp$128;
+        java.io.PrintStream temp$0, temp$1, temp$2, temp$3, temp$4, temp$5, temp$6, temp$7, temp$8, temp$9, temp$10, temp$11, temp$12, temp$13, temp$14, temp$15, temp$16, temp$17, temp$18, temp$19, temp$20, temp$21, temp$22, temp$23, temp$24, temp$25, temp$26, temp$31, temp$37, temp$38, temp$41, temp$46, temp$50, temp$53, temp$60, temp$64, temp$70, temp$71, temp$76, temp$80, temp$86, temp$87, temp$92, temp$96, temp$102, temp$103, temp$106, temp$110, temp$116, temp$117, temp$123, temp$135, temp$136;
+        java.util.Scanner temp$27, temp$32, temp$47, temp$61, temp$65, temp$72, temp$77, temp$81, temp$88, temp$93, temp$97, temp$104, temp$107, temp$111, temp$118, temp$124;
+        com.riskIt.util.AccessorMethods temp$29;
+        long userSSN, temp$75, temp$91;
+        double score, temp$36, temp$52, temp$69, temp$85, temp$101;
+        com.riskIt.controller.AgentManager temp$35;
+        java.lang.StringBuffer temp$39;
+        com.riskIt.ui.SubMenuChoices temp$42, temp$43, temp$44, temp$45;
+        com.riskIt.controller.UserManager temp$51, temp$68, temp$84, temp$100, temp$114, temp$121, temp$127;
+        com.riskIt.interfaces.StartInterface temp$54, temp$55, temp$56, temp$57, temp$58, temp$59;
+        java.lang.NumberFormatException e, e, e, e;
+        com.riskIt.ui.SubMenuChoices19_24 temp$129, temp$130, temp$131, temp$132, temp$133, temp$134;
+
+        this := @this: com.riskIt.ui.MenuChoices;
+        getInput = "";
+        choice = 0;
+        ind = 0;
+        occ = 0;
+        zip = "";
+
+     label0:
+        nop;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println(java.lang.String)>("\t\t MAIN MENU");
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>("01. Select a user to calculate SCORE.");
+        temp$2 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$2.<java.io.PrintStream: void println(java.lang.String)>("02. Functionality for browsing and selecting users.");
+        temp$3 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$3.<java.io.PrintStream: void println(java.lang.String)>("03. Send invitations to users.");
+        temp$4 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$4.<java.io.PrintStream: void println(java.lang.String)>("04. Create a new user.");
+        temp$5 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$5.<java.io.PrintStream: void println(java.lang.String)>("05. Browse user properties.");
+        temp$6 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$6.<java.io.PrintStream: void println(java.lang.String)>("06. Calculate unemployment rate for a given state.");
+        temp$7 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$7.<java.io.PrintStream: void println(java.lang.String)>("07. Average weekly wage for a given state based on occupationcode or industrycode ");
+        temp$8 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$8.<java.io.PrintStream: void println(java.lang.String)>("08. Estimate a person\ufffds income based on his work weeks, weekly wage, and investment income.");
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>("09. Calculate average income for a given state.");
+        temp$10 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>("10. Calculate average income for a given occupation or industry category.");
+        temp$11 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$11.<java.io.PrintStream: void println(java.lang.String)>("11. Calculate average income for each race.");
+        temp$12 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$12.<java.io.PrintStream: void println(java.lang.String)>("12. Calculate average income for each education level.");
+        temp$13 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$13.<java.io.PrintStream: void println(java.lang.String)>("13. Update \'wage\' table, \'meanWeekWage\' field with average Weekly wage for a given occupation code and industry code.");
+        temp$14 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$14.<java.io.PrintStream: void println(java.lang.String)>("14. Update user information according various life events, such as moving, changing, getting or losing jobs.");
+        temp$15 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$15.<java.io.PrintStream: void println(java.lang.String)>("15. Update \'wage\' table when people change get or loose jobs");
+        temp$16 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$16.<java.io.PrintStream: void println(java.lang.String)>("16. Update \'Industry\' and \'Occupation\' table stability value  when too many people loose or get jobs in certain area in a short period of time");
+        temp$17 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$17.<java.io.PrintStream: void println(java.lang.String)>("17. For given a state, list top five occupation category. ");
+        temp$18 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$18.<java.io.PrintStream: void println(java.lang.String)>("18. For given a state, list top five industry category.");
+        temp$19 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$19.<java.io.PrintStream: void println(java.lang.String)>("19. For given an occupation category or occupation code, list the top 5 states that have the most workers");
+        temp$20 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$20.<java.io.PrintStream: void println(java.lang.String)>("20. For given an industry category or industrial code, list the top 5 states that have the most workers");
+        temp$21 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$21.<java.io.PrintStream: void println(java.lang.String)>("21. Given a user record, recommend best state to work\ufffd.");
+        temp$22 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$22.<java.io.PrintStream: void println(java.lang.String)>("22. Compute average education for a given occupation or industry");
+        temp$23 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$23.<java.io.PrintStream: void println(java.lang.String)>("23. List occupations/industries with workers having highest (and lowest) education.");
+        temp$24 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$24.<java.io.PrintStream: void println(java.lang.String)>("24. Calculate the \'likeliness to move factor\' for a person.");
+        temp$25 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$25.<java.io.PrintStream: void println(java.lang.String)>("0. Exit");
+        temp$26 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$26.<java.io.PrintStream: void print(java.lang.String)>("Enter your choice : ");
+        temp$27 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$28 = virtualinvoke temp$27.<java.util.Scanner: java.lang.String nextLine()>();
+        getInput = temp$28;
+        temp$29 = this.<com.riskIt.ui.MenuChoices: com.riskIt.util.AccessorMethods acc>;
+        temp$30 = virtualinvoke temp$29.<com.riskIt.util.AccessorMethods: int checkLetterDigit(java.lang.String,int)>(getInput, 25);
+        choice = temp$30;
+        goto label39;
+
+     label1:
+        nop;
+        temp$31 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$31.<java.io.PrintStream: void print(java.lang.String)>("Enter SSN of the customer to calculate SCORE : ");
+        temp$32 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$33 = virtualinvoke temp$32.<java.util.Scanner: java.lang.String nextLine()>();
+        getInput = temp$33;
+        temp$34 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getInput);
+        userSSN = (long) temp$34;
+        temp$35 = this.<com.riskIt.ui.MenuChoices: com.riskIt.controller.AgentManager agent>;
+        temp$36 = virtualinvoke temp$35.<com.riskIt.controller.AgentManager: double calculateScore(long)>(userSSN);
+        score = temp$36;
+        temp$37 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$37.<java.io.PrintStream: void println(java.lang.String)>("------------------------------------------");
+        temp$38 = <java.lang.System: java.io.PrintStream out>;
+        temp$39 = new java.lang.StringBuffer;
+        specialinvoke temp$39.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("The score for customer with SSN : ");
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(userSSN);
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is : ");
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(score);
+        temp$40 = virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$38.<java.io.PrintStream: void println(java.lang.String)>(temp$40);
+        temp$41 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$41.<java.io.PrintStream: void println(java.lang.String)>("------------------------------------------");
+        goto label40;
+
+     label2:
+        nop;
+        temp$42 = this.<com.riskIt.ui.MenuChoices: com.riskIt.ui.SubMenuChoices subMenu>;
+        virtualinvoke temp$42.<com.riskIt.ui.SubMenuChoices: void browseUserByChoice()>();
+        goto label40;
+
+     label3:
+        nop;
+        temp$43 = this.<com.riskIt.ui.MenuChoices: com.riskIt.ui.SubMenuChoices subMenu>;
+        virtualinvoke temp$43.<com.riskIt.ui.SubMenuChoices: void AgentAndUser()>();
+        goto label40;
+
+     label4:
+        nop;
+        temp$44 = this.<com.riskIt.ui.MenuChoices: com.riskIt.ui.SubMenuChoices subMenu>;
+        virtualinvoke temp$44.<com.riskIt.ui.SubMenuChoices: void inputForCreateUser()>();
+        goto label40;
+
+     label5:
+        nop;
+        temp$45 = this.<com.riskIt.ui.MenuChoices: com.riskIt.ui.SubMenuChoices subMenu>;
+        virtualinvoke temp$45.<com.riskIt.ui.SubMenuChoices: void inputForbrowseUserProperties()>();
+        goto label40;
+
+     label6:
+        nop;
+        temp$46 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$46.<java.io.PrintStream: void print(java.lang.String)>("Enter the name of State : ");
+        temp$47 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$48 = virtualinvoke temp$47.<java.util.Scanner: java.lang.String nextLine()>();
+        stateName = temp$48;
+        temp$49 = virtualinvoke stateName.<java.lang.String: java.lang.String toUpperCase()>();
+        stateName = temp$49;
+        temp$50 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$50.<java.io.PrintStream: void println(java.lang.String)>("------------------------------------------");
+        temp$51 = this.<com.riskIt.ui.MenuChoices: com.riskIt.controller.UserManager user>;
+        temp$52 = virtualinvoke temp$51.<com.riskIt.controller.UserManager: double calculateUnEmploymentRate(java.lang.String)>(stateName);
+        temp$53 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$53.<java.io.PrintStream: void println(java.lang.String)>("------------------------------------------");
+        goto label40;
+
+     label7:
+        nop;
+        temp$54 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.StartInterface getWeeklyWageForCategories()>();
+        interfaceinvoke temp$54.<com.riskIt.interfaces.StartInterface: void start()>();
+        goto label40;
+
+     label8:
+        nop;
+        temp$55 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.StartInterface getEstimateIncomeGUI()>();
+        interfaceinvoke temp$55.<com.riskIt.interfaces.StartInterface: void start()>();
+        goto label40;
+
+     label9:
+        nop;
+        temp$56 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.StartInterface getIncomeByState()>();
+        interfaceinvoke temp$56.<com.riskIt.interfaces.StartInterface: void start()>();
+        goto label40;
+
+     label10:
+        nop;
+        temp$57 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.StartInterface getIncomeByOccupationOrIndustryCode()>();
+        interfaceinvoke temp$57.<com.riskIt.interfaces.StartInterface: void start()>();
+        goto label40;
+
+     label11:
+        nop;
+        temp$58 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.StartInterface getIncomeByRace()>();
+        interfaceinvoke temp$58.<com.riskIt.interfaces.StartInterface: void start()>();
+        goto label40;
+
+     label12:
+        nop;
+        temp$59 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.StartInterface getIncomeByEducation()>();
+        interfaceinvoke temp$59.<com.riskIt.interfaces.StartInterface: void start()>();
+        goto label40;
+
+     label13:
+        nop;
+
+     label14:
+        nop;
+        temp$60 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$60.<java.io.PrintStream: void print(java.lang.String)>("Enter industrycode ");
+        temp$61 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$62 = virtualinvoke temp$61.<java.util.Scanner: java.lang.String nextLine()>();
+        getInput = temp$62;
+        temp$63 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getInput);
+        ind = temp$63;
+        temp$64 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$64.<java.io.PrintStream: void print(java.lang.String)>("Enter occupationcode ");
+        temp$65 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$66 = virtualinvoke temp$65.<java.util.Scanner: java.lang.String nextLine()>();
+        getInput = temp$66;
+        temp$67 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getInput);
+        occ = temp$67;
+        temp$68 = this.<com.riskIt.ui.MenuChoices: com.riskIt.controller.UserManager user>;
+        temp$69 = virtualinvoke temp$68.<com.riskIt.controller.UserManager: double updatewagetable(int,int)>(ind, occ);
+        goto label16;
+
+     label15:
+        nop;
+        e := @caughtexception;
+        temp$70 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$70.<java.io.PrintStream: void println(java.lang.String)>("Enter Right number");
+        nop;
+        goto label16;
+
+     label16:
+        nop;
+        goto label40;
+
+     label17:
+        nop;
+
+     label18:
+        nop;
+        temp$71 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$71.<java.io.PrintStream: void print(java.lang.String)>("Enter ssn number");
+        temp$72 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$73 = virtualinvoke temp$72.<java.util.Scanner: java.lang.String nextLine()>();
+        getInput = temp$73;
+        temp$74 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getInput);
+        temp$75 = (long) temp$74;
+        userSSN = temp$75;
+        temp$76 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$76.<java.io.PrintStream: void print(java.lang.String)>("Enter industrycode ");
+        temp$77 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$78 = virtualinvoke temp$77.<java.util.Scanner: java.lang.String nextLine()>();
+        getInput = temp$78;
+        temp$79 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getInput);
+        ind = temp$79;
+        temp$80 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$80.<java.io.PrintStream: void print(java.lang.String)>("Enter occupationcode ");
+        temp$81 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$82 = virtualinvoke temp$81.<java.util.Scanner: java.lang.String nextLine()>();
+        getInput = temp$82;
+        temp$83 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getInput);
+        occ = temp$83;
+        temp$84 = this.<com.riskIt.ui.MenuChoices: com.riskIt.controller.UserManager user>;
+        temp$85 = virtualinvoke temp$84.<com.riskIt.controller.UserManager: double userinformation(long,int,int)>(userSSN, ind, occ);
+        goto label20;
+
+     label19:
+        nop;
+        e := @caughtexception;
+        temp$86 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$86.<java.io.PrintStream: void println(java.lang.String)>("Enter Right number");
+        nop;
+        goto label20;
+
+     label20:
+        nop;
+        goto label40;
+
+     label21:
+        nop;
+
+     label22:
+        nop;
+        temp$87 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$87.<java.io.PrintStream: void print(java.lang.String)>("Enter ssn number");
+        temp$88 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$89 = virtualinvoke temp$88.<java.util.Scanner: java.lang.String nextLine()>();
+        getInput = temp$89;
+        temp$90 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getInput);
+        temp$91 = (long) temp$90;
+        userSSN = temp$91;
+        temp$92 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$92.<java.io.PrintStream: void print(java.lang.String)>("Enter industrycode ");
+        temp$93 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$94 = virtualinvoke temp$93.<java.util.Scanner: java.lang.String nextLine()>();
+        getInput = temp$94;
+        temp$95 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getInput);
+        ind = temp$95;
+        temp$96 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$96.<java.io.PrintStream: void print(java.lang.String)>("Enter occupationcode ");
+        temp$97 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$98 = virtualinvoke temp$97.<java.util.Scanner: java.lang.String nextLine()>();
+        getInput = temp$98;
+        temp$99 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getInput);
+        occ = temp$99;
+        temp$100 = this.<com.riskIt.ui.MenuChoices: com.riskIt.controller.UserManager user>;
+        temp$101 = virtualinvoke temp$100.<com.riskIt.controller.UserManager: double updatetable(long,int,int)>(userSSN, ind, occ);
+        goto label24;
+
+     label23:
+        nop;
+        e := @caughtexception;
+        temp$102 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$102.<java.io.PrintStream: void println(java.lang.String)>("Enter Right number");
+        nop;
+        goto label24;
+
+     label24:
+        nop;
+        goto label40;
+
+     label25:
+        nop;
+        temp$103 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$103.<java.io.PrintStream: void print(java.lang.String)>("Enter zip number");
+        temp$104 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$105 = virtualinvoke temp$104.<java.util.Scanner: java.lang.String nextLine()>();
+        zip = temp$105;
+
+     label26:
+        nop;
+        temp$106 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$106.<java.io.PrintStream: void print(java.lang.String)>("Enter industrycode ");
+        temp$107 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$108 = virtualinvoke temp$107.<java.util.Scanner: java.lang.String nextLine()>();
+        getInput = temp$108;
+        temp$109 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getInput);
+        ind = temp$109;
+        temp$110 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$110.<java.io.PrintStream: void print(java.lang.String)>("Enter occupationcode ");
+        temp$111 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$112 = virtualinvoke temp$111.<java.util.Scanner: java.lang.String nextLine()>();
+        getInput = temp$112;
+        temp$113 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(getInput);
+        occ = temp$113;
+        temp$114 = this.<com.riskIt.ui.MenuChoices: com.riskIt.controller.UserManager user>;
+        temp$115 = virtualinvoke temp$114.<com.riskIt.controller.UserManager: int updatestability(java.lang.String,int,int)>(zip, ind, occ);
+        goto label28;
+
+     label27:
+        nop;
+        e := @caughtexception;
+        temp$116 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$116.<java.io.PrintStream: void println(java.lang.String)>("Enter Right number");
+        nop;
+        goto label28;
+
+     label28:
+        nop;
+        goto label40;
+
+     label29:
+        nop;
+        temp$117 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$117.<java.io.PrintStream: void print(java.lang.String)>("Enter the name of the state");
+        temp$118 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$119 = virtualinvoke temp$118.<java.util.Scanner: java.lang.String nextLine()>();
+        state = temp$119;
+        temp$120 = virtualinvoke state.<java.lang.String: java.lang.String toUpperCase()>();
+        state = temp$120;
+        temp$121 = this.<com.riskIt.ui.MenuChoices: com.riskIt.controller.UserManager user>;
+        temp$122 = virtualinvoke temp$121.<com.riskIt.controller.UserManager: int FindTopOccupationCode(java.lang.String)>(state);
+        goto label40;
+
+     label30:
+        nop;
+        temp$123 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$123.<java.io.PrintStream: void print(java.lang.String)>("Enter the name of the state");
+        temp$124 = this.<com.riskIt.ui.MenuChoices: java.util.Scanner in>;
+        temp$125 = virtualinvoke temp$124.<java.util.Scanner: java.lang.String nextLine()>();
+        statename = temp$125;
+        temp$126 = virtualinvoke statename.<java.lang.String: java.lang.String toUpperCase()>();
+        statename = temp$126;
+        temp$127 = this.<com.riskIt.ui.MenuChoices: com.riskIt.controller.UserManager user>;
+        temp$128 = virtualinvoke temp$127.<com.riskIt.controller.UserManager: int FindTopIndustryCode(java.lang.String)>(statename);
+        goto label40;
+
+     label31:
+        nop;
+        temp$129 = this.<com.riskIt.ui.MenuChoices: com.riskIt.ui.SubMenuChoices19_24 subMenu19To24>;
+        virtualinvoke temp$129.<com.riskIt.ui.SubMenuChoices19_24: void FindTopStatesMenu(java.lang.String)>("occupation");
+        goto label40;
+
+     label32:
+        nop;
+        temp$130 = this.<com.riskIt.ui.MenuChoices: com.riskIt.ui.SubMenuChoices19_24 subMenu19To24>;
+        virtualinvoke temp$130.<com.riskIt.ui.SubMenuChoices19_24: void FindTopStatesMenu(java.lang.String)>("industry");
+        goto label40;
+
+     label33:
+        nop;
+        temp$131 = this.<com.riskIt.ui.MenuChoices: com.riskIt.ui.SubMenuChoices19_24 subMenu19To24>;
+        virtualinvoke temp$131.<com.riskIt.ui.SubMenuChoices19_24: void RecommendBestStateToWorkMenu()>();
+        goto label40;
+
+     label34:
+        nop;
+        temp$132 = this.<com.riskIt.ui.MenuChoices: com.riskIt.ui.SubMenuChoices19_24 subMenu19To24>;
+        virtualinvoke temp$132.<com.riskIt.ui.SubMenuChoices19_24: void ComputeAverageEducationMenu()>();
+        goto label40;
+
+     label35:
+        nop;
+        temp$133 = this.<com.riskIt.ui.MenuChoices: com.riskIt.ui.SubMenuChoices19_24 subMenu19To24>;
+        virtualinvoke temp$133.<com.riskIt.ui.SubMenuChoices19_24: void FindOccIndustryWithHighestLowestEducationMenu()>();
+        goto label40;
+
+     label36:
+        nop;
+        temp$134 = this.<com.riskIt.ui.MenuChoices: com.riskIt.ui.SubMenuChoices19_24 subMenu19To24>;
+        virtualinvoke temp$134.<com.riskIt.ui.SubMenuChoices19_24: void CalculateLikelinessToMoveFactorMenu()>();
+        goto label40;
+
+     label37:
+        nop;
+        temp$135 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$135.<java.io.PrintStream: void println(java.lang.String)>("Invalid input...Try again!!");
+        goto label40;
+
+     label38:
+        nop;
+        temp$136 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$136.<java.io.PrintStream: void println(java.lang.String)>("Thank you, visit us again. Good Bye");
+        goto label40;
+
+        goto label40;
+
+     label39:
+        nop;
+        nop;
+        tableswitch(choice)
+        {
+            case 1: goto label1;
+            case 2: goto label2;
+            case 3: goto label3;
+            case 4: goto label4;
+            case 5: goto label5;
+            case 6: goto label6;
+            case 7: goto label7;
+            case 8: goto label8;
+            case 9: goto label9;
+            case 10: goto label10;
+            case 11: goto label11;
+            case 12: goto label12;
+            case 13: goto label13;
+            case 14: goto label17;
+            case 15: goto label21;
+            case 16: goto label25;
+            case 17: goto label29;
+            case 18: goto label30;
+            case 19: goto label31;
+            case 20: goto label32;
+            case 21: goto label33;
+            case 22: goto label34;
+            case 23: goto label35;
+            case 24: goto label36;
+            case 25: goto label37;
+            default: goto label38;
+        };
+
+     label40:
+        nop;
+        nop;
+        if choice > 0 goto label41;
+
+        goto label42;
+
+     label41:
+        nop;
+        if choice < 26 goto label0;
+
+        goto label42;
+
+        goto label0;
+
+     label42:
+        nop;
+        return;
+
+        catch java.lang.NumberFormatException from label14 to label15 with label15;
+        catch java.lang.NumberFormatException from label18 to label19 with label19;
+        catch java.lang.NumberFormatException from label22 to label23 with label23;
+        catch java.lang.NumberFormatException from label26 to label27 with label27;
+    }
+}

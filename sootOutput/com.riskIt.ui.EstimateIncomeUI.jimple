@@ -1,0 +1,1416 @@
+public class com.riskIt.ui.EstimateIncomeUI extends java.lang.Object implements com.riskIt.interfaces.StartInterface
+{
+    java.util.Scanner in;
+    com.riskIt.interfaces.EstimateIncomeInterface calc;
+    java.text.DecimalFormat myFormatter;
+    double valueToCalculate;
+    double resultAll;
+    double slopeAll;
+    double interceptAll;
+    double resultMiddleTwoThirds;
+    double slopeMiddleTwoThirds;
+    double interceptMiddleTwoThirds;
+
+    public void start()
+    {
+        com.riskIt.ui.EstimateIncomeUI this;
+        int intChoice, temp$3, temp$14, temp$15, temp$16, temp$17, temp$18;
+        java.util.Scanner temp$0, temp$2, temp$8;
+        boolean temp$1;
+        java.io.PrintStream temp$4, temp$7, temp$10, temp$13;
+        java.lang.StringBuffer temp$5, temp$11;
+        java.lang.String temp$6, wrong, temp$9, temp$12;
+
+        this := @this: com.riskIt.ui.EstimateIncomeUI;
+
+     label0:
+        nop;
+        intChoice = 0;
+        virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: void displayMainMenu()>();
+
+     label1:
+        nop;
+        temp$0 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$1 = virtualinvoke temp$0.<java.util.Scanner: boolean hasNextInt()>();
+        if temp$1 == 0 goto label6;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$2 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$3 = virtualinvoke temp$2.<java.util.Scanner: int nextInt()>();
+        intChoice = temp$3;
+        if intChoice < 1 goto label4;
+
+        goto label3;
+
+     label3:
+        nop;
+        if intChoice > 5 goto label4;
+
+        goto label5;
+
+        goto label5;
+
+     label4:
+        nop;
+        virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: void displayMainMenu()>();
+        temp$4 = <java.lang.System: java.io.PrintStream out>;
+        temp$5 = new java.lang.StringBuffer;
+        specialinvoke temp$5.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(intChoice);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$6 = virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$4.<java.io.PrintStream: void println(java.lang.String)>(temp$6);
+        temp$7 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$7.<java.io.PrintStream: void println(java.lang.String)>("Please enter a selection 1 ~ 5.");
+
+     label5:
+        nop;
+        goto label7;
+
+     label6:
+        nop;
+        virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: void displayMainMenu()>();
+        temp$8 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$9 = virtualinvoke temp$8.<java.util.Scanner: java.lang.String next()>();
+        wrong = temp$9;
+        temp$10 = <java.lang.System: java.io.PrintStream out>;
+        temp$11 = new java.lang.StringBuffer;
+        specialinvoke temp$11.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(wrong);
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$12 = virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>(temp$12);
+        temp$13 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$13.<java.io.PrintStream: void println(java.lang.String)>("Please enter a selection 1 ~ 5.");
+        temp$14 = 0;
+        intChoice = temp$14;
+
+     label7:
+        nop;
+        nop;
+        if intChoice < 1 goto label1;
+
+        goto label8;
+
+     label8:
+        nop;
+        if intChoice > 5 goto label1;
+
+        goto label9;
+
+        goto label9;
+
+     label9:
+        nop;
+        if intChoice == 5 goto label10;
+
+        goto label11;
+
+     label10:
+        nop;
+        return;
+
+     label11:
+        nop;
+        if intChoice == 1 goto label12;
+
+        goto label13;
+
+     label12:
+        nop;
+        temp$15 = virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: int estimateBasedOnWorkWeeks()>();
+        intChoice = temp$15;
+        goto label22;
+
+     label13:
+        nop;
+        if intChoice == 2 goto label14;
+
+        goto label15;
+
+     label14:
+        nop;
+        temp$16 = virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: int estimateBasedOnWeeklyWage()>();
+        intChoice = temp$16;
+        goto label21;
+
+     label15:
+        nop;
+        if intChoice == 3 goto label16;
+
+        goto label17;
+
+     label16:
+        nop;
+        temp$17 = virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: int estimateBasedOnInvestmentIncome()>();
+        intChoice = temp$17;
+        goto label20;
+
+     label17:
+        nop;
+        if intChoice == 4 goto label18;
+
+        goto label19;
+
+     label18:
+        nop;
+        temp$18 = virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: int estimateBasedOnSSN()>();
+        intChoice = temp$18;
+
+     label19:
+        nop;
+
+     label20:
+        nop;
+
+     label21:
+        nop;
+
+     label22:
+        nop;
+        if intChoice == 5 goto label23;
+
+        goto label24;
+
+     label23:
+        nop;
+        return;
+
+     label24:
+        nop;
+        nop;
+        goto label0;
+
+        return;
+    }
+
+    public int estimateBasedOnInvestmentIncome()
+    {
+        com.riskIt.ui.EstimateIncomeUI this;
+        double InvestmentIncome, temp$5, temp$22, temp$25, temp$27, temp$29, temp$31, temp$33, temp$35, temp$36, temp$37, temp$38, temp$39, temp$40, temp$41;
+        java.io.PrintStream temp$0, temp$1, temp$7, temp$10, temp$18, temp$21;
+        java.util.Scanner temp$2, temp$4, temp$11;
+        boolean temp$3, temp$14, temp$16;
+        int temp$6, temp$15, temp$17, temp$23;
+        java.lang.StringBuffer temp$8, temp$19;
+        java.lang.String temp$9, stringAnswer, temp$12, temp$13, temp$20;
+        com.riskIt.interfaces.EstimateIncomeInterface temp$24, temp$26, temp$28, temp$30, temp$32, temp$34;
+
+        this := @this: com.riskIt.ui.EstimateIncomeUI;
+
+     label0:
+        nop;
+        InvestmentIncome = -1.0;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println(java.lang.String)>("Please enter an investment income value to estimate income based on that value.");
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>("Enter \'return\' to return to the previous menu, or \'exit\' to exit.");
+        temp$2 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$3 = virtualinvoke temp$2.<java.util.Scanner: boolean hasNextInt()>();
+        if temp$3 == 0 goto label4;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$4 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$5 = virtualinvoke temp$4.<java.util.Scanner: double nextDouble()>();
+        InvestmentIncome = temp$5;
+        temp$6 = InvestmentIncome cmpg 0.0;
+        if temp$6 >= 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$7 = <java.lang.System: java.io.PrintStream out>;
+        temp$8 = new java.lang.StringBuffer;
+        specialinvoke temp$8.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(InvestmentIncome);
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$9 = virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$7.<java.io.PrintStream: void println(java.lang.String)>(temp$9);
+        temp$10 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>("Please enter an investment income value of 0 or more.");
+
+     label3:
+        nop;
+        goto label9;
+
+     label4:
+        nop;
+        temp$11 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$12 = virtualinvoke temp$11.<java.util.Scanner: java.lang.String next()>();
+        stringAnswer = temp$12;
+        temp$13 = virtualinvoke stringAnswer.<java.lang.String: java.lang.String trim()>();
+        stringAnswer = temp$13;
+        temp$14 = virtualinvoke stringAnswer.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("return");
+        if temp$14 == 0 goto label6;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$15 = 0;
+        return temp$15;
+
+     label6:
+        nop;
+        temp$16 = virtualinvoke stringAnswer.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("exit");
+        if temp$16 == 0 goto label8;
+
+        goto label7;
+
+     label7:
+        nop;
+        temp$17 = 5;
+        return temp$17;
+
+     label8:
+        nop;
+        temp$18 = <java.lang.System: java.io.PrintStream out>;
+        temp$19 = new java.lang.StringBuffer;
+        specialinvoke temp$19.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(stringAnswer);
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$20 = virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$18.<java.io.PrintStream: void println(java.lang.String)>(temp$20);
+        temp$21 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$21.<java.io.PrintStream: void println(java.lang.String)>("Please enter a numeric investment income value.");
+        temp$22 = -1.0;
+        InvestmentIncome = temp$22;
+
+     label9:
+        nop;
+        temp$23 = InvestmentIncome cmpl 0.0;
+        if temp$23 < 0 goto label11;
+
+        goto label10;
+
+     label10:
+        nop;
+        temp$24 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$25 = interfaceinvoke temp$24.<com.riskIt.interfaces.EstimateIncomeInterface: double givenInvestmentIncomeEstimateIncomeAll(double)>(InvestmentIncome);
+        this.<com.riskIt.ui.EstimateIncomeUI: double resultAll> = temp$25;
+        temp$26 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$27 = interfaceinvoke temp$26.<com.riskIt.interfaces.EstimateIncomeInterface: double givenInvestmentIncomeEstimateIncomeGetSlopeAll()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double slopeAll> = temp$27;
+        temp$28 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$29 = interfaceinvoke temp$28.<com.riskIt.interfaces.EstimateIncomeInterface: double givenInvestmentIncomeEstimateIncomeGetInterceptAll()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double interceptAll> = temp$29;
+        temp$30 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$31 = interfaceinvoke temp$30.<com.riskIt.interfaces.EstimateIncomeInterface: double givenInvestmentIncomeEstimateIncomeMiddleTwoThirds(double)>(InvestmentIncome);
+        this.<com.riskIt.ui.EstimateIncomeUI: double resultMiddleTwoThirds> = temp$31;
+        temp$32 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$33 = interfaceinvoke temp$32.<com.riskIt.interfaces.EstimateIncomeInterface: double givenInvestmentIncomeEstimateIncomeGetSlopeMiddleTwoThirds()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double slopeMiddleTwoThirds> = temp$33;
+        temp$34 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$35 = interfaceinvoke temp$34.<com.riskIt.interfaces.EstimateIncomeInterface: double givenInvestmentIncomeEstimateIncomeGetInterceptMiddleTwoThirds()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double interceptMiddleTwoThirds> = temp$35;
+        temp$36 = this.<com.riskIt.ui.EstimateIncomeUI: double resultAll>;
+        temp$37 = this.<com.riskIt.ui.EstimateIncomeUI: double slopeAll>;
+        temp$38 = this.<com.riskIt.ui.EstimateIncomeUI: double interceptAll>;
+        virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: void printAnswerAll(java.lang.String,double,double,double,double)>("investment income", InvestmentIncome, temp$36, temp$37, temp$38);
+        temp$39 = this.<com.riskIt.ui.EstimateIncomeUI: double resultMiddleTwoThirds>;
+        temp$40 = this.<com.riskIt.ui.EstimateIncomeUI: double slopeMiddleTwoThirds>;
+        temp$41 = this.<com.riskIt.ui.EstimateIncomeUI: double interceptMiddleTwoThirds>;
+        virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: void printAnswerMiddleTwoThirds(java.lang.String,double,double,double,double)>("investment income", InvestmentIncome, temp$39, temp$40, temp$41);
+
+     label11:
+        nop;
+        nop;
+        goto label0;
+    }
+
+    public int estimateBasedOnWeeklyWage()
+    {
+        com.riskIt.ui.EstimateIncomeUI this;
+        double weeklyWageChoice, temp$5, temp$22, temp$25, temp$27, temp$29, temp$31, temp$33, temp$35, temp$36, temp$37, temp$38, temp$39, temp$40, temp$41;
+        java.io.PrintStream temp$0, temp$1, temp$7, temp$10, temp$18, temp$21;
+        java.util.Scanner temp$2, temp$4, temp$11;
+        boolean temp$3, temp$14, temp$16;
+        int temp$6, temp$15, temp$17, temp$23;
+        java.lang.StringBuffer temp$8, temp$19;
+        java.lang.String temp$9, stringAnswer, temp$12, temp$13, temp$20;
+        com.riskIt.interfaces.EstimateIncomeInterface temp$24, temp$26, temp$28, temp$30, temp$32, temp$34;
+
+        this := @this: com.riskIt.ui.EstimateIncomeUI;
+
+     label0:
+        nop;
+        weeklyWageChoice = 0.0;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println(java.lang.String)>("Please enter a weekly wage value to estimate income based on that weekly wage.");
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>("Enter \'return\' to return to the previous menu, or \'exit\' to exit.");
+        temp$2 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$3 = virtualinvoke temp$2.<java.util.Scanner: boolean hasNextInt()>();
+        if temp$3 == 0 goto label4;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$4 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$5 = virtualinvoke temp$4.<java.util.Scanner: double nextDouble()>();
+        weeklyWageChoice = temp$5;
+        temp$6 = weeklyWageChoice cmpg 0.0;
+        if temp$6 > 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$7 = <java.lang.System: java.io.PrintStream out>;
+        temp$8 = new java.lang.StringBuffer;
+        specialinvoke temp$8.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(weeklyWageChoice);
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$9 = virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$7.<java.io.PrintStream: void println(java.lang.String)>(temp$9);
+        temp$10 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>("Please enter a weekly wage value greater than 0.");
+
+     label3:
+        nop;
+        goto label9;
+
+     label4:
+        nop;
+        temp$11 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$12 = virtualinvoke temp$11.<java.util.Scanner: java.lang.String next()>();
+        stringAnswer = temp$12;
+        temp$13 = virtualinvoke stringAnswer.<java.lang.String: java.lang.String trim()>();
+        stringAnswer = temp$13;
+        temp$14 = virtualinvoke stringAnswer.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("return");
+        if temp$14 == 0 goto label6;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$15 = 0;
+        return temp$15;
+
+     label6:
+        nop;
+        temp$16 = virtualinvoke stringAnswer.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("exit");
+        if temp$16 == 0 goto label8;
+
+        goto label7;
+
+     label7:
+        nop;
+        temp$17 = 5;
+        return temp$17;
+
+     label8:
+        nop;
+        temp$18 = <java.lang.System: java.io.PrintStream out>;
+        temp$19 = new java.lang.StringBuffer;
+        specialinvoke temp$19.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(stringAnswer);
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$20 = virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$18.<java.io.PrintStream: void println(java.lang.String)>(temp$20);
+        temp$21 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$21.<java.io.PrintStream: void println(java.lang.String)>("Please enter a numeric weekly wage value greater than 0.");
+        temp$22 = 0.0;
+        weeklyWageChoice = temp$22;
+
+     label9:
+        nop;
+        temp$23 = weeklyWageChoice cmpl 0.0;
+        if temp$23 <= 0 goto label11;
+
+        goto label10;
+
+     label10:
+        nop;
+        temp$24 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$25 = interfaceinvoke temp$24.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWeeklyWageEstimateIncomeAll(double)>(weeklyWageChoice);
+        this.<com.riskIt.ui.EstimateIncomeUI: double resultAll> = temp$25;
+        temp$26 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$27 = interfaceinvoke temp$26.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWeeklyWageEstimateIncomeGetSlopeAll()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double slopeAll> = temp$27;
+        temp$28 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$29 = interfaceinvoke temp$28.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWeeklyWageEstimateIncomeGetInterceptAll()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double interceptAll> = temp$29;
+        temp$30 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$31 = interfaceinvoke temp$30.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWeeklyWageEstimateIncomeMiddleTwoThirds(double)>(weeklyWageChoice);
+        this.<com.riskIt.ui.EstimateIncomeUI: double resultMiddleTwoThirds> = temp$31;
+        temp$32 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$33 = interfaceinvoke temp$32.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWeeklyWageEstimateIncomeGetSlopeMiddleTwoThirds()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double slopeMiddleTwoThirds> = temp$33;
+        temp$34 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$35 = interfaceinvoke temp$34.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWeeklyWageEstimateIncomeGetInterceptMiddleTwoThirds()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double interceptMiddleTwoThirds> = temp$35;
+        temp$36 = this.<com.riskIt.ui.EstimateIncomeUI: double resultAll>;
+        temp$37 = this.<com.riskIt.ui.EstimateIncomeUI: double slopeAll>;
+        temp$38 = this.<com.riskIt.ui.EstimateIncomeUI: double interceptAll>;
+        virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: void printAnswerAll(java.lang.String,double,double,double,double)>("weekly wage", weeklyWageChoice, temp$36, temp$37, temp$38);
+        temp$39 = this.<com.riskIt.ui.EstimateIncomeUI: double resultMiddleTwoThirds>;
+        temp$40 = this.<com.riskIt.ui.EstimateIncomeUI: double slopeMiddleTwoThirds>;
+        temp$41 = this.<com.riskIt.ui.EstimateIncomeUI: double interceptMiddleTwoThirds>;
+        virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: void printAnswerMiddleTwoThirds(java.lang.String,double,double,double,double)>("weekly wage", weeklyWageChoice, temp$39, temp$40, temp$41);
+
+     label11:
+        nop;
+        nop;
+        goto label0;
+    }
+
+    public int estimateBasedOnWorkWeeks()
+    {
+        com.riskIt.ui.EstimateIncomeUI this;
+        int workWeekChoice, temp$5, temp$14, temp$16, temp$21;
+        java.io.PrintStream temp$0, temp$1, temp$6, temp$9, temp$17, temp$20;
+        java.util.Scanner temp$2, temp$4, temp$10;
+        boolean temp$3, temp$13, temp$15;
+        java.lang.StringBuffer temp$7, temp$18;
+        java.lang.String temp$8, stringAnswer, temp$11, temp$12, temp$19;
+        com.riskIt.interfaces.EstimateIncomeInterface temp$22, temp$24, temp$26, temp$28, temp$30, temp$32;
+        double temp$23, temp$25, temp$27, temp$29, temp$31, temp$33, temp$34, temp$35, temp$36, temp$37, temp$38, temp$39;
+
+        this := @this: com.riskIt.ui.EstimateIncomeUI;
+
+     label0:
+        nop;
+        workWeekChoice = 0;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println(java.lang.String)>("Please enter the number of work weeks (1 ~ 52) to estimate income based on that number of work weeks.");
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>("Enter \'return\' to return to the previous menu, or \'exit\' to exit.");
+        temp$2 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$3 = virtualinvoke temp$2.<java.util.Scanner: boolean hasNextInt()>();
+        if temp$3 == 0 goto label5;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$4 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$5 = virtualinvoke temp$4.<java.util.Scanner: int nextInt()>();
+        workWeekChoice = temp$5;
+        if workWeekChoice < 1 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        if workWeekChoice > 52 goto label3;
+
+        goto label4;
+
+        goto label4;
+
+     label3:
+        nop;
+        temp$6 = <java.lang.System: java.io.PrintStream out>;
+        temp$7 = new java.lang.StringBuffer;
+        specialinvoke temp$7.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(workWeekChoice);
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$8 = virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$6.<java.io.PrintStream: void println(java.lang.String)>(temp$8);
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>("Please enter a selection 1 ~ 52 weeks.");
+
+     label4:
+        nop;
+        goto label10;
+
+     label5:
+        nop;
+        temp$10 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$11 = virtualinvoke temp$10.<java.util.Scanner: java.lang.String next()>();
+        stringAnswer = temp$11;
+        temp$12 = virtualinvoke stringAnswer.<java.lang.String: java.lang.String trim()>();
+        stringAnswer = temp$12;
+        temp$13 = virtualinvoke stringAnswer.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("return");
+        if temp$13 == 0 goto label7;
+
+        goto label6;
+
+     label6:
+        nop;
+        temp$14 = 0;
+        return temp$14;
+
+     label7:
+        nop;
+        temp$15 = virtualinvoke stringAnswer.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("exit");
+        if temp$15 == 0 goto label9;
+
+        goto label8;
+
+     label8:
+        nop;
+        temp$16 = 5;
+        return temp$16;
+
+     label9:
+        nop;
+        temp$17 = <java.lang.System: java.io.PrintStream out>;
+        temp$18 = new java.lang.StringBuffer;
+        specialinvoke temp$18.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(stringAnswer);
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$19 = virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$17.<java.io.PrintStream: void println(java.lang.String)>(temp$19);
+        temp$20 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$20.<java.io.PrintStream: void println(java.lang.String)>("Please enter a numeric selection 1 ~ 52 weeks.");
+        temp$21 = 0;
+        workWeekChoice = temp$21;
+
+     label10:
+        nop;
+        if workWeekChoice > 0 goto label11;
+
+        goto label13;
+
+     label11:
+        nop;
+        if workWeekChoice <= 52 goto label12;
+
+        goto label13;
+
+        goto label12;
+
+     label12:
+        nop;
+        temp$22 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$23 = interfaceinvoke temp$22.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWorkWeeksEstimateIncomeAll(int)>(workWeekChoice);
+        this.<com.riskIt.ui.EstimateIncomeUI: double resultAll> = temp$23;
+        temp$24 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$25 = interfaceinvoke temp$24.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWorkWeeksEstimateIncomeGetSlopeAll()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double slopeAll> = temp$25;
+        temp$26 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$27 = interfaceinvoke temp$26.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWorkWeeksEstimateIncomeGetInterceptAll()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double interceptAll> = temp$27;
+        temp$28 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$29 = interfaceinvoke temp$28.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWorkWeeksEstimateIncomeMiddleTwoThirds(int)>(workWeekChoice);
+        this.<com.riskIt.ui.EstimateIncomeUI: double resultMiddleTwoThirds> = temp$29;
+        temp$30 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$31 = interfaceinvoke temp$30.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWorkWeeksEstimateIncomeGetSlopeMiddleTwoThirds()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double slopeMiddleTwoThirds> = temp$31;
+        temp$32 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$33 = interfaceinvoke temp$32.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWorkWeeksEstimateIncomeGetInterceptMiddleTwoThirds()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double interceptMiddleTwoThirds> = temp$33;
+        temp$34 = this.<com.riskIt.ui.EstimateIncomeUI: double resultAll>;
+        temp$35 = this.<com.riskIt.ui.EstimateIncomeUI: double slopeAll>;
+        temp$36 = this.<com.riskIt.ui.EstimateIncomeUI: double interceptAll>;
+        virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: void printAnswerAll(java.lang.String,int,double,double,double)>("work week", workWeekChoice, temp$34, temp$35, temp$36);
+        temp$37 = this.<com.riskIt.ui.EstimateIncomeUI: double resultMiddleTwoThirds>;
+        temp$38 = this.<com.riskIt.ui.EstimateIncomeUI: double slopeMiddleTwoThirds>;
+        temp$39 = this.<com.riskIt.ui.EstimateIncomeUI: double interceptMiddleTwoThirds>;
+        virtualinvoke this.<com.riskIt.ui.EstimateIncomeUI: void printAnswerMiddleTwoThirds(java.lang.String,int,double,double,double)>("work week", workWeekChoice, temp$37, temp$38, temp$39);
+
+     label13:
+        nop;
+        nop;
+        goto label0;
+    }
+
+    public int estimateBasedOnSSN()
+    {
+        com.riskIt.ui.EstimateIncomeUI this;
+        int SSNChoice, temp$6, temp$15, temp$17, temp$23, temp$37, temp$39, temp$47, temp$62, temp$81, temp$83, temp$92, temp$109, temp$128, temp$130, temp$139, temp$156, temp$175, temp$176, temp$180, temp$181, temp$182;
+        java.io.PrintStream temp$0, temp$1, temp$2, temp$7, temp$10, temp$18, temp$21, temp$22, temp$30, temp$33, temp$34, temp$36, temp$45, temp$49, temp$55, temp$60, temp$68, temp$74, temp$79, temp$80, temp$89, temp$96, temp$102, temp$107, temp$115, temp$121, temp$126, temp$127, temp$136, temp$143, temp$149, temp$154, temp$162, temp$168, temp$173, temp$174, temp$177, temp$186, temp$187;
+        java.util.Scanner temp$3, temp$5, temp$11;
+        boolean temp$4, temp$14, temp$16, temp$29;
+        java.lang.StringBuffer temp$8, temp$19, temp$31, temp$46, temp$50, temp$56, temp$69, temp$75, temp$90, temp$97, temp$103, temp$116, temp$122, temp$137, temp$144, temp$150, temp$163, temp$169, temp$178;
+        java.lang.String temp$9, stringAnswer, temp$12, temp$13, temp$20, temp$26, temp$27, temp$28, temp$32, temp$35, temp$48, temp$53, temp$54, temp$59, temp$72, temp$73, temp$78, temp$94, temp$95, temp$100, temp$101, temp$106, temp$119, temp$120, temp$125, temp$141, temp$142, temp$147, temp$148, temp$153, temp$166, temp$167, temp$172, temp$184, temp$185;
+        com.riskIt.interfaces.EstimateIncomeDTOInterface data, temp$25;
+        com.riskIt.interfaces.EstimateIncomeInterface temp$24, temp$38, temp$41, temp$43, temp$61, temp$64, temp$66, temp$82, temp$85, temp$87, temp$108, temp$111, temp$113, temp$129, temp$132, temp$134, temp$155, temp$158, temp$160;
+        double temp$40, temp$42, temp$44, temp$52, temp$57, temp$58, temp$63, temp$65, temp$67, temp$71, temp$76, temp$77, temp$84, temp$86, temp$88, temp$99, temp$104, temp$105, temp$110, temp$112, temp$114, temp$118, temp$123, temp$124, temp$131, temp$133, temp$135, temp$146, temp$151, temp$152, temp$157, temp$159, temp$161, temp$165, temp$170, temp$171;
+        java.text.DecimalFormat temp$51, temp$70, temp$91, temp$98, temp$117, temp$138, temp$145, temp$164, temp$179;
+        long temp$93, temp$140, temp$183;
+
+        this := @this: com.riskIt.ui.EstimateIncomeUI;
+
+     label0:
+        nop;
+        SSNChoice = 0;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println(java.lang.String)>("Please enter a SSN to estimate income based on values from the database.");
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>(" Suggested good values = 101894625 or 101894739 etc..");
+        temp$2 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$2.<java.io.PrintStream: void println(java.lang.String)>("Enter \'return\' to return to the previous menu, or \'exit\' to exit.");
+        temp$3 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$4 = virtualinvoke temp$3.<java.util.Scanner: boolean hasNextInt()>();
+        if temp$4 == 0 goto label5;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$5 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$6 = virtualinvoke temp$5.<java.util.Scanner: int nextInt()>();
+        SSNChoice = temp$6;
+        if SSNChoice < 100000000 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        if SSNChoice > 999999999 goto label3;
+
+        goto label4;
+
+        goto label4;
+
+     label3:
+        nop;
+        temp$7 = <java.lang.System: java.io.PrintStream out>;
+        temp$8 = new java.lang.StringBuffer;
+        specialinvoke temp$8.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(SSNChoice);
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$9 = virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$7.<java.io.PrintStream: void println(java.lang.String)>(temp$9);
+        temp$10 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>("Please enter a valid SSN.");
+
+     label4:
+        nop;
+        goto label10;
+
+     label5:
+        nop;
+        temp$11 = this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in>;
+        temp$12 = virtualinvoke temp$11.<java.util.Scanner: java.lang.String next()>();
+        stringAnswer = temp$12;
+        temp$13 = virtualinvoke stringAnswer.<java.lang.String: java.lang.String trim()>();
+        stringAnswer = temp$13;
+        temp$14 = virtualinvoke stringAnswer.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("return");
+        if temp$14 == 0 goto label7;
+
+        goto label6;
+
+     label6:
+        nop;
+        temp$15 = 0;
+        return temp$15;
+
+     label7:
+        nop;
+        temp$16 = virtualinvoke stringAnswer.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("exit");
+        if temp$16 == 0 goto label9;
+
+        goto label8;
+
+     label8:
+        nop;
+        temp$17 = 5;
+        return temp$17;
+
+     label9:
+        nop;
+        temp$18 = <java.lang.System: java.io.PrintStream out>;
+        temp$19 = new java.lang.StringBuffer;
+        specialinvoke temp$19.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(stringAnswer);
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$20 = virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$18.<java.io.PrintStream: void println(java.lang.String)>(temp$20);
+        temp$21 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$21.<java.io.PrintStream: void println(java.lang.String)>("Please enter a valid SSN.");
+        temp$22 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$22.<java.io.PrintStream: void println()>();
+        temp$23 = 0;
+        SSNChoice = temp$23;
+
+     label10:
+        nop;
+        if SSNChoice >= 100000000 goto label11;
+
+        goto label30;
+
+     label11:
+        nop;
+        if SSNChoice <= 999999999 goto label12;
+
+        goto label30;
+
+        goto label12;
+
+     label12:
+        nop;
+        temp$24 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$25 = interfaceinvoke temp$24.<com.riskIt.interfaces.EstimateIncomeInterface: com.riskIt.interfaces.EstimateIncomeDTOInterface getValues(int)>(SSNChoice);
+        data = temp$25;
+        temp$26 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: java.lang.String getName()>();
+        if temp$26 == null goto label14;
+
+        goto label13;
+
+     label13:
+        nop;
+        temp$27 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: java.lang.String getName()>();
+        temp$28 = virtualinvoke temp$27.<java.lang.String: java.lang.String trim()>();
+        temp$29 = virtualinvoke temp$28.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("None Entered");
+        if temp$29 == 0 goto label15;
+
+        goto label14;
+
+        goto label15;
+
+     label14:
+        nop;
+        temp$30 = <java.lang.System: java.io.PrintStream out>;
+        temp$31 = new java.lang.StringBuffer;
+        specialinvoke temp$31.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No data found in the database for SSN of ");
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(SSNChoice);
+        temp$32 = virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$30.<java.io.PrintStream: void println(java.lang.String)>(temp$32);
+        goto label29;
+
+     label15:
+        nop;
+        temp$33 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$33.<java.io.PrintStream: void println()>();
+        temp$34 = <java.lang.System: java.io.PrintStream out>;
+        temp$35 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: java.lang.String toString()>();
+        virtualinvoke temp$34.<java.io.PrintStream: void println(java.lang.String)>(temp$35);
+        temp$36 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$36.<java.io.PrintStream: void println()>();
+        temp$37 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getWorkWeeks()>();
+        if temp$37 > 0 goto label16;
+
+        goto label17;
+
+     label16:
+        nop;
+        temp$38 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$39 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getWorkWeeks()>();
+        temp$40 = interfaceinvoke temp$38.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWorkWeeksEstimateIncomeAll(int)>(temp$39);
+        this.<com.riskIt.ui.EstimateIncomeUI: double resultAll> = temp$40;
+        temp$41 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$42 = interfaceinvoke temp$41.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWorkWeeksEstimateIncomeGetSlopeAll()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double slopeAll> = temp$42;
+        temp$43 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$44 = interfaceinvoke temp$43.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWorkWeeksEstimateIncomeGetInterceptAll()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double interceptAll> = temp$44;
+        temp$45 = <java.lang.System: java.io.PrintStream out>;
+        temp$46 = new java.lang.StringBuffer;
+        specialinvoke temp$46.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$46.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Based on ");
+        temp$47 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getWorkWeeks()>();
+        virtualinvoke temp$46.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$47);
+        virtualinvoke temp$46.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" work weeks the estimated income is:");
+        temp$48 = virtualinvoke temp$46.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$45.<java.io.PrintStream: void println(java.lang.String)>(temp$48);
+        temp$49 = <java.lang.System: java.io.PrintStream out>;
+        temp$50 = new java.lang.StringBuffer;
+        specialinvoke temp$50.<java.lang.StringBuffer: void <init>()>();
+        temp$51 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$52 = this.<com.riskIt.ui.EstimateIncomeUI: double resultAll>;
+        temp$53 = virtualinvoke temp$51.<java.text.DecimalFormat: java.lang.String format(double)>(temp$52);
+        virtualinvoke temp$50.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$53);
+        virtualinvoke temp$50.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" based on all the data in the database.");
+        temp$54 = virtualinvoke temp$50.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$49.<java.io.PrintStream: void println(java.lang.String)>(temp$54);
+        temp$55 = <java.lang.System: java.io.PrintStream out>;
+        temp$56 = new java.lang.StringBuffer;
+        specialinvoke temp$56.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$56.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Using a regression formula of Income = work weeks * ");
+        temp$57 = this.<com.riskIt.ui.EstimateIncomeUI: double slopeAll>;
+        virtualinvoke temp$56.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$57);
+        virtualinvoke temp$56.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" + ");
+        temp$58 = this.<com.riskIt.ui.EstimateIncomeUI: double interceptAll>;
+        virtualinvoke temp$56.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$58);
+        temp$59 = virtualinvoke temp$56.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$55.<java.io.PrintStream: void println(java.lang.String)>(temp$59);
+        temp$60 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$60.<java.io.PrintStream: void println()>();
+        temp$61 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$62 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getWorkWeeks()>();
+        temp$63 = interfaceinvoke temp$61.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWorkWeeksEstimateIncomeMiddleTwoThirds(int)>(temp$62);
+        this.<com.riskIt.ui.EstimateIncomeUI: double resultMiddleTwoThirds> = temp$63;
+        temp$64 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$65 = interfaceinvoke temp$64.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWorkWeeksEstimateIncomeGetSlopeMiddleTwoThirds()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double slopeMiddleTwoThirds> = temp$65;
+        temp$66 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$67 = interfaceinvoke temp$66.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWorkWeeksEstimateIncomeGetInterceptMiddleTwoThirds()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double interceptMiddleTwoThirds> = temp$67;
+        temp$68 = <java.lang.System: java.io.PrintStream out>;
+        temp$69 = new java.lang.StringBuffer;
+        specialinvoke temp$69.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$69.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Based on the middle two thirds of data in the database the estiamte income is ");
+        temp$70 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$71 = this.<com.riskIt.ui.EstimateIncomeUI: double resultMiddleTwoThirds>;
+        temp$72 = virtualinvoke temp$70.<java.text.DecimalFormat: java.lang.String format(double)>(temp$71);
+        virtualinvoke temp$69.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$72);
+        temp$73 = virtualinvoke temp$69.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$68.<java.io.PrintStream: void println(java.lang.String)>(temp$73);
+        temp$74 = <java.lang.System: java.io.PrintStream out>;
+        temp$75 = new java.lang.StringBuffer;
+        specialinvoke temp$75.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$75.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Using a regression formula of Income = work weeks * ");
+        temp$76 = this.<com.riskIt.ui.EstimateIncomeUI: double slopeMiddleTwoThirds>;
+        virtualinvoke temp$75.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$76);
+        virtualinvoke temp$75.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" + ");
+        temp$77 = this.<com.riskIt.ui.EstimateIncomeUI: double interceptMiddleTwoThirds>;
+        virtualinvoke temp$75.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$77);
+        temp$78 = virtualinvoke temp$75.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$74.<java.io.PrintStream: void println(java.lang.String)>(temp$78);
+        temp$79 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$79.<java.io.PrintStream: void println()>();
+        goto label18;
+
+     label17:
+        nop;
+        temp$80 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$80.<java.io.PrintStream: void println(java.lang.String)>("No work week data available for this record.\n");
+
+     label18:
+        nop;
+        temp$81 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getWeeklyWage()>();
+        if temp$81 > 0 goto label19;
+
+        goto label20;
+
+     label19:
+        nop;
+        temp$82 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$83 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getWeeklyWage()>();
+        temp$84 = interfaceinvoke temp$82.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWeeklyWageEstimateIncomeAll(int)>(temp$83);
+        this.<com.riskIt.ui.EstimateIncomeUI: double resultAll> = temp$84;
+        temp$85 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$86 = interfaceinvoke temp$85.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWeeklyWageEstimateIncomeGetSlopeAll()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double slopeAll> = temp$86;
+        temp$87 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$88 = interfaceinvoke temp$87.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWeeklyWageEstimateIncomeGetInterceptAll()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double interceptAll> = temp$88;
+        temp$89 = <java.lang.System: java.io.PrintStream out>;
+        temp$90 = new java.lang.StringBuffer;
+        specialinvoke temp$90.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$90.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Based on weekly wage of ");
+        temp$91 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$92 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getWeeklyWage()>();
+        temp$93 = (long) temp$92;
+        temp$94 = virtualinvoke temp$91.<java.text.DecimalFormat: java.lang.String format(long)>(temp$93);
+        virtualinvoke temp$90.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$94);
+        virtualinvoke temp$90.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" the estimated income is:");
+        temp$95 = virtualinvoke temp$90.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$89.<java.io.PrintStream: void println(java.lang.String)>(temp$95);
+        temp$96 = <java.lang.System: java.io.PrintStream out>;
+        temp$97 = new java.lang.StringBuffer;
+        specialinvoke temp$97.<java.lang.StringBuffer: void <init>()>();
+        temp$98 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$99 = this.<com.riskIt.ui.EstimateIncomeUI: double resultAll>;
+        temp$100 = virtualinvoke temp$98.<java.text.DecimalFormat: java.lang.String format(double)>(temp$99);
+        virtualinvoke temp$97.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$100);
+        virtualinvoke temp$97.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" based on all the data in the database.");
+        temp$101 = virtualinvoke temp$97.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$96.<java.io.PrintStream: void println(java.lang.String)>(temp$101);
+        temp$102 = <java.lang.System: java.io.PrintStream out>;
+        temp$103 = new java.lang.StringBuffer;
+        specialinvoke temp$103.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$103.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Using a regression formula of Income = weekly wage * ");
+        temp$104 = this.<com.riskIt.ui.EstimateIncomeUI: double slopeAll>;
+        virtualinvoke temp$103.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$104);
+        virtualinvoke temp$103.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" + ");
+        temp$105 = this.<com.riskIt.ui.EstimateIncomeUI: double interceptAll>;
+        virtualinvoke temp$103.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$105);
+        temp$106 = virtualinvoke temp$103.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$102.<java.io.PrintStream: void println(java.lang.String)>(temp$106);
+        temp$107 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$107.<java.io.PrintStream: void println()>();
+        temp$108 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$109 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getWeeklyWage()>();
+        temp$110 = interfaceinvoke temp$108.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWeeklyWageEstimateIncomeMiddleTwoThirds(int)>(temp$109);
+        this.<com.riskIt.ui.EstimateIncomeUI: double resultMiddleTwoThirds> = temp$110;
+        temp$111 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$112 = interfaceinvoke temp$111.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWeeklyWageEstimateIncomeGetSlopeMiddleTwoThirds()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double slopeMiddleTwoThirds> = temp$112;
+        temp$113 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$114 = interfaceinvoke temp$113.<com.riskIt.interfaces.EstimateIncomeInterface: double givenWeeklyWageEstimateIncomeGetInterceptMiddleTwoThirds()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double interceptMiddleTwoThirds> = temp$114;
+        temp$115 = <java.lang.System: java.io.PrintStream out>;
+        temp$116 = new java.lang.StringBuffer;
+        specialinvoke temp$116.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$116.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Based on the middle two thirds of data in the database the estimated income is ");
+        temp$117 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$118 = this.<com.riskIt.ui.EstimateIncomeUI: double resultMiddleTwoThirds>;
+        temp$119 = virtualinvoke temp$117.<java.text.DecimalFormat: java.lang.String format(double)>(temp$118);
+        virtualinvoke temp$116.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$119);
+        temp$120 = virtualinvoke temp$116.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$115.<java.io.PrintStream: void println(java.lang.String)>(temp$120);
+        temp$121 = <java.lang.System: java.io.PrintStream out>;
+        temp$122 = new java.lang.StringBuffer;
+        specialinvoke temp$122.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$122.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Using a regression formula of Income = weekly wage * ");
+        temp$123 = this.<com.riskIt.ui.EstimateIncomeUI: double slopeMiddleTwoThirds>;
+        virtualinvoke temp$122.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$123);
+        virtualinvoke temp$122.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" + ");
+        temp$124 = this.<com.riskIt.ui.EstimateIncomeUI: double interceptMiddleTwoThirds>;
+        virtualinvoke temp$122.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$124);
+        temp$125 = virtualinvoke temp$122.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$121.<java.io.PrintStream: void println(java.lang.String)>(temp$125);
+        temp$126 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$126.<java.io.PrintStream: void println()>();
+        goto label21;
+
+     label20:
+        nop;
+        temp$127 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$127.<java.io.PrintStream: void println(java.lang.String)>("No weekly wage data available for this record.\n");
+
+     label21:
+        nop;
+        temp$128 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getInvestmentIncome()>();
+        if temp$128 > 0 goto label22;
+
+        goto label23;
+
+     label22:
+        nop;
+        temp$129 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$130 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getInvestmentIncome()>();
+        temp$131 = interfaceinvoke temp$129.<com.riskIt.interfaces.EstimateIncomeInterface: double givenInvestmentIncomeEstimateIncomeAll(int)>(temp$130);
+        this.<com.riskIt.ui.EstimateIncomeUI: double resultAll> = temp$131;
+        temp$132 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$133 = interfaceinvoke temp$132.<com.riskIt.interfaces.EstimateIncomeInterface: double givenInvestmentIncomeEstimateIncomeGetSlopeAll()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double slopeAll> = temp$133;
+        temp$134 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$135 = interfaceinvoke temp$134.<com.riskIt.interfaces.EstimateIncomeInterface: double givenInvestmentIncomeEstimateIncomeGetInterceptAll()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double interceptAll> = temp$135;
+        temp$136 = <java.lang.System: java.io.PrintStream out>;
+        temp$137 = new java.lang.StringBuffer;
+        specialinvoke temp$137.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$137.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Based on investment income of ");
+        temp$138 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$139 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getInvestmentIncome()>();
+        temp$140 = (long) temp$139;
+        temp$141 = virtualinvoke temp$138.<java.text.DecimalFormat: java.lang.String format(long)>(temp$140);
+        virtualinvoke temp$137.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$141);
+        virtualinvoke temp$137.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" the estimated income is:");
+        temp$142 = virtualinvoke temp$137.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$136.<java.io.PrintStream: void println(java.lang.String)>(temp$142);
+        temp$143 = <java.lang.System: java.io.PrintStream out>;
+        temp$144 = new java.lang.StringBuffer;
+        specialinvoke temp$144.<java.lang.StringBuffer: void <init>()>();
+        temp$145 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$146 = this.<com.riskIt.ui.EstimateIncomeUI: double resultAll>;
+        temp$147 = virtualinvoke temp$145.<java.text.DecimalFormat: java.lang.String format(double)>(temp$146);
+        virtualinvoke temp$144.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$147);
+        virtualinvoke temp$144.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" based on all the data in the database.");
+        temp$148 = virtualinvoke temp$144.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$143.<java.io.PrintStream: void println(java.lang.String)>(temp$148);
+        temp$149 = <java.lang.System: java.io.PrintStream out>;
+        temp$150 = new java.lang.StringBuffer;
+        specialinvoke temp$150.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$150.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Using a regression formula of Income = investment income * ");
+        temp$151 = this.<com.riskIt.ui.EstimateIncomeUI: double slopeAll>;
+        virtualinvoke temp$150.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$151);
+        virtualinvoke temp$150.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" + ");
+        temp$152 = this.<com.riskIt.ui.EstimateIncomeUI: double interceptAll>;
+        virtualinvoke temp$150.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$152);
+        temp$153 = virtualinvoke temp$150.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$149.<java.io.PrintStream: void println(java.lang.String)>(temp$153);
+        temp$154 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$154.<java.io.PrintStream: void println()>();
+        temp$155 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$156 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getInvestmentIncome()>();
+        temp$157 = interfaceinvoke temp$155.<com.riskIt.interfaces.EstimateIncomeInterface: double givenInvestmentIncomeEstimateIncomeMiddleTwoThirds(int)>(temp$156);
+        this.<com.riskIt.ui.EstimateIncomeUI: double resultMiddleTwoThirds> = temp$157;
+        temp$158 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$159 = interfaceinvoke temp$158.<com.riskIt.interfaces.EstimateIncomeInterface: double givenInvestmentIncomeEstimateIncomeGetSlopeMiddleTwoThirds()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double slopeMiddleTwoThirds> = temp$159;
+        temp$160 = this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc>;
+        temp$161 = interfaceinvoke temp$160.<com.riskIt.interfaces.EstimateIncomeInterface: double givenInvestmentIncomeEstimateIncomeGetInterceptMiddleTwoThirds()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: double interceptMiddleTwoThirds> = temp$161;
+        temp$162 = <java.lang.System: java.io.PrintStream out>;
+        temp$163 = new java.lang.StringBuffer;
+        specialinvoke temp$163.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$163.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Based on the middle two thirds of data in the database the estimated income is ");
+        temp$164 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$165 = this.<com.riskIt.ui.EstimateIncomeUI: double resultMiddleTwoThirds>;
+        temp$166 = virtualinvoke temp$164.<java.text.DecimalFormat: java.lang.String format(double)>(temp$165);
+        virtualinvoke temp$163.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$166);
+        temp$167 = virtualinvoke temp$163.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$162.<java.io.PrintStream: void println(java.lang.String)>(temp$167);
+        temp$168 = <java.lang.System: java.io.PrintStream out>;
+        temp$169 = new java.lang.StringBuffer;
+        specialinvoke temp$169.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$169.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Using a regression formula of Income = investment income * ");
+        temp$170 = this.<com.riskIt.ui.EstimateIncomeUI: double slopeMiddleTwoThirds>;
+        virtualinvoke temp$169.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$170);
+        virtualinvoke temp$169.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" + ");
+        temp$171 = this.<com.riskIt.ui.EstimateIncomeUI: double interceptMiddleTwoThirds>;
+        virtualinvoke temp$169.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$171);
+        temp$172 = virtualinvoke temp$169.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$168.<java.io.PrintStream: void println(java.lang.String)>(temp$172);
+        temp$173 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$173.<java.io.PrintStream: void println()>();
+        goto label24;
+
+     label23:
+        nop;
+        temp$174 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$174.<java.io.PrintStream: void println(java.lang.String)>("No investment income data available for this record.\n");
+
+     label24:
+        nop;
+        temp$175 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getWeeklyWage()>();
+        if temp$175 > 0 goto label25;
+
+        goto label27;
+
+     label25:
+        nop;
+        temp$176 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getWorkWeeks()>();
+        if temp$176 > 0 goto label26;
+
+        goto label27;
+
+        goto label26;
+
+     label26:
+        nop;
+        temp$177 = <java.lang.System: java.io.PrintStream out>;
+        temp$178 = new java.lang.StringBuffer;
+        specialinvoke temp$178.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$178.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Actual income = ");
+        temp$179 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$180 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getWeeklyWage()>();
+        temp$181 = interfaceinvoke data.<com.riskIt.interfaces.EstimateIncomeDTOInterface: int getWorkWeeks()>();
+        temp$182 = temp$180 * temp$181;
+        temp$183 = (long) temp$182;
+        temp$184 = virtualinvoke temp$179.<java.text.DecimalFormat: java.lang.String format(long)>(temp$183);
+        virtualinvoke temp$178.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$184);
+        temp$185 = virtualinvoke temp$178.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$177.<java.io.PrintStream: void println(java.lang.String)>(temp$185);
+        goto label28;
+
+     label27:
+        nop;
+        temp$186 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$186.<java.io.PrintStream: void println(java.lang.String)>("Database does not contain enough information to calculate actual income value.");
+
+     label28:
+        nop;
+        temp$187 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$187.<java.io.PrintStream: void println()>();
+
+     label29:
+        nop;
+
+     label30:
+        nop;
+        nop;
+        goto label0;
+    }
+
+    public void printAnswerAll(java.lang.String, double, double, double, double)
+    {
+        com.riskIt.ui.EstimateIncomeUI this;
+        java.lang.String type, temp$5, temp$7, temp$8, temp$11, temp$15;
+        double value, resultAll, slopeAll, intercpetAll;
+        java.io.PrintStream temp$0, temp$1, temp$2, temp$9, temp$12, temp$13, temp$16;
+        java.lang.StringBuffer temp$3, temp$10, temp$14;
+        java.text.DecimalFormat temp$4, temp$6;
+
+        this := @this: com.riskIt.ui.EstimateIncomeUI;
+        type := @parameter0: java.lang.String;
+        value := @parameter1: double;
+        resultAll := @parameter2: double;
+        slopeAll := @parameter3: double;
+        intercpetAll := @parameter4: double;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println()>();
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>("Simple Linear Regression based on all data in the database:");
+        temp$2 = <java.lang.System: java.io.PrintStream out>;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Based on ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" value of ");
+        temp$4 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$5 = virtualinvoke temp$4.<java.text.DecimalFormat: java.lang.String format(double)>(value);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$5);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" the estimated income is ");
+        temp$6 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$7 = virtualinvoke temp$6.<java.text.DecimalFormat: java.lang.String format(double)>(resultAll);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$7);
+        temp$8 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$2.<java.io.PrintStream: void println(java.lang.String)>(temp$8);
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        temp$10 = new java.lang.StringBuffer;
+        specialinvoke temp$10.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("This estimate is based on simple linear regression based on all the ");
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and income data");
+        temp$11 = virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>(temp$11);
+        temp$12 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$12.<java.io.PrintStream: void println(java.lang.String)>("contained in the database using a regression formula of:");
+        temp$13 = <java.lang.System: java.io.PrintStream out>;
+        temp$14 = new java.lang.StringBuffer;
+        specialinvoke temp$14.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Income = ");
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" * ");
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(slopeAll);
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" + ");
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(intercpetAll);
+        temp$15 = virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$13.<java.io.PrintStream: void println(java.lang.String)>(temp$15);
+        temp$16 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$16.<java.io.PrintStream: void println()>();
+        return;
+    }
+
+    public void printAnswerAll(java.lang.String, int, double, double, double)
+    {
+        com.riskIt.ui.EstimateIncomeUI this;
+        java.lang.String type, temp$5, temp$6, temp$9, temp$13;
+        int value;
+        double resultAll, slopeAll, intercpetAll;
+        java.io.PrintStream temp$0, temp$1, temp$2, temp$7, temp$10, temp$11, temp$14;
+        java.lang.StringBuffer temp$3, temp$8, temp$12;
+        java.text.DecimalFormat temp$4;
+
+        this := @this: com.riskIt.ui.EstimateIncomeUI;
+        type := @parameter0: java.lang.String;
+        value := @parameter1: int;
+        resultAll := @parameter2: double;
+        slopeAll := @parameter3: double;
+        intercpetAll := @parameter4: double;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println()>();
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>("Simple Linear Regression based on all data in the database:");
+        temp$2 = <java.lang.System: java.io.PrintStream out>;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Based on ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" value of ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(value);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" the estimated income is ");
+        temp$4 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$5 = virtualinvoke temp$4.<java.text.DecimalFormat: java.lang.String format(double)>(resultAll);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$5);
+        temp$6 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$2.<java.io.PrintStream: void println(java.lang.String)>(temp$6);
+        temp$7 = <java.lang.System: java.io.PrintStream out>;
+        temp$8 = new java.lang.StringBuffer;
+        specialinvoke temp$8.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("This estimate is based on simple linear regression based on all the ");
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and income data");
+        temp$9 = virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$7.<java.io.PrintStream: void println(java.lang.String)>(temp$9);
+        temp$10 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>("contained in the database using a regression formula of:");
+        temp$11 = <java.lang.System: java.io.PrintStream out>;
+        temp$12 = new java.lang.StringBuffer;
+        specialinvoke temp$12.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Income = ");
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" * ");
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(slopeAll);
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" + ");
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(intercpetAll);
+        temp$13 = virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$11.<java.io.PrintStream: void println(java.lang.String)>(temp$13);
+        temp$14 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$14.<java.io.PrintStream: void println()>();
+        return;
+    }
+
+    public void printAnswerMiddleTwoThirds(java.lang.String, int, double, double, double)
+    {
+        com.riskIt.ui.EstimateIncomeUI this;
+        java.lang.String type, temp$3, temp$7, temp$8, temp$11, temp$14, temp$17;
+        int value;
+        double resultMiddleTwoThirds, slopeMiddleTwoThirds, intercpetMiddleTwoThirds;
+        java.io.PrintStream temp$0, temp$1, temp$4, temp$9, temp$12, temp$15, temp$18;
+        java.lang.StringBuffer temp$2, temp$5, temp$10, temp$13, temp$16;
+        java.text.DecimalFormat temp$6;
+
+        this := @this: com.riskIt.ui.EstimateIncomeUI;
+        type := @parameter0: java.lang.String;
+        value := @parameter1: int;
+        resultMiddleTwoThirds := @parameter2: double;
+        slopeMiddleTwoThirds := @parameter3: double;
+        intercpetMiddleTwoThirds := @parameter4: double;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println()>();
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        temp$2 = new java.lang.StringBuffer;
+        specialinvoke temp$2.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Simple Linear Regression based on the middle two thrids of data in the database sorted based on ");
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(":");
+        temp$3 = virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>(temp$3);
+        temp$4 = <java.lang.System: java.io.PrintStream out>;
+        temp$5 = new java.lang.StringBuffer;
+        specialinvoke temp$5.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Based on ");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" value of ");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(value);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" the estimated income is ");
+        temp$6 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$7 = virtualinvoke temp$6.<java.text.DecimalFormat: java.lang.String format(double)>(resultMiddleTwoThirds);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$7);
+        temp$8 = virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$4.<java.io.PrintStream: void println(java.lang.String)>(temp$8);
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        temp$10 = new java.lang.StringBuffer;
+        specialinvoke temp$10.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("This estimate is based on simple linear regression based on the middle two thirds of the ");
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and");
+        temp$11 = virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>(temp$11);
+        temp$12 = <java.lang.System: java.io.PrintStream out>;
+        temp$13 = new java.lang.StringBuffer;
+        specialinvoke temp$13.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$13.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("income data contained in the database (sorted based on ");
+        virtualinvoke temp$13.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$13.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" ) using a regression formula of:");
+        temp$14 = virtualinvoke temp$13.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$12.<java.io.PrintStream: void println(java.lang.String)>(temp$14);
+        temp$15 = <java.lang.System: java.io.PrintStream out>;
+        temp$16 = new java.lang.StringBuffer;
+        specialinvoke temp$16.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Income = ");
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" * ");
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(slopeMiddleTwoThirds);
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" + ");
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(intercpetMiddleTwoThirds);
+        temp$17 = virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$15.<java.io.PrintStream: void println(java.lang.String)>(temp$17);
+        temp$18 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$18.<java.io.PrintStream: void println()>();
+        return;
+    }
+
+    public void printAnswerMiddleTwoThirds(java.lang.String, double, double, double, double)
+    {
+        com.riskIt.ui.EstimateIncomeUI this;
+        java.lang.String type, temp$3, temp$7, temp$9, temp$10, temp$13, temp$16, temp$19;
+        double value, resultMiddleTwoThirds, slopeMiddleTwoThirds, intercpetMiddleTwoThirds;
+        java.io.PrintStream temp$0, temp$1, temp$4, temp$11, temp$14, temp$17, temp$20;
+        java.lang.StringBuffer temp$2, temp$5, temp$12, temp$15, temp$18;
+        java.text.DecimalFormat temp$6, temp$8;
+
+        this := @this: com.riskIt.ui.EstimateIncomeUI;
+        type := @parameter0: java.lang.String;
+        value := @parameter1: double;
+        resultMiddleTwoThirds := @parameter2: double;
+        slopeMiddleTwoThirds := @parameter3: double;
+        intercpetMiddleTwoThirds := @parameter4: double;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println()>();
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        temp$2 = new java.lang.StringBuffer;
+        specialinvoke temp$2.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Simple Linear Regression based on the middle two thrids of data in the database sorted based on ");
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(":");
+        temp$3 = virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>(temp$3);
+        temp$4 = <java.lang.System: java.io.PrintStream out>;
+        temp$5 = new java.lang.StringBuffer;
+        specialinvoke temp$5.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Based on ");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" value of ");
+        temp$6 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$7 = virtualinvoke temp$6.<java.text.DecimalFormat: java.lang.String format(double)>(value);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$7);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" the estimated income is ");
+        temp$8 = this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter>;
+        temp$9 = virtualinvoke temp$8.<java.text.DecimalFormat: java.lang.String format(double)>(resultMiddleTwoThirds);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$9);
+        temp$10 = virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$4.<java.io.PrintStream: void println(java.lang.String)>(temp$10);
+        temp$11 = <java.lang.System: java.io.PrintStream out>;
+        temp$12 = new java.lang.StringBuffer;
+        specialinvoke temp$12.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("This estimate is based on simple linear regression based on the middle two thirds of the ");
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and");
+        temp$13 = virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$11.<java.io.PrintStream: void println(java.lang.String)>(temp$13);
+        temp$14 = <java.lang.System: java.io.PrintStream out>;
+        temp$15 = new java.lang.StringBuffer;
+        specialinvoke temp$15.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$15.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("income data contained in the database (sorted based on ");
+        virtualinvoke temp$15.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$15.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" ) using a regression formula of:");
+        temp$16 = virtualinvoke temp$15.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$14.<java.io.PrintStream: void println(java.lang.String)>(temp$16);
+        temp$17 = <java.lang.System: java.io.PrintStream out>;
+        temp$18 = new java.lang.StringBuffer;
+        specialinvoke temp$18.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Income = ");
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(type);
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" * ");
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(slopeMiddleTwoThirds);
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" + ");
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(intercpetMiddleTwoThirds);
+        temp$19 = virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$17.<java.io.PrintStream: void println(java.lang.String)>(temp$19);
+        temp$20 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$20.<java.io.PrintStream: void println()>();
+        return;
+    }
+
+    public void displayMainMenu()
+    {
+        com.riskIt.ui.EstimateIncomeUI this;
+        java.io.PrintStream temp$0, temp$1, temp$2, temp$3, temp$4, temp$5;
+
+        this := @this: com.riskIt.ui.EstimateIncomeUI;
+        temp$0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$0.<java.io.PrintStream: void println(java.lang.String)>("Please select a catigory to estimate a persons Income based on:");
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>("[1] Work Weeks");
+        temp$2 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$2.<java.io.PrintStream: void println(java.lang.String)>("[2] Weekly Wage");
+        temp$3 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$3.<java.io.PrintStream: void println(java.lang.String)>("[3] Investment Income");
+        temp$4 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$4.<java.io.PrintStream: void println(java.lang.String)>("[4] Enter a SSN to calculate based on a record in the database");
+        temp$5 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$5.<java.io.PrintStream: void println(java.lang.String)>("[5] Exit");
+        return;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.ui.EstimateIncomeUI this;
+        java.util.Scanner temp$0;
+        java.io.InputStream temp$1;
+        com.riskIt.interfaces.EstimateIncomeInterface temp$2;
+        java.text.DecimalFormat temp$3;
+
+        this := @this: com.riskIt.ui.EstimateIncomeUI;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        temp$0 = new java.util.Scanner;
+        temp$1 = <java.lang.System: java.io.InputStream in>;
+        specialinvoke temp$0.<java.util.Scanner: void <init>(java.io.InputStream)>(temp$1);
+        this.<com.riskIt.ui.EstimateIncomeUI: java.util.Scanner in> = temp$0;
+        temp$2 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.EstimateIncomeInterface getEstimateIncome()>();
+        this.<com.riskIt.ui.EstimateIncomeUI: com.riskIt.interfaces.EstimateIncomeInterface calc> = temp$2;
+        temp$3 = new java.text.DecimalFormat;
+        specialinvoke temp$3.<java.text.DecimalFormat: void <init>(java.lang.String)>("$###,###,###.00");
+        this.<com.riskIt.ui.EstimateIncomeUI: java.text.DecimalFormat myFormatter> = temp$3;
+        return;
+    }
+}

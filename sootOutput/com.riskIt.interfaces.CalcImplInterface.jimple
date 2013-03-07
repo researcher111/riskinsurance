@@ -1,0 +1,7 @@
+public interface  com.riskIt.interfaces.CalcImplInterface extends java.lang.Object
+{
+
+    public abstract void addToArrayList(java.util.ArrayList, java.lang.String, int, int);
+
+    public abstract double calculateAverage(java.lang.String, com.riskIt.interfaces.TypeWageDataStructureInterface);
+}

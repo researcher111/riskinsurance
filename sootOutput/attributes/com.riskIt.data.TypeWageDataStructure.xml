@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="7" eline="7" spos="0" epos="0"/>
+<text info="[type, weekWage, workWeeks]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="24" eline="24" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="34" eline="34" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="44" eline="44" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+</attributes>

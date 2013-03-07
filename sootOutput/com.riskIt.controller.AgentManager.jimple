@@ -1,0 +1,1367 @@
+public class com.riskIt.controller.AgentManager extends java.lang.Object
+{
+    private com.riskIt.util.AccessorMethods acc;
+    private com.riskIt.controller.ZipcodeManager zipcodeManager;
+
+    public void <init>()
+    {
+        com.riskIt.controller.AgentManager this;
+        com.riskIt.util.AccessorMethods temp$0;
+        com.riskIt.controller.ZipcodeManager temp$1;
+
+        this := @this: com.riskIt.controller.AgentManager;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        temp$0 = new com.riskIt.util.AccessorMethods;
+        specialinvoke temp$0.<com.riskIt.util.AccessorMethods: void <init>()>();
+        this.<com.riskIt.controller.AgentManager: com.riskIt.util.AccessorMethods acc> = temp$0;
+        temp$1 = new com.riskIt.controller.ZipcodeManager;
+        specialinvoke temp$1.<com.riskIt.controller.ZipcodeManager: void <init>()>();
+        this.<com.riskIt.controller.AgentManager: com.riskIt.controller.ZipcodeManager zipcodeManager> = temp$1;
+        return;
+    }
+
+    public void setZipcodeManager(com.riskIt.controller.ZipcodeManager)
+    {
+        com.riskIt.controller.AgentManager this;
+        com.riskIt.controller.ZipcodeManager zm;
+
+        this := @this: com.riskIt.controller.AgentManager;
+        zm := @parameter0: com.riskIt.controller.ZipcodeManager;
+        this.<com.riskIt.controller.AgentManager: com.riskIt.controller.ZipcodeManager zipcodeManager> = zm;
+        return;
+    }
+
+    public int createNewUser(java.lang.String, java.lang.String, long, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int, int, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int, int, int, int, int, int)
+    {
+        com.riskIt.controller.AgentManager this;
+        java.lang.String name, zipcode, sex, marital, race, taxStatus, taxDetails, houseHoldDetails, fatherOrigin, motherOrigin, birthCountry, citizenship, parents, unEmploymentReason, employmentStatus, education, eduEnroll, workClass, unionMember, temp$5, temp$8, temp$11, temp$14, temp$17, temp$20, temp$23, temp$26, temp$29, temp$32, temp$35, temp$38, temp$41, temp$44, temp$47, temp$50, temp$53, temp$56, temp$59, temp$62, temp$65, temp$68, temp$71, temp$74, temp$77, temp$80, temp$83, temp$86, temp$89, cmd_dataCheck, temp$91, cmd_userRecord, temp$93, cmd_investment, temp$95, cmd_youth, temp$97, cmd_employment, temp$99, cmd_education, temp$101, cmd_job, temp$103;
+        long ssn;
+        int age, capitalGains, capitalLosses, stockDividend, industryCode, occupationCode, employerSize, weekWage, selfEmployed, workWeeks, success, count, temp$106, temp$114;
+        java.sql.Statement stat, temp$1;
+        java.sql.ResultSet result, temp$104;
+        java.sql.Connection conn, temp$0;
+        java.io.PrintStream temp$2, temp$3, temp$6, temp$9, temp$12, temp$15, temp$18, temp$21, temp$24, temp$27, temp$30, temp$33, temp$36, temp$39, temp$42, temp$45, temp$48, temp$51, temp$54, temp$57, temp$60, temp$63, temp$66, temp$69, temp$72, temp$75, temp$78, temp$81, temp$84, temp$87, temp$107, temp$115, temp$116, temp$117, temp$118;
+        java.lang.StringBuffer temp$4, temp$7, temp$10, temp$13, temp$16, temp$19, temp$22, temp$25, temp$28, temp$31, temp$34, temp$37, temp$40, temp$43, temp$46, temp$49, temp$52, temp$55, temp$58, temp$61, temp$64, temp$67, temp$70, temp$73, temp$76, temp$79, temp$82, temp$85, temp$88, temp$90, temp$92, temp$94, temp$96, temp$98, temp$100, temp$102;
+        boolean temp$105, temp$108, temp$109, temp$110, temp$111, temp$112, temp$113;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.AgentManager;
+        name := @parameter0: java.lang.String;
+        zipcode := @parameter1: java.lang.String;
+        ssn := @parameter2: long;
+        age := @parameter3: int;
+        sex := @parameter4: java.lang.String;
+        marital := @parameter5: java.lang.String;
+        race := @parameter6: java.lang.String;
+        taxStatus := @parameter7: java.lang.String;
+        taxDetails := @parameter8: java.lang.String;
+        houseHoldDetails := @parameter9: java.lang.String;
+        fatherOrigin := @parameter10: java.lang.String;
+        motherOrigin := @parameter11: java.lang.String;
+        birthCountry := @parameter12: java.lang.String;
+        citizenship := @parameter13: java.lang.String;
+        capitalGains := @parameter14: int;
+        capitalLosses := @parameter15: int;
+        stockDividend := @parameter16: int;
+        parents := @parameter17: java.lang.String;
+        unEmploymentReason := @parameter18: java.lang.String;
+        employmentStatus := @parameter19: java.lang.String;
+        education := @parameter20: java.lang.String;
+        eduEnroll := @parameter21: java.lang.String;
+        workClass := @parameter22: java.lang.String;
+        unionMember := @parameter23: java.lang.String;
+        industryCode := @parameter24: int;
+        occupationCode := @parameter25: int;
+        employerSize := @parameter26: int;
+        weekWage := @parameter27: int;
+        selfEmployed := @parameter28: int;
+        workWeeks := @parameter29: int;
+        success = 0;
+        count = 0;
+        stat = null;
+        result = null;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$0;
+        temp$1 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$1;
+        temp$2 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$2.<java.io.PrintStream: void println(java.lang.String)>("Customer details you entered are .....");
+        temp$3 = <java.lang.System: java.io.PrintStream out>;
+        temp$4 = new java.lang.StringBuffer;
+        specialinvoke temp$4.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Name                       : ");
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(name);
+        temp$5 = virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$3.<java.io.PrintStream: void println(java.lang.String)>(temp$5);
+        temp$6 = <java.lang.System: java.io.PrintStream out>;
+        temp$7 = new java.lang.StringBuffer;
+        specialinvoke temp$7.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" SSN                        : ");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        temp$8 = virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$6.<java.io.PrintStream: void println(java.lang.String)>(temp$8);
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        temp$10 = new java.lang.StringBuffer;
+        specialinvoke temp$10.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Age                        : ");
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(age);
+        temp$11 = virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>(temp$11);
+        temp$12 = <java.lang.System: java.io.PrintStream out>;
+        temp$13 = new java.lang.StringBuffer;
+        specialinvoke temp$13.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$13.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Sex                        : ");
+        virtualinvoke temp$13.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(sex);
+        temp$14 = virtualinvoke temp$13.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$12.<java.io.PrintStream: void println(java.lang.String)>(temp$14);
+        temp$15 = <java.lang.System: java.io.PrintStream out>;
+        temp$16 = new java.lang.StringBuffer;
+        specialinvoke temp$16.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Marital Status             : ");
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(marital);
+        temp$17 = virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$15.<java.io.PrintStream: void println(java.lang.String)>(temp$17);
+        temp$18 = <java.lang.System: java.io.PrintStream out>;
+        temp$19 = new java.lang.StringBuffer;
+        specialinvoke temp$19.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Race                       : ");
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(race);
+        temp$20 = virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$18.<java.io.PrintStream: void println(java.lang.String)>(temp$20);
+        temp$21 = <java.lang.System: java.io.PrintStream out>;
+        temp$22 = new java.lang.StringBuffer;
+        specialinvoke temp$22.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$22.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Tax Status                 : ");
+        virtualinvoke temp$22.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(taxStatus);
+        temp$23 = virtualinvoke temp$22.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$21.<java.io.PrintStream: void println(java.lang.String)>(temp$23);
+        temp$24 = <java.lang.System: java.io.PrintStream out>;
+        temp$25 = new java.lang.StringBuffer;
+        specialinvoke temp$25.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$25.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Tax Details                : ");
+        virtualinvoke temp$25.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(taxDetails);
+        temp$26 = virtualinvoke temp$25.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$24.<java.io.PrintStream: void println(java.lang.String)>(temp$26);
+        temp$27 = <java.lang.System: java.io.PrintStream out>;
+        temp$28 = new java.lang.StringBuffer;
+        specialinvoke temp$28.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$28.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" House hold information     : ");
+        virtualinvoke temp$28.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(houseHoldDetails);
+        temp$29 = virtualinvoke temp$28.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$27.<java.io.PrintStream: void println(java.lang.String)>(temp$29);
+        temp$30 = <java.lang.System: java.io.PrintStream out>;
+        temp$31 = new java.lang.StringBuffer;
+        specialinvoke temp$31.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Father\'s origin            : ");
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(fatherOrigin);
+        temp$32 = virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$30.<java.io.PrintStream: void println(java.lang.String)>(temp$32);
+        temp$33 = <java.lang.System: java.io.PrintStream out>;
+        temp$34 = new java.lang.StringBuffer;
+        specialinvoke temp$34.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$34.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Mother\'s origin            : ");
+        virtualinvoke temp$34.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(motherOrigin);
+        temp$35 = virtualinvoke temp$34.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$33.<java.io.PrintStream: void println(java.lang.String)>(temp$35);
+        temp$36 = <java.lang.System: java.io.PrintStream out>;
+        temp$37 = new java.lang.StringBuffer;
+        specialinvoke temp$37.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$37.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Birth Country              : ");
+        virtualinvoke temp$37.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(birthCountry);
+        temp$38 = virtualinvoke temp$37.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$36.<java.io.PrintStream: void println(java.lang.String)>(temp$38);
+        temp$39 = <java.lang.System: java.io.PrintStream out>;
+        temp$40 = new java.lang.StringBuffer;
+        specialinvoke temp$40.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" CitizenShip                : ");
+        virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(citizenship);
+        temp$41 = virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$39.<java.io.PrintStream: void println(java.lang.String)>(temp$41);
+        temp$42 = <java.lang.System: java.io.PrintStream out>;
+        temp$43 = new java.lang.StringBuffer;
+        specialinvoke temp$43.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$43.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Capital Gains              : ");
+        virtualinvoke temp$43.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(capitalGains);
+        temp$44 = virtualinvoke temp$43.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$42.<java.io.PrintStream: void println(java.lang.String)>(temp$44);
+        temp$45 = <java.lang.System: java.io.PrintStream out>;
+        temp$46 = new java.lang.StringBuffer;
+        specialinvoke temp$46.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$46.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Capital losses             : ");
+        virtualinvoke temp$46.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(capitalLosses);
+        temp$47 = virtualinvoke temp$46.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$45.<java.io.PrintStream: void println(java.lang.String)>(temp$47);
+        temp$48 = <java.lang.System: java.io.PrintStream out>;
+        temp$49 = new java.lang.StringBuffer;
+        specialinvoke temp$49.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$49.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Stock dividends            : ");
+        virtualinvoke temp$49.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(stockDividend);
+        temp$50 = virtualinvoke temp$49.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$48.<java.io.PrintStream: void println(java.lang.String)>(temp$50);
+        temp$51 = <java.lang.System: java.io.PrintStream out>;
+        temp$52 = new java.lang.StringBuffer;
+        specialinvoke temp$52.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$52.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Parents\'Informarion        : ");
+        virtualinvoke temp$52.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(parents);
+        temp$53 = virtualinvoke temp$52.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$51.<java.io.PrintStream: void println(java.lang.String)>(temp$53);
+        temp$54 = <java.lang.System: java.io.PrintStream out>;
+        temp$55 = new java.lang.StringBuffer;
+        specialinvoke temp$55.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$55.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Employment Status          : ");
+        virtualinvoke temp$55.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(employmentStatus);
+        temp$56 = virtualinvoke temp$55.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$54.<java.io.PrintStream: void println(java.lang.String)>(temp$56);
+        temp$57 = <java.lang.System: java.io.PrintStream out>;
+        temp$58 = new java.lang.StringBuffer;
+        specialinvoke temp$58.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$58.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Un-employment reason       : ");
+        virtualinvoke temp$58.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(unEmploymentReason);
+        temp$59 = virtualinvoke temp$58.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$57.<java.io.PrintStream: void println(java.lang.String)>(temp$59);
+        temp$60 = <java.lang.System: java.io.PrintStream out>;
+        temp$61 = new java.lang.StringBuffer;
+        specialinvoke temp$61.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$61.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Education                  : ");
+        virtualinvoke temp$61.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(education);
+        temp$62 = virtualinvoke temp$61.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$60.<java.io.PrintStream: void println(java.lang.String)>(temp$62);
+        temp$63 = <java.lang.System: java.io.PrintStream out>;
+        temp$64 = new java.lang.StringBuffer;
+        specialinvoke temp$64.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$64.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Further education enrolled : ");
+        virtualinvoke temp$64.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(eduEnroll);
+        temp$65 = virtualinvoke temp$64.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$63.<java.io.PrintStream: void println(java.lang.String)>(temp$65);
+        temp$66 = <java.lang.System: java.io.PrintStream out>;
+        temp$67 = new java.lang.StringBuffer;
+        specialinvoke temp$67.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$67.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Work Class                 : ");
+        virtualinvoke temp$67.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(workClass);
+        temp$68 = virtualinvoke temp$67.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$66.<java.io.PrintStream: void println(java.lang.String)>(temp$68);
+        temp$69 = <java.lang.System: java.io.PrintStream out>;
+        temp$70 = new java.lang.StringBuffer;
+        specialinvoke temp$70.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Union member               : ");
+        virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(unionMember);
+        temp$71 = virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$69.<java.io.PrintStream: void println(java.lang.String)>(temp$71);
+        temp$72 = <java.lang.System: java.io.PrintStream out>;
+        temp$73 = new java.lang.StringBuffer;
+        specialinvoke temp$73.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$73.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Industry code              : ");
+        virtualinvoke temp$73.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industryCode);
+        temp$74 = virtualinvoke temp$73.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$72.<java.io.PrintStream: void println(java.lang.String)>(temp$74);
+        temp$75 = <java.lang.System: java.io.PrintStream out>;
+        temp$76 = new java.lang.StringBuffer;
+        specialinvoke temp$76.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$76.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Occupation code            : ");
+        virtualinvoke temp$76.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationCode);
+        temp$77 = virtualinvoke temp$76.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$75.<java.io.PrintStream: void println(java.lang.String)>(temp$77);
+        temp$78 = <java.lang.System: java.io.PrintStream out>;
+        temp$79 = new java.lang.StringBuffer;
+        specialinvoke temp$79.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$79.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Employer Size              : ");
+        virtualinvoke temp$79.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(employerSize);
+        temp$80 = virtualinvoke temp$79.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$78.<java.io.PrintStream: void println(java.lang.String)>(temp$80);
+        temp$81 = <java.lang.System: java.io.PrintStream out>;
+        temp$82 = new java.lang.StringBuffer;
+        specialinvoke temp$82.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Self-Employed              : ");
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(selfEmployed);
+        temp$83 = virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$81.<java.io.PrintStream: void println(java.lang.String)>(temp$83);
+        temp$84 = <java.lang.System: java.io.PrintStream out>;
+        temp$85 = new java.lang.StringBuffer;
+        specialinvoke temp$85.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$85.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Week wage                  : ");
+        virtualinvoke temp$85.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(weekWage);
+        temp$86 = virtualinvoke temp$85.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$84.<java.io.PrintStream: void println(java.lang.String)>(temp$86);
+        temp$87 = <java.lang.System: java.io.PrintStream out>;
+        temp$88 = new java.lang.StringBuffer;
+        specialinvoke temp$88.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$88.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" No. of weeks of work       : ");
+        virtualinvoke temp$88.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(workWeeks);
+        temp$89 = virtualinvoke temp$88.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$87.<java.io.PrintStream: void println(java.lang.String)>(temp$89);
+        temp$90 = new java.lang.StringBuffer;
+        specialinvoke temp$90.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$90.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Select * from userrecord where ssn = ");
+        virtualinvoke temp$90.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        temp$91 = virtualinvoke temp$90.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_dataCheck = temp$91;
+        temp$92 = new java.lang.StringBuffer;
+        specialinvoke temp$92.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("INSERT INTO userrecord VALUES (\'");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(name);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', \'");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(zipcode);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', ");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", ");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(age);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", \'");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(sex);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', \'");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(marital);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', \'");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(race);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', \'");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(taxStatus);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', \'");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(taxDetails);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', \'");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(houseHoldDetails);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', \'");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(fatherOrigin);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', \'");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(motherOrigin);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', \'");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(birthCountry);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', \'");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(citizenship);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\')");
+        temp$93 = virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_userRecord = temp$93;
+        temp$94 = new java.lang.StringBuffer;
+        specialinvoke temp$94.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$94.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("INSERT INTO investment VALUES (");
+        virtualinvoke temp$94.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$94.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", ");
+        virtualinvoke temp$94.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(capitalGains);
+        virtualinvoke temp$94.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", ");
+        virtualinvoke temp$94.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(capitalLosses);
+        virtualinvoke temp$94.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", ");
+        virtualinvoke temp$94.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(stockDividend);
+        virtualinvoke temp$94.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(")");
+        temp$95 = virtualinvoke temp$94.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_investment = temp$95;
+        temp$96 = new java.lang.StringBuffer;
+        specialinvoke temp$96.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$96.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("INSERT INTO youth VALUES (");
+        virtualinvoke temp$96.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$96.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", \'");
+        virtualinvoke temp$96.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(parents);
+        virtualinvoke temp$96.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\')");
+        temp$97 = virtualinvoke temp$96.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_youth = temp$97;
+        temp$98 = new java.lang.StringBuffer;
+        specialinvoke temp$98.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$98.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("INSERT INTO employmentstat VALUES (");
+        virtualinvoke temp$98.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$98.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", \'");
+        virtualinvoke temp$98.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(unEmploymentReason);
+        virtualinvoke temp$98.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', \'");
+        virtualinvoke temp$98.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(employmentStatus);
+        virtualinvoke temp$98.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\')");
+        temp$99 = virtualinvoke temp$98.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_employment = temp$99;
+        temp$100 = new java.lang.StringBuffer;
+        specialinvoke temp$100.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$100.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("INSERT INTO education VALUES (");
+        virtualinvoke temp$100.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$100.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", \'");
+        virtualinvoke temp$100.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(education);
+        virtualinvoke temp$100.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', \'");
+        virtualinvoke temp$100.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(eduEnroll);
+        virtualinvoke temp$100.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\')");
+        temp$101 = virtualinvoke temp$100.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_education = temp$101;
+        temp$102 = new java.lang.StringBuffer;
+        specialinvoke temp$102.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("INSERT INTO job VALUES (");
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", \'");
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(workClass);
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', ");
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industryCode);
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", ");
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationCode);
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", \'");
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(unionMember);
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\', ");
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(employerSize);
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", ");
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(weekWage);
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", ");
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(selfEmployed);
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", ");
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(workWeeks);
+        virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(")");
+        temp$103 = virtualinvoke temp$102.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_job = temp$103;
+        temp$104 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_dataCheck);
+        result = temp$104;
+
+     label1:
+        nop;
+        temp$105 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$105 == 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$106 = count + 1;
+        count = temp$106;
+        goto label1;
+
+     label3:
+        nop;
+        temp$107 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$107.<java.io.PrintStream: void println(java.lang.String)>("---------------------------------------------");
+        if count == 0 goto label4;
+
+        goto label5;
+
+     label4:
+        nop;
+        temp$108 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(cmd_userRecord);
+        temp$109 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(cmd_investment);
+        temp$110 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(cmd_youth);
+        temp$111 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(cmd_employment);
+        temp$112 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(cmd_education);
+        temp$113 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(cmd_job);
+        temp$114 = 1;
+        success = temp$114;
+        temp$115 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$115.<java.io.PrintStream: void println(java.lang.String)>("This customer is successfully added to database");
+        goto label6;
+
+     label5:
+        nop;
+        temp$116 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$116.<java.io.PrintStream: void println(java.lang.String)>("This customer is already present in the database");
+
+     label6:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        interfaceinvoke stat.<java.sql.Statement: void close()>();
+        temp$117 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$117.<java.io.PrintStream: void println(java.lang.String)>("---------------------------------------------");
+        goto label8;
+
+     label7:
+        nop;
+        e := @caughtexception;
+        temp$118 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$118.<java.io.PrintStream: void println(java.lang.String)>("Catch in createUser");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label8;
+
+     label8:
+        nop;
+        return success;
+
+        catch java.lang.Exception from label0 to label7 with label7;
+    }
+
+    public double calculateScore(long)
+    {
+        com.riskIt.controller.AgentManager this;
+        long userSSN;
+        int indus_stab, occu_stab, gains, workweeks, noOfEmp, selfEmp, age, weekwage, loss, stocks, temp$10, temp$11, temp$12, temp$13, temp$14, temp$20, temp$21, temp$23, temp$24, temp$25, temp$27, percentile, temp$31, temp$32, temp$45, temp$51;
+        double income, score, temp$9, temp$16, temp$33, temp$36, temp$37, temp$38, temp$39, temp$41, majorIncome, temp$42, temp$43, temp$44, temp$46, temp$47, temp$48, temp$50, temp$52;
+        java.lang.String zipcode, gender, unionMember, edu, occupationValue, marital_status, cmd_selectSSN, temp$2, temp$7, temp$17, temp$18, temp$19, temp$22, temp$26, temp$34;
+        java.util.ArrayList sData, temp$0, temp$29;
+        java.sql.Statement stat, temp$4;
+        java.sql.ResultSet result, temp$5;
+        java.lang.StringBuffer temp$1;
+        java.sql.Connection conn, temp$3;
+        boolean flag, temp$6, temp$8, temp$35;
+        com.riskIt.util.AccessorMethods temp$15, temp$30, temp$40, temp$49;
+        com.riskIt.controller.ZipcodeManager temp$28;
+        java.io.PrintStream temp$53, temp$54;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.AgentManager;
+        userSSN := @parameter0: long;
+        indus_stab = 0;
+        occu_stab = 0;
+        gains = 0;
+        workweeks = 0;
+        noOfEmp = 0;
+        selfEmp = 0;
+        age = 0;
+        weekwage = 0;
+        loss = 0;
+        stocks = 0;
+        income = 0.0;
+        score = 0.0;
+        zipcode = "";
+        gender = "";
+        unionMember = "";
+        edu = "";
+        occupationValue = "";
+        marital_status = "";
+        temp$0 = new java.util.ArrayList;
+        specialinvoke temp$0.<java.util.ArrayList: void <init>()>();
+        sData = temp$0;
+        stat = null;
+        result = null;
+        temp$1 = new java.lang.StringBuffer;
+        specialinvoke temp$1.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT userrecord.zip, userrecord.sex, userrecord.ssn,  userrecord.age, userrecord.marital, investment.capitalgains,  investment.capitallosses, investment.stockdividends,  job.workweeks, job.weekwage, job.unionmember, job.employersize,  job.selfemployed, industry.stability, industry.industrycode,  occupation.stability, occupation.occupationcode, occupation.occupation,  education.education   FROM  industry, occupation, investment, education, userrecord, job WHERE industry.industrycode = job.industrycode  and occupation.occupationcode = job.occupationcode  and education.ssn = userrecord.ssn and  investment.ssn = userrecord.ssn and  job.ssn = userrecord.ssn and  userrecord.ssn = ");
+        virtualinvoke temp$1.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(userSSN);
+        temp$2 = virtualinvoke temp$1.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_selectSSN = temp$2;
+
+     label0:
+        nop;
+        temp$3 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$3;
+        temp$4 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$4;
+        temp$5 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_selectSSN);
+        result = temp$5;
+        temp$6 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        flag = temp$6;
+        if flag == 0 goto label11;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$7 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("occupation");
+        occupationValue = temp$7;
+        temp$8 = virtualinvoke occupationValue.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("Federal government");
+        if temp$8 == 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$9 = 100.0;
+        score = temp$9;
+        goto label10;
+
+     label3:
+        nop;
+        temp$10 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("workweeks");
+        workweeks = temp$10;
+        temp$11 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("weekwage");
+        weekwage = temp$11;
+        temp$12 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("capitalGains");
+        gains = temp$12;
+        temp$13 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("capitallosses");
+        loss = temp$13;
+        temp$14 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("stockdividends");
+        stocks = temp$14;
+        temp$15 = this.<com.riskIt.controller.AgentManager: com.riskIt.util.AccessorMethods acc>;
+        temp$16 = virtualinvoke temp$15.<com.riskIt.util.AccessorMethods: double calculateIncome(int,int,int,int,int)>(workweeks, weekwage, gains, loss, stocks);
+        income = temp$16;
+        temp$17 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("zip");
+        zipcode = temp$17;
+        temp$18 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("sex");
+        gender = temp$18;
+        temp$19 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("unionmember");
+        unionMember = temp$19;
+        temp$20 = interfaceinvoke result.<java.sql.ResultSet: int getInt(int)>(14);
+        indus_stab = temp$20;
+        temp$21 = interfaceinvoke result.<java.sql.ResultSet: int getInt(int)>(16);
+        occu_stab = temp$21;
+        temp$22 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("education");
+        edu = temp$22;
+        temp$23 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("capitalGains");
+        gains = temp$23;
+        temp$24 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("employersize");
+        noOfEmp = temp$24;
+        temp$25 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("selfemployed");
+        selfEmp = temp$25;
+        temp$26 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("marital");
+        marital_status = temp$26;
+        temp$27 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("age");
+        age = temp$27;
+        temp$28 = this.<com.riskIt.controller.AgentManager: com.riskIt.controller.ZipcodeManager zipcodeManager>;
+        temp$29 = virtualinvoke temp$28.<com.riskIt.controller.ZipcodeManager: java.util.ArrayList getAllZipcodes(java.lang.String)>(zipcode);
+        sData = temp$29;
+        temp$30 = this.<com.riskIt.controller.AgentManager: com.riskIt.util.AccessorMethods acc>;
+        temp$31 = virtualinvoke temp$30.<com.riskIt.util.AccessorMethods: int calculatePercentile(double,java.util.ArrayList)>(income, sData);
+        percentile = temp$31;
+        temp$32 = 100 * percentile;
+        temp$33 = (double) temp$32;
+        score = temp$33;
+        temp$34 = virtualinvoke gender.<java.lang.String: java.lang.String trim()>();
+        temp$35 = virtualinvoke temp$34.<java.lang.String: boolean equals(java.lang.Object)>("Female");
+        if temp$35 == 0 goto label5;
+
+        goto label4;
+
+     label4:
+        nop;
+        temp$36 = score;
+        temp$37 = score / 100.0;
+        temp$38 = temp$37 * 5.0;
+        temp$39 = temp$36 + temp$38;
+        score = temp$39;
+
+     label5:
+        nop;
+        temp$40 = this.<com.riskIt.controller.AgentManager: com.riskIt.util.AccessorMethods acc>;
+        temp$41 = virtualinvoke temp$40.<com.riskIt.util.AccessorMethods: double checkScoreRange(java.lang.String,int,int,java.lang.String,double)>(unionMember, indus_stab, occu_stab, edu, score);
+        score = temp$41;
+        temp$42 = income * 50.0;
+        temp$43 = temp$42 / 100.0;
+        majorIncome = temp$43;
+        temp$44 = (double) gains;
+        temp$45 = majorIncome cmpl temp$44;
+        if temp$45 < 0 goto label7;
+
+        goto label6;
+
+     label6:
+        nop;
+        temp$46 = score * 20.0;
+        temp$47 = temp$46 / 100.0;
+        temp$48 = score - temp$47;
+        score = temp$48;
+
+     label7:
+        nop;
+        temp$49 = this.<com.riskIt.controller.AgentManager: com.riskIt.util.AccessorMethods acc>;
+        temp$50 = virtualinvoke temp$49.<com.riskIt.util.AccessorMethods: double checkScoreForStatus(java.lang.String,int,int,int,double)>(marital_status, age, selfEmp, noOfEmp, score);
+        score = temp$50;
+        temp$51 = score cmpl 100.0;
+        if temp$51 <= 0 goto label9;
+
+        goto label8;
+
+     label8:
+        nop;
+        temp$52 = 100.0;
+        score = temp$52;
+
+     label9:
+        nop;
+
+     label10:
+        nop;
+        goto label12;
+
+     label11:
+        nop;
+        temp$53 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$53.<java.io.PrintStream: void println(java.lang.String)>("There is no record for this customer");
+
+     label12:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        goto label14;
+
+     label13:
+        nop;
+        e := @caughtexception;
+        temp$54 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$54.<java.io.PrintStream: void println(java.lang.String)>("Exception in calculateScore");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label14;
+
+     label14:
+        nop;
+        return score;
+
+        catch java.lang.Exception from label0 to label13 with label13;
+    }
+
+    public int deleteUser(java.lang.String)
+    {
+        com.riskIt.controller.AgentManager this;
+        java.lang.String ssn, del_user, temp$2, del_job, temp$5, del_edu, temp$8, del_emp, temp$11, del_inv, temp$14, del_mig, temp$17, del_youth, temp$20, cmd_checkData, temp$23;
+        int count, success, temp$28, temp$36, temp$39, temp$47;
+        java.sql.Statement stat, temp$25;
+        java.sql.ResultSet result, temp$26, temp$37;
+        java.lang.StringBuffer temp$0, temp$3, temp$6, temp$9, temp$12, temp$15, temp$18, temp$21;
+        long temp$1, temp$4, temp$7, temp$10, temp$13, temp$16, temp$19, temp$22;
+        java.sql.Connection conn, temp$24;
+        boolean temp$27, temp$29, temp$30, temp$31, temp$32, temp$33, temp$34, temp$35, temp$38, temp$40, temp$41, temp$42, temp$43, temp$44, temp$45, temp$46;
+        java.io.PrintStream temp$48, temp$49;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.AgentManager;
+        ssn := @parameter0: java.lang.String;
+        count = 0;
+        success = 0;
+        stat = null;
+        result = null;
+
+     label0:
+        nop;
+        temp$0 = new java.lang.StringBuffer;
+        specialinvoke temp$0.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Delete from userrecord where ssn = ");
+        temp$1 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>(ssn);
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(temp$1);
+        temp$2 = virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.String toString()>();
+        del_user = temp$2;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Delete from job where ssn = ");
+        temp$4 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>(ssn);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(temp$4);
+        temp$5 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        del_job = temp$5;
+        temp$6 = new java.lang.StringBuffer;
+        specialinvoke temp$6.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Delete from education where ssn = ");
+        temp$7 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>(ssn);
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(temp$7);
+        temp$8 = virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.String toString()>();
+        del_edu = temp$8;
+        temp$9 = new java.lang.StringBuffer;
+        specialinvoke temp$9.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Delete from employmentstat where ssn = ");
+        temp$10 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>(ssn);
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(temp$10);
+        temp$11 = virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.String toString()>();
+        del_emp = temp$11;
+        temp$12 = new java.lang.StringBuffer;
+        specialinvoke temp$12.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Delete from investment where ssn = ");
+        temp$13 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>(ssn);
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(temp$13);
+        temp$14 = virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.String toString()>();
+        del_inv = temp$14;
+        temp$15 = new java.lang.StringBuffer;
+        specialinvoke temp$15.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$15.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Delete from migration where ssn = ");
+        temp$16 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>(ssn);
+        virtualinvoke temp$15.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(temp$16);
+        temp$17 = virtualinvoke temp$15.<java.lang.StringBuffer: java.lang.String toString()>();
+        del_mig = temp$17;
+        temp$18 = new java.lang.StringBuffer;
+        specialinvoke temp$18.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Delete from youth where ssn = ");
+        temp$19 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>(ssn);
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(temp$19);
+        temp$20 = virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.String toString()>();
+        del_youth = temp$20;
+        temp$21 = new java.lang.StringBuffer;
+        specialinvoke temp$21.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Select * from userrecord where ssn = ");
+        temp$22 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>(ssn);
+        virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(temp$22);
+        temp$23 = virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_checkData = temp$23;
+        temp$24 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$24;
+        temp$25 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$25;
+        temp$26 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_checkData);
+        result = temp$26;
+
+     label1:
+        nop;
+        temp$27 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$27 == 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$28 = count + 1;
+        count = temp$28;
+        goto label1;
+
+     label3:
+        nop;
+        if count > 0 goto label4;
+
+        goto label5;
+
+     label4:
+        nop;
+        temp$29 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_youth);
+        temp$30 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_mig);
+        temp$31 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_job);
+        temp$32 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_edu);
+        temp$33 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_emp);
+        temp$34 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_inv);
+        temp$35 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_user);
+        temp$36 = 1;
+        success = temp$36;
+
+     label5:
+        nop;
+        temp$37 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_checkData);
+        result = temp$37;
+
+     label6:
+        nop;
+        temp$38 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$38 == 0 goto label8;
+
+        goto label7;
+
+     label7:
+        nop;
+        temp$39 = count + 1;
+        count = temp$39;
+        goto label6;
+
+     label8:
+        nop;
+        if count > 0 goto label9;
+
+        goto label10;
+
+     label9:
+        nop;
+        temp$40 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_youth);
+        temp$41 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_mig);
+        temp$42 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_job);
+        temp$43 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_edu);
+        temp$44 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_emp);
+        temp$45 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_inv);
+        temp$46 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_user);
+        temp$47 = 1;
+        success = temp$47;
+        goto label11;
+
+     label10:
+        nop;
+        temp$48 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$48.<java.io.PrintStream: void println(java.lang.String)>("The data is already deleted");
+
+     label11:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        goto label13;
+
+     label12:
+        nop;
+        e := @caughtexception;
+        temp$49 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$49.<java.io.PrintStream: void println(java.lang.String)>("Exception in delete");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label13;
+
+     label13:
+        nop;
+        return success;
+
+        catch java.lang.Exception from label0 to label12 with label12;
+    }
+
+    public void createAgentTable()
+    {
+        com.riskIt.controller.AgentManager this;
+        java.sql.Statement stat, temp$1;
+        java.lang.String create_agent, insert_agent1, insert_agent2, insert_agent3, insert_agent4, insert_agent5, del_Table;
+        java.sql.Connection conn, temp$0;
+        boolean temp$2, temp$3, temp$4, temp$5, temp$6, temp$7, temp$8;
+        java.lang.Exception e, e;
+        java.io.PrintStream temp$9;
+
+        this := @this: com.riskIt.controller.AgentManager;
+
+     label0:
+        nop;
+        create_agent = "Create table AgentTable ( Name char(20), id char(5))";
+        insert_agent1 = "Insert into AgentTable values ( \'Jim Cohen\', \'12345\')";
+        insert_agent2 = "Insert into AgentTable values ( \'Lisa Coburn\', \'23456\')";
+        insert_agent3 = "Insert into AgentTable values ( \'Big John\', \'34567\')";
+        insert_agent4 = "Insert into AgentTable values ( \'Chris Flake\', \'98765\')";
+        insert_agent5 = "Insert into AgentTable values ( \'Mike Jackman\', \'85642\')";
+        del_Table = " Drop table AgentTable";
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$0;
+        temp$1 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$1;
+
+     label1:
+        nop;
+        temp$2 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(del_Table);
+        goto label3;
+
+     label2:
+        nop;
+        e := @caughtexception;
+        nop;
+        goto label3;
+
+     label3:
+        nop;
+        temp$3 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(create_agent);
+        temp$4 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(insert_agent1);
+        temp$5 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(insert_agent2);
+        temp$6 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(insert_agent3);
+        temp$7 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(insert_agent4);
+        temp$8 = interfaceinvoke stat.<java.sql.Statement: boolean execute(java.lang.String)>(insert_agent5);
+        goto label5;
+
+     label4:
+        nop;
+        e := @caughtexception;
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>("Exception in createAgentTable");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label5;
+
+     label5:
+        nop;
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label2;
+        catch java.lang.Exception from label0 to label4 with label4;
+    }
+
+    public double calculatePurePremium(com.riskIt.data.Invitation)
+    {
+        com.riskIt.controller.AgentManager this;
+        com.riskIt.data.Invitation inv;
+        double premium, temp$0, temp$2, temp$4, temp$5, temp$6;
+        int temp$1, temp$3;
+
+        this := @this: com.riskIt.controller.AgentManager;
+        inv := @parameter0: com.riskIt.data.Invitation;
+        premium = 0.0;
+        temp$0 = virtualinvoke inv.<com.riskIt.data.Invitation: double getlossCoverage()>();
+        temp$1 = temp$0 cmpl 0.0;
+        if temp$1 <= 0 goto label2;
+
+        goto label0;
+
+     label0:
+        nop;
+        temp$2 = virtualinvoke inv.<com.riskIt.data.Invitation: double getExpoUnit()>();
+        temp$3 = temp$2 cmpl 0.0;
+        if temp$3 <= 0 goto label2;
+
+        goto label1;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$4 = virtualinvoke inv.<com.riskIt.data.Invitation: double getlossCoverage()>();
+        temp$5 = virtualinvoke inv.<com.riskIt.data.Invitation: double getExpoUnit()>();
+        temp$6 = temp$4 / temp$5;
+        premium = temp$6;
+
+     label2:
+        nop;
+        return premium;
+    }
+
+    public double calculateExpenseForExpo(com.riskIt.data.Invitation)
+    {
+        com.riskIt.controller.AgentManager this;
+        com.riskIt.data.Invitation inv;
+        double expo, temp$0, temp$2, temp$4, temp$5, temp$6;
+        int temp$1, temp$3;
+
+        this := @this: com.riskIt.controller.AgentManager;
+        inv := @parameter0: com.riskIt.data.Invitation;
+        expo = 0.0;
+        temp$0 = virtualinvoke inv.<com.riskIt.data.Invitation: double getPropertyValue()>();
+        temp$1 = temp$0 cmpl 0.0;
+        if temp$1 <= 0 goto label2;
+
+        goto label0;
+
+     label0:
+        nop;
+        temp$2 = virtualinvoke inv.<com.riskIt.data.Invitation: double getExpoUnit()>();
+        temp$3 = temp$2 cmpl 0.0;
+        if temp$3 <= 0 goto label2;
+
+        goto label1;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$4 = virtualinvoke inv.<com.riskIt.data.Invitation: double getPropertyValue()>();
+        temp$5 = virtualinvoke inv.<com.riskIt.data.Invitation: double getExpoUnit()>();
+        temp$6 = temp$4 / temp$5;
+        expo = temp$6;
+
+     label2:
+        nop;
+        return expo;
+    }
+
+    public double calculateActualPremium(com.riskIt.data.Invitation, double, double)
+    {
+        com.riskIt.controller.AgentManager this;
+        com.riskIt.data.Invitation inv, temp$4;
+        double premium, expo, tempPremium, temp$0, temp$1, temp$2, temp$5;
+        com.riskIt.controller.ZipcodeManager temp$3;
+
+        this := @this: com.riskIt.controller.AgentManager;
+        inv := @parameter0: com.riskIt.data.Invitation;
+        premium := @parameter1: double;
+        expo := @parameter2: double;
+        tempPremium = 0.0;
+        temp$0 = premium;
+        temp$1 = temp$0 + expo;
+        temp$2 = temp$1 / 1.0;
+        tempPremium = temp$2;
+        temp$3 = this.<com.riskIt.controller.AgentManager: com.riskIt.controller.ZipcodeManager zipcodeManager>;
+        temp$4 = virtualinvoke temp$3.<com.riskIt.controller.ZipcodeManager: com.riskIt.data.Invitation getOneZipcode(com.riskIt.data.Invitation)>(inv);
+        inv = temp$4;
+        temp$5 = virtualinvoke this.<com.riskIt.controller.AgentManager: double compareCustomerZones(com.riskIt.data.Invitation,double)>(inv, tempPremium);
+        tempPremium = temp$5;
+        return tempPremium;
+    }
+
+    public double compareCustomerZones(com.riskIt.data.Invitation, double)
+    {
+        com.riskIt.controller.AgentManager this;
+        com.riskIt.data.Invitation inv;
+        double premium, tempPremium, temp$20, temp$21, temp$22, temp$23, temp$24, temp$25, temp$26, temp$27, totalPremium, temp$28, temp$29, temp$30, temp$31, temp$32, temp$34, temp$35, temp$36, temp$37, temp$38, temp$39, temp$40, temp$41, temp$43, temp$44, temp$45, temp$46, temp$47, temp$48, temp$49, temp$50, temp$52, temp$53, temp$54, temp$55, temp$56, temp$58, temp$59, temp$60, temp$61, temp$62, temp$64, temp$65, temp$66, temp$67, temp$68, temp$70, temp$71, temp$72, temp$73, temp$74;
+        java.lang.String state, temp$0;
+        boolean temp$1, temp$2, temp$3, temp$4, temp$5, temp$6, temp$7, temp$8, temp$9, temp$10, temp$11, temp$12, temp$13, temp$14, temp$15, temp$16, temp$17, temp$18;
+        int temp$19, temp$33, temp$42, temp$51, temp$57, temp$63, temp$69;
+
+        this := @this: com.riskIt.controller.AgentManager;
+        inv := @parameter0: com.riskIt.data.Invitation;
+        premium := @parameter1: double;
+        tempPremium = premium;
+        temp$0 = virtualinvoke inv.<com.riskIt.data.Invitation: java.lang.String getStateName()>();
+        state = temp$0;
+        temp$1 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("CA");
+        if temp$1 == 0 goto label0;
+
+        goto label17;
+
+     label0:
+        nop;
+        temp$2 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("AZ");
+        if temp$2 == 0 goto label1;
+
+        goto label17;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$3 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("NM");
+        if temp$3 == 0 goto label2;
+
+        goto label17;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$4 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("TX");
+        if temp$4 == 0 goto label3;
+
+        goto label17;
+
+        goto label3;
+
+     label3:
+        nop;
+        temp$5 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("LA");
+        if temp$5 == 0 goto label4;
+
+        goto label17;
+
+        goto label4;
+
+     label4:
+        nop;
+        temp$6 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("OK");
+        if temp$6 == 0 goto label5;
+
+        goto label17;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$7 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("MS");
+        if temp$7 == 0 goto label6;
+
+        goto label17;
+
+        goto label6;
+
+     label6:
+        nop;
+        temp$8 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("AL");
+        if temp$8 == 0 goto label7;
+
+        goto label17;
+
+        goto label7;
+
+     label7:
+        nop;
+        temp$9 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("FL");
+        if temp$9 == 0 goto label8;
+
+        goto label17;
+
+        goto label8;
+
+     label8:
+        nop;
+        temp$10 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("GA");
+        if temp$10 == 0 goto label9;
+
+        goto label17;
+
+        goto label9;
+
+     label9:
+        nop;
+        temp$11 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("SC");
+        if temp$11 == 0 goto label10;
+
+        goto label17;
+
+        goto label10;
+
+     label10:
+        nop;
+        temp$12 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("NC");
+        if temp$12 == 0 goto label11;
+
+        goto label17;
+
+        goto label11;
+
+     label11:
+        nop;
+        temp$13 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("VA");
+        if temp$13 == 0 goto label12;
+
+        goto label17;
+
+        goto label12;
+
+     label12:
+        nop;
+        temp$14 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("NJ");
+        if temp$14 == 0 goto label13;
+
+        goto label17;
+
+        goto label13;
+
+     label13:
+        nop;
+        temp$15 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("DE");
+        if temp$15 == 0 goto label14;
+
+        goto label17;
+
+        goto label14;
+
+     label14:
+        nop;
+        temp$16 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("RI");
+        if temp$16 == 0 goto label15;
+
+        goto label17;
+
+        goto label15;
+
+     label15:
+        nop;
+        temp$17 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("CT");
+        if temp$17 == 0 goto label16;
+
+        goto label17;
+
+        goto label16;
+
+     label16:
+        nop;
+        temp$18 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>("MA");
+        if temp$18 == 0 goto label21;
+
+        goto label17;
+
+        goto label21;
+
+     label17:
+        nop;
+        temp$19 = virtualinvoke inv.<com.riskIt.data.Invitation: int getAge()>();
+        if temp$19 >= 60 goto label18;
+
+        goto label19;
+
+     label18:
+        nop;
+        temp$20 = tempPremium;
+        temp$21 = tempPremium * 30.0;
+        temp$22 = temp$21 / 100.0;
+        temp$23 = temp$20 + temp$22;
+        tempPremium = temp$23;
+        goto label20;
+
+     label19:
+        nop;
+        temp$24 = tempPremium;
+        temp$25 = tempPremium * 20.0;
+        temp$26 = temp$25 / 100.0;
+        temp$27 = temp$24 + temp$26;
+        tempPremium = temp$27;
+
+     label20:
+        nop;
+
+     label21:
+        nop;
+        temp$28 = tempPremium * 12.0;
+        totalPremium = temp$28;
+        temp$29 = virtualinvoke inv.<com.riskIt.data.Invitation: double getDeductible()>();
+        temp$30 = virtualinvoke inv.<com.riskIt.data.Invitation: double getPropertyValue()>();
+        temp$31 = temp$30 * 10.0;
+        temp$32 = temp$31 / 100.0;
+        temp$33 = temp$29 cmpg temp$32;
+        if temp$33 >= 0 goto label23;
+
+        goto label22;
+
+     label22:
+        nop;
+        temp$34 = totalPremium;
+        temp$35 = totalPremium * 10.0;
+        temp$36 = temp$35 / 100.0;
+        temp$37 = temp$34 + temp$36;
+        totalPremium = temp$37;
+        goto label29;
+
+     label23:
+        nop;
+        temp$38 = virtualinvoke inv.<com.riskIt.data.Invitation: double getDeductible()>();
+        temp$39 = virtualinvoke inv.<com.riskIt.data.Invitation: double getPropertyValue()>();
+        temp$40 = temp$39 * 20.0;
+        temp$41 = temp$40 / 100.0;
+        temp$42 = temp$38 cmpg temp$41;
+        if temp$42 >= 0 goto label25;
+
+        goto label24;
+
+     label24:
+        nop;
+        temp$43 = totalPremium;
+        temp$44 = totalPremium * 20.0;
+        temp$45 = temp$44 / 100.0;
+        temp$46 = temp$43 + temp$45;
+        totalPremium = temp$46;
+        goto label28;
+
+     label25:
+        nop;
+        temp$47 = virtualinvoke inv.<com.riskIt.data.Invitation: double getDeductible()>();
+        temp$48 = virtualinvoke inv.<com.riskIt.data.Invitation: double getPropertyValue()>();
+        temp$49 = temp$48 * 30.0;
+        temp$50 = temp$49 / 100.0;
+        temp$51 = temp$47 cmpg temp$50;
+        if temp$51 >= 0 goto label27;
+
+        goto label26;
+
+     label26:
+        nop;
+        temp$52 = totalPremium;
+        temp$53 = totalPremium * 30.0;
+        temp$54 = temp$53 / 100.0;
+        temp$55 = temp$52 + temp$54;
+        totalPremium = temp$55;
+
+     label27:
+        nop;
+
+     label28:
+        nop;
+
+     label29:
+        nop;
+        temp$56 = virtualinvoke inv.<com.riskIt.data.Invitation: double getScore()>();
+        temp$57 = temp$56 cmpg 80.0;
+        if temp$57 > 0 goto label31;
+
+        goto label30;
+
+     label30:
+        nop;
+        temp$58 = totalPremium;
+        temp$59 = totalPremium * 10.0;
+        temp$60 = temp$59 / 100.0;
+        temp$61 = temp$58 + temp$60;
+        totalPremium = temp$61;
+        goto label37;
+
+     label31:
+        nop;
+        temp$62 = virtualinvoke inv.<com.riskIt.data.Invitation: double getScore()>();
+        temp$63 = temp$62 cmpg 50.0;
+        if temp$63 > 0 goto label33;
+
+        goto label32;
+
+     label32:
+        nop;
+        temp$64 = totalPremium;
+        temp$65 = totalPremium * 20.0;
+        temp$66 = temp$65 / 100.0;
+        temp$67 = temp$64 + temp$66;
+        totalPremium = temp$67;
+        goto label36;
+
+     label33:
+        nop;
+        temp$68 = virtualinvoke inv.<com.riskIt.data.Invitation: double getScore()>();
+        temp$69 = temp$68 cmpg 10.0;
+        if temp$69 > 0 goto label35;
+
+        goto label34;
+
+     label34:
+        nop;
+        temp$70 = totalPremium;
+        temp$71 = totalPremium * 30.0;
+        temp$72 = temp$71 / 100.0;
+        temp$73 = temp$70 + temp$72;
+        totalPremium = temp$73;
+
+     label35:
+        nop;
+
+     label36:
+        nop;
+
+     label37:
+        nop;
+        temp$74 = totalPremium / 12.0;
+        return temp$74;
+    }
+
+    public double calculateTotalValue(com.riskIt.data.Invitation)
+    {
+        com.riskIt.controller.AgentManager this;
+        com.riskIt.data.Invitation inv;
+        double purePremium, temp$0, expense_expo, temp$1, premium, temp$2;
+
+        this := @this: com.riskIt.controller.AgentManager;
+        inv := @parameter0: com.riskIt.data.Invitation;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.AgentManager: double calculatePurePremium(com.riskIt.data.Invitation)>(inv);
+        purePremium = temp$0;
+        temp$1 = virtualinvoke this.<com.riskIt.controller.AgentManager: double calculateExpenseForExpo(com.riskIt.data.Invitation)>(inv);
+        expense_expo = temp$1;
+        virtualinvoke inv.<com.riskIt.data.Invitation: void setExpenseExpo(double)>(expense_expo);
+        temp$2 = virtualinvoke this.<com.riskIt.controller.AgentManager: double calculateActualPremium(com.riskIt.data.Invitation,double,double)>(inv, purePremium, expense_expo);
+        premium = temp$2;
+        virtualinvoke inv.<com.riskIt.data.Invitation: void setPremium(double)>(premium);
+        return premium;
+    }
+}

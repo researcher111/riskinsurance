@@ -1,0 +1,300 @@
+public class com.riskIt.data.EstimateIncomeDTO extends java.lang.Object implements com.riskIt.interfaces.EstimateIncomeDTOInterface
+{
+    final java.lang.String name;
+    final int ssn;
+    final java.lang.String race;
+    final java.lang.String education;
+    final int occupationCode;
+    final int industryCode;
+    final int weeklyWage;
+    final int workWeeks;
+    final int investmentIncome;
+    final java.lang.String industryCodeDescription;
+    final java.lang.String occupationCodeDescription;
+
+    public void <init>(java.lang.String, int, java.lang.String, java.lang.String, int, int, int, int, int)
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        java.lang.String name, race, education, temp$0, temp$1;
+        int ssn, occupationCode, industryCode, weeklyWage, workWeeks, investmentIncome;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        name := @parameter0: java.lang.String;
+        ssn := @parameter1: int;
+        race := @parameter2: java.lang.String;
+        education := @parameter3: java.lang.String;
+        occupationCode := @parameter4: int;
+        industryCode := @parameter5: int;
+        weeklyWage := @parameter6: int;
+        workWeeks := @parameter7: int;
+        investmentIncome := @parameter8: int;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String name> = name;
+        this.<com.riskIt.data.EstimateIncomeDTO: int ssn> = ssn;
+        this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String race> = race;
+        this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String education> = education;
+        this.<com.riskIt.data.EstimateIncomeDTO: int occupationCode> = occupationCode;
+        this.<com.riskIt.data.EstimateIncomeDTO: int industryCode> = industryCode;
+        this.<com.riskIt.data.EstimateIncomeDTO: int weeklyWage> = weeklyWage;
+        this.<com.riskIt.data.EstimateIncomeDTO: int workWeeks> = workWeeks;
+        this.<com.riskIt.data.EstimateIncomeDTO: int investmentIncome> = investmentIncome;
+        temp$0 = virtualinvoke this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String setIndustryCodeDescription(int)>(industryCode);
+        this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String industryCodeDescription> = temp$0;
+        temp$1 = virtualinvoke this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String setOccupationCodeDescription(int)>(occupationCode);
+        this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String occupationCodeDescription> = temp$1;
+        return;
+    }
+
+    private final java.lang.String setIndustryCodeDescription(int)
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        int industryCode;
+        java.util.HashMap industryMap, temp$1;
+        com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface temp$0;
+        java.lang.Integer temp$2;
+        java.lang.Object temp$3;
+        java.lang.String temp$4;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        industryCode := @parameter0: int;
+        industryMap = null;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface getCalculateByOccupationOrIndustryCode()>();
+        temp$1 = interfaceinvoke temp$0.<com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface: java.util.HashMap getIndustryCodeAndNameMap()>();
+        industryMap = temp$1;
+        temp$2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(industryCode);
+        temp$3 = virtualinvoke industryMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$2);
+        temp$4 = (java.lang.String) temp$3;
+        return temp$4;
+    }
+
+    private final java.lang.String setOccupationCodeDescription(int)
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        int occupationCode;
+        java.util.HashMap occupationMap, temp$1;
+        com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface temp$0;
+        java.lang.Integer temp$2;
+        java.lang.Object temp$3;
+        java.lang.String temp$4;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        occupationCode := @parameter0: int;
+        occupationMap = null;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface getCalculateByOccupationOrIndustryCode()>();
+        temp$1 = interfaceinvoke temp$0.<com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface: java.util.HashMap getOccupationCodeAndNameMap()>();
+        occupationMap = temp$1;
+        temp$2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(occupationCode);
+        temp$3 = virtualinvoke occupationMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$2);
+        temp$4 = (java.lang.String) temp$3;
+        return temp$4;
+    }
+
+    public java.lang.String getName()
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        java.lang.String temp$0, temp$1, temp$2, temp$4, temp$5;
+        boolean temp$3;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        temp$0 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String name>;
+        if temp$0 == null goto label1;
+
+        goto label0;
+
+     label0:
+        nop;
+        temp$1 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String name>;
+        temp$2 = virtualinvoke temp$1.<java.lang.String: java.lang.String trim()>();
+        temp$3 = virtualinvoke temp$2.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("null");
+        if temp$3 == 0 goto label2;
+
+        goto label1;
+
+        goto label2;
+
+     label1:
+        nop;
+        temp$4 = "None Entered";
+        return temp$4;
+
+     label2:
+        nop;
+        temp$5 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String name>;
+        return temp$5;
+    }
+
+    public int getSSN()
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        int temp$0;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        temp$0 = this.<com.riskIt.data.EstimateIncomeDTO: int ssn>;
+        return temp$0;
+    }
+
+    public java.lang.String getRace()
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        java.lang.String temp$0, temp$1, temp$2, temp$4, temp$5;
+        boolean temp$3;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        temp$0 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String race>;
+        if temp$0 == null goto label1;
+
+        goto label0;
+
+     label0:
+        nop;
+        temp$1 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String race>;
+        temp$2 = virtualinvoke temp$1.<java.lang.String: java.lang.String trim()>();
+        temp$3 = virtualinvoke temp$2.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("null");
+        if temp$3 == 0 goto label2;
+
+        goto label1;
+
+        goto label2;
+
+     label1:
+        nop;
+        temp$4 = "None Entered";
+        return temp$4;
+
+     label2:
+        nop;
+        temp$5 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String race>;
+        return temp$5;
+    }
+
+    public java.lang.String getEducation()
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        java.lang.String temp$0, temp$1, temp$2, temp$4, temp$5;
+        boolean temp$3;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        temp$0 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String education>;
+        if temp$0 == null goto label1;
+
+        goto label0;
+
+     label0:
+        nop;
+        temp$1 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String education>;
+        temp$2 = virtualinvoke temp$1.<java.lang.String: java.lang.String trim()>();
+        temp$3 = virtualinvoke temp$2.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("null");
+        if temp$3 == 0 goto label2;
+
+        goto label1;
+
+        goto label2;
+
+     label1:
+        nop;
+        temp$4 = "None Entered";
+        return temp$4;
+
+     label2:
+        nop;
+        temp$5 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String education>;
+        return temp$5;
+    }
+
+    public int getOccupationCode()
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        int temp$0;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        temp$0 = this.<com.riskIt.data.EstimateIncomeDTO: int occupationCode>;
+        return temp$0;
+    }
+
+    public int getIndustryCode()
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        int temp$0;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        temp$0 = this.<com.riskIt.data.EstimateIncomeDTO: int industryCode>;
+        return temp$0;
+    }
+
+    public int getWeeklyWage()
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        int temp$0;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        temp$0 = this.<com.riskIt.data.EstimateIncomeDTO: int weeklyWage>;
+        return temp$0;
+    }
+
+    public int getWorkWeeks()
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        int temp$0;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        temp$0 = this.<com.riskIt.data.EstimateIncomeDTO: int workWeeks>;
+        return temp$0;
+    }
+
+    public int getInvestmentIncome()
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        int temp$0;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        temp$0 = this.<com.riskIt.data.EstimateIncomeDTO: int investmentIncome>;
+        return temp$0;
+    }
+
+    public java.lang.String toString()
+    {
+        com.riskIt.data.EstimateIncomeDTO this;
+        java.lang.StringBuffer temp$0;
+        java.lang.String temp$1, temp$3, temp$4, temp$6, temp$8, temp$12;
+        int temp$2, temp$5, temp$7, temp$9, temp$10, temp$11;
+
+        this := @this: com.riskIt.data.EstimateIncomeDTO;
+        temp$0 = new java.lang.StringBuffer;
+        specialinvoke temp$0.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Name: ");
+        temp$1 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String name>;
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$1);
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\nSSN: ");
+        temp$2 = this.<com.riskIt.data.EstimateIncomeDTO: int ssn>;
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$2);
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\nRace: ");
+        temp$3 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String race>;
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$3);
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\nEducation: ");
+        temp$4 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String education>;
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$4);
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\nOccupation Code: ");
+        temp$5 = this.<com.riskIt.data.EstimateIncomeDTO: int occupationCode>;
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$5);
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" : ");
+        temp$6 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String occupationCodeDescription>;
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$6);
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\nIndustryCode: ");
+        temp$7 = this.<com.riskIt.data.EstimateIncomeDTO: int industryCode>;
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$7);
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" : ");
+        temp$8 = this.<com.riskIt.data.EstimateIncomeDTO: java.lang.String industryCodeDescription>;
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$8);
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\nWeekly Wage: ");
+        temp$9 = this.<com.riskIt.data.EstimateIncomeDTO: int weeklyWage>;
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$9);
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\nWork Weeks: ");
+        temp$10 = this.<com.riskIt.data.EstimateIncomeDTO: int workWeeks>;
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$10);
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\nInvestment Income: ");
+        temp$11 = this.<com.riskIt.data.EstimateIncomeDTO: int investmentIncome>;
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$11);
+        temp$12 = virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.String toString()>();
+        return temp$12;
+    }
+}

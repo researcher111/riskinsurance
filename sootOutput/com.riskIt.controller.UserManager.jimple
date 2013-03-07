@@ -1,0 +1,2950 @@
+public class com.riskIt.controller.UserManager extends java.lang.Object
+{
+    private com.riskIt.util.AccessorMethods acc;
+    private com.riskIt.controller.AgentManager agent;
+
+    public void <init>()
+    {
+        com.riskIt.controller.UserManager this;
+        com.riskIt.util.AccessorMethods temp$0;
+        com.riskIt.controller.AgentManager temp$1;
+
+        this := @this: com.riskIt.controller.UserManager;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        temp$0 = new com.riskIt.util.AccessorMethods;
+        specialinvoke temp$0.<com.riskIt.util.AccessorMethods: void <init>()>();
+        this.<com.riskIt.controller.UserManager: com.riskIt.util.AccessorMethods acc> = temp$0;
+        temp$1 = new com.riskIt.controller.AgentManager;
+        specialinvoke temp$1.<com.riskIt.controller.AgentManager: void <init>()>();
+        this.<com.riskIt.controller.UserManager: com.riskIt.controller.AgentManager agent> = temp$1;
+        return;
+    }
+
+    public int filterZipcode(java.lang.String)
+    {
+        com.riskIt.controller.UserManager this;
+        java.lang.String zip, temp$2, cmd_zipSearch, temp$4, temp$10, temp$19, temp$20, temp$26;
+        int count, temp$0, temp$16;
+        java.sql.Statement stat, temp$6;
+        java.sql.ResultSet result, temp$7;
+        boolean temp$1, temp$15;
+        java.lang.StringBuffer temp$3, temp$9, temp$25;
+        java.sql.Connection conn, temp$5;
+        java.io.PrintStream temp$8, temp$11, temp$13, temp$14, temp$17, temp$21, temp$22, temp$23, temp$24, temp$27;
+        java.lang.Object[] temp$12, temp$18;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        zip := @parameter0: java.lang.String;
+        count = 0;
+        stat = null;
+        result = null;
+        temp$0 = virtualinvoke zip.<java.lang.String: int length()>();
+        if temp$0 == 0 goto label1;
+
+        goto label0;
+
+     label0:
+        nop;
+        temp$1 = virtualinvoke zip.<java.lang.String: boolean equals(java.lang.Object)>("null");
+        if temp$1 == 0 goto label2;
+
+        goto label1;
+
+        goto label2;
+
+     label1:
+        nop;
+        temp$2 = null;
+        zip = temp$2;
+
+     label2:
+        nop;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT * from userrecord where zip = \'");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(zip);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\'");
+        temp$4 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_zipSearch = temp$4;
+
+     label3:
+        nop;
+        temp$5 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$5;
+        temp$6 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$6;
+        temp$7 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_zipSearch);
+        result = temp$7;
+        temp$8 = <java.lang.System: java.io.PrintStream out>;
+        temp$9 = new java.lang.StringBuffer;
+        specialinvoke temp$9.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("List of customers for zipcode : ");
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(zip);
+        temp$10 = virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$8.<java.io.PrintStream: void println(java.lang.String)>(temp$10);
+        temp$11 = <java.lang.System: java.io.PrintStream out>;
+        temp$12 = newarray (java.lang.Object)[2];
+        temp$12[0] = "NAME";
+        temp$12[1] = "SSN";
+        temp$13 = virtualinvoke temp$11.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("%20s |%20s |", temp$12);
+        temp$14 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$14.<java.io.PrintStream: void println(java.lang.String)>("");
+
+     label4:
+        nop;
+        temp$15 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$15 == 0 goto label6;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$16 = count + 1;
+        count = temp$16;
+        temp$17 = <java.lang.System: java.io.PrintStream out>;
+        temp$18 = newarray (java.lang.Object)[2];
+        temp$19 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("name");
+        temp$18[0] = temp$19;
+        temp$20 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("ssn");
+        temp$18[1] = temp$20;
+        temp$21 = virtualinvoke temp$17.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("%s |%s |", temp$18);
+        temp$22 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$22.<java.io.PrintStream: void println(java.lang.String)>("");
+        goto label4;
+
+     label6:
+        nop;
+        if count == 0 goto label7;
+
+        goto label8;
+
+     label7:
+        nop;
+        temp$23 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$23.<java.io.PrintStream: void println(java.lang.String)>("There are no customers enrolled in this zipcode");
+        goto label9;
+
+     label8:
+        nop;
+        temp$24 = <java.lang.System: java.io.PrintStream out>;
+        temp$25 = new java.lang.StringBuffer;
+        specialinvoke temp$25.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$25.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No. of customers in zipcode : ");
+        virtualinvoke temp$25.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(zip);
+        virtualinvoke temp$25.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is ");
+        virtualinvoke temp$25.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(count);
+        temp$26 = virtualinvoke temp$25.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$24.<java.io.PrintStream: void println(java.lang.String)>(temp$26);
+
+     label9:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        goto label11;
+
+     label10:
+        nop;
+        e := @caughtexception;
+        temp$27 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$27.<java.io.PrintStream: void println(java.lang.String)>("Exception in filterZipcode");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label11;
+
+     label11:
+        nop;
+        return count;
+
+        catch java.lang.Exception from label3 to label10 with label10;
+    }
+
+    public double calculateUnEmploymentRate(java.lang.String)
+    {
+        com.riskIt.controller.UserManager this;
+        java.lang.String stateName, temp$1, cmd_getAllUnemployed, temp$7, cmd_getTotalCount, temp$9, temp$15, temp$22;
+        int countOfAllEmployees, countOfUnemployed, temp$12, temp$16, temp$19;
+        double ratePercent, temp$23, temp$24, temp$25, temp$26, temp$27, temp$29, temp$30;
+        java.sql.Statement stat, temp$5;
+        java.sql.ResultSet result, temp$10, temp$17;
+        com.riskIt.util.AccessorMethods temp$0;
+        boolean temp$2, temp$11, temp$18;
+        java.io.PrintStream temp$3, temp$13, temp$20, temp$31, temp$34, temp$35, temp$36;
+        java.sql.Connection conn, temp$4;
+        java.lang.StringBuffer temp$6, temp$8, temp$14, temp$21;
+        long temp$28;
+        java.lang.Object[] temp$32;
+        java.lang.Double temp$33;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        stateName := @parameter0: java.lang.String;
+        countOfAllEmployees = 0;
+        countOfUnemployed = 0;
+        ratePercent = 0.0;
+        stat = null;
+        result = null;
+        temp$0 = this.<com.riskIt.controller.UserManager: com.riskIt.util.AccessorMethods acc>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.util.AccessorMethods: java.lang.String checkLetter(java.lang.String)>(stateName);
+        stateName = temp$1;
+        temp$2 = virtualinvoke stateName.<java.lang.String: boolean equals(java.lang.Object)>("");
+        if temp$2 == 0 goto label1;
+
+        goto label0;
+
+     label0:
+        nop;
+        temp$3 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$3.<java.io.PrintStream: void println(java.lang.String)>("You have entered a incorrect value.");
+        goto label11;
+
+     label1:
+        nop;
+
+     label2:
+        nop;
+        temp$4 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$4;
+        temp$5 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$5;
+        temp$6 = new java.lang.StringBuffer;
+        specialinvoke temp$6.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT count(*) as totalUnemploy  FROM ziptable, employmentStat, userrecord  WHERE employmentStat.ssn = userrecord.ssn and employmentstat.unemploymentreason <> \'null\' and ziptable.statename = \'");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(stateName);
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\' ");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("and ziptable.zip = userrecord.zip");
+        temp$7 = virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_getAllUnemployed = temp$7;
+        temp$8 = new java.lang.StringBuffer;
+        specialinvoke temp$8.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT count(*) as totalCount FROM  ziptable, userrecord  WHERE ziptable.statename = \'");
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(stateName);
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\' and ziptable.zip = userrecord.zip");
+        temp$9 = virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_getTotalCount = temp$9;
+        temp$10 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_getTotalCount);
+        result = temp$10;
+        temp$11 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$11 == 0 goto label4;
+
+        goto label3;
+
+     label3:
+        nop;
+        temp$12 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("totalCount");
+        countOfAllEmployees = temp$12;
+
+     label4:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        temp$13 = <java.lang.System: java.io.PrintStream out>;
+        temp$14 = new java.lang.StringBuffer;
+        specialinvoke temp$14.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Total number of people working for the state of ");
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(stateName);
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is ");
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(countOfAllEmployees);
+        temp$15 = virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$13.<java.io.PrintStream: void println(java.lang.String)>(temp$15);
+        if countOfAllEmployees == 0 goto label5;
+
+        goto label6;
+
+     label5:
+        nop;
+        temp$16 = 1;
+        countOfAllEmployees = temp$16;
+
+     label6:
+        nop;
+        temp$17 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_getAllUnemployed);
+        result = temp$17;
+        temp$18 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$18 == 0 goto label8;
+
+        goto label7;
+
+     label7:
+        nop;
+        temp$19 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("totalUnemploy");
+        countOfUnemployed = temp$19;
+
+     label8:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        temp$20 = <java.lang.System: java.io.PrintStream out>;
+        temp$21 = new java.lang.StringBuffer;
+        specialinvoke temp$21.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Total number of unemployed people for the state of ");
+        virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(stateName);
+        virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is ");
+        virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(countOfUnemployed);
+        temp$22 = virtualinvoke temp$21.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$20.<java.io.PrintStream: void println(java.lang.String)>(temp$22);
+        temp$23 = (double) countOfUnemployed;
+        temp$24 = (double) countOfAllEmployees;
+        temp$25 = temp$23 / temp$24;
+        temp$26 = temp$25 * 100.0;
+        ratePercent = temp$26;
+        temp$27 = ratePercent * 100.0;
+        ratePercent = temp$27;
+        temp$28 = staticinvoke <java.lang.Math: long round(double)>(ratePercent);
+        temp$29 = (double) temp$28;
+        ratePercent = temp$29;
+        temp$30 = ratePercent / 100.0;
+        ratePercent = temp$30;
+        temp$31 = <java.lang.System: java.io.PrintStream out>;
+        temp$32 = newarray (java.lang.Object)[2];
+        temp$32[0] = stateName;
+        temp$33 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(ratePercent);
+        temp$32[1] = temp$33;
+        temp$34 = virtualinvoke temp$31.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("The unemployment rate for the state of %s is %3.2f", temp$32);
+        temp$35 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$35.<java.io.PrintStream: void println()>();
+        interfaceinvoke stat.<java.sql.Statement: void close()>();
+        goto label10;
+
+     label9:
+        nop;
+        e := @caughtexception;
+        temp$36 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$36.<java.io.PrintStream: void println(java.lang.String)>("Catch in calculateUnemployment");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label10;
+
+     label10:
+        nop;
+
+     label11:
+        nop;
+        return ratePercent;
+
+        catch java.lang.Exception from label2 to label9 with label9;
+    }
+
+    public int filterEducation(java.lang.String)
+    {
+        com.riskIt.controller.UserManager this;
+        java.lang.String edu, temp$1, temp$3, cmd_eduSearch, temp$5, temp$11, temp$20, temp$21, temp$27;
+        int count, temp$0, temp$17;
+        java.sql.Statement stat, temp$7;
+        java.sql.ResultSet result, temp$8;
+        boolean temp$2, temp$16;
+        java.lang.StringBuffer temp$4, temp$10, temp$26;
+        java.sql.Connection conn, temp$6;
+        java.io.PrintStream temp$9, temp$12, temp$14, temp$15, temp$18, temp$22, temp$23, temp$24, temp$25, temp$28;
+        java.lang.Object[] temp$13, temp$19;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        edu := @parameter0: java.lang.String;
+        count = 0;
+        stat = null;
+        result = null;
+        temp$0 = virtualinvoke edu.<java.lang.String: int length()>();
+        if temp$0 == 0 goto label0;
+
+        goto label1;
+
+     label0:
+        nop;
+        temp$1 = null;
+        edu = temp$1;
+
+     label1:
+        nop;
+        temp$2 = virtualinvoke edu.<java.lang.String: boolean equals(java.lang.Object)>("null");
+        if temp$2 == 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$3 = null;
+        edu = temp$3;
+
+     label3:
+        nop;
+        temp$4 = new java.lang.StringBuffer;
+        specialinvoke temp$4.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT userrecord.ssn, userrecord.name,  education.education  from userrecord, education where  userrecord.ssn = education.ssn and  education.education = \' ");
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(edu);
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\'");
+        temp$5 = virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_eduSearch = temp$5;
+
+     label4:
+        nop;
+        temp$6 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$6;
+        temp$7 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$7;
+        temp$8 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_eduSearch);
+        result = temp$8;
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        temp$10 = new java.lang.StringBuffer;
+        specialinvoke temp$10.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("List of customers for given education : ");
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(edu);
+        temp$11 = virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>(temp$11);
+        temp$12 = <java.lang.System: java.io.PrintStream out>;
+        temp$13 = newarray (java.lang.Object)[2];
+        temp$13[0] = "NAME";
+        temp$13[1] = "SSN";
+        temp$14 = virtualinvoke temp$12.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("%20s |%20s |", temp$13);
+        temp$15 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$15.<java.io.PrintStream: void println(java.lang.String)>("");
+
+     label5:
+        nop;
+        temp$16 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$16 == 0 goto label7;
+
+        goto label6;
+
+     label6:
+        nop;
+        temp$17 = count + 1;
+        count = temp$17;
+        temp$18 = <java.lang.System: java.io.PrintStream out>;
+        temp$19 = newarray (java.lang.Object)[2];
+        temp$20 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("name");
+        temp$19[0] = temp$20;
+        temp$21 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("ssn");
+        temp$19[1] = temp$21;
+        temp$22 = virtualinvoke temp$18.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("%s |%s |", temp$19);
+        temp$23 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$23.<java.io.PrintStream: void println(java.lang.String)>("");
+        goto label5;
+
+     label7:
+        nop;
+        if count == 0 goto label8;
+
+        goto label9;
+
+     label8:
+        nop;
+        temp$24 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$24.<java.io.PrintStream: void println(java.lang.String)>("There are no customers enrolled with this education");
+        goto label10;
+
+     label9:
+        nop;
+        temp$25 = <java.lang.System: java.io.PrintStream out>;
+        temp$26 = new java.lang.StringBuffer;
+        specialinvoke temp$26.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No. of customers with education : ");
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(edu);
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is ");
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(count);
+        temp$27 = virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$25.<java.io.PrintStream: void println(java.lang.String)>(temp$27);
+
+     label10:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        goto label12;
+
+     label11:
+        nop;
+        e := @caughtexception;
+        temp$28 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$28.<java.io.PrintStream: void println(java.lang.String)>("Exception in filterEducation");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label12;
+
+     label12:
+        nop;
+        return count;
+
+        catch java.lang.Exception from label4 to label11 with label11;
+    }
+
+    public int filterOccupation(java.lang.String)
+    {
+        com.riskIt.controller.UserManager this;
+        java.lang.String occupation, temp$1, temp$3, cmd_OccupationSearch, temp$5, temp$11, temp$20, temp$21, temp$27;
+        int count, temp$0, temp$17;
+        java.sql.Statement stat, temp$7;
+        java.sql.ResultSet result, temp$8;
+        boolean temp$2, temp$16;
+        java.lang.StringBuffer temp$4, temp$10, temp$26;
+        java.sql.Connection conn, temp$6;
+        java.io.PrintStream temp$9, temp$12, temp$14, temp$15, temp$18, temp$22, temp$23, temp$24, temp$25, temp$28;
+        java.lang.Object[] temp$13, temp$19;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        occupation := @parameter0: java.lang.String;
+        count = 0;
+        stat = null;
+        result = null;
+        temp$0 = virtualinvoke occupation.<java.lang.String: int length()>();
+        if temp$0 == 0 goto label0;
+
+        goto label1;
+
+     label0:
+        nop;
+        temp$1 = null;
+        occupation = temp$1;
+
+     label1:
+        nop;
+        temp$2 = virtualinvoke occupation.<java.lang.String: boolean equals(java.lang.Object)>("null");
+        if temp$2 == 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$3 = null;
+        occupation = temp$3;
+
+     label3:
+        nop;
+        temp$4 = new java.lang.StringBuffer;
+        specialinvoke temp$4.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT userrecord.ssn, userrecord.name,  job.occupationcode  from userrecord, job, occupation where  userrecord.ssn = job.ssn and  job.occupationcode = occupation.occupationcode and  occupation.occupation = \' ");
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(occupation);
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\'");
+        temp$5 = virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_OccupationSearch = temp$5;
+
+     label4:
+        nop;
+        temp$6 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$6;
+        temp$7 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$7;
+        temp$8 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_OccupationSearch);
+        result = temp$8;
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        temp$10 = new java.lang.StringBuffer;
+        specialinvoke temp$10.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("List of customers for given Occupation : ");
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(occupation);
+        temp$11 = virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>(temp$11);
+        temp$12 = <java.lang.System: java.io.PrintStream out>;
+        temp$13 = newarray (java.lang.Object)[2];
+        temp$13[0] = "NAME";
+        temp$13[1] = "SSN";
+        temp$14 = virtualinvoke temp$12.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("%20s |%20s |", temp$13);
+        temp$15 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$15.<java.io.PrintStream: void println(java.lang.String)>("");
+
+     label5:
+        nop;
+        temp$16 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$16 == 0 goto label7;
+
+        goto label6;
+
+     label6:
+        nop;
+        temp$17 = count + 1;
+        count = temp$17;
+        temp$18 = <java.lang.System: java.io.PrintStream out>;
+        temp$19 = newarray (java.lang.Object)[2];
+        temp$20 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("name");
+        temp$19[0] = temp$20;
+        temp$21 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("ssn");
+        temp$19[1] = temp$21;
+        temp$22 = virtualinvoke temp$18.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("%s -- %s ", temp$19);
+        temp$23 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$23.<java.io.PrintStream: void println(java.lang.String)>("");
+        goto label5;
+
+     label7:
+        nop;
+        if count == 0 goto label8;
+
+        goto label9;
+
+     label8:
+        nop;
+        temp$24 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$24.<java.io.PrintStream: void println(java.lang.String)>("There are no customers enrolled with this occupation");
+        goto label10;
+
+     label9:
+        nop;
+        temp$25 = <java.lang.System: java.io.PrintStream out>;
+        temp$26 = new java.lang.StringBuffer;
+        specialinvoke temp$26.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No. of customers with occupation : ");
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(occupation);
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is ");
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(count);
+        temp$27 = virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$25.<java.io.PrintStream: void println(java.lang.String)>(temp$27);
+
+     label10:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        goto label12;
+
+     label11:
+        nop;
+        e := @caughtexception;
+        temp$28 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$28.<java.io.PrintStream: void println(java.lang.String)>("Exception in filterOccupation");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label12;
+
+     label12:
+        nop;
+        return count;
+
+        catch java.lang.Exception from label4 to label11 with label11;
+    }
+
+    public int filterMaritalStatus(java.lang.String)
+    {
+        com.riskIt.controller.UserManager this;
+        java.lang.String status, temp$1, temp$3, cmd_statusSearch, temp$5, temp$11, temp$20, temp$21, temp$27;
+        int count, temp$0, temp$17;
+        java.sql.Statement stat, temp$7;
+        java.sql.ResultSet result, temp$8;
+        boolean temp$2, temp$16;
+        java.lang.StringBuffer temp$4, temp$10, temp$26;
+        java.sql.Connection conn, temp$6;
+        java.io.PrintStream temp$9, temp$12, temp$14, temp$15, temp$18, temp$22, temp$23, temp$24, temp$25, temp$28;
+        java.lang.Object[] temp$13, temp$19;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        status := @parameter0: java.lang.String;
+        count = 0;
+        stat = null;
+        result = null;
+        temp$0 = virtualinvoke status.<java.lang.String: int length()>();
+        if temp$0 == 0 goto label0;
+
+        goto label1;
+
+     label0:
+        nop;
+        temp$1 = null;
+        status = temp$1;
+
+     label1:
+        nop;
+        temp$2 = virtualinvoke status.<java.lang.String: boolean equals(java.lang.Object)>("null");
+        if temp$2 == 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$3 = null;
+        status = temp$3;
+
+     label3:
+        nop;
+        temp$4 = new java.lang.StringBuffer;
+        specialinvoke temp$4.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT * from userrecord where marital = \' ");
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(status);
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\'");
+        temp$5 = virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_statusSearch = temp$5;
+
+     label4:
+        nop;
+        temp$6 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$6;
+        temp$7 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$7;
+        temp$8 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_statusSearch);
+        result = temp$8;
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        temp$10 = new java.lang.StringBuffer;
+        specialinvoke temp$10.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("List of customers for given Marital Status : ");
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(status);
+        temp$11 = virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>(temp$11);
+        temp$12 = <java.lang.System: java.io.PrintStream out>;
+        temp$13 = newarray (java.lang.Object)[2];
+        temp$13[0] = "NAME";
+        temp$13[1] = "SSN";
+        temp$14 = virtualinvoke temp$12.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("%20s |%20s |", temp$13);
+        temp$15 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$15.<java.io.PrintStream: void println(java.lang.String)>("");
+
+     label5:
+        nop;
+        temp$16 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$16 == 0 goto label7;
+
+        goto label6;
+
+     label6:
+        nop;
+        temp$17 = count + 1;
+        count = temp$17;
+        temp$18 = <java.lang.System: java.io.PrintStream out>;
+        temp$19 = newarray (java.lang.Object)[2];
+        temp$20 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("name");
+        temp$19[0] = temp$20;
+        temp$21 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("ssn");
+        temp$19[1] = temp$21;
+        temp$22 = virtualinvoke temp$18.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("%s -- %s ", temp$19);
+        temp$23 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$23.<java.io.PrintStream: void println(java.lang.String)>("");
+        goto label5;
+
+     label7:
+        nop;
+        if count == 0 goto label8;
+
+        goto label9;
+
+     label8:
+        nop;
+        temp$24 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$24.<java.io.PrintStream: void println(java.lang.String)>("There are no customers enrolled with this status");
+        goto label10;
+
+     label9:
+        nop;
+        temp$25 = <java.lang.System: java.io.PrintStream out>;
+        temp$26 = new java.lang.StringBuffer;
+        specialinvoke temp$26.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No. of customers with marital status : ");
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(status);
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is ");
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(count);
+        temp$27 = virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$25.<java.io.PrintStream: void println(java.lang.String)>(temp$27);
+
+     label10:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        goto label12;
+
+     label11:
+        nop;
+        e := @caughtexception;
+        temp$28 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$28.<java.io.PrintStream: void println(java.lang.String)>("Exception in filterMaritalStatus");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label12;
+
+     label12:
+        nop;
+        return count;
+
+        catch java.lang.Exception from label4 to label11 with label11;
+    }
+
+    public int filterEstimatedIncome(java.lang.String)
+    {
+        com.riskIt.controller.UserManager this;
+        java.lang.String getIncome, cmd_filterIncome, temp$8, temp$27, temp$28, temp$34;
+        double income, dataIncome, temp$2, temp$20, temp$21, temp$22;
+        int count, temp$1, temp$15, temp$16, temp$17, temp$18, temp$19, temp$23, temp$24;
+        java.sql.Statement stat, temp$4;
+        java.sql.ResultSet result, temp$5;
+        com.riskIt.util.AccessorMethods temp$0, temp$14;
+        java.sql.Connection conn, temp$3;
+        java.io.PrintStream temp$6, temp$9, temp$11, temp$12, temp$25, temp$29, temp$30, temp$31, temp$32, temp$35;
+        java.lang.StringBuffer temp$7, temp$33;
+        java.lang.Object[] temp$10, temp$26;
+        boolean temp$13;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        getIncome := @parameter0: java.lang.String;
+        income = 0.0;
+        dataIncome = 0.0;
+        count = 0;
+        stat = null;
+        result = null;
+        temp$0 = this.<com.riskIt.controller.UserManager: com.riskIt.util.AccessorMethods acc>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.util.AccessorMethods: int checkLetterDigit(java.lang.String,int)>(getIncome, 0);
+        temp$2 = (double) temp$1;
+        income = temp$2;
+        cmd_filterIncome = "SELECT  userrecord.name, userrecord.ssn, investment.capitalgains, investment.capitallosses, investment.stockdividends, job.workweeks, job.weekwage FROM  investment, userrecord, job WHERE  investment.ssn = userrecord.ssn and  job.ssn = userrecord.ssn";
+
+     label0:
+        nop;
+        temp$3 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$3;
+        temp$4 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$4;
+        temp$5 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_filterIncome);
+        result = temp$5;
+        temp$6 = <java.lang.System: java.io.PrintStream out>;
+        temp$7 = new java.lang.StringBuffer;
+        specialinvoke temp$7.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("List of customers for given Estimated Income : ");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(income);
+        temp$8 = virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$6.<java.io.PrintStream: void println(java.lang.String)>(temp$8);
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        temp$10 = newarray (java.lang.Object)[2];
+        temp$10[0] = "NAME";
+        temp$10[1] = "SSN";
+        temp$11 = virtualinvoke temp$9.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("%20s |%20s |", temp$10);
+        temp$12 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$12.<java.io.PrintStream: void println(java.lang.String)>("");
+
+     label1:
+        nop;
+        temp$13 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$13 == 0 goto label5;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$14 = this.<com.riskIt.controller.UserManager: com.riskIt.util.AccessorMethods acc>;
+        temp$15 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("workweeks");
+        temp$16 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("weekwage");
+        temp$17 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("capitalGains");
+        temp$18 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("capitallosses");
+        temp$19 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("stockdividends");
+        temp$20 = virtualinvoke temp$14.<com.riskIt.util.AccessorMethods: double calculateIncome(int,int,int,int,int)>(temp$15, temp$16, temp$17, temp$18, temp$19);
+        dataIncome = temp$20;
+        temp$21 = staticinvoke <java.lang.Math: double floor(double)>(dataIncome);
+        temp$22 = staticinvoke <java.lang.Math: double floor(double)>(income);
+        temp$23 = temp$21 cmpg temp$22;
+        if temp$23 != 0 goto label4;
+
+        goto label3;
+
+     label3:
+        nop;
+        temp$24 = count + 1;
+        count = temp$24;
+        temp$25 = <java.lang.System: java.io.PrintStream out>;
+        temp$26 = newarray (java.lang.Object)[2];
+        temp$27 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("name");
+        temp$26[0] = temp$27;
+        temp$28 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("ssn");
+        temp$26[1] = temp$28;
+        temp$29 = virtualinvoke temp$25.<java.io.PrintStream: java.io.PrintStream printf(java.lang.String,java.lang.Object[])>("%s -- %s ", temp$26);
+        temp$30 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$30.<java.io.PrintStream: void println(java.lang.String)>("");
+
+     label4:
+        nop;
+        goto label1;
+
+     label5:
+        nop;
+        if count == 0 goto label6;
+
+        goto label7;
+
+     label6:
+        nop;
+        temp$31 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$31.<java.io.PrintStream: void println(java.lang.String)>("There are no customers enrolled with this estimated income");
+        goto label8;
+
+     label7:
+        nop;
+        temp$32 = <java.lang.System: java.io.PrintStream out>;
+        temp$33 = new java.lang.StringBuffer;
+        specialinvoke temp$33.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$33.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No. of customers with estimated income : ");
+        virtualinvoke temp$33.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(income);
+        virtualinvoke temp$33.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is ");
+        virtualinvoke temp$33.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(count);
+        temp$34 = virtualinvoke temp$33.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$32.<java.io.PrintStream: void println(java.lang.String)>(temp$34);
+
+     label8:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        goto label10;
+
+     label9:
+        nop;
+        e := @caughtexception;
+        temp$35 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$35.<java.io.PrintStream: void println(java.lang.String)>("Exception in filterEstimatedIncome");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label10;
+
+     label10:
+        nop;
+        return count;
+
+        catch java.lang.Exception from label0 to label9 with label9;
+    }
+
+    public int browseUserProperties(java.util.ArrayList)
+    {
+        com.riskIt.controller.UserManager this;
+        java.util.ArrayList prop;
+        int count, i, temp$0, temp$3, temp$5, index, temp$8, temp$13, temp$16, temp$17, temp$23, temp$26, temp$27, temp$33, temp$36, temp$37, temp$43, temp$46, temp$47, temp$53, temp$56, temp$57, temp$63, temp$66, temp$67, temp$73, temp$80, temp$84;
+        java.sql.Statement stat, temp$77;
+        java.sql.ResultSet result, temp$78;
+        java.lang.String cmd_generalSearch, cmd_userSQL, temp$2, temp$7, temp$11, temp$12, temp$15, andJoin, temp$18, temp$21, temp$22, temp$25, andJoin, temp$28, temp$31, temp$32, temp$35, andJoin, temp$38, temp$41, temp$42, temp$45, andJoin, temp$48, temp$51, temp$52, temp$55, andJoin, temp$58, temp$61, temp$62, temp$65, andJoin, temp$68, temp$71, temp$72, temp$75, temp$83, temp$85, temp$86, temp$87, temp$88, temp$89, temp$90;
+        boolean checkDataFlag, temp$4, temp$79;
+        java.lang.Object temp$1, temp$6, temp$10, temp$14, temp$20, temp$24, temp$30, temp$34, temp$40, temp$44, temp$50, temp$54, temp$60, temp$64, temp$70;
+        java.lang.StringBuffer temp$9, temp$19, temp$29, temp$39, temp$49, temp$59, temp$69, temp$74, temp$82;
+        java.sql.Connection conn, temp$76;
+        java.io.PrintStream temp$81, temp$91, temp$92;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        prop := @parameter0: java.util.ArrayList;
+        count = 0;
+        stat = null;
+        result = null;
+        cmd_generalSearch = "Select * from userrecord where ";
+        cmd_userSQL = "";
+        checkDataFlag = 0;
+        i = 0;
+
+     label0:
+        nop;
+        temp$0 = virtualinvoke prop.<java.util.ArrayList: int size()>();
+        if i < temp$0 goto label1;
+
+        goto label4;
+
+     label1:
+        nop;
+        temp$1 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(i);
+        temp$2 = (java.lang.String) temp$1;
+        temp$3 = virtualinvoke temp$2.<java.lang.String: int length()>();
+        if temp$3 > 0 goto label2;
+
+        goto label3;
+
+     label2:
+        nop;
+        temp$4 = 1;
+        checkDataFlag = temp$4;
+
+     label3:
+        nop;
+        nop;
+        temp$5 = i + 1;
+        i = temp$5;
+        goto label0;
+
+     label4:
+        nop;
+        index = 0;
+        if checkDataFlag == 0 goto label38;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$6 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$7 = (java.lang.String) temp$6;
+        temp$8 = virtualinvoke temp$7.<java.lang.String: int length()>();
+        if temp$8 > 0 goto label6;
+
+        goto label7;
+
+     label6:
+        nop;
+        temp$9 = new java.lang.StringBuffer;
+        specialinvoke temp$9.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(cmd_userSQL);
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("name = \'");
+        temp$10 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$11 = (java.lang.String) temp$10;
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$11);
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\'");
+        temp$12 = virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_userSQL = temp$12;
+
+     label7:
+        nop;
+        temp$13 = index + 1;
+        index = temp$13;
+        temp$14 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$15 = (java.lang.String) temp$14;
+        temp$16 = virtualinvoke temp$15.<java.lang.String: int length()>();
+        if temp$16 > 0 goto label8;
+
+        goto label11;
+
+     label8:
+        nop;
+        andJoin = "";
+        temp$17 = virtualinvoke cmd_userSQL.<java.lang.String: int length()>();
+        if temp$17 > 0 goto label9;
+
+        goto label10;
+
+     label9:
+        nop;
+        temp$18 = " and ";
+        andJoin = temp$18;
+
+     label10:
+        nop;
+        temp$19 = new java.lang.StringBuffer;
+        specialinvoke temp$19.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(cmd_userSQL);
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(andJoin);
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" ssn = ");
+        temp$20 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$21 = (java.lang.String) temp$20;
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$21);
+        temp$22 = virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_userSQL = temp$22;
+
+     label11:
+        nop;
+        temp$23 = index + 1;
+        index = temp$23;
+        temp$24 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$25 = (java.lang.String) temp$24;
+        temp$26 = virtualinvoke temp$25.<java.lang.String: int length()>();
+        if temp$26 > 0 goto label12;
+
+        goto label15;
+
+     label12:
+        nop;
+        andJoin = "";
+        temp$27 = virtualinvoke cmd_userSQL.<java.lang.String: int length()>();
+        if temp$27 > 0 goto label13;
+
+        goto label14;
+
+     label13:
+        nop;
+        temp$28 = " and ";
+        andJoin = temp$28;
+
+     label14:
+        nop;
+        temp$29 = new java.lang.StringBuffer;
+        specialinvoke temp$29.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(cmd_userSQL);
+        virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(andJoin);
+        virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" age = ");
+        temp$30 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$31 = (java.lang.String) temp$30;
+        virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$31);
+        temp$32 = virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_userSQL = temp$32;
+
+     label15:
+        nop;
+        temp$33 = index + 1;
+        index = temp$33;
+        temp$34 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$35 = (java.lang.String) temp$34;
+        temp$36 = virtualinvoke temp$35.<java.lang.String: int length()>();
+        if temp$36 > 0 goto label16;
+
+        goto label19;
+
+     label16:
+        nop;
+        andJoin = "";
+        temp$37 = virtualinvoke cmd_userSQL.<java.lang.String: int length()>();
+        if temp$37 > 0 goto label17;
+
+        goto label18;
+
+     label17:
+        nop;
+        temp$38 = " and ";
+        andJoin = temp$38;
+
+     label18:
+        nop;
+        temp$39 = new java.lang.StringBuffer;
+        specialinvoke temp$39.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(cmd_userSQL);
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(andJoin);
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" sex = \' ");
+        temp$40 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$41 = (java.lang.String) temp$40;
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$41);
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\'");
+        temp$42 = virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_userSQL = temp$42;
+
+     label19:
+        nop;
+        temp$43 = index + 1;
+        index = temp$43;
+        temp$44 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$45 = (java.lang.String) temp$44;
+        temp$46 = virtualinvoke temp$45.<java.lang.String: int length()>();
+        if temp$46 > 0 goto label20;
+
+        goto label23;
+
+     label20:
+        nop;
+        andJoin = "";
+        temp$47 = virtualinvoke cmd_userSQL.<java.lang.String: int length()>();
+        if temp$47 > 0 goto label21;
+
+        goto label22;
+
+     label21:
+        nop;
+        temp$48 = " and ";
+        andJoin = temp$48;
+
+     label22:
+        nop;
+        temp$49 = new java.lang.StringBuffer;
+        specialinvoke temp$49.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$49.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(cmd_userSQL);
+        virtualinvoke temp$49.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(andJoin);
+        virtualinvoke temp$49.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" marital = \' ");
+        temp$50 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$51 = (java.lang.String) temp$50;
+        virtualinvoke temp$49.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$51);
+        virtualinvoke temp$49.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\'");
+        temp$52 = virtualinvoke temp$49.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_userSQL = temp$52;
+
+     label23:
+        nop;
+        temp$53 = index + 1;
+        index = temp$53;
+        temp$54 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$55 = (java.lang.String) temp$54;
+        temp$56 = virtualinvoke temp$55.<java.lang.String: int length()>();
+        if temp$56 > 0 goto label24;
+
+        goto label27;
+
+     label24:
+        nop;
+        andJoin = "";
+        temp$57 = virtualinvoke cmd_userSQL.<java.lang.String: int length()>();
+        if temp$57 > 0 goto label25;
+
+        goto label26;
+
+     label25:
+        nop;
+        temp$58 = " and ";
+        andJoin = temp$58;
+
+     label26:
+        nop;
+        temp$59 = new java.lang.StringBuffer;
+        specialinvoke temp$59.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$59.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(cmd_userSQL);
+        virtualinvoke temp$59.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(andJoin);
+        virtualinvoke temp$59.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" race = \' ");
+        temp$60 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$61 = (java.lang.String) temp$60;
+        virtualinvoke temp$59.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$61);
+        virtualinvoke temp$59.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\'");
+        temp$62 = virtualinvoke temp$59.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_userSQL = temp$62;
+
+     label27:
+        nop;
+        temp$63 = index + 1;
+        index = temp$63;
+        temp$64 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$65 = (java.lang.String) temp$64;
+        temp$66 = virtualinvoke temp$65.<java.lang.String: int length()>();
+        if temp$66 > 0 goto label28;
+
+        goto label31;
+
+     label28:
+        nop;
+        andJoin = "";
+        temp$67 = virtualinvoke cmd_userSQL.<java.lang.String: int length()>();
+        if temp$67 > 0 goto label29;
+
+        goto label30;
+
+     label29:
+        nop;
+        temp$68 = " and ";
+        andJoin = temp$68;
+
+     label30:
+        nop;
+        temp$69 = new java.lang.StringBuffer;
+        specialinvoke temp$69.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$69.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(cmd_userSQL);
+        virtualinvoke temp$69.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(andJoin);
+        virtualinvoke temp$69.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" birthcountry = \' ");
+        temp$70 = virtualinvoke prop.<java.util.ArrayList: java.lang.Object get(int)>(index);
+        temp$71 = (java.lang.String) temp$70;
+        virtualinvoke temp$69.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$71);
+        virtualinvoke temp$69.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\'");
+        temp$72 = virtualinvoke temp$69.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_userSQL = temp$72;
+
+     label31:
+        nop;
+        temp$73 = index + 1;
+        index = temp$73;
+        temp$74 = new java.lang.StringBuffer;
+        specialinvoke temp$74.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$74.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(cmd_generalSearch);
+        virtualinvoke temp$74.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(cmd_userSQL);
+        temp$75 = virtualinvoke temp$74.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_generalSearch = temp$75;
+
+     label32:
+        nop;
+        temp$76 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$76;
+        temp$77 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$77;
+        temp$78 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_generalSearch);
+        result = temp$78;
+
+     label33:
+        nop;
+        temp$79 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$79 == 0 goto label35;
+
+        goto label34;
+
+     label34:
+        nop;
+        temp$80 = count + 1;
+        count = temp$80;
+        temp$81 = <java.lang.System: java.io.PrintStream out>;
+        temp$82 = new java.lang.StringBuffer;
+        specialinvoke temp$82.<java.lang.StringBuffer: void <init>()>();
+        temp$83 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("name");
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$83);
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("->");
+        temp$84 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("ssn");
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$84);
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("->");
+        temp$85 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("age");
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$85);
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("->");
+        temp$86 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("sex");
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$86);
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("->");
+        temp$87 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("marital");
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$87);
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("->");
+        temp$88 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("race");
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$88);
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("->");
+        temp$89 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("birthcountry");
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$89);
+        temp$90 = virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$81.<java.io.PrintStream: void println(java.lang.String)>(temp$90);
+        goto label33;
+
+     label35:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        goto label37;
+
+     label36:
+        nop;
+        e := @caughtexception;
+        temp$91 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$91.<java.io.PrintStream: void println(java.lang.String)>("Exception in browseUserProperties");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label37;
+
+     label37:
+        nop;
+        goto label39;
+
+     label38:
+        nop;
+        temp$92 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$92.<java.io.PrintStream: void println(java.lang.String)>("There is no data to filter out customers");
+
+     label39:
+        nop;
+        return count;
+
+        catch java.lang.Exception from label32 to label36 with label36;
+    }
+
+    public com.riskIt.data.Invitation calculateQuoteForCustomer(long, double, double, java.util.ArrayList)
+    {
+        com.riskIt.controller.UserManager this;
+        long ssn, temp$6;
+        double deductible, netWorth, quote, temp$12, temp$13, temp$14, temp$21, temp$22, temp$23, temp$24, temp$25, score, temp$27, temp$29;
+        java.util.ArrayList userList;
+        com.riskIt.data.Invitation inv, temp$0, calc_invite, temp$1, temp$5;
+        int[] deduct_list, temp$2, temp$18, temp$32;
+        boolean checkFlag, temp$8;
+        int i, temp$3, temp$7, temp$9, i, temp$17, temp$19, temp$20, temp$33, temp$34, temp$36;
+        java.lang.Object temp$4;
+        java.io.PrintStream temp$10, temp$16, temp$30, temp$37;
+        java.lang.StringBuffer temp$11, temp$31;
+        java.lang.String temp$15, temp$35;
+        com.riskIt.controller.AgentManager temp$26, temp$28;
+
+        this := @this: com.riskIt.controller.UserManager;
+        ssn := @parameter0: long;
+        deductible := @parameter1: double;
+        netWorth := @parameter2: double;
+        userList := @parameter3: java.util.ArrayList;
+        quote = 0.0;
+        temp$0 = new com.riskIt.data.Invitation;
+        specialinvoke temp$0.<com.riskIt.data.Invitation: void <init>()>();
+        inv = temp$0;
+        temp$1 = new com.riskIt.data.Invitation;
+        specialinvoke temp$1.<com.riskIt.data.Invitation: void <init>()>();
+        calc_invite = temp$1;
+        temp$2 = newarray (int)[9];
+        temp$2[0] = 100;
+        temp$2[1] = 250;
+        temp$2[2] = 500;
+        temp$2[3] = 1000;
+        temp$2[4] = 1500;
+        temp$2[5] = 2000;
+        temp$2[6] = 2500;
+        temp$2[7] = 5000;
+        temp$2[8] = 10000;
+        deduct_list = temp$2;
+        checkFlag = 0;
+        i = 0;
+
+     label0:
+        nop;
+        temp$3 = virtualinvoke userList.<java.util.ArrayList: int size()>();
+        if i < temp$3 goto label1;
+
+        goto label4;
+
+     label1:
+        nop;
+        temp$4 = virtualinvoke userList.<java.util.ArrayList: java.lang.Object get(int)>(i);
+        temp$5 = (com.riskIt.data.Invitation) temp$4;
+        inv = temp$5;
+        temp$6 = virtualinvoke inv.<com.riskIt.data.Invitation: long getUserSSN()>();
+        temp$7 = temp$6 cmp ssn;
+        if temp$7 != 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$8 = 1;
+        checkFlag = temp$8;
+        goto label4;
+
+     label3:
+        nop;
+        nop;
+        temp$9 = i + 1;
+        i = temp$9;
+        goto label0;
+
+     label4:
+        nop;
+        if checkFlag == 0 goto label6;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$10 = <java.lang.System: java.io.PrintStream out>;
+        temp$11 = new java.lang.StringBuffer;
+        specialinvoke temp$11.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("You have received $");
+        temp$12 = virtualinvoke inv.<com.riskIt.data.Invitation: double getPremium()>();
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$12);
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" for the property value of ");
+        temp$13 = virtualinvoke inv.<com.riskIt.data.Invitation: double getPropertyValue()>();
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$13);
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and deductible of $");
+        temp$14 = virtualinvoke inv.<com.riskIt.data.Invitation: double getDeductible()>();
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(temp$14);
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\n\n");
+        temp$15 = virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>(temp$15);
+
+     label6:
+        nop;
+        temp$16 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$16.<java.io.PrintStream: void println(java.lang.String)>("For the expenses that you have provided, the quote will be ...");
+        i = 0;
+
+     label7:
+        nop;
+        temp$17 = lengthof deduct_list;
+        if i < temp$17 goto label8;
+
+        goto label9;
+
+     label8:
+        nop;
+        virtualinvoke calc_invite.<com.riskIt.data.Invitation: void setUserSSN(long)>(ssn);
+        temp$18 = deduct_list;
+        temp$19 = i;
+        temp$20 = temp$18[temp$19];
+        temp$21 = (double) temp$20;
+        virtualinvoke calc_invite.<com.riskIt.data.Invitation: void setDeductible(double)>(temp$21);
+        virtualinvoke calc_invite.<com.riskIt.data.Invitation: void setPropertyValue(double)>(netWorth);
+        temp$22 = netWorth * 30.0;
+        temp$23 = temp$22 / 100.0;
+        virtualinvoke calc_invite.<com.riskIt.data.Invitation: void setExpoUnit(double)>(temp$23);
+        temp$24 = netWorth * 50.0;
+        temp$25 = temp$24 / 100.0;
+        virtualinvoke calc_invite.<com.riskIt.data.Invitation: void setlossCoverage(double)>(temp$25);
+        temp$26 = this.<com.riskIt.controller.UserManager: com.riskIt.controller.AgentManager agent>;
+        temp$27 = virtualinvoke temp$26.<com.riskIt.controller.AgentManager: double calculateScore(long)>(ssn);
+        score = temp$27;
+        virtualinvoke calc_invite.<com.riskIt.data.Invitation: void setScore(double)>(score);
+        temp$28 = this.<com.riskIt.controller.UserManager: com.riskIt.controller.AgentManager agent>;
+        temp$29 = virtualinvoke temp$28.<com.riskIt.controller.AgentManager: double calculateTotalValue(com.riskIt.data.Invitation)>(calc_invite);
+        quote = temp$29;
+        virtualinvoke calc_invite.<com.riskIt.data.Invitation: void setPremium(double)>(quote);
+        temp$30 = <java.lang.System: java.io.PrintStream out>;
+        temp$31 = new java.lang.StringBuffer;
+        specialinvoke temp$31.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("The quote for deductible of $");
+        temp$32 = deduct_list;
+        temp$33 = i;
+        temp$34 = temp$32[temp$33];
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$34);
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is : $");
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(quote);
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" per month.");
+        temp$35 = virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$30.<java.io.PrintStream: void println(java.lang.String)>(temp$35);
+        nop;
+        temp$36 = i + 1;
+        i = temp$36;
+        goto label7;
+
+     label9:
+        nop;
+        temp$37 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$37.<java.io.PrintStream: void println(java.lang.String)>("---------------------------------------------------");
+        return calc_invite;
+    }
+
+    public double updatewagetable(int, int)
+    {
+        com.riskIt.controller.UserManager this;
+        int industrycode, occupcode, sum, count_industrycode, count, meanweekwage, temp$13, temp$14, temp$17, temp$18, temp$21, temp$22, temp$23, temp$31, temp$40;
+        double average, temp$24, temp$25, temp$26;
+        java.sql.Statement stat, temp$1, temp$2;
+        java.sql.ResultSet result, temp$11, temp$15, temp$19, temp$34;
+        java.sql.Connection conn, temp$0;
+        java.lang.String select_occupcode, temp$4, select_industrycode, temp$6, query, temp$8, updatetable, temp$10, temp$30, temp$41;
+        java.lang.StringBuffer temp$3, temp$5, temp$7, temp$9, temp$29, temp$39;
+        boolean temp$12, temp$16, temp$20, temp$35;
+        java.io.PrintStream temp$27, temp$28, temp$32, temp$33, temp$37, temp$38;
+        com.riskIt.util.AccessorMethods temp$36;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        industrycode := @parameter0: int;
+        occupcode := @parameter1: int;
+        sum = 0;
+        count_industrycode = 0;
+        count = 0;
+        average = 0.0;
+        meanweekwage = 0;
+        stat = null;
+        result = null;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$0;
+        temp$1 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$1;
+        temp$2 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement(int,int)>(1004, 1008);
+        stat = temp$2;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select  wage.occupationcode,wage.industrycode,weekwage from wage,job where wage.occupationcode = job.occupationcode and wage.industrycode = job.industrycode and wage.occupationcode = ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupcode);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and wage.industrycode = ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" group by wage.occupationcode,wage.industrycode,weekwage");
+        temp$4 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        select_occupcode = temp$4;
+        temp$5 = new java.lang.StringBuffer;
+        specialinvoke temp$5.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select  industrycode from wage where industrycode = ");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        temp$6 = virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.String toString()>();
+        select_industrycode = temp$6;
+        temp$7 = new java.lang.StringBuffer;
+        specialinvoke temp$7.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select meanweekwage,weekwage from job,wage where wage.occupationcode = job.occupationcode and wage.industrycode = job.industrycode and wage.industrycode = ");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and wage.occupationcode =  ");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupcode);
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" group by wage.occupationcode,wage.industrycode,weekwage,meanweekwage");
+        temp$8 = virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.String toString()>();
+        query = temp$8;
+        temp$9 = new java.lang.StringBuffer;
+        specialinvoke temp$9.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select industrycode, occupationcode,meanweekwage from wage where industrycode = ");
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and occupationcode = ");
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupcode);
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        temp$10 = virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.String toString()>();
+        updatetable = temp$10;
+        temp$11 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(select_occupcode);
+        result = temp$11;
+
+     label1:
+        nop;
+        temp$12 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$12 == 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$13 = count;
+        temp$14 = temp$13 + 1;
+        count = temp$14;
+        goto label1;
+
+     label3:
+        nop;
+        temp$15 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(select_industrycode);
+        result = temp$15;
+
+     label4:
+        nop;
+        temp$16 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$16 == 0 goto label6;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$17 = count_industrycode;
+        temp$18 = temp$17 + 1;
+        count_industrycode = temp$18;
+        goto label4;
+
+     label6:
+        nop;
+        temp$19 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(query);
+        result = temp$19;
+
+     label7:
+        nop;
+        temp$20 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$20 == 0 goto label9;
+
+        goto label8;
+
+     label8:
+        nop;
+        temp$21 = sum;
+        temp$22 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("weekwage");
+        temp$23 = temp$21 + temp$22;
+        sum = temp$23;
+        goto label7;
+
+     label9:
+        nop;
+        temp$24 = (double) sum;
+        temp$25 = (double) count;
+        temp$26 = temp$24 / temp$25;
+        average = temp$26;
+        temp$27 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$27.<java.io.PrintStream: void println(java.lang.String)>("Industrycode  OccupationCode     Sum      Average");
+        temp$28 = <java.lang.System: java.io.PrintStream out>;
+        temp$29 = new java.lang.StringBuffer;
+        specialinvoke temp$29.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("              ");
+        virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  ");
+        virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupcode);
+        virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("           ");
+        virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(sum);
+        virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("       ");
+        virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(average);
+        temp$30 = virtualinvoke temp$29.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$28.<java.io.PrintStream: void println(java.lang.String)>(temp$30);
+        temp$31 = interfaceinvoke result.<java.sql.ResultSet: int getConcurrency()>();
+        if temp$31 == 1008 goto label10;
+
+        goto label11;
+
+     label10:
+        nop;
+        temp$32 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$32.<java.io.PrintStream: void println(java.lang.String)>("ResultSet non-updatable.");
+        goto label12;
+
+     label11:
+        nop;
+        temp$33 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$33.<java.io.PrintStream: void println(java.lang.String)>("ResultSet updatable.");
+
+     label12:
+        nop;
+        temp$34 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(updatetable);
+        result = temp$34;
+        interfaceinvoke result.<java.sql.ResultSet: void beforeFirst()>();
+
+     label13:
+        nop;
+        temp$35 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$35 == 0 goto label15;
+
+        goto label14;
+
+     label14:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void updateDouble(java.lang.String,double)>("meanweekwage", average);
+        interfaceinvoke result.<java.sql.ResultSet: void updateRow()>();
+        goto label13;
+
+     label15:
+        nop;
+        temp$36 = this.<com.riskIt.controller.UserManager: com.riskIt.util.AccessorMethods acc>;
+        virtualinvoke temp$36.<com.riskIt.util.AccessorMethods: void printRs(java.sql.ResultSet)>(result);
+        temp$37 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$37.<java.io.PrintStream: void println(java.lang.String)>("-------------------------------------------------------------------");
+        temp$38 = <java.lang.System: java.io.PrintStream out>;
+        temp$39 = new java.lang.StringBuffer;
+        specialinvoke temp$39.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("meanweekwage is updated for industry code: ");
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and  Occupation code: ");
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupcode);
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Old value for meanweekwage is:  ");
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(meanweekwage);
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and new value for meanweekwage is:  ");
+        temp$40 = (int) average;
+        virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$40);
+        temp$41 = virtualinvoke temp$39.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$38.<java.io.PrintStream: void println(java.lang.String)>(temp$41);
+        interfaceinvoke stat.<java.sql.Statement: void close()>();
+        goto label17;
+
+     label16:
+        nop;
+        e := @caughtexception;
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label17;
+
+     label17:
+        nop;
+        return average;
+
+        catch java.lang.Exception from label0 to label16 with label16;
+    }
+
+    public double updatetable(long, int, int)
+    {
+        com.riskIt.controller.UserManager this;
+        long ssn;
+        int industrycode, occupationcode, sum, count_industrycode, count, countwage, temp$13, temp$14, temp$20, temp$21, temp$24, temp$25, temp$26, temp$27, temp$39, temp$40, weekwage, temp$41, temp$46, temp$55, temp$56;
+        double average, oldaverage, temp$28, temp$29, temp$30, temp$31, temp$32, temp$33;
+        java.sql.Statement stat, temp$1, temp$2;
+        java.sql.ResultSet result, temp$11, temp$18, temp$22, temp$37, temp$49;
+        java.sql.Connection conn, temp$0;
+        java.lang.String select_occupcode, temp$4, select_industrycode, query, temp$6, updatetable, temp$8, wage, temp$10, temp$17, temp$36, reason, temp$42, temp$45, temp$57;
+        java.lang.StringBuffer temp$3, temp$5, temp$7, temp$9, temp$16, temp$35, temp$44, temp$54;
+        boolean temp$12, temp$19, temp$23, temp$38, temp$50;
+        java.io.PrintStream temp$15, temp$34, temp$43, temp$47, temp$48, temp$52, temp$53;
+        com.riskIt.util.AccessorMethods temp$51;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        ssn := @parameter0: long;
+        industrycode := @parameter1: int;
+        occupationcode := @parameter2: int;
+        sum = 0;
+        count_industrycode = 0;
+        count = 0;
+        countwage = 0;
+        average = 0.0;
+        stat = null;
+        result = null;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$0;
+        temp$1 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$1;
+        temp$2 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement(int,int)>(1004, 1008);
+        stat = temp$2;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select  wage.occupationcode,wage.industrycode,weekwage from wage,job where wage.occupationcode = job.occupationcode and wage.industrycode = job.industrycode and wage.industrycode = ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and wage.occupationcode = ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationcode);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  group by wage.occupationcode,wage.industrycode,weekwage");
+        temp$4 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        select_occupcode = temp$4;
+        select_industrycode = "select  industrycode from wage ";
+        temp$5 = new java.lang.StringBuffer;
+        specialinvoke temp$5.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select meanweekwage,weekwage from job,wage where wage.occupationcode = job.occupationcode and wage.industrycode = job.industrycode and wage.industrycode = ");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and wage.occupationcode = ");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationcode);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("   group by wage.occupationcode,wage.industrycode,weekwage,meanweekwage");
+        temp$6 = virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.String toString()>();
+        query = temp$6;
+        temp$7 = new java.lang.StringBuffer;
+        specialinvoke temp$7.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select industrycode, occupationcode,meanweekwage from wage where industrycode = ");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and occupationcode = ");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationcode);
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" ");
+        temp$8 = virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.String toString()>();
+        updatetable = temp$8;
+        temp$9 = new java.lang.StringBuffer;
+        specialinvoke temp$9.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select wage.industrycode,wage.occupationcode,job.ssn,weekwage,unemploymentreason from job,wage,employmentstat where job.ssn = employmentstat.ssn and wage.industrycode = job.industrycode and wage.occupationcode = job.occupationcode  and job.ssn = ");
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        temp$10 = virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.String toString()>();
+        wage = temp$10;
+        temp$11 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(select_occupcode);
+        result = temp$11;
+
+     label1:
+        nop;
+        temp$12 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$12 == 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$13 = count;
+        temp$14 = temp$13 + 1;
+        count = temp$14;
+        goto label1;
+
+     label3:
+        nop;
+        temp$15 = <java.lang.System: java.io.PrintStream out>;
+        temp$16 = new java.lang.StringBuffer;
+        specialinvoke temp$16.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Total number of occupation code and industrycode ");
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(count);
+        temp$17 = virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$15.<java.io.PrintStream: void println(java.lang.String)>(temp$17);
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        temp$18 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(select_industrycode);
+        result = temp$18;
+
+     label4:
+        nop;
+        temp$19 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$19 == 0 goto label6;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$20 = count_industrycode;
+        temp$21 = temp$20 + 1;
+        count_industrycode = temp$21;
+        goto label4;
+
+     label6:
+        nop;
+        temp$22 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(query);
+        result = temp$22;
+
+     label7:
+        nop;
+        temp$23 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$23 == 0 goto label9;
+
+        goto label8;
+
+     label8:
+        nop;
+        temp$24 = sum;
+        temp$25 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("weekwage");
+        temp$26 = temp$24 + temp$25;
+        sum = temp$26;
+        goto label7;
+
+     label9:
+        nop;
+        temp$27 = count - 1;
+        temp$28 = (double) sum;
+        temp$29 = (double) temp$27;
+        temp$30 = temp$28 / temp$29;
+        oldaverage = temp$30;
+        temp$31 = (double) sum;
+        temp$32 = (double) count;
+        temp$33 = temp$31 / temp$32;
+        average = temp$33;
+        temp$34 = <java.lang.System: java.io.PrintStream out>;
+        temp$35 = new java.lang.StringBuffer;
+        specialinvoke temp$35.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$35.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("ssn ");
+        virtualinvoke temp$35.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$35.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Sum  ");
+        virtualinvoke temp$35.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(sum);
+        virtualinvoke temp$35.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Average ");
+        virtualinvoke temp$35.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(average);
+        temp$36 = virtualinvoke temp$35.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$34.<java.io.PrintStream: void println(java.lang.String)>(temp$36);
+        temp$37 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(wage);
+        result = temp$37;
+
+     label10:
+        nop;
+        temp$38 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$38 == 0 goto label12;
+
+        goto label11;
+
+     label11:
+        nop;
+        temp$39 = countwage;
+        temp$40 = temp$39 + 1;
+        countwage = temp$40;
+        temp$41 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("weekwage");
+        weekwage = temp$41;
+        temp$42 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("unemploymentreason");
+        reason = temp$42;
+        temp$43 = <java.lang.System: java.io.PrintStream out>;
+        temp$44 = new java.lang.StringBuffer;
+        specialinvoke temp$44.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$44.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Number of row  ");
+        virtualinvoke temp$44.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(countwage);
+        virtualinvoke temp$44.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  ssn  ");
+        virtualinvoke temp$44.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$44.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  weekwage  ");
+        virtualinvoke temp$44.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(weekwage);
+        virtualinvoke temp$44.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("   unemploymentreason  ");
+        virtualinvoke temp$44.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(reason);
+        temp$45 = virtualinvoke temp$44.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$43.<java.io.PrintStream: void println(java.lang.String)>(temp$45);
+        goto label10;
+
+     label12:
+        nop;
+        temp$46 = interfaceinvoke result.<java.sql.ResultSet: int getConcurrency()>();
+        if temp$46 == 1008 goto label13;
+
+        goto label14;
+
+     label13:
+        nop;
+        temp$47 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$47.<java.io.PrintStream: void println(java.lang.String)>("ResultSet non-updatable.");
+        goto label15;
+
+     label14:
+        nop;
+        temp$48 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$48.<java.io.PrintStream: void println(java.lang.String)>("ResultSet updatable.");
+
+     label15:
+        nop;
+        temp$49 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(updatetable);
+        result = temp$49;
+        interfaceinvoke result.<java.sql.ResultSet: void beforeFirst()>();
+
+     label16:
+        nop;
+        temp$50 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$50 == 0 goto label18;
+
+        goto label17;
+
+     label17:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void updateDouble(java.lang.String,double)>("meanweekwage", average);
+        interfaceinvoke result.<java.sql.ResultSet: void updateRow()>();
+        goto label16;
+
+     label18:
+        nop;
+        temp$51 = this.<com.riskIt.controller.UserManager: com.riskIt.util.AccessorMethods acc>;
+        virtualinvoke temp$51.<com.riskIt.util.AccessorMethods: void printRs(java.sql.ResultSet)>(result);
+        temp$52 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$52.<java.io.PrintStream: void println(java.lang.String)>("-------------------------------------------------------------------");
+        temp$53 = <java.lang.System: java.io.PrintStream out>;
+        temp$54 = new java.lang.StringBuffer;
+        specialinvoke temp$54.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("meanweekwage is updated for  ssn  = ");
+        virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" industry code: ");
+        virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and  Occupation code: ");
+        virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationcode);
+        virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Old value for meanweekwage is:  ");
+        temp$55 = (int) oldaverage;
+        virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$55);
+        virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and new value for meanweekwage is:  ");
+        temp$56 = (int) average;
+        virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$56);
+        temp$57 = virtualinvoke temp$54.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$53.<java.io.PrintStream: void println(java.lang.String)>(temp$57);
+        interfaceinvoke stat.<java.sql.Statement: void close()>();
+        goto label20;
+
+     label19:
+        nop;
+        e := @caughtexception;
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label20;
+
+     label20:
+        nop;
+        return average;
+
+        catch java.lang.Exception from label0 to label19 with label19;
+    }
+
+    public double userinformation(long, int, int)
+    {
+        com.riskIt.controller.UserManager this;
+        long ssn;
+        int industrycode, occupationcode, sum, count_industrycode, count, countwage, temp$13, temp$14, temp$20, temp$21, temp$24, temp$25, temp$26, temp$35, temp$36, weekwage, temp$37, temp$42, weekwage, temp$47;
+        double average, temp$27, temp$28, temp$29;
+        java.sql.Statement stat, temp$1, temp$2;
+        java.sql.ResultSet result, temp$11, temp$18, temp$22, temp$33, temp$45;
+        java.sql.Connection conn, temp$0;
+        java.lang.String select_occupcode, temp$4, select_industrycode, query, temp$6, updatetable, temp$8, wage, temp$10, temp$17, temp$32, reason, temp$38, temp$41;
+        java.lang.StringBuffer temp$3, temp$5, temp$7, temp$9, temp$16, temp$31, temp$40;
+        boolean temp$12, temp$19, temp$23, temp$34, temp$46;
+        java.io.PrintStream temp$15, temp$30, temp$39, temp$43, temp$44, temp$49;
+        com.riskIt.util.AccessorMethods temp$48;
+        java.lang.Exception e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        ssn := @parameter0: long;
+        industrycode := @parameter1: int;
+        occupationcode := @parameter2: int;
+        sum = 0;
+        count_industrycode = 0;
+        count = 0;
+        countwage = 0;
+        average = 0.0;
+        stat = null;
+        result = null;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$0;
+        temp$1 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$1;
+        temp$2 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement(int,int)>(1004, 1008);
+        stat = temp$2;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select  wage.occupationcode,wage.industrycode,weekwage from wage,job where wage.occupationcode = job.occupationcode and wage.industrycode = job.industrycode and wage.industrycode = ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and wage.occupationcode = ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationcode);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  group by wage.occupationcode,wage.industrycode,weekwage");
+        temp$4 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        select_occupcode = temp$4;
+        select_industrycode = "select  industrycode from wage ";
+        temp$5 = new java.lang.StringBuffer;
+        specialinvoke temp$5.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select meanweekwage,weekwage from job,wage where wage.occupationcode = job.occupationcode and wage.industrycode = job.industrycode and wage.industrycode = ");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and wage.occupationcode = ");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationcode);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("   group by wage.occupationcode,wage.industrycode,weekwage,meanweekwage");
+        temp$6 = virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.String toString()>();
+        query = temp$6;
+        temp$7 = new java.lang.StringBuffer;
+        specialinvoke temp$7.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select ssn,workclass,industrycode, occupationcode,unionmember,employersize,weekwage,selfemployed,workweeks from job where industrycode = ");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and occupationcode = ");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationcode);
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and job.ssn = ");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        temp$8 = virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.String toString()>();
+        updatetable = temp$8;
+        temp$9 = new java.lang.StringBuffer;
+        specialinvoke temp$9.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select job.industrycode,job.occupationcode,job.ssn,weekwage,unemploymentreason from job,wage,employmentstat where job.ssn = employmentstat.ssn and wage.industrycode = job.industrycode and wage.occupationcode = job.occupationcode  and job.ssn = ");
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        temp$10 = virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.String toString()>();
+        wage = temp$10;
+        temp$11 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(select_occupcode);
+        result = temp$11;
+
+     label1:
+        nop;
+        temp$12 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$12 == 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$13 = count;
+        temp$14 = temp$13 + 1;
+        count = temp$14;
+        goto label1;
+
+     label3:
+        nop;
+        temp$15 = <java.lang.System: java.io.PrintStream out>;
+        temp$16 = new java.lang.StringBuffer;
+        specialinvoke temp$16.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Total number of occupation code and industrycode ");
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(count);
+        temp$17 = virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$15.<java.io.PrintStream: void println(java.lang.String)>(temp$17);
+        temp$18 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(select_industrycode);
+        result = temp$18;
+
+     label4:
+        nop;
+        temp$19 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$19 == 0 goto label6;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$20 = count_industrycode;
+        temp$21 = temp$20 + 1;
+        count_industrycode = temp$21;
+        goto label4;
+
+     label6:
+        nop;
+        temp$22 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(query);
+        result = temp$22;
+
+     label7:
+        nop;
+        temp$23 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$23 == 0 goto label9;
+
+        goto label8;
+
+     label8:
+        nop;
+        temp$24 = sum;
+        temp$25 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("weekwage");
+        temp$26 = temp$24 + temp$25;
+        sum = temp$26;
+        goto label7;
+
+     label9:
+        nop;
+        temp$27 = (double) sum;
+        temp$28 = (double) count;
+        temp$29 = temp$27 / temp$28;
+        average = temp$29;
+        temp$30 = <java.lang.System: java.io.PrintStream out>;
+        temp$31 = new java.lang.StringBuffer;
+        specialinvoke temp$31.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("ssn ");
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Sum  ");
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(sum);
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" Average ");
+        virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(average);
+        temp$32 = virtualinvoke temp$31.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$30.<java.io.PrintStream: void println(java.lang.String)>(temp$32);
+        temp$33 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(wage);
+        result = temp$33;
+
+     label10:
+        nop;
+        temp$34 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$34 == 0 goto label12;
+
+        goto label11;
+
+     label11:
+        nop;
+        temp$35 = countwage;
+        temp$36 = temp$35 + 1;
+        countwage = temp$36;
+        temp$37 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("weekwage");
+        weekwage = temp$37;
+        temp$38 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("unemploymentreason");
+        reason = temp$38;
+        temp$39 = <java.lang.System: java.io.PrintStream out>;
+        temp$40 = new java.lang.StringBuffer;
+        specialinvoke temp$40.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Number of row  ");
+        virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(countwage);
+        virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  ssn  ");
+        virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(ssn);
+        virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  weekwage  ");
+        virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(weekwage);
+        virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("   unemploymentreason  ");
+        virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(reason);
+        temp$41 = virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$39.<java.io.PrintStream: void println(java.lang.String)>(temp$41);
+        goto label10;
+
+     label12:
+        nop;
+        temp$42 = interfaceinvoke result.<java.sql.ResultSet: int getConcurrency()>();
+        if temp$42 == 1008 goto label13;
+
+        goto label14;
+
+     label13:
+        nop;
+        temp$43 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$43.<java.io.PrintStream: void println(java.lang.String)>("ResultSet non-updatable.");
+        goto label15;
+
+     label14:
+        nop;
+        temp$44 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$44.<java.io.PrintStream: void println(java.lang.String)>("ResultSet updatable.");
+
+     label15:
+        nop;
+        temp$45 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(updatetable);
+        result = temp$45;
+        interfaceinvoke result.<java.sql.ResultSet: void beforeFirst()>();
+
+     label16:
+        nop;
+        temp$46 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$46 == 0 goto label18;
+
+        goto label17;
+
+     label17:
+        nop;
+        temp$47 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("weekwage");
+        weekwage = temp$47;
+        interfaceinvoke result.<java.sql.ResultSet: void updateInt(java.lang.String,int)>("weekwage", weekwage);
+        interfaceinvoke result.<java.sql.ResultSet: void updateRow()>();
+        goto label16;
+
+     label18:
+        nop;
+        temp$48 = this.<com.riskIt.controller.UserManager: com.riskIt.util.AccessorMethods acc>;
+        virtualinvoke temp$48.<com.riskIt.util.AccessorMethods: void printResult(java.sql.ResultSet)>(result);
+        temp$49 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$49.<java.io.PrintStream: void println(java.lang.String)>("-------------------------------------------------------------------");
+        interfaceinvoke stat.<java.sql.Statement: void close()>();
+        goto label20;
+
+     label19:
+        nop;
+        e := @caughtexception;
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label20;
+
+     label20:
+        nop;
+        return average;
+
+        catch java.lang.Exception from label0 to label19 with label19;
+    }
+
+    public int updatestability(java.lang.String, int, int)
+    {
+        com.riskIt.controller.UserManager this;
+        java.lang.String zipcode, table, temp$4, cmd_getAllUnemployed, temp$6, industry, temp$8, occupation, temp$10, temp$20, reason, temp$23, temp$31;
+        int industrycode, occupationcode, count, numcount, stability, ssn, temp$13, temp$16, temp$17, ssn, temp$24, temp$27, temp$28, sum, temp$33, temp$34, temp$40, temp$41, temp$42, temp$47, temp$48, temp$49;
+        java.sql.Statement stat, temp$1, temp$2;
+        java.sql.ResultSet result, temp$11, temp$14, temp$21, temp$25, temp$38, temp$45;
+        java.sql.Connection conn, temp$0;
+        java.lang.StringBuffer temp$3, temp$5, temp$7, temp$9, temp$19, temp$30;
+        boolean temp$12, temp$15, temp$22, temp$26, temp$39, temp$46;
+        java.io.PrintStream temp$18, temp$29, temp$32, temp$35, temp$36, temp$37, temp$44, temp$51;
+        com.riskIt.util.AccessorMethods temp$43, temp$50;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        zipcode := @parameter0: java.lang.String;
+        industrycode := @parameter1: int;
+        occupationcode := @parameter2: int;
+        count = 0;
+        numcount = 0;
+        stability = 0;
+        stat = null;
+        result = null;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$0;
+        temp$1 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$1;
+        temp$2 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement(int,int)>(1004, 1008);
+        stat = temp$2;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT  distinct userrecord.ssn,ziptable.zip  FROM  ziptable, userrecord,job  WHERE ziptable.zip = \'");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(zipcode);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\' and industrycode = ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and occupationcode = ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationcode);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" and  ziptable.zip = userrecord.zip and job.ssn = userrecord.ssn");
+        temp$4 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        table = temp$4;
+        temp$5 = new java.lang.StringBuffer;
+        specialinvoke temp$5.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT distinct employmentStat.ssn,ziptable.zip, employmentStat.unemploymentreason  FROM ziptable, employmentStat, userrecord ,job WHERE job.ssn = employmentstat.ssn and employmentstat.unemploymentreason <> \'null\' and ziptable.zip = \'");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(zipcode);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\' ");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("and industrycode = ");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("and occupationcode = ");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationcode);
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("and ziptable.zip = userrecord.zip");
+        temp$6 = virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_getAllUnemployed = temp$6;
+        temp$7 = new java.lang.StringBuffer;
+        specialinvoke temp$7.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select industrycode,industry,stability from industry where industrycode = ");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(industrycode);
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        temp$8 = virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.String toString()>();
+        industry = temp$8;
+        temp$9 = new java.lang.StringBuffer;
+        specialinvoke temp$9.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select occupationcode ,occupation,stability from occupation where occupationcode = ");
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationcode);
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        temp$10 = virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.String toString()>();
+        occupation = temp$10;
+        temp$11 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(table);
+        result = temp$11;
+
+     label1:
+        nop;
+        temp$12 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$12 == 0 goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$13 = interfaceinvoke result.<java.sql.ResultSet: int getInt(int)>(1);
+        ssn = temp$13;
+        goto label1;
+
+     label3:
+        nop;
+        temp$14 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(table);
+        result = temp$14;
+
+     label4:
+        nop;
+        temp$15 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$15 == 0 goto label6;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$16 = numcount;
+        temp$17 = temp$16 + 1;
+        numcount = temp$17;
+        goto label4;
+
+     label6:
+        nop;
+        temp$18 = <java.lang.System: java.io.PrintStream out>;
+        temp$19 = new java.lang.StringBuffer;
+        specialinvoke temp$19.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Total number of people working in zipcode ");
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(zipcode);
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is ");
+        virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(numcount);
+        temp$20 = virtualinvoke temp$19.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$18.<java.io.PrintStream: void println(java.lang.String)>(temp$20);
+        temp$21 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_getAllUnemployed);
+        result = temp$21;
+
+     label7:
+        nop;
+        temp$22 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$22 == 0 goto label9;
+
+        goto label8;
+
+     label8:
+        nop;
+        temp$23 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(int)>(3);
+        reason = temp$23;
+        temp$24 = interfaceinvoke result.<java.sql.ResultSet: int getInt(int)>(1);
+        ssn = temp$24;
+        goto label7;
+
+     label9:
+        nop;
+        temp$25 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_getAllUnemployed);
+        result = temp$25;
+
+     label10:
+        nop;
+        temp$26 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$26 == 0 goto label12;
+
+        goto label11;
+
+     label11:
+        nop;
+        temp$27 = count;
+        temp$28 = temp$27 + 1;
+        count = temp$28;
+        goto label10;
+
+     label12:
+        nop;
+        temp$29 = <java.lang.System: java.io.PrintStream out>;
+        temp$30 = new java.lang.StringBuffer;
+        specialinvoke temp$30.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$30.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Total number of unemployed  people in zipcode ");
+        virtualinvoke temp$30.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(zipcode);
+        virtualinvoke temp$30.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is ");
+        virtualinvoke temp$30.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(count);
+        temp$31 = virtualinvoke temp$30.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$29.<java.io.PrintStream: void println(java.lang.String)>(temp$31);
+        temp$32 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$32.<java.io.PrintStream: void println(java.lang.String)>("=======================================");
+        temp$33 = count;
+        sum = temp$33 + numcount;
+        temp$34 = interfaceinvoke result.<java.sql.ResultSet: int getConcurrency()>();
+        if temp$34 == 1008 goto label13;
+
+        goto label14;
+
+     label13:
+        nop;
+        temp$35 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$35.<java.io.PrintStream: void println(java.lang.String)>("ResultSet non-updatable.");
+        goto label15;
+
+     label14:
+        nop;
+        temp$36 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$36.<java.io.PrintStream: void println(java.lang.String)>("ResultSet updatable.");
+
+     label15:
+        nop;
+        temp$37 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$37.<java.io.PrintStream: void println(java.lang.String)>("=======================================");
+        temp$38 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(industry);
+        result = temp$38;
+        interfaceinvoke result.<java.sql.ResultSet: void beforeFirst()>();
+
+     label16:
+        nop;
+        temp$39 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$39 == 0 goto label21;
+
+        goto label17;
+
+     label17:
+        nop;
+        if sum == 0 goto label18;
+
+        goto label19;
+
+     label18:
+        nop;
+        temp$40 = 0;
+        stability = temp$40;
+        goto label20;
+
+     label19:
+        nop;
+        temp$41 = numcount * 10;
+        temp$42 = temp$41 / sum;
+        stability = temp$42;
+
+     label20:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void updateInt(java.lang.String,int)>("stability", stability);
+        interfaceinvoke result.<java.sql.ResultSet: void updateRow()>();
+        goto label16;
+
+     label21:
+        nop;
+        temp$43 = this.<com.riskIt.controller.UserManager: com.riskIt.util.AccessorMethods acc>;
+        virtualinvoke temp$43.<com.riskIt.util.AccessorMethods: void printIndustry(java.sql.ResultSet)>(result);
+        temp$44 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$44.<java.io.PrintStream: void println(java.lang.String)>("=======================================");
+        temp$45 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(occupation);
+        result = temp$45;
+        interfaceinvoke result.<java.sql.ResultSet: void beforeFirst()>();
+
+     label22:
+        nop;
+        temp$46 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$46 == 0 goto label27;
+
+        goto label23;
+
+     label23:
+        nop;
+        if sum == 0 goto label24;
+
+        goto label25;
+
+     label24:
+        nop;
+        temp$47 = 0;
+        stability = temp$47;
+        goto label26;
+
+     label25:
+        nop;
+        temp$48 = numcount * 10;
+        temp$49 = temp$48 / sum;
+        stability = temp$49;
+
+     label26:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void updateInt(java.lang.String,int)>("stability", stability);
+        interfaceinvoke result.<java.sql.ResultSet: void updateRow()>();
+        goto label22;
+
+     label27:
+        nop;
+        temp$50 = this.<com.riskIt.controller.UserManager: com.riskIt.util.AccessorMethods acc>;
+        virtualinvoke temp$50.<com.riskIt.util.AccessorMethods: void printOccupation(java.sql.ResultSet)>(result);
+        temp$51 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$51.<java.io.PrintStream: void println(java.lang.String)>("=======================================");
+        interfaceinvoke stat.<java.sql.Statement: void close()>();
+        goto label29;
+
+     label28:
+        nop;
+        e := @caughtexception;
+        virtualinvoke e.<java.sql.SQLException: void printStackTrace()>();
+        nop;
+        goto label29;
+
+     label29:
+        nop;
+        return stability;
+
+        catch java.sql.SQLException from label0 to label28 with label28;
+    }
+
+    public int FindTopOccupationCode(java.lang.String)
+    {
+        com.riskIt.controller.UserManager this;
+        java.lang.String statename, temp$3;
+        java.sql.Statement stat, temp$1;
+        java.sql.ResultSet result, temp$4;
+        java.sql.Connection conn, temp$0;
+        java.lang.StringBuffer temp$2;
+        boolean temp$5;
+        java.sql.SQLException e;
+        int temp$6;
+
+        this := @this: com.riskIt.controller.UserManager;
+        statename := @parameter0: java.lang.String;
+        stat = null;
+        result = null;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$0;
+        temp$1 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$1;
+        temp$2 = new java.lang.StringBuffer;
+        specialinvoke temp$2.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select occupationcode from job,userrecord,ziptable where userrecord.zip = ziptable.zip and userrecord.ssn = job.ssn and statename = \'");
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(statename);
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\' group by occupationcode,employersize,statename");
+        temp$3 = virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$4 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$3);
+        result = temp$4;
+        temp$5 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$5 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        nop;
+
+     label2:
+        nop;
+        virtualinvoke this.<com.riskIt.controller.UserManager: void FindTop5Occupationcode(java.sql.ResultSet)>(result);
+        goto label4;
+
+     label3:
+        nop;
+        e := @caughtexception;
+        virtualinvoke e.<java.sql.SQLException: void printStackTrace()>();
+        nop;
+        goto label4;
+
+     label4:
+        nop;
+        temp$6 = 5;
+        return temp$6;
+
+        catch java.sql.SQLException from label0 to label3 with label3;
+    }
+
+    private final void FindTop5Occupationcode(java.sql.ResultSet)
+    {
+        com.riskIt.controller.UserManager this;
+        java.sql.ResultSet rs;
+        int[] resultCount, resultStates, temp$3, temp$7, temp$11;
+        int resultIndex, stateIndex, code, temp$0, temp$2, temp$4, temp$5, temp$6, temp$8, temp$9, temp$10, temp$12, temp$13, temp$14;
+        com.riskIt.util.AccessorMethods temp$1;
+        boolean temp$15;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        rs := @parameter0: java.sql.ResultSet;
+        resultCount = newarray (int)[50];
+        resultStates = newarray (int)[50];
+        resultIndex = 0;
+        stateIndex = 0;
+
+     label0:
+        nop;
+
+     label1:
+        nop;
+        temp$0 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(1);
+        code = temp$0;
+        temp$1 = this.<com.riskIt.controller.UserManager: com.riskIt.util.AccessorMethods acc>;
+        temp$2 = virtualinvoke temp$1.<com.riskIt.util.AccessorMethods: int getOccupation(int[],int)>(resultStates, code);
+        stateIndex = temp$2;
+        if stateIndex < 50 goto label2;
+
+        goto label3;
+
+     label2:
+        nop;
+        temp$3 = resultCount;
+        temp$4 = stateIndex;
+        temp$5 = temp$3[temp$4];
+        temp$6 = temp$5 + 1;
+        temp$3[temp$4] = temp$6;
+        goto label4;
+
+     label3:
+        nop;
+        temp$7 = resultCount;
+        temp$8 = resultIndex;
+        temp$9 = temp$7[temp$8];
+        temp$10 = temp$9 + 1;
+        temp$7[temp$8] = temp$10;
+        temp$11 = resultStates;
+        temp$12 = resultIndex;
+        temp$11[temp$12] = code;
+        temp$13 = resultIndex;
+        temp$14 = temp$13 + 1;
+        resultIndex = temp$14;
+
+     label4:
+        nop;
+        nop;
+        temp$15 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$15 == 0 goto label5;
+
+        goto label1;
+
+     label5:
+        nop;
+        virtualinvoke this.<com.riskIt.controller.UserManager: void FindBestoccupationcode(int,int[],int[],int,java.lang.String)>(5, resultStates, resultCount, resultIndex, " Number of workers: ");
+        goto label7;
+
+     label6:
+        nop;
+        e := @caughtexception;
+        virtualinvoke e.<java.sql.SQLException: void printStackTrace()>();
+        nop;
+        goto label7;
+
+     label7:
+        nop;
+        return;
+
+        catch java.sql.SQLException from label0 to label6 with label6;
+    }
+
+    public void FindBestoccupationcode(int, int[], int[], int, java.lang.String)
+    {
+        com.riskIt.controller.UserManager this;
+        int numResults, resultIndex, maxValue, maxIndex, j, i, temp$0, temp$2, temp$3, temp$5, temp$6, temp$7, temp$8, temp$12, temp$13, temp$16, temp$18, temp$19, temp$20, temp$21;
+        int[] resultStates, resultValues, temp$1, temp$4, temp$11, temp$17;
+        java.lang.String text, temp$14;
+        java.io.PrintStream temp$9, temp$15;
+        java.lang.StringBuffer temp$10;
+
+        this := @this: com.riskIt.controller.UserManager;
+        numResults := @parameter0: int;
+        resultStates := @parameter1: int[];
+        resultValues := @parameter2: int[];
+        resultIndex := @parameter3: int;
+        text := @parameter4: java.lang.String;
+        maxValue = 0;
+        maxIndex = 0;
+        j = 0;
+        i = 0;
+
+     label0:
+        nop;
+        if i < numResults goto label1;
+
+        goto label9;
+
+     label1:
+        nop;
+        temp$0 = 0;
+        j = temp$0;
+
+     label2:
+        nop;
+        if j < resultIndex goto label3;
+
+        goto label6;
+
+     label3:
+        nop;
+        temp$1 = resultValues;
+        temp$2 = j;
+        temp$3 = temp$1[temp$2];
+        if maxValue < temp$3 goto label4;
+
+        goto label5;
+
+     label4:
+        nop;
+        temp$4 = resultValues;
+        temp$5 = j;
+        temp$6 = temp$4[temp$5];
+        maxValue = temp$6;
+        maxIndex = j;
+
+     label5:
+        nop;
+        nop;
+        temp$7 = j;
+        temp$8 = temp$7 + 1;
+        j = temp$8;
+        goto label2;
+
+     label6:
+        nop;
+        if maxValue != 0 goto label7;
+
+        goto label8;
+
+     label7:
+        nop;
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        temp$10 = new java.lang.StringBuffer;
+        specialinvoke temp$10.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("OccupationCode: ");
+        temp$11 = resultStates;
+        temp$12 = maxIndex;
+        temp$13 = temp$11[temp$12];
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$13);
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(text);
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(maxValue);
+        temp$14 = virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>(temp$14);
+        temp$15 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$15.<java.io.PrintStream: void println(java.lang.String)>("");
+        temp$16 = 0;
+        maxValue = temp$16;
+        temp$17 = resultValues;
+        temp$18 = maxIndex;
+        temp$19 = 0;
+        temp$17[temp$18] = temp$19;
+
+     label8:
+        nop;
+        nop;
+        temp$20 = i;
+        temp$21 = temp$20 + 1;
+        i = temp$21;
+        goto label0;
+
+     label9:
+        nop;
+        return;
+    }
+
+    public int FindTopIndustryCode(java.lang.String)
+    {
+        com.riskIt.controller.UserManager this;
+        java.lang.String statename, temp$3;
+        java.sql.Statement stat, temp$1;
+        java.sql.ResultSet result, temp$4;
+        java.sql.Connection conn, temp$0;
+        java.lang.StringBuffer temp$2;
+        boolean temp$5;
+        java.sql.SQLException e;
+        int temp$6;
+
+        this := @this: com.riskIt.controller.UserManager;
+        statename := @parameter0: java.lang.String;
+        stat = null;
+        result = null;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$0;
+        temp$1 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        stat = temp$1;
+        temp$2 = new java.lang.StringBuffer;
+        specialinvoke temp$2.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select industrycode from job,userrecord,ziptable where userrecord.zip = ziptable.zip and userrecord.ssn = job.ssn and statename = \'");
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(statename);
+        virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\' group by industrycode,employersize,statename");
+        temp$3 = virtualinvoke temp$2.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$4 = interfaceinvoke stat.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$3);
+        result = temp$4;
+        temp$5 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$5 == 0 goto label1;
+
+        goto label2;
+
+     label1:
+        nop;
+
+     label2:
+        nop;
+        virtualinvoke this.<com.riskIt.controller.UserManager: void FindTop5Industrycode(java.sql.ResultSet)>(result);
+        goto label4;
+
+     label3:
+        nop;
+        e := @caughtexception;
+        virtualinvoke e.<java.sql.SQLException: void printStackTrace()>();
+        nop;
+        goto label4;
+
+     label4:
+        nop;
+        temp$6 = 5;
+        return temp$6;
+
+        catch java.sql.SQLException from label0 to label3 with label3;
+    }
+
+    private final void FindTop5Industrycode(java.sql.ResultSet)
+    {
+        com.riskIt.controller.UserManager this;
+        java.sql.ResultSet rs;
+        int[] resultCount, resultStates, temp$3, temp$7, temp$11;
+        int resultIndex, stateIndex, code, temp$0, temp$2, temp$4, temp$5, temp$6, temp$8, temp$9, temp$10, temp$12, temp$13, temp$14;
+        com.riskIt.util.AccessorMethods temp$1;
+        boolean temp$15;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.UserManager;
+        rs := @parameter0: java.sql.ResultSet;
+        resultCount = newarray (int)[50];
+        resultStates = newarray (int)[50];
+        resultIndex = 0;
+        stateIndex = 0;
+
+     label0:
+        nop;
+
+     label1:
+        nop;
+        temp$0 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(1);
+        code = temp$0;
+        temp$1 = this.<com.riskIt.controller.UserManager: com.riskIt.util.AccessorMethods acc>;
+        temp$2 = virtualinvoke temp$1.<com.riskIt.util.AccessorMethods: int getIndustryCode(int[],int)>(resultStates, code);
+        stateIndex = temp$2;
+        if stateIndex < 50 goto label2;
+
+        goto label3;
+
+     label2:
+        nop;
+        temp$3 = resultCount;
+        temp$4 = stateIndex;
+        temp$5 = temp$3[temp$4];
+        temp$6 = temp$5 + 1;
+        temp$3[temp$4] = temp$6;
+        goto label4;
+
+     label3:
+        nop;
+        temp$7 = resultCount;
+        temp$8 = resultIndex;
+        temp$9 = temp$7[temp$8];
+        temp$10 = temp$9 + 1;
+        temp$7[temp$8] = temp$10;
+        temp$11 = resultStates;
+        temp$12 = resultIndex;
+        temp$11[temp$12] = code;
+        temp$13 = resultIndex;
+        temp$14 = temp$13 + 1;
+        resultIndex = temp$14;
+
+     label4:
+        nop;
+        nop;
+        temp$15 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$15 == 0 goto label5;
+
+        goto label1;
+
+     label5:
+        nop;
+        virtualinvoke this.<com.riskIt.controller.UserManager: void FindBestIndustrycode(int,int[],int[],int,java.lang.String)>(5, resultStates, resultCount, resultIndex, " Number of workers: ");
+        goto label7;
+
+     label6:
+        nop;
+        e := @caughtexception;
+        virtualinvoke e.<java.sql.SQLException: void printStackTrace()>();
+        nop;
+        goto label7;
+
+     label7:
+        nop;
+        return;
+
+        catch java.sql.SQLException from label0 to label6 with label6;
+    }
+
+    private final void FindBestIndustrycode(int, int[], int[], int, java.lang.String)
+    {
+        com.riskIt.controller.UserManager this;
+        int numResults, resultIndex, maxValue, maxIndex, j, i, temp$0, temp$2, temp$3, temp$5, temp$6, temp$7, temp$8, temp$12, temp$13, temp$16, temp$18, temp$19, temp$20, temp$21;
+        int[] resultStates, resultValues, temp$1, temp$4, temp$11, temp$17;
+        java.lang.String text, temp$14;
+        java.io.PrintStream temp$9, temp$15;
+        java.lang.StringBuffer temp$10;
+
+        this := @this: com.riskIt.controller.UserManager;
+        numResults := @parameter0: int;
+        resultStates := @parameter1: int[];
+        resultValues := @parameter2: int[];
+        resultIndex := @parameter3: int;
+        text := @parameter4: java.lang.String;
+        maxValue = 0;
+        maxIndex = 0;
+        j = 0;
+        i = 0;
+
+     label0:
+        nop;
+        if i < numResults goto label1;
+
+        goto label9;
+
+     label1:
+        nop;
+        temp$0 = 0;
+        j = temp$0;
+
+     label2:
+        nop;
+        if j < resultIndex goto label3;
+
+        goto label6;
+
+     label3:
+        nop;
+        temp$1 = resultValues;
+        temp$2 = j;
+        temp$3 = temp$1[temp$2];
+        if maxValue < temp$3 goto label4;
+
+        goto label5;
+
+     label4:
+        nop;
+        temp$4 = resultValues;
+        temp$5 = j;
+        temp$6 = temp$4[temp$5];
+        maxValue = temp$6;
+        maxIndex = j;
+
+     label5:
+        nop;
+        nop;
+        temp$7 = j;
+        temp$8 = temp$7 + 1;
+        j = temp$8;
+        goto label2;
+
+     label6:
+        nop;
+        if maxValue != 0 goto label7;
+
+        goto label8;
+
+     label7:
+        nop;
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        temp$10 = new java.lang.StringBuffer;
+        specialinvoke temp$10.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("IndustryCode: ");
+        temp$11 = resultStates;
+        temp$12 = maxIndex;
+        temp$13 = temp$11[temp$12];
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$13);
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(text);
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(maxValue);
+        temp$14 = virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>(temp$14);
+        temp$15 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$15.<java.io.PrintStream: void println(java.lang.String)>("");
+        temp$16 = 0;
+        maxValue = temp$16;
+        temp$17 = resultValues;
+        temp$18 = maxIndex;
+        temp$19 = 0;
+        temp$17[temp$18] = temp$19;
+
+     label8:
+        nop;
+        nop;
+        temp$20 = i;
+        temp$21 = temp$20 + 1;
+        i = temp$21;
+        goto label0;
+
+     label9:
+        nop;
+        return;
+    }
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="5" eline="5" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="18" eline="18" spos="0" epos="0"/>
+<text info="[zipcode]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: a, Annotation Element: kind: s name: default value: b, Annotation Element: kind: s name: default value: c, Annotation Element: kind: s name: default value: d, Annotation Element: kind: s name: default value: e, Annotation Element: kind: s name: default value: f]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: job.workweeks, Annotation Element: kind: s name: default value: job.weekwage , Annotation Element: kind: s name: default value: investment.capitalgains, Annotation Element: kind: s name: default value: investment.capitallosses, Annotation Element: kind: s name: default value: investment.stockdividends, Annotation Element: kind: s name: default value: userrecord.ssn]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="116" eline="116" spos="0" epos="0"/>
+<text info="[inv]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: zipcode, Annotation Element: kind: s name: default value: age]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: userrecord.zip, Annotation Element: kind: s name: default value: userrecord.age]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+</attributes>

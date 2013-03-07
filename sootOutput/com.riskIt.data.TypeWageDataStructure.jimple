@@ -1,0 +1,53 @@
+public class com.riskIt.data.TypeWageDataStructure extends java.lang.Object implements com.riskIt.interfaces.TypeWageDataStructureInterface
+{
+    private final java.lang.String type;
+    private final double weekWage;
+    private final double workWeeks;
+
+    public void <init>(java.lang.String, double, double)
+    {
+        com.riskIt.data.TypeWageDataStructure this;
+        java.lang.String type;
+        double weekWage, workWeeks;
+
+        this := @this: com.riskIt.data.TypeWageDataStructure;
+        type := @parameter0: java.lang.String;
+        weekWage := @parameter1: double;
+        workWeeks := @parameter2: double;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        this.<com.riskIt.data.TypeWageDataStructure: java.lang.String type> = type;
+        this.<com.riskIt.data.TypeWageDataStructure: double weekWage> = weekWage;
+        this.<com.riskIt.data.TypeWageDataStructure: double workWeeks> = workWeeks;
+        return;
+    }
+
+    public java.lang.String getType()
+    {
+        com.riskIt.data.TypeWageDataStructure this;
+        java.lang.String temp$0;
+
+        this := @this: com.riskIt.data.TypeWageDataStructure;
+        temp$0 = this.<com.riskIt.data.TypeWageDataStructure: java.lang.String type>;
+        return temp$0;
+    }
+
+    public double getWeekWage()
+    {
+        com.riskIt.data.TypeWageDataStructure this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.TypeWageDataStructure;
+        temp$0 = this.<com.riskIt.data.TypeWageDataStructure: double weekWage>;
+        return temp$0;
+    }
+
+    public double getWorkWeeks()
+    {
+        com.riskIt.data.TypeWageDataStructure this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.TypeWageDataStructure;
+        temp$0 = this.<com.riskIt.data.TypeWageDataStructure: double workWeeks>;
+        return temp$0;
+    }
+}

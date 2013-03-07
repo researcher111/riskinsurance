@@ -1,0 +1,320 @@
+public class com.riskIt.util.Factory extends java.lang.Object
+{
+
+    private void <init>()
+    {
+        com.riskIt.util.Factory this;
+
+        this := @this: com.riskIt.util.Factory;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+
+    public static java.sql.Connection getConnection()
+    {
+        java.sql.Connection temp$0, temp$15;
+        java.sql.SQLException e, temp$14;
+        java.io.PrintStream temp$1, temp$2, temp$6, temp$10;
+        java.lang.StringBuffer temp$3, temp$7, temp$11;
+        java.lang.String temp$4, temp$5, temp$9, temp$12, temp$13;
+        int temp$8;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+
+     label1:
+        nop;
+        return temp$0;
+
+     label2:
+        nop;
+        e := @caughtexception;
+
+     label3:
+        nop;
+        if e != null goto label4;
+
+        goto label5;
+
+     label4:
+        nop;
+        temp$1 = <java.lang.System: java.io.PrintStream err>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>("\n----- SQLException -----");
+        temp$2 = <java.lang.System: java.io.PrintStream err>;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  SQL State:  ");
+        temp$4 = virtualinvoke e.<java.sql.SQLException: java.lang.String getSQLState()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$4);
+        temp$5 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$2.<java.io.PrintStream: void println(java.lang.String)>(temp$5);
+        temp$6 = <java.lang.System: java.io.PrintStream err>;
+        temp$7 = new java.lang.StringBuffer;
+        specialinvoke temp$7.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Error Code: ");
+        temp$8 = virtualinvoke e.<java.sql.SQLException: int getErrorCode()>();
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$8);
+        temp$9 = virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$6.<java.io.PrintStream: void println(java.lang.String)>(temp$9);
+        temp$10 = <java.lang.System: java.io.PrintStream err>;
+        temp$11 = new java.lang.StringBuffer;
+        specialinvoke temp$11.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Message:    ");
+        temp$12 = virtualinvoke e.<java.sql.SQLException: java.lang.String getMessage()>();
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$12);
+        temp$13 = virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>(temp$13);
+        temp$14 = virtualinvoke e.<java.sql.SQLException: java.sql.SQLException getNextException()>();
+        e = temp$14;
+        goto label3;
+
+     label5:
+        nop;
+        temp$15 = null;
+        nop;
+        return temp$15;
+
+        catch java.sql.SQLException from label0 to label1 with label2;
+    }
+
+    public static com.riskIt.interfaces.CalculateByRaceInterface getCalculateByRace()
+    {
+        com.riskIt.controller.CalculateByRace temp$0;
+
+        temp$0 = new com.riskIt.controller.CalculateByRace;
+        specialinvoke temp$0.<com.riskIt.controller.CalculateByRace: void <init>()>();
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.StartInterface getIncomeByRace()
+    {
+        com.riskIt.ui.IncomeByRaceUI temp$0;
+
+        temp$0 = new com.riskIt.ui.IncomeByRaceUI;
+        specialinvoke temp$0.<com.riskIt.ui.IncomeByRaceUI: void <init>(java.lang.String)>("income");
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.StartInterface getWeeklyWageByRace()
+    {
+        com.riskIt.ui.IncomeByRaceUI temp$0;
+
+        temp$0 = new com.riskIt.ui.IncomeByRaceUI;
+        specialinvoke temp$0.<com.riskIt.ui.IncomeByRaceUI: void <init>(java.lang.String)>("wage");
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.CalculateByStateInterface getCalculateByState()
+    {
+        com.riskIt.controller.CalculateByState temp$0;
+
+        temp$0 = new com.riskIt.controller.CalculateByState;
+        specialinvoke temp$0.<com.riskIt.controller.CalculateByState: void <init>()>();
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.StartInterface getIncomeByState()
+    {
+        com.riskIt.ui.IncomeByStateUI temp$0;
+
+        temp$0 = new com.riskIt.ui.IncomeByStateUI;
+        specialinvoke temp$0.<com.riskIt.ui.IncomeByStateUI: void <init>(java.lang.String)>("income");
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.StartInterface getWeeklyWageByState()
+    {
+        com.riskIt.ui.IncomeByStateUI temp$0;
+
+        temp$0 = new com.riskIt.ui.IncomeByStateUI;
+        specialinvoke temp$0.<com.riskIt.ui.IncomeByStateUI: void <init>(java.lang.String)>("wage");
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface getCalculateByOccupationOrIndustryCode()
+    {
+        com.riskIt.controller.CalculateByOccupationOrIndustryCode temp$0;
+
+        temp$0 = new com.riskIt.controller.CalculateByOccupationOrIndustryCode;
+        specialinvoke temp$0.<com.riskIt.controller.CalculateByOccupationOrIndustryCode: void <init>()>();
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.StartInterface getIncomeByOccupationOrIndustryCode()
+    {
+        com.riskIt.ui.IncomeByOccupationOrIndustryCodeUI temp$0;
+
+        temp$0 = new com.riskIt.ui.IncomeByOccupationOrIndustryCodeUI;
+        specialinvoke temp$0.<com.riskIt.ui.IncomeByOccupationOrIndustryCodeUI: void <init>(java.lang.String)>("income");
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.StartInterface getWeeklyWageByOccupationOrIndustryCode()
+    {
+        com.riskIt.ui.IncomeByOccupationOrIndustryCodeUI temp$0;
+
+        temp$0 = new com.riskIt.ui.IncomeByOccupationOrIndustryCodeUI;
+        specialinvoke temp$0.<com.riskIt.ui.IncomeByOccupationOrIndustryCodeUI: void <init>(java.lang.String)>("wage");
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.TypeWageDataStructureInterface getTypeWageDataStructure(java.lang.String, double, int)
+    {
+        java.lang.String type;
+        double wage, temp$1;
+        int workWeeks;
+        com.riskIt.data.TypeWageDataStructure temp$0;
+
+        type := @parameter0: java.lang.String;
+        wage := @parameter1: double;
+        workWeeks := @parameter2: int;
+        temp$0 = new com.riskIt.data.TypeWageDataStructure;
+        temp$1 = (double) workWeeks;
+        specialinvoke temp$0.<com.riskIt.data.TypeWageDataStructure: void <init>(java.lang.String,double,double)>(type, wage, temp$1);
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.CalculateByEducationInterface getCalculateByEducation()
+    {
+        com.riskIt.controller.CalculateByEducation temp$0;
+
+        temp$0 = new com.riskIt.controller.CalculateByEducation;
+        specialinvoke temp$0.<com.riskIt.controller.CalculateByEducation: void <init>()>();
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.TypeWageDataStructureInterface getEducationWageDataStructure(java.lang.String, int, int)
+    {
+        java.lang.String education;
+        int weekWage, workWeeks;
+        com.riskIt.data.TypeWageDataStructure temp$0;
+        double temp$1, temp$2;
+
+        education := @parameter0: java.lang.String;
+        weekWage := @parameter1: int;
+        workWeeks := @parameter2: int;
+        temp$0 = new com.riskIt.data.TypeWageDataStructure;
+        temp$1 = (double) weekWage;
+        temp$2 = (double) workWeeks;
+        specialinvoke temp$0.<com.riskIt.data.TypeWageDataStructure: void <init>(java.lang.String,double,double)>(education, temp$1, temp$2);
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.StartInterface getIncomeByEducation()
+    {
+        com.riskIt.ui.IncomeByEducationUI temp$0;
+
+        temp$0 = new com.riskIt.ui.IncomeByEducationUI;
+        specialinvoke temp$0.<com.riskIt.ui.IncomeByEducationUI: void <init>(java.lang.String)>("income");
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.StartInterface getWeeklyWageByEducation()
+    {
+        com.riskIt.ui.IncomeByEducationUI temp$0;
+
+        temp$0 = new com.riskIt.ui.IncomeByEducationUI;
+        specialinvoke temp$0.<com.riskIt.ui.IncomeByEducationUI: void <init>(java.lang.String)>("wage");
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.StartInterface getWeeklyWageForCategories()
+    {
+        com.riskIt.ui.CalculateWeeklyWageUI temp$0;
+
+        temp$0 = new com.riskIt.ui.CalculateWeeklyWageUI;
+        specialinvoke temp$0.<com.riskIt.ui.CalculateWeeklyWageUI: void <init>()>();
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.StartInterface getEstimateIncomeGUI()
+    {
+        com.riskIt.ui.EstimateIncomeUI temp$0;
+
+        temp$0 = new com.riskIt.ui.EstimateIncomeUI;
+        specialinvoke temp$0.<com.riskIt.ui.EstimateIncomeUI: void <init>()>();
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.EstimateIncomeInterface getEstimateIncome()
+    {
+        com.riskIt.controller.EstimateIncome temp$0;
+
+        temp$0 = new com.riskIt.controller.EstimateIncome;
+        specialinvoke temp$0.<com.riskIt.controller.EstimateIncome: void <init>()>();
+        return temp$0;
+    }
+
+    public static double getRoundMethod(double)
+    {
+        double value, temp$1;
+        com.riskIt.util.RoundValue temp$0;
+
+        value := @parameter0: double;
+        temp$0 = new com.riskIt.util.RoundValue;
+        specialinvoke temp$0.<com.riskIt.util.RoundValue: void <init>()>();
+        temp$1 = virtualinvoke temp$0.<com.riskIt.util.RoundValue: double roundValue(double)>(value);
+        return temp$1;
+    }
+
+    public static com.riskIt.interfaces.CalcImplInterface getWeeklyImpl()
+    {
+        com.riskIt.implObjects.WeeklyImpl temp$0;
+
+        temp$0 = new com.riskIt.implObjects.WeeklyImpl;
+        specialinvoke temp$0.<com.riskIt.implObjects.WeeklyImpl: void <init>()>();
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.CalcImplInterface getYearlyImpl()
+    {
+        com.riskIt.implObjects.YearlyImpl temp$0;
+
+        temp$0 = new com.riskIt.implObjects.YearlyImpl;
+        specialinvoke temp$0.<com.riskIt.implObjects.YearlyImpl: void <init>()>();
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.CalcImplWithDescriptionInterface getWeeklyImplWithDescription(java.lang.String)
+    {
+        java.lang.String description;
+        com.riskIt.implObjects.WeeklyImplWithDescription temp$0;
+
+        description := @parameter0: java.lang.String;
+        temp$0 = new com.riskIt.implObjects.WeeklyImplWithDescription;
+        specialinvoke temp$0.<com.riskIt.implObjects.WeeklyImplWithDescription: void <init>(java.lang.String)>(description);
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.CalcImplWithDescriptionInterface getYearlyImplWithDescription(java.lang.String)
+    {
+        java.lang.String description;
+        com.riskIt.implObjects.YearlyImplWithDescription temp$0;
+
+        description := @parameter0: java.lang.String;
+        temp$0 = new com.riskIt.implObjects.YearlyImplWithDescription;
+        specialinvoke temp$0.<com.riskIt.implObjects.YearlyImplWithDescription: void <init>(java.lang.String)>(description);
+        return temp$0;
+    }
+
+    public static com.riskIt.interfaces.EstimateIncomeDTOInterface getEstimateIncomeDTO(java.lang.String, int, java.lang.String, java.lang.String, int, int, int, int, int)
+    {
+        java.lang.String name, race, education;
+        int ssn, occupationCode, industryCode, weeklyWage, workWeeks, investmentIncome;
+        com.riskIt.data.EstimateIncomeDTO temp$0;
+
+        name := @parameter0: java.lang.String;
+        ssn := @parameter1: int;
+        race := @parameter2: java.lang.String;
+        education := @parameter3: java.lang.String;
+        occupationCode := @parameter4: int;
+        industryCode := @parameter5: int;
+        weeklyWage := @parameter6: int;
+        workWeeks := @parameter7: int;
+        investmentIncome := @parameter8: int;
+        temp$0 = new com.riskIt.data.EstimateIncomeDTO;
+        specialinvoke temp$0.<com.riskIt.data.EstimateIncomeDTO: void <init>(java.lang.String,int,java.lang.String,java.lang.String,int,int,int,int,int)>(name, ssn, race, education, occupationCode, industryCode, weeklyWage, workWeeks, investmentIncome);
+        return temp$0;
+    }
+}

@@ -1,0 +1,15 @@
+public interface  com.riskIt.interfaces.CalculateByEducationInterface extends java.lang.Object
+{
+
+    public abstract java.util.ArrayList getEducationLevelList();
+
+    public abstract boolean isInEducationList(java.lang.String);
+
+    public abstract double calculateIncomeByEducationLevel(java.lang.String);
+
+    public abstract double calculateIncomeByAllEducationLevels();
+
+    public abstract double calculateWeeklyWageByEducationLevel(java.lang.String);
+
+    public abstract double calculateWeeklyWageByAllEducationLevels();
+}

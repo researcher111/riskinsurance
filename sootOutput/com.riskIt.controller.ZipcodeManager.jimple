@@ -1,0 +1,209 @@
+public class com.riskIt.controller.ZipcodeManager extends java.lang.Object
+{
+    private com.riskIt.util.AccessorMethods acc;
+
+    public void <init>()
+    {
+        com.riskIt.controller.ZipcodeManager this;
+        com.riskIt.util.AccessorMethods temp$0;
+
+        this := @this: com.riskIt.controller.ZipcodeManager;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        temp$0 = new com.riskIt.util.AccessorMethods;
+        specialinvoke temp$0.<com.riskIt.util.AccessorMethods: void <init>()>();
+        this.<com.riskIt.controller.ZipcodeManager: com.riskIt.util.AccessorMethods acc> = temp$0;
+        return;
+    }
+
+    public java.util.ArrayList getAllZipcodes(java.lang.String)
+    {
+        com.riskIt.controller.ZipcodeManager this;
+        java.lang.String zipcode, cmds_getAllZipcode, temp$4;
+        java.sql.ResultSet result, temp$5;
+        java.util.ArrayList sData, temp$0, temp$15;
+        java.sql.Connection conn, temp$1;
+        java.sql.Statement s, temp$2;
+        java.lang.StringBuffer temp$3;
+        boolean temp$6;
+        int a, temp$7, b, temp$8, c, temp$9, d, temp$10, e, temp$11, f, temp$12;
+        com.riskIt.util.AccessorMethods temp$13;
+        long temp$14;
+        java.lang.Exception e;
+        java.io.PrintStream temp$16;
+
+        this := @this: com.riskIt.controller.ZipcodeManager;
+        zipcode := @parameter0: java.lang.String;
+        cmds_getAllZipcode = "";
+        result = null;
+        temp$0 = new java.util.ArrayList;
+        specialinvoke temp$0.<java.util.ArrayList: void <init>()>();
+        sData = temp$0;
+
+     label0:
+        nop;
+        temp$1 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$1;
+        temp$2 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        s = temp$2;
+        if zipcode != null goto label1;
+
+        goto label5;
+
+     label1:
+        nop;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT userrecord.zip, userrecord.ssn, investment.capitalgains, investment.capitallosses, investment.stockdividends, job.workweeks, job.weekwage FROM  investment, userrecord, job WHERE  investment.ssn = userrecord.ssn and  job.ssn = userrecord.ssn and userrecord.zip = \'");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(zipcode);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\'");
+        temp$4 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmds_getAllZipcode = temp$4;
+        temp$5 = interfaceinvoke s.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmds_getAllZipcode);
+        result = temp$5;
+
+     label2:
+        nop;
+        temp$6 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$6 == 0 goto label4;
+
+        goto label3;
+
+     label3:
+        nop;
+        temp$7 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("workweeks");
+        a = temp$7;
+        temp$8 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("weekwage");
+        b = temp$8;
+        temp$9 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("capitalGains");
+        c = temp$9;
+        temp$10 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("capitallosses");
+        d = temp$10;
+        temp$11 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("stockdividends");
+        e = temp$11;
+        temp$12 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("ssn");
+        f = temp$12;
+        temp$13 = this.<com.riskIt.controller.ZipcodeManager: com.riskIt.util.AccessorMethods acc>;
+        temp$14 = (long) f;
+        temp$15 = virtualinvoke temp$13.<com.riskIt.util.AccessorMethods: java.util.ArrayList calculateRange(int,int,int,int,int,long,java.util.ArrayList)>(a, b, c, d, e, temp$14, sData);
+        sData = temp$15;
+        goto label2;
+
+     label4:
+        nop;
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+
+     label5:
+        nop;
+        interfaceinvoke s.<java.sql.Statement: void close()>();
+        goto label7;
+
+     label6:
+        nop;
+        e := @caughtexception;
+        temp$16 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$16.<java.io.PrintStream: void println(java.lang.String)>("Exception in getAllZipcode");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label7;
+
+     label7:
+        nop;
+        return sData;
+
+        catch java.lang.Exception from label0 to label6 with label6;
+    }
+
+    public com.riskIt.data.Invitation getOneZipcode(com.riskIt.data.Invitation)
+    {
+        com.riskIt.controller.ZipcodeManager this;
+        com.riskIt.data.Invitation inv;
+        java.lang.String stateName, cmd_zipcode, temp$2, zipcode, temp$7, cmd_state, temp$10, temp$13;
+        int age, temp$8;
+        java.lang.StringBuffer temp$0, temp$9;
+        long temp$1;
+        java.sql.Connection conn, temp$3;
+        java.sql.Statement s, temp$4;
+        java.sql.ResultSet result, temp$5, temp$11;
+        boolean temp$6, temp$12;
+        java.lang.Exception e;
+        java.io.PrintStream temp$14;
+
+        this := @this: com.riskIt.controller.ZipcodeManager;
+        inv := @parameter0: com.riskIt.data.Invitation;
+        stateName = "";
+        age = 0;
+        temp$0 = new java.lang.StringBuffer;
+        specialinvoke temp$0.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select zip, age from userrecord where ssn = ");
+        temp$1 = virtualinvoke inv.<com.riskIt.data.Invitation: long getUserSSN()>();
+        virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.StringBuffer append(long)>(temp$1);
+        temp$2 = virtualinvoke temp$0.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_zipcode = temp$2;
+        zipcode = "";
+
+     label0:
+        nop;
+        temp$3 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        conn = temp$3;
+        temp$4 = interfaceinvoke conn.<java.sql.Connection: java.sql.Statement createStatement()>();
+        s = temp$4;
+        temp$5 = interfaceinvoke s.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_zipcode);
+        result = temp$5;
+        temp$6 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$6 == 0 goto label2;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$7 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("zip");
+        zipcode = temp$7;
+        temp$8 = interfaceinvoke result.<java.sql.ResultSet: int getInt(java.lang.String)>("age");
+        age = temp$8;
+
+     label2:
+        nop;
+        virtualinvoke inv.<com.riskIt.data.Invitation: void setZipcode(java.lang.String)>(zipcode);
+        virtualinvoke inv.<com.riskIt.data.Invitation: void setAge(int)>(age);
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        temp$9 = new java.lang.StringBuffer;
+        specialinvoke temp$9.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("select * from ziptable where zip = \'");
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(zipcode);
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\'");
+        temp$10 = virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.String toString()>();
+        cmd_state = temp$10;
+        temp$11 = interfaceinvoke s.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(cmd_state);
+        result = temp$11;
+        temp$12 = interfaceinvoke result.<java.sql.ResultSet: boolean next()>();
+        if temp$12 == 0 goto label4;
+
+        goto label3;
+
+     label3:
+        nop;
+        temp$13 = interfaceinvoke result.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("statename");
+        stateName = temp$13;
+
+     label4:
+        nop;
+        virtualinvoke inv.<com.riskIt.data.Invitation: void setStateName(java.lang.String)>(stateName);
+        interfaceinvoke result.<java.sql.ResultSet: void close()>();
+        goto label6;
+
+     label5:
+        nop;
+        e := @caughtexception;
+        temp$14 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$14.<java.io.PrintStream: void println(java.lang.String)>("Exception in getOneZipcode");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label6;
+
+     label6:
+        nop;
+        return inv;
+
+        catch java.lang.Exception from label0 to label5 with label5;
+    }
+}

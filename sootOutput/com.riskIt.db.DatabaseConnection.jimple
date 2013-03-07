@@ -1,0 +1,122 @@
+public class com.riskIt.db.DatabaseConnection extends java.lang.Object
+{
+    private static final java.lang.String driver;
+    private static final java.lang.String URL;
+    private static java.sql.Connection conn;
+    private static boolean created;
+
+    static void <clinit>()
+    {
+        java.lang.String temp$0, temp$1;
+        boolean temp$2;
+
+        temp$0 = "org.apache.derby.jdbc.ClientDriver";
+        <com.riskIt.db.DatabaseConnection: java.lang.String driver> = temp$0;
+        temp$1 = "jdbc:mysql://honeypot:33601/preist_riskinsurance";
+        <com.riskIt.db.DatabaseConnection: java.lang.String URL> = temp$1;
+        temp$2 = 0;
+        <com.riskIt.db.DatabaseConnection: boolean created> = temp$2;
+        return;
+    }
+
+    private void <init>()
+    {
+        com.riskIt.db.DatabaseConnection this;
+
+        this := @this: com.riskIt.db.DatabaseConnection;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+
+    public static java.sql.Connection getConnection() throws java.sql.SQLException
+    {
+        boolean temp$0, temp$5;
+        java.sql.Connection temp$1, temp$4, temp$8;
+        java.lang.Class temp$2;
+        java.lang.Object temp$3;
+        java.io.PrintStream temp$6, temp$7;
+        java.lang.Exception e;
+
+        temp$0 = <com.riskIt.db.DatabaseConnection: boolean created>;
+        if temp$0 == 0 goto label1;
+
+        goto label0;
+
+     label0:
+        nop;
+        temp$1 = <com.riskIt.db.DatabaseConnection: java.sql.Connection conn>;
+        return temp$1;
+
+     label1:
+        nop;
+
+     label2:
+        nop;
+        temp$2 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("org.apache.derby.jdbc.ClientDriver");
+        temp$3 = virtualinvoke temp$2.<java.lang.Class: java.lang.Object newInstance()>();
+        temp$4 = staticinvoke <java.sql.DriverManager: java.sql.Connection getConnection(java.lang.String,java.lang.String,java.lang.String)>("jdbc:mysql://th101c-4.cs.wm.edu:33061/preist_riskinsurance", "root", "s3m3rU");
+        <com.riskIt.db.DatabaseConnection: java.sql.Connection conn> = temp$4;
+        temp$5 = 1;
+        <com.riskIt.db.DatabaseConnection: boolean created> = temp$5;
+        temp$6 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$6.<java.io.PrintStream: void println(java.lang.String)>("connected using jdbc:mysql://th101c-4.cs.wm.edu:33061/preist_riskinsurance");
+        goto label4;
+
+     label3:
+        nop;
+        e := @caughtexception;
+        temp$7 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$7.<java.io.PrintStream: void println(java.lang.String)>("Exception in CreateConnection");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label4;
+
+     label4:
+        nop;
+        temp$8 = <com.riskIt.db.DatabaseConnection: java.sql.Connection conn>;
+        return temp$8;
+
+        catch java.lang.Exception from label2 to label3 with label3;
+    }
+
+    public static void closeConnection()
+    {
+        boolean temp$0, temp$1;
+        java.sql.Connection temp$2;
+        java.lang.Exception e;
+        java.io.PrintStream temp$3;
+
+     label0:
+        nop;
+        temp$0 = <com.riskIt.db.DatabaseConnection: boolean created>;
+        if temp$0 == 0 goto label2;
+
+        goto label1;
+
+     label1:
+        nop;
+        temp$1 = 0;
+        <com.riskIt.db.DatabaseConnection: boolean created> = temp$1;
+        temp$2 = <com.riskIt.db.DatabaseConnection: java.sql.Connection conn>;
+        interfaceinvoke temp$2.<java.sql.Connection: void close()>();
+
+     label2:
+        nop;
+        goto label4;
+
+     label3:
+        nop;
+        e := @caughtexception;
+        temp$3 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$3.<java.io.PrintStream: void println(java.lang.String)>("Exception in closeCOnnection");
+        virtualinvoke e.<java.lang.Exception: void printStackTrace()>();
+        nop;
+        goto label4;
+
+     label4:
+        nop;
+        return;
+
+        catch java.lang.Exception from label0 to label3 with label3;
+    }
+}

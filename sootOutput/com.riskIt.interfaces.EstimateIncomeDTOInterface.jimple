@@ -1,0 +1,23 @@
+public interface  com.riskIt.interfaces.EstimateIncomeDTOInterface extends java.lang.Object
+{
+
+    public abstract java.lang.String getName();
+
+    public abstract int getSSN();
+
+    public abstract java.lang.String getRace();
+
+    public abstract java.lang.String getEducation();
+
+    public abstract int getOccupationCode();
+
+    public abstract int getIndustryCode();
+
+    public abstract int getWeeklyWage();
+
+    public abstract int getWorkWeeks();
+
+    public abstract int getInvestmentIncome();
+
+    public abstract java.lang.String toString();
+}

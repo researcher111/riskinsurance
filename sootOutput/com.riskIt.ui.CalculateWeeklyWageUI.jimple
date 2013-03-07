@@ -1,0 +1,283 @@
+public class com.riskIt.ui.CalculateWeeklyWageUI extends java.lang.Object implements com.riskIt.interfaces.StartInterface
+{
+    private java.util.Scanner in;
+    private int listCount;
+    java.util.ArrayList optionList;
+
+    public void start()
+    {
+        com.riskIt.ui.CalculateWeeklyWageUI this;
+        java.util.ArrayList temp$0, temp$2, temp$4, temp$6, temp$25;
+        boolean temp$1, temp$3, temp$5, temp$7, temp$9;
+        int intChoice, temp$11, temp$12, temp$13, temp$22, temp$23, temp$24, temp$26, temp$27, temp$28, temp$30, temp$32, temp$34, temp$36;
+        java.util.Scanner temp$8, temp$10, temp$19;
+        java.io.PrintStream temp$14, temp$17;
+        java.lang.StringBuffer temp$15, temp$18;
+        java.lang.String temp$16, temp$20, temp$21;
+        com.riskIt.interfaces.StartInterface temp$29, temp$31, temp$33, temp$35;
+
+        this := @this: com.riskIt.ui.CalculateWeeklyWageUI;
+        temp$0 = this.<com.riskIt.ui.CalculateWeeklyWageUI: java.util.ArrayList optionList>;
+        temp$1 = virtualinvoke temp$0.<java.util.ArrayList: boolean add(java.lang.Object)>("State");
+        temp$2 = this.<com.riskIt.ui.CalculateWeeklyWageUI: java.util.ArrayList optionList>;
+        temp$3 = virtualinvoke temp$2.<java.util.ArrayList: boolean add(java.lang.Object)>("Occupation or Industry Code");
+        temp$4 = this.<com.riskIt.ui.CalculateWeeklyWageUI: java.util.ArrayList optionList>;
+        temp$5 = virtualinvoke temp$4.<java.util.ArrayList: boolean add(java.lang.Object)>("Education Level");
+        temp$6 = this.<com.riskIt.ui.CalculateWeeklyWageUI: java.util.ArrayList optionList>;
+        temp$7 = virtualinvoke temp$6.<java.util.ArrayList: boolean add(java.lang.Object)>("Race");
+        virtualinvoke this.<com.riskIt.ui.CalculateWeeklyWageUI: void displayMenu()>();
+        intChoice = 0;
+
+     label0:
+        nop;
+
+     label1:
+        nop;
+        temp$8 = this.<com.riskIt.ui.CalculateWeeklyWageUI: java.util.Scanner in>;
+        temp$9 = virtualinvoke temp$8.<java.util.Scanner: boolean hasNextInt()>();
+        if temp$9 == 0 goto label6;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$10 = this.<com.riskIt.ui.CalculateWeeklyWageUI: java.util.Scanner in>;
+        temp$11 = virtualinvoke temp$10.<java.util.Scanner: int nextInt()>();
+        intChoice = temp$11;
+        if intChoice < 1 goto label4;
+
+        goto label3;
+
+     label3:
+        nop;
+        temp$12 = this.<com.riskIt.ui.CalculateWeeklyWageUI: int listCount>;
+        temp$13 = temp$12 - 1;
+        if intChoice > temp$13 goto label4;
+
+        goto label5;
+
+        goto label5;
+
+     label4:
+        nop;
+        virtualinvoke this.<com.riskIt.ui.CalculateWeeklyWageUI: void displayMenu()>();
+        temp$14 = <java.lang.System: java.io.PrintStream out>;
+        temp$15 = new java.lang.StringBuffer;
+        specialinvoke temp$15.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$15.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(intChoice);
+        virtualinvoke temp$15.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$16 = virtualinvoke temp$15.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$14.<java.io.PrintStream: void println(java.lang.String)>(temp$16);
+
+     label5:
+        nop;
+        goto label7;
+
+     label6:
+        nop;
+        virtualinvoke this.<com.riskIt.ui.CalculateWeeklyWageUI: void displayMenu()>();
+        temp$17 = <java.lang.System: java.io.PrintStream out>;
+        temp$18 = new java.lang.StringBuffer;
+        specialinvoke temp$18.<java.lang.StringBuffer: void <init>()>();
+        temp$19 = this.<com.riskIt.ui.CalculateWeeklyWageUI: java.util.Scanner in>;
+        temp$20 = virtualinvoke temp$19.<java.util.Scanner: java.lang.String next()>();
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$20);
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" is an invalid selection.");
+        temp$21 = virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$17.<java.io.PrintStream: void println(java.lang.String)>(temp$21);
+        temp$22 = 0;
+        intChoice = temp$22;
+
+     label7:
+        nop;
+        nop;
+        if intChoice < 1 goto label1;
+
+        goto label8;
+
+     label8:
+        nop;
+        temp$23 = this.<com.riskIt.ui.CalculateWeeklyWageUI: int listCount>;
+        temp$24 = temp$23 - 1;
+        if intChoice > temp$24 goto label1;
+
+        goto label9;
+
+        goto label9;
+
+     label9:
+        nop;
+        temp$25 = this.<com.riskIt.ui.CalculateWeeklyWageUI: java.util.ArrayList optionList>;
+        temp$26 = virtualinvoke temp$25.<java.util.ArrayList: int size()>();
+        temp$27 = temp$26;
+        temp$28 = temp$27 + 1;
+        if intChoice == temp$28 goto label10;
+
+        goto label11;
+
+     label10:
+        nop;
+        goto label23;
+
+     label11:
+        nop;
+        if intChoice == 1 goto label12;
+
+        goto label13;
+
+     label12:
+        nop;
+        temp$29 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.StartInterface getWeeklyWageByState()>();
+        interfaceinvoke temp$29.<com.riskIt.interfaces.StartInterface: void start()>();
+        temp$30 = 0;
+        intChoice = temp$30;
+        goto label22;
+
+     label13:
+        nop;
+        if intChoice == 2 goto label14;
+
+        goto label15;
+
+     label14:
+        nop;
+        temp$31 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.StartInterface getWeeklyWageByOccupationOrIndustryCode()>();
+        interfaceinvoke temp$31.<com.riskIt.interfaces.StartInterface: void start()>();
+        temp$32 = 0;
+        intChoice = temp$32;
+        goto label21;
+
+     label15:
+        nop;
+        if intChoice == 3 goto label16;
+
+        goto label17;
+
+     label16:
+        nop;
+        temp$33 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.StartInterface getWeeklyWageByEducation()>();
+        interfaceinvoke temp$33.<com.riskIt.interfaces.StartInterface: void start()>();
+        temp$34 = 0;
+        intChoice = temp$34;
+        goto label20;
+
+     label17:
+        nop;
+        if intChoice == 4 goto label18;
+
+        goto label19;
+
+     label18:
+        nop;
+        temp$35 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.StartInterface getWeeklyWageByRace()>();
+        interfaceinvoke temp$35.<com.riskIt.interfaces.StartInterface: void start()>();
+        temp$36 = 0;
+        intChoice = temp$36;
+
+     label19:
+        nop;
+
+     label20:
+        nop;
+
+     label21:
+        nop;
+
+     label22:
+        nop;
+        virtualinvoke this.<com.riskIt.ui.CalculateWeeklyWageUI: void displayMenu()>();
+        nop;
+        goto label0;
+
+     label23:
+        nop;
+        return;
+    }
+
+    private final void displayMenu()
+    {
+        com.riskIt.ui.CalculateWeeklyWageUI this;
+        int temp$0, temp$8, temp$9, temp$13, temp$14, temp$18, temp$19;
+        java.io.PrintStream temp$1, temp$6, temp$11, temp$16;
+        java.util.ArrayList temp$2;
+        java.util.Iterator temp$3;
+        java.lang.String i, temp$10, temp$15, temp$20;
+        boolean temp$4;
+        java.lang.Object temp$5;
+        java.lang.StringBuffer temp$7, temp$12, temp$17;
+
+        this := @this: com.riskIt.ui.CalculateWeeklyWageUI;
+        temp$0 = 1;
+        this.<com.riskIt.ui.CalculateWeeklyWageUI: int listCount> = temp$0;
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>("Enter a catigory to display average weekly wage for: ");
+        temp$2 = this.<com.riskIt.ui.CalculateWeeklyWageUI: java.util.ArrayList optionList>;
+        temp$3 = interfaceinvoke temp$2.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label0:
+        nop;
+        temp$4 = interfaceinvoke temp$3.<java.util.Iterator: boolean hasNext()>();
+        if temp$4 == 0 goto label1;
+
+        temp$5 = interfaceinvoke temp$3.<java.util.Iterator: java.lang.Object next()>();
+        i = (java.lang.String) temp$5;
+        temp$6 = <java.lang.System: java.io.PrintStream out>;
+        temp$7 = new java.lang.StringBuffer;
+        specialinvoke temp$7.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("[");
+        temp$8 = this.<com.riskIt.ui.CalculateWeeklyWageUI: int listCount>;
+        temp$9 = temp$8 + 1;
+        this.<com.riskIt.ui.CalculateWeeklyWageUI: int listCount> = temp$9;
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$8);
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("] ");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(i);
+        temp$10 = virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$6.<java.io.PrintStream: void println(java.lang.String)>(temp$10);
+        nop;
+        goto label0;
+
+     label1:
+        nop;
+        temp$11 = <java.lang.System: java.io.PrintStream out>;
+        temp$12 = new java.lang.StringBuffer;
+        specialinvoke temp$12.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("[");
+        temp$13 = this.<com.riskIt.ui.CalculateWeeklyWageUI: int listCount>;
+        temp$14 = temp$13 + 1;
+        this.<com.riskIt.ui.CalculateWeeklyWageUI: int listCount> = temp$14;
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$13);
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("] ");
+        virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Return");
+        temp$15 = virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$11.<java.io.PrintStream: void println(java.lang.String)>(temp$15);
+        temp$16 = <java.lang.System: java.io.PrintStream out>;
+        temp$17 = new java.lang.StringBuffer;
+        specialinvoke temp$17.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$17.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Please enter a selection 1 ~");
+        temp$18 = this.<com.riskIt.ui.CalculateWeeklyWageUI: int listCount>;
+        temp$19 = temp$18 - 1;
+        virtualinvoke temp$17.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$19);
+        temp$20 = virtualinvoke temp$17.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$16.<java.io.PrintStream: void println(java.lang.String)>(temp$20);
+        return;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.ui.CalculateWeeklyWageUI this;
+        java.util.Scanner temp$0;
+        java.io.InputStream temp$1;
+        java.util.ArrayList temp$2;
+
+        this := @this: com.riskIt.ui.CalculateWeeklyWageUI;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        temp$0 = new java.util.Scanner;
+        temp$1 = <java.lang.System: java.io.InputStream in>;
+        specialinvoke temp$0.<java.util.Scanner: void <init>(java.io.InputStream)>(temp$1);
+        this.<com.riskIt.ui.CalculateWeeklyWageUI: java.util.Scanner in> = temp$0;
+        temp$2 = new java.util.ArrayList;
+        specialinvoke temp$2.<java.util.ArrayList: void <init>()>();
+        this.<com.riskIt.ui.CalculateWeeklyWageUI: java.util.ArrayList optionList> = temp$2;
+        return;
+    }
+}

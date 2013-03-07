@@ -1,0 +1,78 @@
+public class com.riskIt.data.ScoreData extends java.lang.Object
+{
+    private long ssn;
+    private double income;
+    private int score;
+
+    public void setSSN(long)
+    {
+        com.riskIt.data.ScoreData this;
+        long s;
+
+        this := @this: com.riskIt.data.ScoreData;
+        s := @parameter0: long;
+        this.<com.riskIt.data.ScoreData: long ssn> = s;
+        return;
+    }
+
+    public void setIncome(double)
+    {
+        com.riskIt.data.ScoreData this;
+        double i;
+
+        this := @this: com.riskIt.data.ScoreData;
+        i := @parameter0: double;
+        this.<com.riskIt.data.ScoreData: double income> = i;
+        return;
+    }
+
+    public void setScore(int)
+    {
+        com.riskIt.data.ScoreData this;
+        int s;
+
+        this := @this: com.riskIt.data.ScoreData;
+        s := @parameter0: int;
+        this.<com.riskIt.data.ScoreData: int score> = s;
+        return;
+    }
+
+    public long getSSN()
+    {
+        com.riskIt.data.ScoreData this;
+        long temp$0;
+
+        this := @this: com.riskIt.data.ScoreData;
+        temp$0 = this.<com.riskIt.data.ScoreData: long ssn>;
+        return temp$0;
+    }
+
+    public double getIncome()
+    {
+        com.riskIt.data.ScoreData this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.ScoreData;
+        temp$0 = this.<com.riskIt.data.ScoreData: double income>;
+        return temp$0;
+    }
+
+    public int getScore()
+    {
+        com.riskIt.data.ScoreData this;
+        int temp$0;
+
+        this := @this: com.riskIt.data.ScoreData;
+        temp$0 = this.<com.riskIt.data.ScoreData: int score>;
+        return temp$0;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.data.ScoreData this;
+
+        this := @this: com.riskIt.data.ScoreData;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

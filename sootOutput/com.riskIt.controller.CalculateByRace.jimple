@@ -1,0 +1,597 @@
+public class com.riskIt.controller.CalculateByRace extends java.lang.Object implements com.riskIt.interfaces.CalculateByRaceInterface
+{
+    java.sql.ResultSet results;
+    java.sql.Statement statement;
+
+    public java.util.ArrayList getRaceList()
+    {
+        com.riskIt.controller.CalculateByRace this;
+        java.util.ArrayList raceList, temp$0;
+        java.sql.Connection temp$1;
+        java.sql.Statement temp$2, temp$3;
+        java.sql.ResultSet temp$4, temp$5, temp$7, temp$9, temp$12;
+        boolean temp$6, temp$11, temp$15;
+        java.lang.String temp$8, temp$10, temp$13, temp$14, temp$19, temp$20, temp$24, temp$27, temp$28;
+        java.sql.SQLException e, temp$29;
+        java.io.PrintStream temp$16, temp$17, temp$21, temp$25;
+        java.lang.StringBuffer temp$18, temp$22, temp$26;
+        int temp$23;
+
+        this := @this: com.riskIt.controller.CalculateByRace;
+        temp$0 = new java.util.ArrayList;
+        specialinvoke temp$0.<java.util.ArrayList: void <init>()>();
+        raceList = temp$0;
+
+     label0:
+        nop;
+        temp$1 = staticinvoke <com.riskIt.util.Factory: java.sql.Connection getConnection()>();
+        temp$2 = interfaceinvoke temp$1.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.CalculateByRace: java.sql.Statement statement> = temp$2;
+        temp$3 = this.<com.riskIt.controller.CalculateByRace: java.sql.Statement statement>;
+        temp$4 = interfaceinvoke temp$3.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT DISTINCT RACE FROM userrecord");
+        this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results> = temp$4;
+
+     label1:
+        nop;
+        temp$5 = this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results>;
+        temp$6 = interfaceinvoke temp$5.<java.sql.ResultSet: boolean next()>();
+        if temp$6 == 0 goto label7;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$7 = this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results>;
+        temp$8 = interfaceinvoke temp$7.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("RACE");
+        if temp$8 == null goto label4;
+
+        goto label3;
+
+     label3:
+        nop;
+        temp$9 = this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results>;
+        temp$10 = interfaceinvoke temp$9.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("RACE");
+        temp$11 = virtualinvoke raceList.<java.util.ArrayList: boolean contains(java.lang.Object)>(temp$10);
+        if temp$11 == 0 goto label6;
+
+        goto label4;
+
+        goto label6;
+
+     label4:
+        nop;
+
+     label5:
+        nop;
+        goto label1;
+
+     label6:
+        nop;
+        temp$12 = this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results>;
+        temp$13 = interfaceinvoke temp$12.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("RACE");
+        temp$14 = virtualinvoke temp$13.<java.lang.String: java.lang.String trim()>();
+        temp$15 = virtualinvoke raceList.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$14);
+        goto label1;
+
+     label7:
+        nop;
+        goto label12;
+
+     label8:
+        nop;
+        e := @caughtexception;
+
+     label9:
+        nop;
+        if e != null goto label10;
+
+        goto label11;
+
+     label10:
+        nop;
+        temp$16 = <java.lang.System: java.io.PrintStream err>;
+        virtualinvoke temp$16.<java.io.PrintStream: void println(java.lang.String)>("\n----- SQLException -----");
+        temp$17 = <java.lang.System: java.io.PrintStream err>;
+        temp$18 = new java.lang.StringBuffer;
+        specialinvoke temp$18.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  SQL State:  ");
+        temp$19 = virtualinvoke e.<java.sql.SQLException: java.lang.String getSQLState()>();
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$19);
+        temp$20 = virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$17.<java.io.PrintStream: void println(java.lang.String)>(temp$20);
+        temp$21 = <java.lang.System: java.io.PrintStream err>;
+        temp$22 = new java.lang.StringBuffer;
+        specialinvoke temp$22.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$22.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Error Code: ");
+        temp$23 = virtualinvoke e.<java.sql.SQLException: int getErrorCode()>();
+        virtualinvoke temp$22.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$23);
+        temp$24 = virtualinvoke temp$22.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$21.<java.io.PrintStream: void println(java.lang.String)>(temp$24);
+        temp$25 = <java.lang.System: java.io.PrintStream err>;
+        temp$26 = new java.lang.StringBuffer;
+        specialinvoke temp$26.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Message:    ");
+        temp$27 = virtualinvoke e.<java.sql.SQLException: java.lang.String getMessage()>();
+        virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$27);
+        temp$28 = virtualinvoke temp$26.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$25.<java.io.PrintStream: void println(java.lang.String)>(temp$28);
+        temp$29 = virtualinvoke e.<java.sql.SQLException: java.sql.SQLException getNextException()>();
+        e = temp$29;
+        goto label9;
+
+     label11:
+        nop;
+        nop;
+        goto label12;
+
+     label12:
+        nop;
+        staticinvoke <java.util.Collections: void sort(java.util.List)>(raceList);
+        return raceList;
+
+        catch java.sql.SQLException from label0 to label5 with label8;
+        catch java.sql.SQLException from label6 to label8 with label8;
+    }
+
+    public boolean isInRaceList(java.lang.String)
+    {
+        com.riskIt.controller.CalculateByRace this;
+        java.lang.String race, temp$1, temp$2, i, temp$6;
+        java.util.ArrayList raceList, temp$0;
+        java.util.Iterator temp$3;
+        boolean temp$4, temp$7, temp$8, temp$9;
+        java.lang.Object temp$5;
+
+        this := @this: com.riskIt.controller.CalculateByRace;
+        race := @parameter0: java.lang.String;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.CalculateByRace: java.util.ArrayList getRaceList()>();
+        raceList = temp$0;
+        if race == null goto label0;
+
+        goto label1;
+
+     label0:
+        nop;
+        temp$1 = "";
+        race = temp$1;
+        goto label2;
+
+     label1:
+        nop;
+        temp$2 = virtualinvoke race.<java.lang.String: java.lang.String trim()>();
+        race = temp$2;
+
+     label2:
+        nop;
+        temp$3 = interfaceinvoke raceList.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label3:
+        nop;
+        temp$4 = interfaceinvoke temp$3.<java.util.Iterator: boolean hasNext()>();
+        if temp$4 == 0 goto label6;
+
+        temp$5 = interfaceinvoke temp$3.<java.util.Iterator: java.lang.Object next()>();
+        i = (java.lang.String) temp$5;
+        temp$6 = virtualinvoke i.<java.lang.String: java.lang.String trim()>();
+        temp$7 = virtualinvoke temp$6.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(race);
+        if temp$7 == 0 goto label5;
+
+        goto label4;
+
+     label4:
+        nop;
+        temp$8 = 1;
+        return temp$8;
+
+     label5:
+        nop;
+        nop;
+        goto label3;
+
+     label6:
+        nop;
+        temp$9 = 0;
+        return temp$9;
+    }
+
+    public double calculateWeeklyWageByRace(java.lang.String)
+    {
+        com.riskIt.controller.CalculateByRace this;
+        java.lang.String race;
+        com.riskIt.interfaces.CalcImplInterface temp$0;
+        double temp$1;
+
+        this := @this: com.riskIt.controller.CalculateByRace;
+        race := @parameter0: java.lang.String;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalcImplInterface getWeeklyImpl()>();
+        temp$1 = virtualinvoke this.<com.riskIt.controller.CalculateByRace: double calculateValue(java.lang.String,com.riskIt.interfaces.CalcImplInterface)>(race, temp$0);
+        return temp$1;
+    }
+
+    public double calculateWeelkyWageByAllRaces()
+    {
+        com.riskIt.controller.CalculateByRace this;
+        com.riskIt.interfaces.CalcImplInterface temp$0;
+        double temp$1;
+
+        this := @this: com.riskIt.controller.CalculateByRace;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalcImplInterface getWeeklyImpl()>();
+        temp$1 = virtualinvoke this.<com.riskIt.controller.CalculateByRace: double calculateValue(java.lang.String,com.riskIt.interfaces.CalcImplInterface)>("all", temp$0);
+        return temp$1;
+    }
+
+    public double calculateIncomeByRace(java.lang.String)
+    {
+        com.riskIt.controller.CalculateByRace this;
+        java.lang.String race;
+        com.riskIt.interfaces.CalcImplInterface temp$0;
+        double temp$1;
+
+        this := @this: com.riskIt.controller.CalculateByRace;
+        race := @parameter0: java.lang.String;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalcImplInterface getYearlyImpl()>();
+        temp$1 = virtualinvoke this.<com.riskIt.controller.CalculateByRace: double calculateValue(java.lang.String,com.riskIt.interfaces.CalcImplInterface)>(race, temp$0);
+        return temp$1;
+    }
+
+    public double calculateIncomeByAllRaces()
+    {
+        com.riskIt.controller.CalculateByRace this;
+        com.riskIt.interfaces.CalcImplInterface temp$0;
+        double temp$1;
+
+        this := @this: com.riskIt.controller.CalculateByRace;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalcImplInterface getYearlyImpl()>();
+        temp$1 = virtualinvoke this.<com.riskIt.controller.CalculateByRace: double calculateValue(java.lang.String,com.riskIt.interfaces.CalcImplInterface)>("all", temp$0);
+        return temp$1;
+    }
+
+    public double calculateValue(java.lang.String, com.riskIt.interfaces.CalcImplInterface)
+    {
+        com.riskIt.controller.CalculateByRace this;
+        java.lang.String raceIn, temp$4, temp$5, temp$6, temp$37, temp$39, raceFromDB, temp$65, temp$66, temp$83, temp$84, temp$88, temp$91, temp$92;
+        com.riskIt.interfaces.CalcImplInterface type;
+        double returnValue, sum, count, result, temp$70, temp$72, temp$73, temp$74, temp$75, temp$76, temp$78, temp$79, temp$95;
+        java.util.HashMap ssnRaceHM, temp$0, ssnWeekWageHM, temp$1, ssnWorkWeeksHM, temp$2;
+        java.util.ArrayList raceWageAL, temp$3;
+        java.sql.Connection temp$7;
+        java.sql.Statement temp$8, temp$9, temp$27;
+        java.sql.ResultSet temp$10, temp$11, temp$13, temp$15, temp$17, temp$28, temp$29, temp$31, temp$36;
+        boolean temp$12, temp$30, temp$34, temp$44, temp$68;
+        int tempSSN, temp$14, weekWage, temp$16, worksWeek, temp$18, tempSSN2, temp$32, keySSN, weeklyWage, temp$53, temp$54, workWeek, temp$61, temp$62, temp$71, temp$77, temp$87;
+        java.lang.Integer temp$19, temp$20, temp$22, temp$23, temp$24, temp$26, temp$33, temp$35, temp$46, temp$47, temp$49, temp$50, temp$52, temp$55, temp$57, temp$58, temp$60, temp$63;
+        java.lang.Object temp$21, temp$25, temp$38, temp$45, temp$48, temp$51, temp$56, temp$59, temp$64, temp$69;
+        java.util.Iterator i, temp$42, temp$43, temp$67;
+        java.util.Set temp$40, temp$41;
+        com.riskIt.interfaces.TypeWageDataStructureInterface i;
+        java.sql.SQLException e, temp$93;
+        java.io.PrintStream temp$80, temp$81, temp$85, temp$89;
+        java.lang.StringBuffer temp$82, temp$86, temp$90;
+        java.lang.IllegalArgumentException temp$94;
+
+        this := @this: com.riskIt.controller.CalculateByRace;
+        raceIn := @parameter0: java.lang.String;
+        type := @parameter1: com.riskIt.interfaces.CalcImplInterface;
+        returnValue = 0.0;
+        sum = 0.0;
+        count = 0.0;
+        temp$0 = new java.util.HashMap;
+        specialinvoke temp$0.<java.util.HashMap: void <init>()>();
+        ssnRaceHM = temp$0;
+        temp$1 = new java.util.HashMap;
+        specialinvoke temp$1.<java.util.HashMap: void <init>()>();
+        ssnWeekWageHM = temp$1;
+        temp$2 = new java.util.HashMap;
+        specialinvoke temp$2.<java.util.HashMap: void <init>()>();
+        ssnWorkWeeksHM = temp$2;
+        temp$3 = new java.util.ArrayList;
+        specialinvoke temp$3.<java.util.ArrayList: void <init>()>();
+        raceWageAL = temp$3;
+        if raceIn == null goto label0;
+
+        goto label1;
+
+     label0:
+        nop;
+        temp$4 = "";
+        raceIn = temp$4;
+        goto label2;
+
+     label1:
+        nop;
+        temp$5 = virtualinvoke raceIn.<java.lang.String: java.lang.String trim()>();
+        raceIn = temp$5;
+
+     label2:
+        nop;
+        temp$6 = virtualinvoke raceIn.<java.lang.String: java.lang.String trim()>();
+        raceIn = temp$6;
+
+     label3:
+        nop;
+        temp$7 = staticinvoke <com.riskIt.util.Factory: java.sql.Connection getConnection()>();
+        temp$8 = interfaceinvoke temp$7.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.CalculateByRace: java.sql.Statement statement> = temp$8;
+        temp$9 = this.<com.riskIt.controller.CalculateByRace: java.sql.Statement statement>;
+        temp$10 = interfaceinvoke temp$9.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT SSN, WEEKWAGE, WORKWEEKS from job");
+        this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results> = temp$10;
+
+     label4:
+        nop;
+        temp$11 = this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results>;
+        temp$12 = interfaceinvoke temp$11.<java.sql.ResultSet: boolean next()>();
+        if temp$12 == 0 goto label10;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$13 = this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results>;
+        temp$14 = interfaceinvoke temp$13.<java.sql.ResultSet: int getInt(java.lang.String)>("SSN");
+        tempSSN = temp$14;
+        temp$15 = this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results>;
+        temp$16 = interfaceinvoke temp$15.<java.sql.ResultSet: int getInt(java.lang.String)>("WEEKWAGE");
+        weekWage = temp$16;
+        temp$17 = this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results>;
+        temp$18 = interfaceinvoke temp$17.<java.sql.ResultSet: int getInt(java.lang.String)>("WORKWEEKS");
+        worksWeek = temp$18;
+        if weekWage > 0 goto label6;
+
+        goto label7;
+
+     label6:
+        nop;
+        temp$19 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(tempSSN);
+        temp$20 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(weekWage);
+        temp$21 = virtualinvoke ssnWeekWageHM.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(temp$19, temp$20);
+        temp$22 = (java.lang.Integer) temp$21;
+
+     label7:
+        nop;
+        if worksWeek > 0 goto label8;
+
+        goto label9;
+
+     label8:
+        nop;
+        temp$23 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(tempSSN);
+        temp$24 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(worksWeek);
+        temp$25 = virtualinvoke ssnWorkWeeksHM.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(temp$23, temp$24);
+        temp$26 = (java.lang.Integer) temp$25;
+
+     label9:
+        nop;
+        goto label4;
+
+     label10:
+        nop;
+        temp$27 = this.<com.riskIt.controller.CalculateByRace: java.sql.Statement statement>;
+        temp$28 = interfaceinvoke temp$27.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT SSN, RACE from userrecord");
+        this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results> = temp$28;
+
+     label11:
+        nop;
+        temp$29 = this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results>;
+        temp$30 = interfaceinvoke temp$29.<java.sql.ResultSet: boolean next()>();
+        if temp$30 == 0 goto label15;
+
+        goto label12;
+
+     label12:
+        nop;
+        temp$31 = this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results>;
+        temp$32 = interfaceinvoke temp$31.<java.sql.ResultSet: int getInt(java.lang.String)>("SSN");
+        tempSSN2 = temp$32;
+        temp$33 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(tempSSN2);
+        temp$34 = virtualinvoke ssnWeekWageHM.<java.util.HashMap: boolean containsKey(java.lang.Object)>(temp$33);
+        if temp$34 == 0 goto label14;
+
+        goto label13;
+
+     label13:
+        nop;
+        temp$35 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(tempSSN2);
+        temp$36 = this.<com.riskIt.controller.CalculateByRace: java.sql.ResultSet results>;
+        temp$37 = interfaceinvoke temp$36.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("RACE");
+        temp$38 = virtualinvoke ssnRaceHM.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(temp$35, temp$37);
+        temp$39 = (java.lang.String) temp$38;
+
+     label14:
+        nop;
+        goto label11;
+
+     label15:
+        nop;
+        temp$40 = virtualinvoke ssnRaceHM.<java.util.HashMap: java.util.Set keySet()>();
+        temp$41 = (java.util.Set) temp$40;
+        temp$42 = interfaceinvoke temp$41.<java.util.Set: java.util.Iterator iterator()>();
+        temp$43 = (java.util.Iterator) temp$42;
+        i = temp$43;
+
+     label16:
+        nop;
+        temp$44 = interfaceinvoke i.<java.util.Iterator: boolean hasNext()>();
+        if temp$44 == 0 goto label24;
+
+        goto label17;
+
+     label17:
+        nop;
+        temp$45 = interfaceinvoke i.<java.util.Iterator: java.lang.Object next()>();
+        temp$46 = (java.lang.Integer) temp$45;
+        keySSN = virtualinvoke temp$46.<java.lang.Integer: int intValue()>();
+        temp$47 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(keySSN);
+        temp$48 = virtualinvoke ssnWeekWageHM.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$47);
+        temp$49 = (java.lang.Integer) temp$48;
+        if temp$49 != null goto label18;
+
+        goto label19;
+
+     label18:
+        nop;
+        temp$50 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(keySSN);
+        temp$51 = virtualinvoke ssnWeekWageHM.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$50);
+        temp$52 = (java.lang.Integer) temp$51;
+        temp$53 = virtualinvoke temp$52.<java.lang.Integer: int intValue()>();
+        weeklyWage = temp$53;
+        goto label20;
+
+     label19:
+        nop;
+        temp$54 = 0;
+        weeklyWage = temp$54;
+
+     label20:
+        nop;
+        temp$55 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(keySSN);
+        temp$56 = virtualinvoke ssnWorkWeeksHM.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$55);
+        temp$57 = (java.lang.Integer) temp$56;
+        if temp$57 != null goto label21;
+
+        goto label22;
+
+     label21:
+        nop;
+        temp$58 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(keySSN);
+        temp$59 = virtualinvoke ssnWorkWeeksHM.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$58);
+        temp$60 = (java.lang.Integer) temp$59;
+        temp$61 = virtualinvoke temp$60.<java.lang.Integer: int intValue()>();
+        workWeek = temp$61;
+        goto label23;
+
+     label22:
+        nop;
+        temp$62 = 0;
+        workWeek = temp$62;
+
+     label23:
+        nop;
+        temp$63 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(keySSN);
+        temp$64 = virtualinvoke ssnRaceHM.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$63);
+        temp$65 = (java.lang.String) temp$64;
+        temp$66 = virtualinvoke temp$65.<java.lang.String: java.lang.String trim()>();
+        raceFromDB = temp$66;
+        interfaceinvoke type.<com.riskIt.interfaces.CalcImplInterface: void addToArrayList(java.util.ArrayList,java.lang.String,int,int)>(raceWageAL, raceFromDB, weeklyWage, workWeek);
+        nop;
+        goto label16;
+
+     label24:
+        nop;
+        temp$67 = interfaceinvoke raceWageAL.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label25:
+        nop;
+        temp$68 = interfaceinvoke temp$67.<java.util.Iterator: boolean hasNext()>();
+        if temp$68 == 0 goto label28;
+
+        temp$69 = interfaceinvoke temp$67.<java.util.Iterator: java.lang.Object next()>();
+        i = (com.riskIt.interfaces.TypeWageDataStructureInterface) temp$69;
+        temp$70 = interfaceinvoke type.<com.riskIt.interfaces.CalcImplInterface: double calculateAverage(java.lang.String,com.riskIt.interfaces.TypeWageDataStructureInterface)>(raceIn, i);
+        result = temp$70;
+        temp$71 = result cmpl 0.0;
+        if temp$71 <= 0 goto label27;
+
+        goto label26;
+
+     label26:
+        nop;
+        temp$72 = sum;
+        temp$73 = temp$72 + result;
+        sum = temp$73;
+        temp$74 = count;
+        temp$75 = (double) 1;
+        temp$76 = temp$74 + temp$75;
+        count = temp$76;
+
+     label27:
+        nop;
+        nop;
+        goto label25;
+
+     label28:
+        nop;
+        temp$77 = count cmpg 0.0;
+        if temp$77 != 0 goto label30;
+
+        goto label29;
+
+     label29:
+        nop;
+        temp$78 = 0.0;
+        returnValue = temp$78;
+        goto label31;
+
+     label30:
+        nop;
+        temp$79 = sum / count;
+        returnValue = temp$79;
+
+     label31:
+        nop;
+        goto label36;
+
+     label32:
+        nop;
+        e := @caughtexception;
+
+     label33:
+        nop;
+        if e != null goto label34;
+
+        goto label35;
+
+     label34:
+        nop;
+        temp$80 = <java.lang.System: java.io.PrintStream err>;
+        virtualinvoke temp$80.<java.io.PrintStream: void println(java.lang.String)>("\n----- SQLException -----");
+        temp$81 = <java.lang.System: java.io.PrintStream err>;
+        temp$82 = new java.lang.StringBuffer;
+        specialinvoke temp$82.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  SQL State:  ");
+        temp$83 = virtualinvoke e.<java.sql.SQLException: java.lang.String getSQLState()>();
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$83);
+        temp$84 = virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$81.<java.io.PrintStream: void println(java.lang.String)>(temp$84);
+        temp$85 = <java.lang.System: java.io.PrintStream err>;
+        temp$86 = new java.lang.StringBuffer;
+        specialinvoke temp$86.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$86.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Error Code: ");
+        temp$87 = virtualinvoke e.<java.sql.SQLException: int getErrorCode()>();
+        virtualinvoke temp$86.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$87);
+        temp$88 = virtualinvoke temp$86.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$85.<java.io.PrintStream: void println(java.lang.String)>(temp$88);
+        temp$89 = <java.lang.System: java.io.PrintStream err>;
+        temp$90 = new java.lang.StringBuffer;
+        specialinvoke temp$90.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$90.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Message:    ");
+        temp$91 = virtualinvoke e.<java.sql.SQLException: java.lang.String getMessage()>();
+        virtualinvoke temp$90.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$91);
+        temp$92 = virtualinvoke temp$90.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$89.<java.io.PrintStream: void println(java.lang.String)>(temp$92);
+        temp$93 = virtualinvoke e.<java.sql.SQLException: java.sql.SQLException getNextException()>();
+        e = temp$93;
+        goto label33;
+
+     label35:
+        nop;
+        temp$94 = new java.lang.IllegalArgumentException;
+        specialinvoke temp$94.<java.lang.IllegalArgumentException: void <init>()>();
+        throw temp$94;
+
+     label36:
+        nop;
+        temp$95 = staticinvoke <com.riskIt.util.Factory: double getRoundMethod(double)>(returnValue);
+        return temp$95;
+
+        catch java.sql.SQLException from label3 to label32 with label32;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.controller.CalculateByRace this;
+
+        this := @this: com.riskIt.controller.CalculateByRace;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

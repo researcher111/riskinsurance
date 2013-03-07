@@ -1,0 +1,15 @@
+public interface  com.riskIt.interfaces.CalculateByRaceInterface extends java.lang.Object
+{
+
+    public abstract java.util.ArrayList getRaceList();
+
+    public abstract boolean isInRaceList(java.lang.String);
+
+    public abstract double calculateWeeklyWageByRace(java.lang.String);
+
+    public abstract double calculateWeelkyWageByAllRaces();
+
+    public abstract double calculateIncomeByRace(java.lang.String);
+
+    public abstract double calculateIncomeByAllRaces();
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="6" eline="6" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: stateList]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: ziptable.statename]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="120" eline="120" spos="0" epos="0"/>
+<text info="[state]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="181" eline="181" spos="0" epos="0"/>
+<text info="[state]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="195" eline="195" spos="0" epos="0"/>
+<text info="[state]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="209" eline="209" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="221" eline="221" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="233" eline="233" spos="0" epos="0"/>
+<text info="[stateIn, type]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: ssnZipHM, Annotation Element: kind: s name: default value: ssnZipHM, Annotation Element: kind: s name: default value: zipStateHM, Annotation Element: kind: s name: default value: zipStateHM, Annotation Element: kind: s name: default value: ssnWageHM, Annotation Element: kind: s name: default value: ssnWageHM, Annotation Element: kind: s name: default value: ssnWorkWeeks, Annotation Element: kind: s name: default value: ssnWorkWeeks]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: userrecord,zip, Annotation Element: kind: s name: default value: userrecord.ssn, Annotation Element: kind: s name: default value: ziptable.zip, Annotation Element: kind: s name: default value: ziptable.statename, Annotation Element: kind: s name: default value: job.ssn, Annotation Element: kind: s name: default value: job.WEEKWAGE, Annotation Element: kind: s name: default value: job.ssn, Annotation Element: kind: s name: default value: job.WORKWEEKS]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="655" eline="655" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+</attributes>

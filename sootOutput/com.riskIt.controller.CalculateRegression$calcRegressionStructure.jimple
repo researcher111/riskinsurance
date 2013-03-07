@@ -1,0 +1,69 @@
+public class com.riskIt.controller.CalculateRegression$calcRegressionStructure extends java.lang.Object implements java.lang.Comparable
+{
+    final int firstValue;
+    final int secondValue;
+    com.riskIt.controller.CalculateRegression this$0;
+
+    void <init>(com.riskIt.controller.CalculateRegression, int, int)
+    {
+        com.riskIt.controller.CalculateRegression$calcRegressionStructure this;
+        int firstValue, secondValue;
+        com.riskIt.controller.CalculateRegression temp$0;
+
+        this := @this: com.riskIt.controller.CalculateRegression$calcRegressionStructure;
+        firstValue := @parameter1: int;
+        secondValue := @parameter2: int;
+        temp$0 := @parameter0: com.riskIt.controller.CalculateRegression;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        this.<com.riskIt.controller.CalculateRegression$calcRegressionStructure: com.riskIt.controller.CalculateRegression this$0> = temp$0;
+        this.<com.riskIt.controller.CalculateRegression$calcRegressionStructure: int firstValue> = firstValue;
+        this.<com.riskIt.controller.CalculateRegression$calcRegressionStructure: int secondValue> = secondValue;
+        return;
+    }
+
+    int getFirstValue()
+    {
+        com.riskIt.controller.CalculateRegression$calcRegressionStructure this;
+        int temp$0;
+
+        this := @this: com.riskIt.controller.CalculateRegression$calcRegressionStructure;
+        temp$0 = this.<com.riskIt.controller.CalculateRegression$calcRegressionStructure: int firstValue>;
+        return temp$0;
+    }
+
+    int getSecondValue()
+    {
+        com.riskIt.controller.CalculateRegression$calcRegressionStructure this;
+        int temp$0;
+
+        this := @this: com.riskIt.controller.CalculateRegression$calcRegressionStructure;
+        temp$0 = this.<com.riskIt.controller.CalculateRegression$calcRegressionStructure: int secondValue>;
+        return temp$0;
+    }
+
+    public int compareTo(com.riskIt.controller.CalculateRegression$calcRegressionStructure)
+    {
+        com.riskIt.controller.CalculateRegression$calcRegressionStructure this, c;
+        int temp$0, temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.CalculateRegression$calcRegressionStructure;
+        c := @parameter0: com.riskIt.controller.CalculateRegression$calcRegressionStructure;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.CalculateRegression$calcRegressionStructure: int getFirstValue()>();
+        temp$1 = virtualinvoke c.<com.riskIt.controller.CalculateRegression$calcRegressionStructure: int getFirstValue()>();
+        temp$2 = temp$0 - temp$1;
+        return temp$2;
+    }
+
+    public volatile int compareTo(java.lang.Object)
+    {
+        com.riskIt.controller.CalculateRegression$calcRegressionStructure this, temp$0;
+        java.lang.Object p0;
+        int temp$1;
+
+        this := @this: com.riskIt.controller.CalculateRegression$calcRegressionStructure;
+        p0 := @parameter0: java.lang.Object;
+        temp$0 = (com.riskIt.controller.CalculateRegression$calcRegressionStructure) p0;
+        temp$1 = virtualinvoke this.<com.riskIt.controller.CalculateRegression$calcRegressionStructure: int compareTo(com.riskIt.controller.CalculateRegression$calcRegressionStructure)>(temp$0);
+        return temp$1;
+    }
+}

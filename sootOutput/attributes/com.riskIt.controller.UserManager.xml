@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="6" eline="6" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="23" eline="23" spos="0" epos="0"/>
+<text info="[zip]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="161" eline="161" spos="0" epos="0"/>
+<text info="[stateName]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: countOfAllEmployees, Annotation Element: kind: s name: default value: countOfAllEmployees, Annotation Element: kind: s name: default value: countOfUnemployed, Annotation Element: kind: s name: default value: countOfUnemployed, Annotation Element: kind: s name: default value: countOfUnemployed, Annotation Element: kind: s name: default value: countOfUnemployed, Annotation Element: kind: s name: default value: countOfUnemployed]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: ziptable.zip, Annotation Element: kind: s name: default value: userrecord.zip, Annotation Element: kind: s name: default value: employmentStat.ssn, Annotation Element: kind: s name: default value: userrecord.ssn, Annotation Element: kind: s name: default value: ziptable.statename, Annotation Element: kind: s name: default value: ziptable.zip, Annotation Element: kind: s name: default value: userrecord.zip]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="325" eline="325" spos="0" epos="0"/>
+<text info="[edu]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="466" eline="466" spos="0" epos="0"/>
+<text info="[occupation]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="607" eline="607" spos="0" epos="0"/>
+<text info="[status]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="748" eline="748" spos="0" epos="0"/>
+<text info="[getIncome]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: dataIncome, Annotation Element: kind: s name: default value: dataIncome, Annotation Element: kind: s name: default value: dataIncome, Annotation Element: kind: s name: default value: dataIncome, Annotation Element: kind: s name: default value: dataIncome]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: job.workweeks, Annotation Element: kind: s name: default value: job.weekwage, Annotation Element: kind: s name: default value: investment.capitalgains, Annotation Element: kind: s name: default value: investment.capitallosses, Annotation Element: kind: s name: default value: investment.stockdividends]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="887" eline="887" spos="0" epos="0"/>
+<text info="[prop]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="1283" eline="1283" spos="0" epos="0"/>
+<text info="[ssn, deductible, netWorth, userList]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="1441" eline="1441" spos="0" epos="0"/>
+<text info="[industrycode, occupcode]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="1658" eline="1658" spos="0" epos="0"/>
+<text info="[ssn, industrycode, occupationcode]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="1926" eline="1926" spos="0" epos="0"/>
+<text info="[ssn, industrycode, occupationcode]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="2175" eline="2175" spos="0" epos="0"/>
+<text info="[zipcode, industrycode, occupationcode]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="2463" eline="2463" spos="0" epos="0"/>
+<text info="[statename]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="2522" eline="2522" spos="0" epos="0"/>
+<text info="[rs]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: code]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: job.occupationcode]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="2603" eline="2603" spos="0" epos="0"/>
+<text info="[numResults, resultStates, resultValues, resultIndex, text]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="2707" eline="2707" spos="0" epos="0"/>
+<text info="[statename]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="2766" eline="2766" spos="0" epos="0"/>
+<text info="[rs]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: code]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: job.industrycode]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="2847" eline="2847" spos="0" epos="0"/>
+<text info="[numResults, resultStates, resultValues, resultIndex, text]" aType="ParamNamesTag"/>
+</attribute>
+</attributes>

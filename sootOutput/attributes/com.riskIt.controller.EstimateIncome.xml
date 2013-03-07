@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="9" eline="9" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="19" eline="19" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: ssn, Annotation Element: kind: s name: default value: weekWage, Annotation Element: kind: s name: default value: workWeeks, Annotation Element: kind: s name: default value: ssn2, Annotation Element: kind: s name: default value: capitalGains, Annotation Element: kind: s name: default value: capitalLosses, Annotation Element: kind: s name: default value: stockDividends]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: job.ssn, Annotation Element: kind: s name: default value: job.WEEKWAGE, Annotation Element: kind: s name: default value: job.WORKWEEKS, Annotation Element: kind: s name: default value: investment.ssn, Annotation Element: kind: s name: default value: investment.CAPITALGAINS, Annotation Element: kind: s name: default value: investment.CAPITALLOSSES, Annotation Element: kind: s name: default value: investment.STOCKDIVIDENDS]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="403" eline="403" spos="0" epos="0"/>
+<text info="[ssn]" aType="ParamNamesTag"/>
+<text info="Visibility Annotation: level: RUNTIME (runtime-visible)
+ Annotations:
+Annotation: type: Ltada/TaDaMethod; num elems: 2 elems: 
+Annotation Element: kind: [ name: variablesToTrack values: [Annotation Element: kind: s name: default value: name, Annotation Element: kind: s name: default value: race, Annotation Element: kind: s name: default value: ssn2, Annotation Element: kind: s name: default value: ssn3, Annotation Element: kind: s name: default value: investmentIncome, Annotation Element: kind: s name: default value: investmentIncome, Annotation Element: kind: s name: default value: investmentIncome, Annotation Element: kind: s name: default value: education, Annotation Element: kind: s name: default value: ssn4, Annotation Element: kind: s name: default value: occupationCode, Annotation Element: kind: s name: default value: industryCode, Annotation Element: kind: s name: default value: weeklyWage, Annotation Element: kind: s name: default value: workWeeks]
+Annotation Element: kind: [ name: correspondingDatabaseAttribute values: [Annotation Element: kind: s name: default value: userrecord.name, Annotation Element: kind: s name: default value: userrecord.race, Annotation Element: kind: s name: default value: education.ssn, Annotation Element: kind: s name: default value: investment.ssn, Annotation Element: kind: s name: default value: investment.CAPITALGAINS, Annotation Element: kind: s name: default value: investment.CAPITALLOSSES, Annotation Element: kind: s name: default value: investment.STOCKDIVIDENDS, Annotation Element: kind: s name: default value: education.education, Annotation Element: kind: s name: default value: job.ssn, Annotation Element: kind: s name: default value: job.INDUSTRYCODE, Annotation Element: kind: s name: default value: job.OCCUPATIONCODE, Annotation Element: kind: s name: default value: job.WEEKWAGE, Annotation Element: kind: s name: default value: job.workweeks]
+
+" aType="VisibilityAnnotationTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="664" eline="664" spos="0" epos="0"/>
+<text info="[workWeeks]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="682" eline="682" spos="0" epos="0"/>
+<text info="[workWeeks]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="698" eline="698" spos="0" epos="0"/>
+<text info="[workWeeks]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="716" eline="716" spos="0" epos="0"/>
+<text info="[workWeeks]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="732" eline="732" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="745" eline="745" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="758" eline="758" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="771" eline="771" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="784" eline="784" spos="0" epos="0"/>
+<text info="[weeklyWage]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="802" eline="802" spos="0" epos="0"/>
+<text info="[weeklyWage]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="818" eline="818" spos="0" epos="0"/>
+<text info="[weeklyWage]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="836" eline="836" spos="0" epos="0"/>
+<text info="[weeklyWage]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="852" eline="852" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="865" eline="865" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="878" eline="878" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="891" eline="891" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="904" eline="904" spos="0" epos="0"/>
+<text info="[investmentIncome]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="922" eline="922" spos="0" epos="0"/>
+<text info="[investmentIncome]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="938" eline="938" spos="0" epos="0"/>
+<text info="[investmentIncome]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="956" eline="956" spos="0" epos="0"/>
+<text info="[investmentIncome]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="972" eline="972" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="985" eline="985" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="998" eline="998" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="1011" eline="1011" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="1024" eline="1024" spos="0" epos="0"/>
+<text info="[returnValue]" aType="ParamNamesTag"/>
+</attribute>
+</attributes>

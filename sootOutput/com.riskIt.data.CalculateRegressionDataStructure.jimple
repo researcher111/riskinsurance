@@ -1,0 +1,65 @@
+public class com.riskIt.data.CalculateRegressionDataStructure extends java.lang.Object
+{
+    final double slopeAll;
+    final double interceptMainAll;
+    final double slopeMiddleTwoThirds;
+    final double interceptMiddleTwoThirds;
+
+    public void <init>(double, double, double, double)
+    {
+        com.riskIt.data.CalculateRegressionDataStructure this;
+        double slopeALl, interceptAll, slopeMiddleTwoThirds, interceptMiddleTwoThirds;
+
+        this := @this: com.riskIt.data.CalculateRegressionDataStructure;
+        slopeALl := @parameter0: double;
+        interceptAll := @parameter1: double;
+        slopeMiddleTwoThirds := @parameter2: double;
+        interceptMiddleTwoThirds := @parameter3: double;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        this.<com.riskIt.data.CalculateRegressionDataStructure: double slopeAll> = slopeALl;
+        this.<com.riskIt.data.CalculateRegressionDataStructure: double interceptMainAll> = interceptAll;
+        this.<com.riskIt.data.CalculateRegressionDataStructure: double slopeMiddleTwoThirds> = slopeMiddleTwoThirds;
+        this.<com.riskIt.data.CalculateRegressionDataStructure: double interceptMiddleTwoThirds> = interceptMiddleTwoThirds;
+        return;
+    }
+
+    public double getSlopeAll()
+    {
+        com.riskIt.data.CalculateRegressionDataStructure this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.CalculateRegressionDataStructure;
+        temp$0 = this.<com.riskIt.data.CalculateRegressionDataStructure: double slopeAll>;
+        return temp$0;
+    }
+
+    public double getInterceptAll()
+    {
+        com.riskIt.data.CalculateRegressionDataStructure this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.CalculateRegressionDataStructure;
+        temp$0 = this.<com.riskIt.data.CalculateRegressionDataStructure: double interceptMainAll>;
+        return temp$0;
+    }
+
+    public double getSlopeMiddleTwoThirds()
+    {
+        com.riskIt.data.CalculateRegressionDataStructure this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.CalculateRegressionDataStructure;
+        temp$0 = this.<com.riskIt.data.CalculateRegressionDataStructure: double slopeMiddleTwoThirds>;
+        return temp$0;
+    }
+
+    public double getInterceptMiddleTwoThirds()
+    {
+        com.riskIt.data.CalculateRegressionDataStructure this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.CalculateRegressionDataStructure;
+        temp$0 = this.<com.riskIt.data.CalculateRegressionDataStructure: double interceptMiddleTwoThirds>;
+        return temp$0;
+    }
+}

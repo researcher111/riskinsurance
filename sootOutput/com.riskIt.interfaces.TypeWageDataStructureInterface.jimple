@@ -1,0 +1,9 @@
+public interface  com.riskIt.interfaces.TypeWageDataStructureInterface extends java.lang.Object
+{
+
+    public abstract java.lang.String getType();
+
+    public abstract double getWeekWage();
+
+    public abstract double getWorkWeeks();
+}

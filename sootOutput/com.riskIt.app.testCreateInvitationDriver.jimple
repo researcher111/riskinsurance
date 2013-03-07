@@ -1,0 +1,20 @@
+public class com.riskIt.app.testCreateInvitationDriver extends java.lang.Object
+{
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+        return;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.app.testCreateInvitationDriver this;
+
+        this := @this: com.riskIt.app.testCreateInvitationDriver;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

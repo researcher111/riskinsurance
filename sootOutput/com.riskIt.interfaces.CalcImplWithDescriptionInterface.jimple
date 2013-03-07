@@ -1,0 +1,5 @@
+public interface  com.riskIt.interfaces.CalcImplWithDescriptionInterface extends java.lang.Object implements com.riskIt.interfaces.CalcImplInterface
+{
+
+    public abstract java.lang.String getDescription();
+}

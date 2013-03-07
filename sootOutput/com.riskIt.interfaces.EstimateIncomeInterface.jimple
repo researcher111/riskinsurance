@@ -1,0 +1,53 @@
+public interface  com.riskIt.interfaces.EstimateIncomeInterface extends java.lang.Object
+{
+
+    public abstract com.riskIt.interfaces.EstimateIncomeDTOInterface getValues(int);
+
+    public abstract double givenWorkWeeksEstimateIncomeAll(int);
+
+    public abstract double givenWorkWeeksEstimateIncomeAll(double);
+
+    public abstract double givenWorkWeeksEstimateIncomeMiddleTwoThirds(int);
+
+    public abstract double givenWorkWeeksEstimateIncomeMiddleTwoThirds(double);
+
+    public abstract double givenWorkWeeksEstimateIncomeGetSlopeAll();
+
+    public abstract double givenWorkWeeksEstimateIncomeGetInterceptAll();
+
+    public abstract double givenWorkWeeksEstimateIncomeGetSlopeMiddleTwoThirds();
+
+    public abstract double givenWorkWeeksEstimateIncomeGetInterceptMiddleTwoThirds();
+
+    public abstract double givenWeeklyWageEstimateIncomeAll(int);
+
+    public abstract double givenWeeklyWageEstimateIncomeAll(double);
+
+    public abstract double givenWeeklyWageEstimateIncomeMiddleTwoThirds(int);
+
+    public abstract double givenWeeklyWageEstimateIncomeMiddleTwoThirds(double);
+
+    public abstract double givenWeeklyWageEstimateIncomeGetSlopeAll();
+
+    public abstract double givenWeeklyWageEstimateIncomeGetInterceptAll();
+
+    public abstract double givenWeeklyWageEstimateIncomeGetSlopeMiddleTwoThirds();
+
+    public abstract double givenWeeklyWageEstimateIncomeGetInterceptMiddleTwoThirds();
+
+    public abstract double givenInvestmentIncomeEstimateIncomeAll(int);
+
+    public abstract double givenInvestmentIncomeEstimateIncomeAll(double);
+
+    public abstract double givenInvestmentIncomeEstimateIncomeMiddleTwoThirds(int);
+
+    public abstract double givenInvestmentIncomeEstimateIncomeMiddleTwoThirds(double);
+
+    public abstract double givenInvestmentIncomeEstimateIncomeGetSlopeAll();
+
+    public abstract double givenInvestmentIncomeEstimateIncomeGetInterceptAll();
+
+    public abstract double givenInvestmentIncomeEstimateIncomeGetSlopeMiddleTwoThirds();
+
+    public abstract double givenInvestmentIncomeEstimateIncomeGetInterceptMiddleTwoThirds();
+}

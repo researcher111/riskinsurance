@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<attributes>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="4" eline="4" spos="0" epos="0"/>
+<text info="[]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="13" eline="13" spos="0" epos="0"/>
+<text info="[week, wage, gains, loss, dividend]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="37" eline="37" spos="0" epos="0"/>
+<text info="[week, wage, gains, loss, dividend, ssn, sData]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="100" eline="100" spos="0" epos="0"/>
+<text info="[sData]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="175" eline="175" spos="0" epos="0"/>
+<text info="[unionMember, indus_stab, occu_stab, edu, tempScore]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="399" eline="399" spos="0" epos="0"/>
+<text info="[marital_status, age, selfEmp, noOfEmp, tempScore]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="621" eline="621" spos="0" epos="0"/>
+<text info="[income, sData]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="702" eline="702" spos="0" epos="0"/>
+<text info="[input, invalidNum]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="783" eline="783" spos="0" epos="0"/>
+<text info="[input]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="863" eline="863" spos="0" epos="0"/>
+<text info="[rs]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="947" eline="947" spos="0" epos="0"/>
+<text info="[rs]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="1068" eline="1068" spos="0" epos="0"/>
+<text info="[rs]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="1135" eline="1135" spos="0" epos="0"/>
+<text info="[rs]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="1202" eline="1202" spos="0" epos="0"/>
+<text info="[code, occupcode]" aType="ParamNamesTag"/>
+</attribute>
+<attribute>
+<srcPos sline="0" eline="0" spos="0" epos="0"/>
+<jmpPos sline="1270" eline="1270" spos="0" epos="0"/>
+<text info="[code, inccode]" aType="ParamNamesTag"/>
+</attribute>
+</attributes>

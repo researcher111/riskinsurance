@@ -1,0 +1,298 @@
+public class com.riskIt.data.Invitation extends java.lang.Object
+{
+    private int agent_id;
+    private int age;
+    private long user_ssn;
+    private double property_value;
+    private double score;
+    private double premium;
+    private double deductible;
+    private double expo_unit;
+    private double expenseExpo;
+    private double lossCoverage;
+    private java.lang.String zipcode;
+    private java.lang.String stateName;
+    private int acceptInvitation;
+
+    public void setAgentID(int)
+    {
+        com.riskIt.data.Invitation this;
+        int id;
+
+        this := @this: com.riskIt.data.Invitation;
+        id := @parameter0: int;
+        this.<com.riskIt.data.Invitation: int agent_id> = id;
+        return;
+    }
+
+    public void setUserSSN(long)
+    {
+        com.riskIt.data.Invitation this;
+        long ssn;
+
+        this := @this: com.riskIt.data.Invitation;
+        ssn := @parameter0: long;
+        this.<com.riskIt.data.Invitation: long user_ssn> = ssn;
+        return;
+    }
+
+    public void setPropertyValue(double)
+    {
+        com.riskIt.data.Invitation this;
+        double value;
+
+        this := @this: com.riskIt.data.Invitation;
+        value := @parameter0: double;
+        this.<com.riskIt.data.Invitation: double property_value> = value;
+        return;
+    }
+
+    public void setScore(double)
+    {
+        com.riskIt.data.Invitation this;
+        double sc;
+
+        this := @this: com.riskIt.data.Invitation;
+        sc := @parameter0: double;
+        this.<com.riskIt.data.Invitation: double score> = sc;
+        return;
+    }
+
+    public void setPremium(double)
+    {
+        com.riskIt.data.Invitation this;
+        double primi;
+
+        this := @this: com.riskIt.data.Invitation;
+        primi := @parameter0: double;
+        this.<com.riskIt.data.Invitation: double premium> = primi;
+        return;
+    }
+
+    public void setDeductible(double)
+    {
+        com.riskIt.data.Invitation this;
+        double deduct;
+
+        this := @this: com.riskIt.data.Invitation;
+        deduct := @parameter0: double;
+        this.<com.riskIt.data.Invitation: double deductible> = deduct;
+        return;
+    }
+
+    public void setExpoUnit(double)
+    {
+        com.riskIt.data.Invitation this;
+        double expo;
+
+        this := @this: com.riskIt.data.Invitation;
+        expo := @parameter0: double;
+        this.<com.riskIt.data.Invitation: double expo_unit> = expo;
+        return;
+    }
+
+    public void setExpenseExpo(double)
+    {
+        com.riskIt.data.Invitation this;
+        double expo;
+
+        this := @this: com.riskIt.data.Invitation;
+        expo := @parameter0: double;
+        this.<com.riskIt.data.Invitation: double expenseExpo> = expo;
+        return;
+    }
+
+    public void setlossCoverage(double)
+    {
+        com.riskIt.data.Invitation this;
+        double loss;
+
+        this := @this: com.riskIt.data.Invitation;
+        loss := @parameter0: double;
+        this.<com.riskIt.data.Invitation: double lossCoverage> = loss;
+        return;
+    }
+
+    public void setZipcode(java.lang.String)
+    {
+        com.riskIt.data.Invitation this;
+        java.lang.String zip;
+
+        this := @this: com.riskIt.data.Invitation;
+        zip := @parameter0: java.lang.String;
+        this.<com.riskIt.data.Invitation: java.lang.String zipcode> = zip;
+        return;
+    }
+
+    public void setStateName(java.lang.String)
+    {
+        com.riskIt.data.Invitation this;
+        java.lang.String state;
+
+        this := @this: com.riskIt.data.Invitation;
+        state := @parameter0: java.lang.String;
+        this.<com.riskIt.data.Invitation: java.lang.String stateName> = state;
+        return;
+    }
+
+    public void setAge(int)
+    {
+        com.riskIt.data.Invitation this;
+        int age;
+
+        this := @this: com.riskIt.data.Invitation;
+        age := @parameter0: int;
+        this.<com.riskIt.data.Invitation: int age> = age;
+        return;
+    }
+
+    public void setAcceptInvite(int)
+    {
+        com.riskIt.data.Invitation this;
+        int num;
+
+        this := @this: com.riskIt.data.Invitation;
+        num := @parameter0: int;
+        this.<com.riskIt.data.Invitation: int acceptInvitation> = num;
+        return;
+    }
+
+    public int getAgentId()
+    {
+        com.riskIt.data.Invitation this;
+        int temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: int agent_id>;
+        return temp$0;
+    }
+
+    public long getUserSSN()
+    {
+        com.riskIt.data.Invitation this;
+        long temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: long user_ssn>;
+        return temp$0;
+    }
+
+    public double getPropertyValue()
+    {
+        com.riskIt.data.Invitation this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: double property_value>;
+        return temp$0;
+    }
+
+    public double getScore()
+    {
+        com.riskIt.data.Invitation this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: double score>;
+        return temp$0;
+    }
+
+    public double getPremium()
+    {
+        com.riskIt.data.Invitation this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: double premium>;
+        return temp$0;
+    }
+
+    public double getDeductible()
+    {
+        com.riskIt.data.Invitation this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: double deductible>;
+        return temp$0;
+    }
+
+    public double getExpoUnit()
+    {
+        com.riskIt.data.Invitation this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: double expo_unit>;
+        return temp$0;
+    }
+
+    public double getExpenseExpo()
+    {
+        com.riskIt.data.Invitation this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: double expenseExpo>;
+        return temp$0;
+    }
+
+    public double getlossCoverage()
+    {
+        com.riskIt.data.Invitation this;
+        double temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: double lossCoverage>;
+        return temp$0;
+    }
+
+    public java.lang.String getzipCode()
+    {
+        com.riskIt.data.Invitation this;
+        java.lang.String temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: java.lang.String zipcode>;
+        return temp$0;
+    }
+
+    public java.lang.String getStateName()
+    {
+        com.riskIt.data.Invitation this;
+        java.lang.String temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: java.lang.String stateName>;
+        return temp$0;
+    }
+
+    public int getAge()
+    {
+        com.riskIt.data.Invitation this;
+        int temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: int age>;
+        return temp$0;
+    }
+
+    public int getAcceptInvite()
+    {
+        com.riskIt.data.Invitation this;
+        int temp$0;
+
+        this := @this: com.riskIt.data.Invitation;
+        temp$0 = this.<com.riskIt.data.Invitation: int acceptInvitation>;
+        return temp$0;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.data.Invitation this;
+
+        this := @this: com.riskIt.data.Invitation;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

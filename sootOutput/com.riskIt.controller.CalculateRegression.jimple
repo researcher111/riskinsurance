@@ -1,0 +1,290 @@
+public class com.riskIt.controller.CalculateRegression extends java.lang.Object
+{
+
+    public com.riskIt.data.CalculateRegressionDataStructure calculateRegressionNumbers(java.util.ArrayList, java.util.ArrayList) throws java.lang.IllegalArgumentException
+    {
+        com.riskIt.controller.CalculateRegression this;
+        java.util.ArrayList firstDataSet, secondDataSet, variableIncomeList, temp$2;
+        java.lang.IllegalArgumentException temp$0;
+        double slopeAll, interceptAll, slopeMiddleTwoThirds, interceptMiddleTwoThirds, size, firstSum, secondSum, sumFirstMultSecond, sumFirstSquared, temp$14, temp$15, temp$16, temp$17, temp$18, temp$19, temp$20, temp$22, temp$23, temp$24, temp$26, temp$27, numerator, temp$28, temp$29, temp$30, denominator, temp$31, temp$32, temp$33, temp$35, temp$36, temp$38, temp$39, temp$40, temp$41, temp$43, temp$44, temp$45, temp$46, temp$47, temp$48, temp$49, temp$57, temp$58, temp$61, temp$62, temp$64, temp$65, temp$66, temp$69, temp$70, temp$71, temp$72, temp$73, temp$74, temp$75, temp$77, temp$78, temp$79, temp$81, temp$82, temp$83, temp$84, temp$85, temp$86, temp$87, temp$88, temp$90, temp$91, temp$93, temp$94, temp$95, temp$96;
+        int secondNumber, temp$1, count, firstNumber, temp$9, temp$12, temp$13, temp$21, temp$25, temp$34, temp$37, temp$42, temp$50, firstNumber, temp$54, temp$55, temp$56, temp$59, temp$60, temp$63, temp$67, temp$68, temp$76, temp$80, temp$89, temp$92;
+        java.util.Iterator temp$3, temp$51;
+        boolean temp$4, temp$11, temp$52;
+        java.lang.Object temp$5, temp$7, temp$53;
+        java.lang.Integer temp$6, temp$8;
+        com.riskIt.controller.CalculateRegression$calcRegressionStructure temp$10, i;
+        com.riskIt.data.CalculateRegressionDataStructure temp$97;
+
+        this := @this: com.riskIt.controller.CalculateRegression;
+        firstDataSet := @parameter0: java.util.ArrayList;
+        secondDataSet := @parameter1: java.util.ArrayList;
+        if firstDataSet == null goto label1;
+
+        goto label0;
+
+     label0:
+        nop;
+        if secondDataSet == null goto label1;
+
+        goto label2;
+
+        goto label2;
+
+     label1:
+        nop;
+        temp$0 = new java.lang.IllegalArgumentException;
+        specialinvoke temp$0.<java.lang.IllegalArgumentException: void <init>()>();
+        throw temp$0;
+
+     label2:
+        nop;
+        slopeAll = 0.0;
+        interceptAll = 0.0;
+        slopeMiddleTwoThirds = 0.0;
+        interceptMiddleTwoThirds = 0.0;
+        secondNumber = 0;
+        temp$1 = virtualinvoke firstDataSet.<java.util.ArrayList: int size()>();
+        size = (double) temp$1;
+        firstSum = 0.0;
+        secondSum = 0.0;
+        sumFirstMultSecond = 0.0;
+        sumFirstSquared = 0.0;
+        temp$2 = new java.util.ArrayList;
+        specialinvoke temp$2.<java.util.ArrayList: void <init>()>();
+        variableIncomeList = temp$2;
+        count = 0;
+        temp$3 = interfaceinvoke firstDataSet.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label3:
+        nop;
+        temp$4 = interfaceinvoke temp$3.<java.util.Iterator: boolean hasNext()>();
+        if temp$4 == 0 goto label4;
+
+        temp$5 = interfaceinvoke temp$3.<java.util.Iterator: java.lang.Object next()>();
+        temp$6 = (java.lang.Integer) temp$5;
+        firstNumber = virtualinvoke temp$6.<java.lang.Integer: int intValue()>();
+        temp$7 = virtualinvoke secondDataSet.<java.util.ArrayList: java.lang.Object get(int)>(count);
+        temp$8 = (java.lang.Integer) temp$7;
+        temp$9 = virtualinvoke temp$8.<java.lang.Integer: int intValue()>();
+        secondNumber = temp$9;
+        temp$10 = new com.riskIt.controller.CalculateRegression$calcRegressionStructure;
+        specialinvoke temp$10.<com.riskIt.controller.CalculateRegression$calcRegressionStructure: void <init>(com.riskIt.controller.CalculateRegression,int,int)>(this, firstNumber, secondNumber);
+        temp$11 = virtualinvoke variableIncomeList.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$10);
+        temp$12 = count;
+        temp$13 = temp$12 + 1;
+        count = temp$13;
+        temp$14 = firstSum;
+        temp$15 = (double) firstNumber;
+        temp$16 = temp$14 + temp$15;
+        firstSum = temp$16;
+        temp$17 = secondSum;
+        temp$18 = (double) secondNumber;
+        temp$19 = temp$17 + temp$18;
+        secondSum = temp$19;
+        temp$20 = sumFirstMultSecond;
+        temp$21 = firstNumber * secondNumber;
+        temp$22 = (double) temp$21;
+        temp$23 = temp$20 + temp$22;
+        sumFirstMultSecond = temp$23;
+        temp$24 = sumFirstSquared;
+        temp$25 = firstNumber * firstNumber;
+        temp$26 = (double) temp$25;
+        temp$27 = temp$24 + temp$26;
+        sumFirstSquared = temp$27;
+        nop;
+        goto label3;
+
+     label4:
+        nop;
+        temp$28 = size * sumFirstMultSecond;
+        temp$29 = firstSum * secondSum;
+        temp$30 = temp$28 - temp$29;
+        numerator = temp$30;
+        temp$31 = size * sumFirstSquared;
+        temp$32 = firstSum * firstSum;
+        temp$33 = temp$31 - temp$32;
+        denominator = temp$33;
+        temp$34 = denominator cmpg 0.0;
+        if temp$34 != 0 goto label6;
+
+        goto label5;
+
+     label5:
+        nop;
+        temp$35 = 0.0;
+        slopeAll = temp$35;
+        goto label7;
+
+     label6:
+        nop;
+        temp$36 = numerator / denominator;
+        slopeAll = temp$36;
+
+     label7:
+        nop;
+        temp$37 = size cmpg 0.0;
+        if temp$37 != 0 goto label9;
+
+        goto label8;
+
+     label8:
+        nop;
+        temp$38 = 0.0;
+        interceptAll = temp$38;
+        goto label10;
+
+     label9:
+        nop;
+        temp$39 = slopeAll * firstSum;
+        temp$40 = secondSum - temp$39;
+        temp$41 = temp$40 / size;
+        interceptAll = temp$41;
+
+     label10:
+        nop;
+        temp$42 = 0;
+        secondNumber = temp$42;
+        temp$43 = 0.0;
+        size = temp$43;
+        temp$44 = 0.0;
+        firstSum = temp$44;
+        temp$45 = 0.0;
+        secondSum = temp$45;
+        temp$46 = 0.0;
+        sumFirstMultSecond = temp$46;
+        temp$47 = 0.0;
+        sumFirstSquared = temp$47;
+        temp$48 = 0.0;
+        numerator = temp$48;
+        temp$49 = 0.0;
+        denominator = temp$49;
+        temp$50 = 0;
+        count = temp$50;
+        temp$51 = interfaceinvoke variableIncomeList.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label11:
+        nop;
+        temp$52 = interfaceinvoke temp$51.<java.util.Iterator: boolean hasNext()>();
+        if temp$52 == 0 goto label15;
+
+        temp$53 = interfaceinvoke temp$51.<java.util.Iterator: java.lang.Object next()>();
+        i = (com.riskIt.controller.CalculateRegression$calcRegressionStructure) temp$53;
+        temp$54 = count;
+        temp$55 = temp$54 + 1;
+        count = temp$55;
+        temp$56 = virtualinvoke variableIncomeList.<java.util.ArrayList: int size()>();
+        temp$57 = (double) temp$56;
+        temp$58 = temp$57 * 0.16666666666666666;
+        temp$59 = (int) temp$58;
+        if count > temp$59 goto label12;
+
+        goto label14;
+
+     label12:
+        nop;
+        temp$60 = virtualinvoke variableIncomeList.<java.util.ArrayList: int size()>();
+        temp$61 = (double) temp$60;
+        temp$62 = temp$61 * 0.8333333333333334;
+        temp$63 = (int) temp$62;
+        if count < temp$63 goto label13;
+
+        goto label14;
+
+        goto label13;
+
+     label13:
+        nop;
+        temp$64 = size;
+        temp$65 = (double) 1;
+        temp$66 = temp$64 + temp$65;
+        size = temp$66;
+        temp$67 = virtualinvoke i.<com.riskIt.controller.CalculateRegression$calcRegressionStructure: int getFirstValue()>();
+        firstNumber = temp$67;
+        temp$68 = virtualinvoke i.<com.riskIt.controller.CalculateRegression$calcRegressionStructure: int getSecondValue()>();
+        secondNumber = temp$68;
+        temp$69 = firstSum;
+        temp$70 = (double) firstNumber;
+        temp$71 = temp$69 + temp$70;
+        firstSum = temp$71;
+        temp$72 = secondSum;
+        temp$73 = (double) secondNumber;
+        temp$74 = temp$72 + temp$73;
+        secondSum = temp$74;
+        temp$75 = sumFirstMultSecond;
+        temp$76 = firstNumber * secondNumber;
+        temp$77 = (double) temp$76;
+        temp$78 = temp$75 + temp$77;
+        sumFirstMultSecond = temp$78;
+        temp$79 = sumFirstSquared;
+        temp$80 = firstNumber * firstNumber;
+        temp$81 = (double) temp$80;
+        temp$82 = temp$79 + temp$81;
+        sumFirstSquared = temp$82;
+
+     label14:
+        nop;
+        nop;
+        goto label11;
+
+     label15:
+        nop;
+        temp$83 = size * sumFirstMultSecond;
+        temp$84 = firstSum * secondSum;
+        temp$85 = temp$83 - temp$84;
+        numerator = temp$85;
+        temp$86 = size * sumFirstSquared;
+        temp$87 = firstSum * firstSum;
+        temp$88 = temp$86 - temp$87;
+        denominator = temp$88;
+        temp$89 = denominator cmpg 0.0;
+        if temp$89 != 0 goto label17;
+
+        goto label16;
+
+     label16:
+        nop;
+        temp$90 = 0.0;
+        slopeMiddleTwoThirds = temp$90;
+        goto label18;
+
+     label17:
+        nop;
+        temp$91 = numerator / denominator;
+        slopeMiddleTwoThirds = temp$91;
+
+     label18:
+        nop;
+        temp$92 = size cmpg 0.0;
+        if temp$92 != 0 goto label20;
+
+        goto label19;
+
+     label19:
+        nop;
+        temp$93 = 0.0;
+        interceptMiddleTwoThirds = temp$93;
+        goto label21;
+
+     label20:
+        nop;
+        temp$94 = slopeAll * firstSum;
+        temp$95 = secondSum - temp$94;
+        temp$96 = temp$95 / size;
+        interceptMiddleTwoThirds = temp$96;
+
+     label21:
+        nop;
+        temp$97 = new com.riskIt.data.CalculateRegressionDataStructure;
+        specialinvoke temp$97.<com.riskIt.data.CalculateRegressionDataStructure: void <init>(double,double,double,double)>(slopeAll, interceptAll, slopeMiddleTwoThirds, interceptMiddleTwoThirds);
+        return temp$97;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.controller.CalculateRegression this;
+
+        this := @this: com.riskIt.controller.CalculateRegression;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

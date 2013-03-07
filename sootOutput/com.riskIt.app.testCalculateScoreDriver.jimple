@@ -1,0 +1,34 @@
+public class com.riskIt.app.testCalculateScoreDriver extends java.lang.Object
+{
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] args, temp$1;
+        com.riskIt.controller.AgentManager agent, temp$0;
+        int temp$2, temp$4;
+        java.lang.String temp$3;
+        long temp$5;
+        double temp$6;
+
+        args := @parameter0: java.lang.String[];
+        temp$0 = new com.riskIt.controller.AgentManager;
+        specialinvoke temp$0.<com.riskIt.controller.AgentManager: void <init>()>();
+        agent = temp$0;
+        temp$1 = args;
+        temp$2 = 0;
+        temp$3 = temp$1[temp$2];
+        temp$4 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>(temp$3);
+        temp$5 = (long) temp$4;
+        temp$6 = virtualinvoke agent.<com.riskIt.controller.AgentManager: double calculateScore(long)>(temp$5);
+        return;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.app.testCalculateScoreDriver this;
+
+        this := @this: com.riskIt.app.testCalculateScoreDriver;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

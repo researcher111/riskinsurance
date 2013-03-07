@@ -1,0 +1,2322 @@
+public class com.riskIt.controller.Requirements19_24 extends java.lang.Object
+{
+    private java.sql.Connection _conn;
+    private java.sql.Statement s;
+    private static final int ErrorValue;
+    private static final int maxEduDegrees;
+
+    static void <clinit>()
+    {
+        int temp$0, temp$1;
+
+        temp$0 = 35565;
+        <com.riskIt.controller.Requirements19_24: int ErrorValue> = temp$0;
+        temp$1 = 17;
+        <com.riskIt.controller.Requirements19_24: int maxEduDegrees> = temp$1;
+        return;
+    }
+
+    public void <init>()
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.sql.Connection temp$0;
+        java.sql.Statement temp$1;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        temp$0 = null;
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$0;
+        temp$1 = null;
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$1;
+        return;
+    }
+
+    public java.util.ArrayList FindTopStatesByCategory(java.lang.String, java.lang.String)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.lang.String selection, category, temp$7;
+        java.sql.ResultSet rs, temp$8;
+        java.util.ArrayList findBestStatesResult, temp$0, code, temp$1, temp$17;
+        int i, temp$10, temp$13, temp$14;
+        java.sql.Connection temp$2, temp$3;
+        java.sql.Statement temp$4, temp$5, temp$16;
+        java.lang.StringBuffer temp$6;
+        boolean temp$9, temp$12, temp$15;
+        java.lang.Integer temp$11;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        selection := @parameter0: java.lang.String;
+        category := @parameter1: java.lang.String;
+        rs = null;
+        temp$0 = new java.util.ArrayList;
+        specialinvoke temp$0.<java.util.ArrayList: void <init>()>();
+        findBestStatesResult = temp$0;
+        i = 0;
+        temp$1 = new java.util.ArrayList;
+        specialinvoke temp$1.<java.util.ArrayList: void <init>()>();
+        code = temp$1;
+
+     label0:
+        nop;
+        temp$2 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$2;
+        temp$3 = this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn>;
+        temp$4 = interfaceinvoke temp$3.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$4;
+        temp$5 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$6 = new java.lang.StringBuffer;
+        specialinvoke temp$6.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT ");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("code FROM ");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" WHERE  ");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("=");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(category);
+        temp$7 = virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$8 = interfaceinvoke temp$5.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$7);
+        rs = temp$8;
+        temp$9 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$9 == 0 goto label1;
+
+        goto label3;
+
+     label1:
+        nop;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>("No rows in ResultSet");
+
+     label2:
+        nop;
+        return findBestStatesResult;
+
+     label3:
+        nop;
+
+     label4:
+        nop;
+        temp$10 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(1);
+        temp$11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(temp$10);
+        temp$12 = virtualinvoke code.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$11);
+        temp$13 = i;
+        temp$14 = temp$13 + 1;
+        i = temp$14;
+        nop;
+        temp$15 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$15 == 0 goto label5;
+
+        goto label4;
+
+     label5:
+        nop;
+        interfaceinvoke rs.<java.sql.ResultSet: void close()>();
+        temp$16 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        interfaceinvoke temp$16.<java.sql.Statement: void close()>();
+        temp$17 = virtualinvoke this.<com.riskIt.controller.Requirements19_24: java.util.ArrayList FindTopStatesByCode(java.lang.String,java.util.ArrayList)>(selection, code);
+        findBestStatesResult = temp$17;
+        goto label7;
+
+     label6:
+        nop;
+        e := @caughtexception;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void printExceptionText(java.sql.SQLException)>(e);
+        nop;
+        goto label7;
+
+     label7:
+        nop;
+        return findBestStatesResult;
+
+        catch java.sql.SQLException from label0 to label2 with label6;
+        catch java.sql.SQLException from label3 to label6 with label6;
+    }
+
+    public java.util.ArrayList FindTopStatesByCode(java.lang.String, java.util.ArrayList)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.lang.String selection, zip, state, sqlQuery, temp$2, temp$8, temp$13, temp$18, temp$28, temp$32, temp$34;
+        java.util.ArrayList code, findBestStatesResult, temp$0, temp$51;
+        java.sql.ResultSet rs, rs1, temp$25;
+        int ssn, resultIndex, stateIndex, i, temp$3, temp$9, temp$10, temp$14, temp$15, temp$29, temp$35, temp$37, temp$42, temp$47, temp$48, temp$49;
+        double[] resultCount, temp$36, temp$41;
+        java.lang.String[] resultStates, temp$46;
+        java.lang.StringBuffer temp$1, temp$4, temp$7, temp$11, temp$12, temp$16, temp$17, temp$27;
+        java.lang.Object temp$5, temp$31, temp$33;
+        java.lang.Integer temp$6, temp$30;
+        java.util.HashMap zipToStateMap, temp$19, ssnToZipMap, temp$20;
+        java.sql.Connection temp$21, temp$22;
+        java.sql.Statement temp$23, temp$24, temp$52;
+        boolean temp$26, temp$50;
+        double temp$38, temp$39, temp$40, temp$43, temp$44, temp$45;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        selection := @parameter0: java.lang.String;
+        code := @parameter1: java.util.ArrayList;
+        rs = null;
+        rs1 = null;
+        ssn = 0;
+        zip = "";
+        state = "";
+        resultCount = newarray (double)[50];
+        resultStates = newarray (java.lang.String)[50];
+        resultIndex = 0;
+        stateIndex = 0;
+        temp$0 = new java.util.ArrayList;
+        specialinvoke temp$0.<java.util.ArrayList: void <init>()>();
+        findBestStatesResult = temp$0;
+        temp$1 = new java.lang.StringBuffer;
+        specialinvoke temp$1.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT ssn FROM job WHERE ");
+        virtualinvoke temp$1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$1.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("code IN (");
+        temp$2 = virtualinvoke temp$1.<java.lang.StringBuffer: java.lang.String toString()>();
+        sqlQuery = temp$2;
+        i = 0;
+
+     label0:
+        nop;
+        temp$3 = virtualinvoke code.<java.util.ArrayList: int size()>();
+        if i < temp$3 goto label1;
+
+        goto label4;
+
+     label1:
+        nop;
+        temp$4 = new java.lang.StringBuffer;
+        specialinvoke temp$4.<java.lang.StringBuffer: void <init>(java.lang.String)>(sqlQuery);
+        temp$5 = virtualinvoke code.<java.util.ArrayList: java.lang.Object get(int)>(i);
+        temp$6 = (java.lang.Integer) temp$5;
+        temp$7 = virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$6);
+        temp$8 = virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.String toString()>();
+        sqlQuery = temp$8;
+        temp$9 = virtualinvoke code.<java.util.ArrayList: int size()>();
+        temp$10 = temp$9 - 1;
+        if i < temp$10 goto label2;
+
+        goto label3;
+
+     label2:
+        nop;
+        temp$11 = new java.lang.StringBuffer;
+        specialinvoke temp$11.<java.lang.StringBuffer: void <init>(java.lang.String)>(sqlQuery);
+        temp$12 = virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(", ");
+        temp$13 = virtualinvoke temp$12.<java.lang.StringBuffer: java.lang.String toString()>();
+        sqlQuery = temp$13;
+
+     label3:
+        nop;
+        nop;
+        temp$14 = i;
+        temp$15 = temp$14 + 1;
+        i = temp$15;
+        goto label0;
+
+     label4:
+        nop;
+        temp$16 = new java.lang.StringBuffer;
+        specialinvoke temp$16.<java.lang.StringBuffer: void <init>(java.lang.String)>(sqlQuery);
+        temp$17 = virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(")");
+        temp$18 = virtualinvoke temp$17.<java.lang.StringBuffer: java.lang.String toString()>();
+        sqlQuery = temp$18;
+        temp$19 = new java.util.HashMap;
+        specialinvoke temp$19.<java.util.HashMap: void <init>()>();
+        zipToStateMap = temp$19;
+        temp$20 = new java.util.HashMap;
+        specialinvoke temp$20.<java.util.HashMap: void <init>()>();
+        ssnToZipMap = temp$20;
+        virtualinvoke this.<com.riskIt.controller.Requirements19_24: void initializeSsnToZipMap(java.util.HashMap)>(ssnToZipMap);
+        virtualinvoke this.<com.riskIt.controller.Requirements19_24: void initializeZipToStateMap(java.util.HashMap)>(zipToStateMap);
+
+     label5:
+        nop;
+        temp$21 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$21;
+        temp$22 = this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn>;
+        temp$23 = interfaceinvoke temp$22.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$23;
+        temp$24 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$25 = interfaceinvoke temp$24.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(sqlQuery);
+        rs = temp$25;
+        temp$26 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$26 == 0 goto label6;
+
+        goto label8;
+
+     label6:
+        nop;
+        temp$27 = new java.lang.StringBuffer;
+        specialinvoke temp$27.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$27.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No rows in ResultSet. No SSN for code: ");
+        virtualinvoke temp$27.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(code);
+        temp$28 = virtualinvoke temp$27.<java.lang.StringBuffer: java.lang.String toString()>();
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>(temp$28);
+
+     label7:
+        nop;
+        return findBestStatesResult;
+
+     label8:
+        nop;
+
+     label9:
+        nop;
+        temp$29 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(1);
+        ssn = temp$29;
+        temp$30 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(ssn);
+        temp$31 = virtualinvoke ssnToZipMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$30);
+        temp$32 = (java.lang.String) temp$31;
+        zip = temp$32;
+        if zip == null goto label10;
+
+        goto label12;
+
+     label10:
+        nop;
+
+     label11:
+        nop;
+        goto label19;
+
+     label12:
+        nop;
+        temp$33 = virtualinvoke zipToStateMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(zip);
+        temp$34 = (java.lang.String) temp$33;
+        state = temp$34;
+        if state == null goto label13;
+
+        goto label15;
+
+     label13:
+        nop;
+
+     label14:
+        nop;
+        goto label19;
+
+     label15:
+        nop;
+        temp$35 = virtualinvoke this.<com.riskIt.controller.Requirements19_24: int getStateIndex(java.lang.String[],java.lang.String)>(resultStates, state);
+        stateIndex = temp$35;
+        if stateIndex < 50 goto label16;
+
+        goto label17;
+
+     label16:
+        nop;
+        temp$36 = resultCount;
+        temp$37 = stateIndex;
+        temp$38 = temp$36[temp$37];
+        temp$39 = (double) 1;
+        temp$40 = temp$38 + temp$39;
+        temp$36[temp$37] = temp$40;
+        goto label18;
+
+     label17:
+        nop;
+        temp$41 = resultCount;
+        temp$42 = resultIndex;
+        temp$43 = temp$41[temp$42];
+        temp$44 = (double) 1;
+        temp$45 = temp$43 + temp$44;
+        temp$41[temp$42] = temp$45;
+        temp$46 = resultStates;
+        temp$47 = resultIndex;
+        temp$46[temp$47] = state;
+        temp$48 = resultIndex;
+        temp$49 = temp$48 + 1;
+        resultIndex = temp$49;
+
+     label18:
+        nop;
+
+     label19:
+        nop;
+        temp$50 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$50 == 0 goto label20;
+
+        goto label9;
+
+     label20:
+        nop;
+        temp$51 = virtualinvoke this.<com.riskIt.controller.Requirements19_24: java.util.ArrayList FindBestStates(int,java.lang.String[],double[],int,java.lang.String)>(5, resultStates, resultCount, resultIndex, " Number of workers: ");
+        findBestStatesResult = temp$51;
+        interfaceinvoke rs.<java.sql.ResultSet: void close()>();
+        temp$52 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        interfaceinvoke temp$52.<java.sql.Statement: void close()>();
+        goto label22;
+
+     label21:
+        nop;
+        e := @caughtexception;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void printExceptionText(java.sql.SQLException)>(e);
+        nop;
+        goto label22;
+
+     label22:
+        nop;
+        return findBestStatesResult;
+
+        catch java.sql.SQLException from label5 to label7 with label21;
+        catch java.sql.SQLException from label8 to label11 with label21;
+        catch java.sql.SQLException from label12 to label14 with label21;
+        catch java.sql.SQLException from label15 to label21 with label21;
+    }
+
+    private final java.util.ArrayList FindBestStates(int, java.lang.String[], double[], int, java.lang.String)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        int numResults, resultIndex, maxIndex, j, i, temp$2, temp$4, temp$6, temp$8, temp$10, temp$11, temp$12, temp$15, temp$22, temp$28, temp$30, temp$31;
+        java.lang.String[] resultStates, temp$14, temp$21;
+        double[] resultValues, temp$3, temp$7, temp$27;
+        java.lang.String text, temp$16, temp$17, temp$23, temp$24;
+        double maxValue, temp$5, temp$9, temp$26, temp$29;
+        java.util.ArrayList findBestStatesResult, temp$0;
+        java.io.PrintStream temp$1, temp$19, temp$25, temp$32;
+        java.lang.StringBuffer temp$13, temp$20;
+        boolean temp$18;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        numResults := @parameter0: int;
+        resultStates := @parameter1: java.lang.String[];
+        resultValues := @parameter2: double[];
+        resultIndex := @parameter3: int;
+        text := @parameter4: java.lang.String;
+        maxValue = 0.0;
+        maxIndex = 0;
+        j = 0;
+        temp$0 = new java.util.ArrayList;
+        specialinvoke temp$0.<java.util.ArrayList: void <init>()>();
+        findBestStatesResult = temp$0;
+        temp$1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$1.<java.io.PrintStream: void println(java.lang.String)>("\nThe best states are: ");
+        i = 0;
+
+     label0:
+        nop;
+        if i < numResults goto label1;
+
+        goto label9;
+
+     label1:
+        nop;
+        temp$2 = 0;
+        j = temp$2;
+
+     label2:
+        nop;
+        if j < resultIndex goto label3;
+
+        goto label6;
+
+     label3:
+        nop;
+        temp$3 = resultValues;
+        temp$4 = j;
+        temp$5 = temp$3[temp$4];
+        temp$6 = maxValue cmpg temp$5;
+        if temp$6 >= 0 goto label5;
+
+        goto label4;
+
+     label4:
+        nop;
+        temp$7 = resultValues;
+        temp$8 = j;
+        temp$9 = temp$7[temp$8];
+        maxValue = temp$9;
+        maxIndex = j;
+
+     label5:
+        nop;
+        nop;
+        temp$10 = j;
+        temp$11 = temp$10 + 1;
+        j = temp$11;
+        goto label2;
+
+     label6:
+        nop;
+        temp$12 = maxValue cmpg 0.0;
+        if temp$12 == 0 goto label8;
+
+        goto label7;
+
+     label7:
+        nop;
+        temp$13 = new java.lang.StringBuffer;
+        specialinvoke temp$13.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$13.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("State: ");
+        temp$14 = resultStates;
+        temp$15 = maxIndex;
+        temp$16 = temp$14[temp$15];
+        virtualinvoke temp$13.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$16);
+        virtualinvoke temp$13.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(text);
+        virtualinvoke temp$13.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(maxValue);
+        temp$17 = virtualinvoke temp$13.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$18 = virtualinvoke findBestStatesResult.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$17);
+        temp$19 = <java.lang.System: java.io.PrintStream out>;
+        temp$20 = new java.lang.StringBuffer;
+        specialinvoke temp$20.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$20.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("State: ");
+        temp$21 = resultStates;
+        temp$22 = maxIndex;
+        temp$23 = temp$21[temp$22];
+        virtualinvoke temp$20.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$23);
+        virtualinvoke temp$20.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(text);
+        virtualinvoke temp$20.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(maxValue);
+        temp$24 = virtualinvoke temp$20.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$19.<java.io.PrintStream: void println(java.lang.String)>(temp$24);
+        temp$25 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$25.<java.io.PrintStream: void println(java.lang.String)>("");
+        temp$26 = 0.0;
+        maxValue = temp$26;
+        temp$27 = resultValues;
+        temp$28 = maxIndex;
+        temp$29 = 0.0;
+        temp$27[temp$28] = temp$29;
+
+     label8:
+        nop;
+        nop;
+        temp$30 = i;
+        temp$31 = temp$30 + 1;
+        i = temp$31;
+        goto label0;
+
+     label9:
+        nop;
+        temp$32 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$32.<java.io.PrintStream: void println(java.lang.String)>("\n");
+        return findBestStatesResult;
+    }
+
+    private final int getStateIndex(java.lang.String[], java.lang.String)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.lang.String[] states, temp$1, temp$4;
+        java.lang.String state, temp$3, temp$6;
+        int i, temp$0, temp$2, temp$5, temp$8, temp$9;
+        boolean temp$7;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        states := @parameter0: java.lang.String[];
+        state := @parameter1: java.lang.String;
+        i = 0;
+        temp$0 = 0;
+        i = temp$0;
+
+     label0:
+        nop;
+        if i < 50 goto label1;
+
+        goto label8;
+
+     label1:
+        nop;
+        temp$1 = states;
+        temp$2 = i;
+        temp$3 = temp$1[temp$2];
+        if temp$3 == null goto label3;
+
+        goto label2;
+
+     label2:
+        nop;
+        if state == null goto label3;
+
+        goto label4;
+
+        goto label4;
+
+     label3:
+        nop;
+        goto label7;
+
+     label4:
+        nop;
+        temp$4 = states;
+        temp$5 = i;
+        temp$6 = temp$4[temp$5];
+        temp$7 = virtualinvoke temp$6.<java.lang.String: boolean equals(java.lang.Object)>(state);
+        if temp$7 == 0 goto label6;
+
+        goto label5;
+
+     label5:
+        nop;
+        return i;
+
+     label6:
+        nop;
+
+     label7:
+        nop;
+        temp$8 = i;
+        temp$9 = temp$8 + 1;
+        i = temp$9;
+        goto label0;
+
+     label8:
+        nop;
+        return i;
+    }
+
+    public java.util.ArrayList RecommendBestStateToWork(int)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        int ssn, size, code, temp$11, temp$12;
+        java.sql.ResultSet rs, temp$7;
+        java.lang.String[] resultStates;
+        double[] averageWage;
+        java.util.ArrayList findBestStatesResult, temp$0, temp$15;
+        java.sql.Connection temp$1, temp$2;
+        java.sql.Statement temp$3, temp$4, temp$14;
+        java.lang.StringBuffer temp$5, temp$9;
+        java.lang.String temp$6, temp$10;
+        boolean temp$8;
+        java.io.PrintStream temp$13;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        ssn := @parameter0: int;
+        rs = null;
+        resultStates = newarray (java.lang.String)[50];
+        averageWage = newarray (double)[50];
+        size = 0;
+        temp$0 = new java.util.ArrayList;
+        specialinvoke temp$0.<java.util.ArrayList: void <init>()>();
+        findBestStatesResult = temp$0;
+
+     label0:
+        nop;
+        temp$1 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$1;
+        temp$2 = this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn>;
+        temp$3 = interfaceinvoke temp$2.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$3;
+        temp$4 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$5 = new java.lang.StringBuffer;
+        specialinvoke temp$5.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT occupationcode FROM job WHERE ssn=");
+        virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(ssn);
+        temp$6 = virtualinvoke temp$5.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$7 = interfaceinvoke temp$4.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$6);
+        rs = temp$7;
+        temp$8 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$8 == 0 goto label1;
+
+        goto label3;
+
+     label1:
+        nop;
+        temp$9 = new java.lang.StringBuffer;
+        specialinvoke temp$9.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No rows in ResultSet. Occupation code not found for SSN ");
+        virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(ssn);
+        temp$10 = virtualinvoke temp$9.<java.lang.StringBuffer: java.lang.String toString()>();
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>(temp$10);
+
+     label2:
+        nop;
+        return findBestStatesResult;
+
+     label3:
+        nop;
+        temp$11 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(1);
+        code = temp$11;
+        temp$12 = virtualinvoke this.<com.riskIt.controller.Requirements19_24: int CalculateAverageWageForOccupationForAllStates(int,java.lang.String[],double[])>(code, resultStates, averageWage);
+        size = temp$12;
+        temp$13 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$13.<java.io.PrintStream: void println(java.lang.String)>("");
+        interfaceinvoke rs.<java.sql.ResultSet: void close()>();
+        temp$14 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        interfaceinvoke temp$14.<java.sql.Statement: void close()>();
+        temp$15 = virtualinvoke this.<com.riskIt.controller.Requirements19_24: java.util.ArrayList FindBestStates(int,java.lang.String[],double[],int,java.lang.String)>(3, resultStates, averageWage, size, " Average weekly wage for the user\'s occupation: ");
+        findBestStatesResult = temp$15;
+        goto label5;
+
+     label4:
+        nop;
+        e := @caughtexception;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void printExceptionText(java.sql.SQLException)>(e);
+        nop;
+        goto label5;
+
+     label5:
+        nop;
+        return findBestStatesResult;
+
+        catch java.sql.SQLException from label0 to label2 with label4;
+        catch java.sql.SQLException from label3 to label4 with label4;
+    }
+
+    public int CalculateAverageWageForOccupationForAllStates(int, java.lang.String[], double[])
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        int occupationCode, ssn, stateIndex, size, temp$13, temp$14, temp$20, temp$22, temp$23, temp$24, temp$26, temp$35, temp$36, temp$37, temp$39, temp$41, temp$49, temp$50, i, temp$54, temp$56, temp$58, temp$59, temp$64, temp$66, temp$69, temp$70;
+        java.lang.String[] resultStates, temp$38;
+        double[] averageWage, temp$25, temp$40, temp$53, temp$55, temp$63, temp$65;
+        java.sql.ResultSet rs, temp$9;
+        java.lang.String zip, state, temp$8, temp$12, temp$17, temp$19;
+        int[] resultCount, temp$21, temp$34, temp$57;
+        java.util.HashMap zipToStateMap, temp$0, ssnToZipMap, temp$1, ssnToWeekWageMap, temp$2;
+        java.sql.Connection temp$3, temp$4;
+        java.sql.Statement temp$5, temp$6, temp$52;
+        java.lang.StringBuffer temp$7, temp$11;
+        boolean temp$10, temp$51;
+        java.lang.Integer temp$15, temp$28, temp$30, temp$43, temp$45;
+        java.lang.Object temp$16, temp$18, temp$29, temp$44;
+        double temp$27, temp$32, temp$33, temp$42, temp$47, temp$48, temp$60, temp$61, temp$62, temp$67, temp$68;
+        java.lang.Double temp$31, temp$46;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        occupationCode := @parameter0: int;
+        resultStates := @parameter1: java.lang.String[];
+        averageWage := @parameter2: double[];
+        rs = null;
+        ssn = 0;
+        zip = "";
+        state = "";
+        resultCount = newarray (int)[50];
+        stateIndex = 0;
+        size = 0;
+        temp$0 = new java.util.HashMap;
+        specialinvoke temp$0.<java.util.HashMap: void <init>()>();
+        zipToStateMap = temp$0;
+        temp$1 = new java.util.HashMap;
+        specialinvoke temp$1.<java.util.HashMap: void <init>()>();
+        ssnToZipMap = temp$1;
+        temp$2 = new java.util.HashMap;
+        specialinvoke temp$2.<java.util.HashMap: void <init>()>();
+        ssnToWeekWageMap = temp$2;
+        virtualinvoke this.<com.riskIt.controller.Requirements19_24: void initializeSsnToWeekWageMap(java.util.HashMap)>(ssnToWeekWageMap);
+        virtualinvoke this.<com.riskIt.controller.Requirements19_24: void initializeSsnToZipMap(java.util.HashMap)>(ssnToZipMap);
+        virtualinvoke this.<com.riskIt.controller.Requirements19_24: void initializeZipToStateMap(java.util.HashMap)>(zipToStateMap);
+
+     label0:
+        nop;
+        temp$3 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$3;
+        temp$4 = this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn>;
+        temp$5 = interfaceinvoke temp$4.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$5;
+        temp$6 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$7 = new java.lang.StringBuffer;
+        specialinvoke temp$7.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT ssn FROM job WHERE occupationcode =");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationCode);
+        temp$8 = virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$9 = interfaceinvoke temp$6.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$8);
+        rs = temp$9;
+        temp$10 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$10 == 0 goto label1;
+
+        goto label3;
+
+     label1:
+        nop;
+        temp$11 = new java.lang.StringBuffer;
+        specialinvoke temp$11.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No rows in ResultSet. No SSN for occupation code: ");
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(occupationCode);
+        temp$12 = virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.String toString()>();
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>(temp$12);
+        temp$13 = 0;
+
+     label2:
+        nop;
+        return temp$13;
+
+     label3:
+        nop;
+
+     label4:
+        nop;
+        temp$14 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(1);
+        ssn = temp$14;
+        temp$15 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(ssn);
+        temp$16 = virtualinvoke ssnToZipMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$15);
+        temp$17 = (java.lang.String) temp$16;
+        zip = temp$17;
+        if zip == null goto label5;
+
+        goto label7;
+
+     label5:
+        nop;
+
+     label6:
+        nop;
+        goto label14;
+
+     label7:
+        nop;
+        temp$18 = virtualinvoke zipToStateMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(zip);
+        temp$19 = (java.lang.String) temp$18;
+        state = temp$19;
+        if state == null goto label8;
+
+        goto label10;
+
+     label8:
+        nop;
+
+     label9:
+        nop;
+        goto label14;
+
+     label10:
+        nop;
+        temp$20 = virtualinvoke this.<com.riskIt.controller.Requirements19_24: int getStateIndex(java.lang.String[],java.lang.String)>(resultStates, state);
+        stateIndex = temp$20;
+        if stateIndex < 50 goto label11;
+
+        goto label12;
+
+     label11:
+        nop;
+        temp$21 = resultCount;
+        temp$22 = stateIndex;
+        temp$23 = temp$21[temp$22];
+        temp$24 = temp$23 + 1;
+        temp$21[temp$22] = temp$24;
+        temp$25 = averageWage;
+        temp$26 = stateIndex;
+        temp$27 = temp$25[temp$26];
+        temp$28 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(ssn);
+        temp$29 = virtualinvoke ssnToWeekWageMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$28);
+        temp$30 = (java.lang.Integer) temp$29;
+        temp$31 = (java.lang.Double) temp$30;
+        temp$32 = virtualinvoke temp$31.<java.lang.Double: double doubleValue()>();
+        temp$33 = temp$27 + temp$32;
+        temp$25[temp$26] = temp$33;
+        goto label13;
+
+     label12:
+        nop;
+        temp$34 = resultCount;
+        temp$35 = size;
+        temp$36 = temp$34[temp$35];
+        temp$37 = temp$36 + 1;
+        temp$34[temp$35] = temp$37;
+        temp$38 = resultStates;
+        temp$39 = size;
+        temp$38[temp$39] = state;
+        temp$40 = averageWage;
+        temp$41 = size;
+        temp$42 = temp$40[temp$41];
+        temp$43 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(ssn);
+        temp$44 = virtualinvoke ssnToWeekWageMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$43);
+        temp$45 = (java.lang.Integer) temp$44;
+        temp$46 = (java.lang.Double) temp$45;
+        temp$47 = virtualinvoke temp$46.<java.lang.Double: double doubleValue()>();
+        temp$48 = temp$42 + temp$47;
+        temp$40[temp$41] = temp$48;
+        temp$49 = size;
+        temp$50 = temp$49 + 1;
+        size = temp$50;
+
+     label13:
+        nop;
+
+     label14:
+        nop;
+        temp$51 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$51 == 0 goto label15;
+
+        goto label4;
+
+     label15:
+        nop;
+        interfaceinvoke rs.<java.sql.ResultSet: void close()>();
+        temp$52 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        interfaceinvoke temp$52.<java.sql.Statement: void close()>();
+        goto label17;
+
+     label16:
+        nop;
+        e := @caughtexception;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void printExceptionText(java.sql.SQLException)>(e);
+        nop;
+        goto label17;
+
+     label17:
+        nop;
+        i = 0;
+
+     label18:
+        nop;
+        if i < size goto label19;
+
+        goto label20;
+
+     label19:
+        nop;
+        temp$53 = averageWage;
+        temp$54 = i;
+        temp$55 = averageWage;
+        temp$56 = i;
+        temp$57 = resultCount;
+        temp$58 = i;
+        temp$59 = temp$57[temp$58];
+        temp$60 = temp$55[temp$56];
+        temp$61 = (double) temp$59;
+        temp$62 = temp$60 / temp$61;
+        temp$53[temp$54] = temp$62;
+        temp$63 = averageWage;
+        temp$64 = i;
+        temp$65 = averageWage;
+        temp$66 = i;
+        temp$67 = temp$65[temp$66];
+        temp$68 = staticinvoke <com.riskIt.util.Factory: double getRoundMethod(double)>(temp$67);
+        temp$63[temp$64] = temp$68;
+        nop;
+        temp$69 = i;
+        temp$70 = temp$69 + 1;
+        i = temp$70;
+        goto label18;
+
+     label20:
+        nop;
+        return size;
+
+        catch java.sql.SQLException from label0 to label2 with label16;
+        catch java.sql.SQLException from label3 to label6 with label16;
+        catch java.sql.SQLException from label7 to label9 with label16;
+        catch java.sql.SQLException from label10 to label16 with label16;
+    }
+
+    public java.lang.String ComputeAverageEducationString(java.lang.String, int)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.lang.String selection, education, temp$4, temp$7, temp$12;
+        int code, level, temp$0;
+        java.util.HashMap levelToEducationMap, temp$1;
+        java.lang.Integer temp$2;
+        java.lang.Object temp$3;
+        java.io.PrintStream temp$5, temp$8, temp$9, temp$10, temp$13, temp$14;
+        java.lang.StringBuffer temp$6, temp$11;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        selection := @parameter0: java.lang.String;
+        code := @parameter1: int;
+        education = "";
+        temp$0 = virtualinvoke this.<com.riskIt.controller.Requirements19_24: int ComputeAverageEducation(java.lang.String,int)>(selection, code);
+        level = temp$0;
+        if level != 35565 goto label0;
+
+        goto label1;
+
+     label0:
+        nop;
+        temp$1 = new java.util.HashMap;
+        specialinvoke temp$1.<java.util.HashMap: void <init>()>();
+        levelToEducationMap = temp$1;
+        virtualinvoke this.<com.riskIt.controller.Requirements19_24: void initializeLevelToEducationHashMap(java.util.HashMap)>(levelToEducationMap);
+        temp$2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(level);
+        temp$3 = virtualinvoke levelToEducationMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$2);
+        temp$4 = (java.lang.String) temp$3;
+        education = temp$4;
+        temp$5 = <java.lang.System: java.io.PrintStream out>;
+        temp$6 = new java.lang.StringBuffer;
+        specialinvoke temp$6.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Average education level for ");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" code ");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(code);
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(": ");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(education);
+        temp$7 = virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$5.<java.io.PrintStream: void println(java.lang.String)>(temp$7);
+        temp$8 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$8.<java.io.PrintStream: void println(java.lang.String)>("");
+        temp$9 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$9.<java.io.PrintStream: void println(java.lang.String)>("");
+        goto label2;
+
+     label1:
+        nop;
+        temp$10 = <java.lang.System: java.io.PrintStream out>;
+        temp$11 = new java.lang.StringBuffer;
+        specialinvoke temp$11.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Error when calculating average education level for ");
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" code ");
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(code);
+        temp$12 = virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$10.<java.io.PrintStream: void println(java.lang.String)>(temp$12);
+        temp$13 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$13.<java.io.PrintStream: void println(java.lang.String)>("");
+        temp$14 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$14.<java.io.PrintStream: void println(java.lang.String)>("");
+
+     label2:
+        nop;
+        return education;
+    }
+
+    public int ComputeAverageEducation(java.lang.String, int)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.lang.String selection, education, temp$8, temp$12, temp$17, temp$20;
+        int code, ssn, level, temp$13, temp$14, temp$25, temp$35;
+        double averageLevel, total, count, temp$26, temp$27, temp$28, temp$29, temp$30, temp$31, temp$34;
+        java.sql.ResultSet rs, temp$9;
+        java.util.HashMap ssnToEducationMap, temp$0, educationTolevelsMap, temp$1, levelToEducationMap, temp$2;
+        java.sql.Connection temp$3, temp$4;
+        java.sql.Statement temp$5, temp$6, temp$33;
+        java.lang.StringBuffer temp$7, temp$11;
+        boolean temp$10, temp$32;
+        java.lang.Integer temp$15, temp$18, temp$22, temp$24;
+        java.lang.Object temp$16, temp$19, temp$21, temp$23;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        selection := @parameter0: java.lang.String;
+        code := @parameter1: int;
+        education = "";
+        averageLevel = 0.0;
+        total = 0.0;
+        count = 0.0;
+        ssn = 0;
+        rs = null;
+        level = 0;
+        temp$0 = new java.util.HashMap;
+        specialinvoke temp$0.<java.util.HashMap: void <init>()>();
+        ssnToEducationMap = temp$0;
+        temp$1 = new java.util.HashMap;
+        specialinvoke temp$1.<java.util.HashMap: void <init>()>();
+        educationTolevelsMap = temp$1;
+        temp$2 = new java.util.HashMap;
+        specialinvoke temp$2.<java.util.HashMap: void <init>()>();
+        levelToEducationMap = temp$2;
+        virtualinvoke this.<com.riskIt.controller.Requirements19_24: void initializeLevelToEducationHashMap(java.util.HashMap)>(levelToEducationMap);
+        virtualinvoke this.<com.riskIt.controller.Requirements19_24: void initializeEducationToLevelHashMap(java.util.HashMap)>(educationTolevelsMap);
+        virtualinvoke this.<com.riskIt.controller.Requirements19_24: void initializeSsnToEducationMap(java.util.HashMap)>(ssnToEducationMap);
+
+     label0:
+        nop;
+        temp$3 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$3;
+        temp$4 = this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn>;
+        temp$5 = interfaceinvoke temp$4.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$5;
+        temp$6 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$7 = new java.lang.StringBuffer;
+        specialinvoke temp$7.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT ssn FROM job WHERE ");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("code=");
+        virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(code);
+        temp$8 = virtualinvoke temp$7.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$9 = interfaceinvoke temp$6.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$8);
+        rs = temp$9;
+        temp$10 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$10 == 0 goto label1;
+
+        goto label3;
+
+     label1:
+        nop;
+        temp$11 = new java.lang.StringBuffer;
+        specialinvoke temp$11.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No rows in ResultSet. No SSN found for ");
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("code ");
+        virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(code);
+        temp$12 = virtualinvoke temp$11.<java.lang.StringBuffer: java.lang.String toString()>();
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>(temp$12);
+        temp$13 = <com.riskIt.controller.Requirements19_24: int ErrorValue>;
+
+     label2:
+        nop;
+        return temp$13;
+
+     label3:
+        nop;
+
+     label4:
+        nop;
+        temp$14 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(1);
+        ssn = temp$14;
+        temp$15 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(ssn);
+        temp$16 = virtualinvoke ssnToEducationMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$15);
+        temp$17 = (java.lang.String) temp$16;
+        if temp$17 != null goto label5;
+
+        goto label10;
+
+     label5:
+        nop;
+        temp$18 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(ssn);
+        temp$19 = virtualinvoke ssnToEducationMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$18);
+        temp$20 = (java.lang.String) temp$19;
+        education = temp$20;
+        temp$21 = virtualinvoke educationTolevelsMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(education);
+        temp$22 = (java.lang.Integer) temp$21;
+        if temp$22 != null goto label6;
+
+        goto label9;
+
+     label6:
+        nop;
+        temp$23 = virtualinvoke educationTolevelsMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(education);
+        temp$24 = (java.lang.Integer) temp$23;
+        temp$25 = virtualinvoke temp$24.<java.lang.Integer: int intValue()>();
+        level = temp$25;
+        if level != 0 goto label7;
+
+        goto label8;
+
+     label7:
+        nop;
+        temp$26 = total;
+        temp$27 = (double) level;
+        temp$28 = temp$26 + temp$27;
+        total = temp$28;
+        temp$29 = count;
+        temp$30 = (double) 1;
+        temp$31 = temp$29 + temp$30;
+        count = temp$31;
+
+     label8:
+        nop;
+
+     label9:
+        nop;
+
+     label10:
+        nop;
+        nop;
+        temp$32 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$32 == 0 goto label11;
+
+        goto label4;
+
+     label11:
+        nop;
+        interfaceinvoke rs.<java.sql.ResultSet: void close()>();
+        temp$33 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        interfaceinvoke temp$33.<java.sql.Statement: void close()>();
+        goto label13;
+
+     label12:
+        nop;
+        e := @caughtexception;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void printExceptionText(java.sql.SQLException)>(e);
+        nop;
+        goto label13;
+
+     label13:
+        nop;
+        temp$34 = total / count;
+        averageLevel = temp$34;
+        temp$35 = (int) averageLevel;
+        return temp$35;
+
+        catch java.sql.SQLException from label0 to label2 with label12;
+        catch java.sql.SQLException from label3 to label12 with label12;
+    }
+
+    public java.util.ArrayList FindCccupationIndustryWithHighestLowestEducation(java.lang.String)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.lang.String selection, maxCategory, minCategory, temp$7, temp$15, temp$31, temp$37, temp$42, temp$48, temp$49, temp$52, temp$58, temp$59, temp$71, temp$76, temp$80, temp$83, temp$87, temp$89, temp$93;
+        int level, maxCode, minCode, maxLevel, minLevel, i, temp$11, temp$12, temp$14, temp$16, temp$17, j, temp$20, temp$21, temp$23, temp$24, temp$25, temp$27, temp$28, temp$30, temp$33, temp$34, temp$36, temp$38, temp$39, temp$74, temp$81;
+        java.sql.ResultSet rs, temp$8;
+        double MaxAverageIncomeBasedOnCode, MinAverageIncomeBasedOnCode, temp$64, temp$65, temp$67, temp$68, ammount, temp$72, temp$73;
+        int[] codeList, temp$10, temp$19, temp$22, temp$26, temp$32;
+        java.lang.String[] categoryList, temp$13, temp$29, temp$35;
+        java.util.ArrayList result, temp$0;
+        java.util.HashMap levelToEducationMap, temp$1;
+        java.sql.Connection temp$2, temp$3;
+        java.sql.Statement temp$4, temp$5, temp$95;
+        java.lang.StringBuffer temp$6, temp$45, temp$55, temp$70, temp$75, temp$79, temp$82, temp$86, temp$88, temp$92;
+        boolean temp$9, temp$18, temp$43, temp$53, temp$63, temp$66, temp$77, temp$84, temp$90;
+        java.lang.Integer temp$40, temp$46, temp$50, temp$56;
+        java.lang.Object temp$41, temp$47, temp$51, temp$57;
+        java.io.PrintStream temp$44, temp$54, temp$60, temp$61, temp$69, temp$78, temp$85, temp$91, temp$94;
+        com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface calc, temp$62;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        selection := @parameter0: java.lang.String;
+        maxCategory = "";
+        minCategory = "";
+        level = 0;
+        maxCode = 0;
+        minCode = 0;
+        maxLevel = 0;
+        minLevel = 15;
+        rs = null;
+        MaxAverageIncomeBasedOnCode = 0.0;
+        MinAverageIncomeBasedOnCode = 0.0;
+        codeList = newarray (int)[500];
+        categoryList = newarray (java.lang.String)[500];
+        temp$0 = new java.util.ArrayList;
+        specialinvoke temp$0.<java.util.ArrayList: void <init>()>();
+        result = temp$0;
+        temp$1 = new java.util.HashMap;
+        specialinvoke temp$1.<java.util.HashMap: void <init>()>();
+        levelToEducationMap = temp$1;
+        virtualinvoke this.<com.riskIt.controller.Requirements19_24: void initializeLevelToEducationHashMap(java.util.HashMap)>(levelToEducationMap);
+
+     label0:
+        nop;
+        temp$2 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$2;
+        temp$3 = this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn>;
+        temp$4 = interfaceinvoke temp$3.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$4;
+        temp$5 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$6 = new java.lang.StringBuffer;
+        specialinvoke temp$6.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT ");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("code,");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" FROM ");
+        virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        temp$7 = virtualinvoke temp$6.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$8 = interfaceinvoke temp$5.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$7);
+        rs = temp$8;
+        temp$9 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$9 == 0 goto label1;
+
+        goto label3;
+
+     label1:
+        nop;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>("No rows in ResultSet. Code not found.");
+
+     label2:
+        nop;
+        return result;
+
+     label3:
+        nop;
+        i = 0;
+
+     label4:
+        nop;
+        temp$10 = codeList;
+        temp$11 = i;
+        temp$12 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(1);
+        temp$10[temp$11] = temp$12;
+        temp$13 = categoryList;
+        temp$14 = i;
+        temp$15 = interfaceinvoke rs.<java.sql.ResultSet: java.lang.String getString(int)>(2);
+        temp$13[temp$14] = temp$15;
+        temp$16 = i;
+        temp$17 = temp$16 + 1;
+        i = temp$17;
+        nop;
+        temp$18 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$18 == 0 goto label5;
+
+        goto label4;
+
+     label5:
+        nop;
+        j = 0;
+
+     label6:
+        nop;
+        if j < i goto label7;
+
+        goto label18;
+
+     label7:
+        nop;
+        temp$19 = codeList;
+        temp$20 = j;
+        temp$21 = temp$19[temp$20];
+        if temp$21 == 0 goto label9;
+
+        goto label8;
+
+     label8:
+        nop;
+        if codeList == null goto label9;
+
+        goto label11;
+
+        goto label11;
+
+     label9:
+        nop;
+
+     label10:
+        nop;
+        goto label17;
+
+     label11:
+        nop;
+        temp$22 = codeList;
+        temp$23 = j;
+        temp$24 = temp$22[temp$23];
+        temp$25 = virtualinvoke this.<com.riskIt.controller.Requirements19_24: int ComputeAverageEducation(java.lang.String,int)>(selection, temp$24);
+        level = temp$25;
+        if maxLevel < level goto label12;
+
+        goto label13;
+
+     label12:
+        nop;
+        maxLevel = level;
+        temp$26 = codeList;
+        temp$27 = j;
+        temp$28 = temp$26[temp$27];
+        maxCode = temp$28;
+        temp$29 = categoryList;
+        temp$30 = j;
+        temp$31 = temp$29[temp$30];
+        maxCategory = temp$31;
+
+     label13:
+        nop;
+        if minLevel > level goto label14;
+
+        goto label16;
+
+     label14:
+        nop;
+        if level > 0 goto label15;
+
+        goto label16;
+
+        goto label15;
+
+     label15:
+        nop;
+        minLevel = level;
+        temp$32 = codeList;
+        temp$33 = j;
+        temp$34 = temp$32[temp$33];
+        minCode = temp$34;
+        temp$35 = categoryList;
+        temp$36 = j;
+        temp$37 = temp$35[temp$36];
+        minCategory = temp$37;
+
+     label16:
+        nop;
+
+     label17:
+        nop;
+        temp$38 = j;
+        temp$39 = temp$38 + 1;
+        j = temp$39;
+        goto label6;
+
+     label18:
+        nop;
+        temp$40 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(maxLevel);
+        temp$41 = virtualinvoke levelToEducationMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$40);
+        temp$42 = (java.lang.String) temp$41;
+        temp$43 = virtualinvoke result.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$42);
+        temp$44 = <java.lang.System: java.io.PrintStream out>;
+        temp$45 = new java.lang.StringBuffer;
+        specialinvoke temp$45.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$45.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("The ");
+        virtualinvoke temp$45.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$45.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" ");
+        virtualinvoke temp$45.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(maxCategory);
+        virtualinvoke temp$45.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\n has the highest education level: ");
+        temp$46 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(maxLevel);
+        temp$47 = virtualinvoke levelToEducationMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$46);
+        temp$48 = (java.lang.String) temp$47;
+        virtualinvoke temp$45.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$48);
+        temp$49 = virtualinvoke temp$45.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$44.<java.io.PrintStream: void println(java.lang.String)>(temp$49);
+        temp$50 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(minLevel);
+        temp$51 = virtualinvoke levelToEducationMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$50);
+        temp$52 = (java.lang.String) temp$51;
+        temp$53 = virtualinvoke result.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$52);
+        temp$54 = <java.lang.System: java.io.PrintStream out>;
+        temp$55 = new java.lang.StringBuffer;
+        specialinvoke temp$55.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$55.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("The ");
+        virtualinvoke temp$55.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$55.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" ");
+        virtualinvoke temp$55.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(minCategory);
+        virtualinvoke temp$55.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\n has the lowest education level: ");
+        temp$56 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(minLevel);
+        temp$57 = virtualinvoke levelToEducationMap.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$56);
+        temp$58 = (java.lang.String) temp$57;
+        virtualinvoke temp$55.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$58);
+        temp$59 = virtualinvoke temp$55.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$54.<java.io.PrintStream: void println(java.lang.String)>(temp$59);
+        temp$60 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$60.<java.io.PrintStream: void println(java.lang.String)>("");
+        temp$61 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$61.<java.io.PrintStream: void println(java.lang.String)>("");
+        temp$62 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface getCalculateByOccupationOrIndustryCode()>();
+        calc = temp$62;
+        temp$63 = virtualinvoke selection.<java.lang.String: boolean equals(java.lang.Object)>("industry");
+        if temp$63 == 0 goto label20;
+
+        goto label19;
+
+     label19:
+        nop;
+        temp$64 = interfaceinvoke calc.<com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface: double calculateIncomeByIndustryCode(int)>(maxCode);
+        MaxAverageIncomeBasedOnCode = temp$64;
+        temp$65 = interfaceinvoke calc.<com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface: double calculateIncomeByIndustryCode(int)>(minCode);
+        MinAverageIncomeBasedOnCode = temp$65;
+        goto label25;
+
+     label20:
+        nop;
+        temp$66 = virtualinvoke selection.<java.lang.String: boolean equals(java.lang.Object)>("occupation");
+        if temp$66 == 0 goto label22;
+
+        goto label21;
+
+     label21:
+        nop;
+        temp$67 = interfaceinvoke calc.<com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface: double calculateIncomeByOccupationCode(int)>(maxCode);
+        MaxAverageIncomeBasedOnCode = temp$67;
+        temp$68 = interfaceinvoke calc.<com.riskIt.interfaces.CalculateByOccupationOrIndustryCodeInterface: double calculateIncomeByOccupationCode(int)>(minCode);
+        MinAverageIncomeBasedOnCode = temp$68;
+        goto label24;
+
+     label22:
+        nop;
+        temp$69 = <java.lang.System: java.io.PrintStream out>;
+        temp$70 = new java.lang.StringBuffer;
+        specialinvoke temp$70.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("Invalid option: ");
+        virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        temp$71 = virtualinvoke temp$70.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$69.<java.io.PrintStream: void println(java.lang.String)>(temp$71);
+
+     label23:
+        nop;
+        return result;
+
+     label24:
+        nop;
+
+     label25:
+        nop;
+        ammount = 0.0;
+        temp$72 = staticinvoke <com.riskIt.util.UtilitiesReq19_24: double CalculateIncomePercentageDifference(double,double)>(MaxAverageIncomeBasedOnCode, MinAverageIncomeBasedOnCode);
+        ammount = temp$72;
+        temp$73 = staticinvoke <com.riskIt.util.Factory: double getRoundMethod(double)>(ammount);
+        ammount = temp$73;
+        temp$74 = MaxAverageIncomeBasedOnCode cmpg MinAverageIncomeBasedOnCode;
+        if temp$74 != 0 goto label27;
+
+        goto label26;
+
+     label26:
+        nop;
+        temp$75 = new java.lang.StringBuffer;
+        specialinvoke temp$75.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$75.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("The average income for ");
+        virtualinvoke temp$75.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$75.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" with highest education level and lowest education level is equal");
+        temp$76 = virtualinvoke temp$75.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$77 = virtualinvoke result.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$76);
+        temp$78 = <java.lang.System: java.io.PrintStream out>;
+        temp$79 = new java.lang.StringBuffer;
+        specialinvoke temp$79.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$79.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("The average income for ");
+        virtualinvoke temp$79.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$79.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" with highest education level and lowest education level is equal");
+        temp$80 = virtualinvoke temp$79.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$78.<java.io.PrintStream: void println(java.lang.String)>(temp$80);
+        goto label31;
+
+     label27:
+        nop;
+        temp$81 = MaxAverageIncomeBasedOnCode cmpl MinAverageIncomeBasedOnCode;
+        if temp$81 <= 0 goto label29;
+
+        goto label28;
+
+     label28:
+        nop;
+        temp$82 = new java.lang.StringBuffer;
+        specialinvoke temp$82.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("The average income for ");
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" with highest education level is ");
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(ammount);
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("% higher than for ");
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" with lowest education level");
+        temp$83 = virtualinvoke temp$82.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$84 = virtualinvoke result.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$83);
+        temp$85 = <java.lang.System: java.io.PrintStream out>;
+        temp$86 = new java.lang.StringBuffer;
+        specialinvoke temp$86.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$86.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("The average income for ");
+        virtualinvoke temp$86.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$86.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" with highest education level is ");
+        virtualinvoke temp$86.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(ammount);
+        virtualinvoke temp$86.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("% higher than for ");
+        virtualinvoke temp$86.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$86.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" with lowest education level");
+        temp$87 = virtualinvoke temp$86.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$85.<java.io.PrintStream: void println(java.lang.String)>(temp$87);
+        goto label30;
+
+     label29:
+        nop;
+        temp$88 = new java.lang.StringBuffer;
+        specialinvoke temp$88.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$88.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("The average income for ");
+        virtualinvoke temp$88.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$88.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" with highest education level is ");
+        virtualinvoke temp$88.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(ammount);
+        virtualinvoke temp$88.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("% lower than for ");
+        virtualinvoke temp$88.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$88.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" with lowest education level");
+        temp$89 = virtualinvoke temp$88.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$90 = virtualinvoke result.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$89);
+        temp$91 = <java.lang.System: java.io.PrintStream out>;
+        temp$92 = new java.lang.StringBuffer;
+        specialinvoke temp$92.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("The average income for ");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" with highest education level is ");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(double)>(ammount);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("% lower than for ");
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(selection);
+        virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(" with lowest education level");
+        temp$93 = virtualinvoke temp$92.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$91.<java.io.PrintStream: void println(java.lang.String)>(temp$93);
+
+     label30:
+        nop;
+
+     label31:
+        nop;
+        temp$94 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$94.<java.io.PrintStream: void println(java.lang.String)>("");
+        interfaceinvoke rs.<java.sql.ResultSet: void close()>();
+        temp$95 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        interfaceinvoke temp$95.<java.sql.Statement: void close()>();
+        goto label33;
+
+     label32:
+        nop;
+        e := @caughtexception;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void printExceptionText(java.sql.SQLException)>(e);
+        nop;
+        goto label33;
+
+     label33:
+        nop;
+        return result;
+
+        catch java.sql.SQLException from label0 to label2 with label32;
+        catch java.sql.SQLException from label3 to label10 with label32;
+        catch java.sql.SQLException from label11 to label23 with label32;
+        catch java.sql.SQLException from label24 to label32 with label32;
+    }
+
+    public java.lang.String CalculateLikelinessToMoveFactor(int)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        int ssn, size, betterStatesCount, code, temp$11, temp$21, temp$45, i, temp$47, temp$49, temp$51, temp$54, temp$55, temp$56, temp$57, temp$58;
+        java.sql.ResultSet rs, rs1, rs2, rs3, temp$6, temp$16, temp$26, temp$38;
+        java.lang.String[] resultStates, temp$50;
+        double[] averageWage, temp$46;
+        java.lang.String state, returnValue, temp$5, temp$9, temp$10, temp$15, temp$19, temp$20, temp$25, temp$29, temp$30, zip, temp$31, temp$33, temp$34, temp$37, temp$41, temp$42, temp$43, temp$52, temp$60, temp$62;
+        double wage, temp$22, temp$48;
+        java.sql.Connection temp$0, temp$1;
+        java.sql.Statement temp$2, temp$3, temp$13, temp$23, temp$35, temp$44;
+        java.lang.StringBuffer temp$4, temp$8, temp$14, temp$18, temp$24, temp$28, temp$32, temp$36, temp$40;
+        boolean temp$7, temp$17, temp$27, temp$39, temp$53;
+        java.io.PrintStream temp$12, temp$59, temp$61;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        ssn := @parameter0: int;
+        rs = null;
+        rs1 = null;
+        rs2 = null;
+        rs3 = null;
+        resultStates = newarray (java.lang.String)[50];
+        averageWage = newarray (double)[50];
+        size = 0;
+        state = "";
+        wage = 0.0;
+        betterStatesCount = 0;
+        returnValue = "";
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$0;
+        temp$1 = this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn>;
+        temp$2 = interfaceinvoke temp$1.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$2;
+        temp$3 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$4 = new java.lang.StringBuffer;
+        specialinvoke temp$4.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT occupationcode FROM job WHERE ssn=");
+        virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(ssn);
+        temp$5 = virtualinvoke temp$4.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$6 = interfaceinvoke temp$3.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$5);
+        rs = temp$6;
+        temp$7 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$7 == 0 goto label1;
+
+        goto label3;
+
+     label1:
+        nop;
+        temp$8 = new java.lang.StringBuffer;
+        specialinvoke temp$8.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No rows in ResultSet. Occupation code not found for SSN ");
+        virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(ssn);
+        temp$9 = virtualinvoke temp$8.<java.lang.StringBuffer: java.lang.String toString()>();
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>(temp$9);
+        temp$10 = "Error";
+
+     label2:
+        nop;
+        return temp$10;
+
+     label3:
+        nop;
+        temp$11 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(1);
+        code = temp$11;
+        temp$12 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$12.<java.io.PrintStream: void println(java.lang.String)>("");
+        temp$13 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$14 = new java.lang.StringBuffer;
+        specialinvoke temp$14.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT weekwage FROM job WHERE ssn=");
+        virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(ssn);
+        temp$15 = virtualinvoke temp$14.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$16 = interfaceinvoke temp$13.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$15);
+        rs1 = temp$16;
+        temp$17 = interfaceinvoke rs1.<java.sql.ResultSet: boolean next()>();
+        if temp$17 == 0 goto label4;
+
+        goto label6;
+
+     label4:
+        nop;
+        temp$18 = new java.lang.StringBuffer;
+        specialinvoke temp$18.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No rows in ResultSet. Occupation code not found for SSN ");
+        virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(ssn);
+        temp$19 = virtualinvoke temp$18.<java.lang.StringBuffer: java.lang.String toString()>();
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>(temp$19);
+        temp$20 = "Error";
+
+     label5:
+        nop;
+        return temp$20;
+
+     label6:
+        nop;
+        temp$21 = interfaceinvoke rs1.<java.sql.ResultSet: int getInt(int)>(1);
+        temp$22 = (double) temp$21;
+        wage = temp$22;
+        temp$23 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$24 = new java.lang.StringBuffer;
+        specialinvoke temp$24.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$24.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT zip FROM userrecord WHERE ssn=");
+        virtualinvoke temp$24.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(ssn);
+        temp$25 = virtualinvoke temp$24.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$26 = interfaceinvoke temp$23.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$25);
+        rs2 = temp$26;
+        temp$27 = interfaceinvoke rs2.<java.sql.ResultSet: boolean next()>();
+        if temp$27 == 0 goto label7;
+
+        goto label9;
+
+     label7:
+        nop;
+        temp$28 = new java.lang.StringBuffer;
+        specialinvoke temp$28.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$28.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No rows in ResultSet. Occupation code not found for SSN ");
+        virtualinvoke temp$28.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(ssn);
+        temp$29 = virtualinvoke temp$28.<java.lang.StringBuffer: java.lang.String toString()>();
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>(temp$29);
+        temp$30 = "Error";
+
+     label8:
+        nop;
+        return temp$30;
+
+     label9:
+        nop;
+        temp$31 = interfaceinvoke rs2.<java.sql.ResultSet: java.lang.String getString(int)>(1);
+        zip = temp$31;
+        if zip == null goto label10;
+
+        goto label12;
+
+     label10:
+        nop;
+        temp$32 = new java.lang.StringBuffer;
+        specialinvoke temp$32.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$32.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No rows in ResultSet. Zip not found for SSN ");
+        virtualinvoke temp$32.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(ssn);
+        temp$33 = virtualinvoke temp$32.<java.lang.StringBuffer: java.lang.String toString()>();
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>(temp$33);
+        temp$34 = "Error";
+
+     label11:
+        nop;
+        return temp$34;
+
+     label12:
+        nop;
+        temp$35 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$36 = new java.lang.StringBuffer;
+        specialinvoke temp$36.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$36.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT statename FROM ziptable WHERE zip =\'");
+        virtualinvoke temp$36.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(zip);
+        virtualinvoke temp$36.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("\'");
+        temp$37 = virtualinvoke temp$36.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$38 = interfaceinvoke temp$35.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$37);
+        rs3 = temp$38;
+        temp$39 = interfaceinvoke rs3.<java.sql.ResultSet: boolean next()>();
+        if temp$39 == 0 goto label13;
+
+        goto label15;
+
+     label13:
+        nop;
+        temp$40 = new java.lang.StringBuffer;
+        specialinvoke temp$40.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("No rows in ResultSet. State not found for SSN ");
+        virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(ssn);
+        temp$41 = virtualinvoke temp$40.<java.lang.StringBuffer: java.lang.String toString()>();
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>(temp$41);
+        temp$42 = "Error";
+
+     label14:
+        nop;
+        return temp$42;
+
+     label15:
+        nop;
+        temp$43 = interfaceinvoke rs3.<java.sql.ResultSet: java.lang.String getString(int)>(1);
+        state = temp$43;
+        interfaceinvoke rs.<java.sql.ResultSet: void close()>();
+        interfaceinvoke rs1.<java.sql.ResultSet: void close()>();
+        interfaceinvoke rs2.<java.sql.ResultSet: void close()>();
+        interfaceinvoke rs3.<java.sql.ResultSet: void close()>();
+        temp$44 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        interfaceinvoke temp$44.<java.sql.Statement: void close()>();
+        temp$45 = virtualinvoke this.<com.riskIt.controller.Requirements19_24: int CalculateAverageWageForOccupationForAllStates(int,java.lang.String[],double[])>(code, resultStates, averageWage);
+        size = temp$45;
+        i = 0;
+
+     label16:
+        nop;
+        if i < size goto label17;
+
+        goto label21;
+
+     label17:
+        nop;
+        temp$46 = averageWage;
+        temp$47 = i;
+        temp$48 = temp$46[temp$47];
+        temp$49 = wage cmpg temp$48;
+        if temp$49 >= 0 goto label20;
+
+        goto label18;
+
+     label18:
+        nop;
+        temp$50 = resultStates;
+        temp$51 = i;
+        temp$52 = temp$50[temp$51];
+        temp$53 = virtualinvoke state.<java.lang.String: boolean equals(java.lang.Object)>(temp$52);
+        if temp$53 == 0 goto label19;
+
+        goto label20;
+
+        goto label19;
+
+     label19:
+        nop;
+        temp$54 = betterStatesCount;
+        temp$55 = temp$54 + 1;
+        betterStatesCount = temp$55;
+
+     label20:
+        nop;
+        nop;
+        temp$56 = i;
+        temp$57 = temp$56 + 1;
+        i = temp$57;
+        goto label16;
+
+     label21:
+        nop;
+        temp$58 = size / 2;
+        if betterStatesCount > temp$58 goto label22;
+
+        goto label23;
+
+     label22:
+        nop;
+        temp$59 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$59.<java.io.PrintStream: void println(java.lang.String)>("The likeliness to move factor is high as more than 50% of states have better average wage for this person\'s occupation");
+        temp$60 = "high";
+        returnValue = temp$60;
+        goto label24;
+
+     label23:
+        nop;
+        temp$61 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke temp$61.<java.io.PrintStream: void println(java.lang.String)>("The likeliness to move factor is low as more than 50% of states have lower or equal average wage for this person\'s occupation");
+        temp$62 = "low";
+        returnValue = temp$62;
+
+     label24:
+        nop;
+        goto label26;
+
+     label25:
+        nop;
+        e := @caughtexception;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void printExceptionText(java.sql.SQLException)>(e);
+        nop;
+        goto label26;
+
+     label26:
+        nop;
+        return returnValue;
+
+        catch java.sql.SQLException from label0 to label2 with label25;
+        catch java.sql.SQLException from label3 to label5 with label25;
+        catch java.sql.SQLException from label6 to label8 with label25;
+        catch java.sql.SQLException from label9 to label11 with label25;
+        catch java.sql.SQLException from label12 to label14 with label25;
+        catch java.sql.SQLException from label15 to label25 with label25;
+    }
+
+    private final void getEducationResultSet(java.lang.String[])
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.lang.String[] educationArray, temp$42;
+        java.sql.ResultSet rs, temp$40;
+        java.sql.Connection temp$0, temp$1;
+        java.sql.Statement temp$2, temp$3, temp$5, temp$7, temp$9, temp$11, temp$13, temp$15, temp$17, temp$19, temp$21, temp$23, temp$25, temp$27, temp$29, temp$31, temp$33, temp$35, temp$37, temp$39, temp$48, temp$50;
+        int i, temp$43, temp$44, temp$45;
+        boolean temp$4, temp$6, temp$8, temp$10, temp$12, temp$14, temp$16, temp$18, temp$20, temp$22, temp$24, temp$26, temp$28, temp$30, temp$32, temp$34, temp$36, temp$38, temp$41, temp$47, temp$49;
+        java.lang.String temp$46;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        educationArray := @parameter0: java.lang.String[];
+        rs = null;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$0;
+        temp$1 = this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn>;
+        temp$2 = interfaceinvoke temp$1.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$2;
+        i = 0;
+        temp$3 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$4 = interfaceinvoke temp$3.<java.sql.Statement: boolean execute(java.lang.String)>("create table educationmap(LEVEL int NOT NULL, EDUCATION char(50), PRIMARY KEY (LEVEL))");
+        temp$5 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$6 = interfaceinvoke temp$5.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (0, \' Children\')");
+        temp$7 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$8 = interfaceinvoke temp$7.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (1, \' Less than 1st grade\')");
+        temp$9 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$10 = interfaceinvoke temp$9.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (2, \' 1st 2nd 3rd or 4th grade\')");
+        temp$11 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$12 = interfaceinvoke temp$11.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (3, \' 5th or 6th grade\')");
+        temp$13 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$14 = interfaceinvoke temp$13.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (4, \' 7th and 8th grade\')");
+        temp$15 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$16 = interfaceinvoke temp$15.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (5, \' 9th grade\')");
+        temp$17 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$18 = interfaceinvoke temp$17.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (6, \' 10th grade\')");
+        temp$19 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$20 = interfaceinvoke temp$19.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (7, \' 11th grade\')");
+        temp$21 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$22 = interfaceinvoke temp$21.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (8, \' 12th grade no diploma\')");
+        temp$23 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$24 = interfaceinvoke temp$23.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (9, \' High school graduate\')");
+        temp$25 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$26 = interfaceinvoke temp$25.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (10, \' Some college but no degree\')");
+        temp$27 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$28 = interfaceinvoke temp$27.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (11, \' Associates degree-occup /vocational\')");
+        temp$29 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$30 = interfaceinvoke temp$29.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (12, \' Associates degree-academic program\')");
+        temp$31 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$32 = interfaceinvoke temp$31.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (13, \' Prof school degree (MD DDS DVM LLB JD)\')");
+        temp$33 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$34 = interfaceinvoke temp$33.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (14, \' Bachelors degree(BA AB BS)\')");
+        temp$35 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$36 = interfaceinvoke temp$35.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (15, \' Masters degree(MA MS MEng MEd MSW MBA)\')");
+        temp$37 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$38 = interfaceinvoke temp$37.<java.sql.Statement: boolean execute(java.lang.String)>("insert into educationmap values (16, \' Doctorate degree(PhD EdD)\')");
+        temp$39 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$40 = interfaceinvoke temp$39.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT level, education FROM educationmap");
+        rs = temp$40;
+        temp$41 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$41 == 0 goto label1;
+
+        goto label3;
+
+     label1:
+        nop;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>("No rows in ResultSet. No data found in internal educationmap table.");
+
+     label2:
+        nop;
+        return;
+
+     label3:
+        nop;
+
+     label4:
+        nop;
+        temp$42 = educationArray;
+        temp$43 = i;
+        temp$44 = temp$43 + 1;
+        i = temp$44;
+        temp$45 = temp$43;
+        temp$46 = interfaceinvoke rs.<java.sql.ResultSet: java.lang.String getString(int)>(2);
+        temp$42[temp$45] = temp$46;
+        nop;
+        temp$47 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$47 == 0 goto label5;
+
+        goto label4;
+
+     label5:
+        nop;
+        temp$48 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$49 = interfaceinvoke temp$48.<java.sql.Statement: boolean execute(java.lang.String)>("drop table educationmap");
+        interfaceinvoke rs.<java.sql.ResultSet: void close()>();
+        temp$50 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        interfaceinvoke temp$50.<java.sql.Statement: void close()>();
+        goto label7;
+
+     label6:
+        nop;
+        e := @caughtexception;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void printExceptionText(java.sql.SQLException)>(e);
+        nop;
+        goto label7;
+
+     label7:
+        nop;
+        return;
+
+        return;
+
+        catch java.sql.SQLException from label0 to label2 with label6;
+        catch java.sql.SQLException from label3 to label6 with label6;
+    }
+
+    private final void initializeLevelToEducationHashMap(java.util.HashMap)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.util.HashMap levelToEducationMap;
+        java.lang.String[] resultSet, temp$2;
+        int temp$0, i, temp$3, temp$7, temp$8;
+        java.lang.Integer temp$1;
+        java.lang.String temp$4, temp$6;
+        java.lang.Object temp$5;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        levelToEducationMap := @parameter0: java.util.HashMap;
+        temp$0 = <com.riskIt.controller.Requirements19_24: int maxEduDegrees>;
+        resultSet = newarray (java.lang.String)[temp$0];
+        i = 0;
+        virtualinvoke this.<com.riskIt.controller.Requirements19_24: void getEducationResultSet(java.lang.String[])>(resultSet);
+
+     label0:
+        nop;
+        temp$1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i);
+        temp$2 = resultSet;
+        temp$3 = i;
+        temp$4 = temp$2[temp$3];
+        temp$5 = virtualinvoke levelToEducationMap.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(temp$1, temp$4);
+        temp$6 = (java.lang.String) temp$5;
+        temp$7 = i;
+        temp$8 = temp$7 + 1;
+        i = temp$8;
+        nop;
+        if i < 17 goto label0;
+
+        goto label1;
+
+     label1:
+        nop;
+        return;
+    }
+
+    private final void initializeEducationToLevelHashMap(java.util.HashMap)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.util.HashMap educationTolevelsMap;
+        java.lang.String[] resultSet, temp$1;
+        int temp$0, i, temp$2, temp$7, temp$8;
+        java.lang.String temp$3;
+        java.lang.Integer temp$4, temp$6;
+        java.lang.Object temp$5;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        educationTolevelsMap := @parameter0: java.util.HashMap;
+        temp$0 = <com.riskIt.controller.Requirements19_24: int maxEduDegrees>;
+        resultSet = newarray (java.lang.String)[temp$0];
+        i = 0;
+        virtualinvoke this.<com.riskIt.controller.Requirements19_24: void getEducationResultSet(java.lang.String[])>(resultSet);
+
+     label0:
+        nop;
+        temp$1 = resultSet;
+        temp$2 = i;
+        temp$3 = temp$1[temp$2];
+        temp$4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i);
+        temp$5 = virtualinvoke educationTolevelsMap.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(temp$3, temp$4);
+        temp$6 = (java.lang.Integer) temp$5;
+        temp$7 = i;
+        temp$8 = temp$7 + 1;
+        i = temp$8;
+        nop;
+        if i < 17 goto label0;
+
+        goto label1;
+
+     label1:
+        nop;
+        return;
+    }
+
+    private final void initializeSsnToEducationMap(java.util.HashMap)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.util.HashMap ssnToEducationMap;
+        java.sql.ResultSet rs, temp$4;
+        java.sql.Connection temp$0, temp$1;
+        java.sql.Statement temp$2, temp$3, temp$12;
+        boolean temp$5, temp$11;
+        int a, temp$6;
+        java.lang.String b, temp$7, temp$10;
+        java.lang.Integer temp$8;
+        java.lang.Object temp$9;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        ssnToEducationMap := @parameter0: java.util.HashMap;
+        rs = null;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$0;
+        temp$1 = this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn>;
+        temp$2 = interfaceinvoke temp$1.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$2;
+        temp$3 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$4 = interfaceinvoke temp$3.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT ssn, education FROM education");
+        rs = temp$4;
+        temp$5 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$5 == 0 goto label1;
+
+        goto label3;
+
+     label1:
+        nop;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>("No rows in ResultSet. No SSN found for table education");
+
+     label2:
+        nop;
+        return;
+
+     label3:
+        nop;
+
+     label4:
+        nop;
+        temp$6 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(1);
+        a = temp$6;
+        temp$7 = interfaceinvoke rs.<java.sql.ResultSet: java.lang.String getString(int)>(2);
+        b = temp$7;
+        temp$8 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(a);
+        temp$9 = virtualinvoke ssnToEducationMap.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(temp$8, b);
+        temp$10 = (java.lang.String) temp$9;
+        nop;
+        temp$11 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$11 == 0 goto label5;
+
+        goto label4;
+
+     label5:
+        nop;
+        interfaceinvoke rs.<java.sql.ResultSet: void close()>();
+        temp$12 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        interfaceinvoke temp$12.<java.sql.Statement: void close()>();
+        goto label7;
+
+     label6:
+        nop;
+        e := @caughtexception;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void printExceptionText(java.sql.SQLException)>(e);
+        nop;
+        goto label7;
+
+     label7:
+        nop;
+        return;
+
+        catch java.sql.SQLException from label0 to label2 with label6;
+        catch java.sql.SQLException from label3 to label6 with label6;
+    }
+
+    private final void initializeSsnToZipMap(java.util.HashMap)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.util.HashMap ssnToZipMap;
+        java.sql.ResultSet rs, temp$4;
+        java.sql.Connection temp$0, temp$1;
+        java.sql.Statement temp$2, temp$3, temp$12;
+        boolean temp$5, temp$11;
+        int a, temp$6;
+        java.lang.String b, temp$7, temp$10;
+        java.lang.Integer temp$8;
+        java.lang.Object temp$9;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        ssnToZipMap := @parameter0: java.util.HashMap;
+        rs = null;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$0;
+        temp$1 = this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn>;
+        temp$2 = interfaceinvoke temp$1.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$2;
+        temp$3 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$4 = interfaceinvoke temp$3.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT ssn, zip FROM userrecord");
+        rs = temp$4;
+        temp$5 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$5 == 0 goto label1;
+
+        goto label3;
+
+     label1:
+        nop;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>("No rows in ResultSet. No SSN, zip found for table userrecord");
+
+     label2:
+        nop;
+        return;
+
+     label3:
+        nop;
+
+     label4:
+        nop;
+        temp$6 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(1);
+        a = temp$6;
+        temp$7 = interfaceinvoke rs.<java.sql.ResultSet: java.lang.String getString(int)>(2);
+        b = temp$7;
+        temp$8 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(a);
+        temp$9 = virtualinvoke ssnToZipMap.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(temp$8, b);
+        temp$10 = (java.lang.String) temp$9;
+        nop;
+        temp$11 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$11 == 0 goto label5;
+
+        goto label4;
+
+     label5:
+        nop;
+        interfaceinvoke rs.<java.sql.ResultSet: void close()>();
+        temp$12 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        interfaceinvoke temp$12.<java.sql.Statement: void close()>();
+        goto label7;
+
+     label6:
+        nop;
+        e := @caughtexception;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void printExceptionText(java.sql.SQLException)>(e);
+        nop;
+        goto label7;
+
+     label7:
+        nop;
+        return;
+
+        catch java.sql.SQLException from label0 to label2 with label6;
+        catch java.sql.SQLException from label3 to label6 with label6;
+    }
+
+    private final void initializeSsnToWeekWageMap(java.util.HashMap)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.util.HashMap ssnToWeekWageMap;
+        java.sql.ResultSet rs, temp$4;
+        java.sql.Connection temp$0, temp$1;
+        java.sql.Statement temp$2, temp$3, temp$13;
+        boolean temp$5, temp$12;
+        int a, temp$6, b, temp$7;
+        java.lang.Integer temp$8, temp$9, temp$11;
+        java.lang.Object temp$10;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        ssnToWeekWageMap := @parameter0: java.util.HashMap;
+        rs = null;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$0;
+        temp$1 = this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn>;
+        temp$2 = interfaceinvoke temp$1.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$2;
+        temp$3 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$4 = interfaceinvoke temp$3.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT ssn, weekwage FROM job");
+        rs = temp$4;
+        temp$5 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$5 == 0 goto label1;
+
+        goto label3;
+
+     label1:
+        nop;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>("No rows in ResultSet. No SSN, weekwage found for table job");
+
+     label2:
+        nop;
+        return;
+
+     label3:
+        nop;
+
+     label4:
+        nop;
+        temp$6 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(1);
+        a = temp$6;
+        temp$7 = interfaceinvoke rs.<java.sql.ResultSet: int getInt(int)>(2);
+        b = temp$7;
+        temp$8 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(a);
+        temp$9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(b);
+        temp$10 = virtualinvoke ssnToWeekWageMap.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(temp$8, temp$9);
+        temp$11 = (java.lang.Integer) temp$10;
+        nop;
+        temp$12 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$12 == 0 goto label5;
+
+        goto label4;
+
+     label5:
+        nop;
+        interfaceinvoke rs.<java.sql.ResultSet: void close()>();
+        temp$13 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        interfaceinvoke temp$13.<java.sql.Statement: void close()>();
+        goto label7;
+
+     label6:
+        nop;
+        e := @caughtexception;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void printExceptionText(java.sql.SQLException)>(e);
+        nop;
+        goto label7;
+
+     label7:
+        nop;
+        return;
+
+        catch java.sql.SQLException from label0 to label2 with label6;
+        catch java.sql.SQLException from label3 to label6 with label6;
+    }
+
+    private final void initializeZipToStateMap(java.util.HashMap)
+    {
+        com.riskIt.controller.Requirements19_24 this;
+        java.util.HashMap zipToStateMap;
+        java.sql.ResultSet rs, temp$4;
+        java.sql.Connection temp$0, temp$1;
+        java.sql.Statement temp$2, temp$3, temp$11;
+        boolean temp$5, temp$10;
+        java.lang.String a, temp$6, b, temp$7, temp$9;
+        java.lang.Object temp$8;
+        java.sql.SQLException e;
+
+        this := @this: com.riskIt.controller.Requirements19_24;
+        zipToStateMap := @parameter0: java.util.HashMap;
+        rs = null;
+
+     label0:
+        nop;
+        temp$0 = staticinvoke <com.riskIt.db.DatabaseConnection: java.sql.Connection getConnection()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn> = temp$0;
+        temp$1 = this.<com.riskIt.controller.Requirements19_24: java.sql.Connection _conn>;
+        temp$2 = interfaceinvoke temp$1.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s> = temp$2;
+        temp$3 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        temp$4 = interfaceinvoke temp$3.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT zip, statename FROM ziptable");
+        rs = temp$4;
+        temp$5 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$5 == 0 goto label1;
+
+        goto label3;
+
+     label1:
+        nop;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void reportFailure(java.lang.String)>("No rows in ResultSet. No zip, statename found for table job");
+
+     label2:
+        nop;
+        return;
+
+     label3:
+        nop;
+
+     label4:
+        nop;
+        temp$6 = interfaceinvoke rs.<java.sql.ResultSet: java.lang.String getString(int)>(1);
+        a = temp$6;
+        temp$7 = interfaceinvoke rs.<java.sql.ResultSet: java.lang.String getString(int)>(2);
+        b = temp$7;
+        temp$8 = virtualinvoke zipToStateMap.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(a, b);
+        temp$9 = (java.lang.String) temp$8;
+        nop;
+        temp$10 = interfaceinvoke rs.<java.sql.ResultSet: boolean next()>();
+        if temp$10 == 0 goto label5;
+
+        goto label4;
+
+     label5:
+        nop;
+        interfaceinvoke rs.<java.sql.ResultSet: void close()>();
+        temp$11 = this.<com.riskIt.controller.Requirements19_24: java.sql.Statement s>;
+        interfaceinvoke temp$11.<java.sql.Statement: void close()>();
+        goto label7;
+
+     label6:
+        nop;
+        e := @caughtexception;
+        staticinvoke <com.riskIt.util.UtilitiesReq19_24: void printExceptionText(java.sql.SQLException)>(e);
+        nop;
+        goto label7;
+
+     label7:
+        nop;
+        return;
+
+        catch java.sql.SQLException from label0 to label2 with label6;
+        catch java.sql.SQLException from label3 to label6 with label6;
+    }
+}

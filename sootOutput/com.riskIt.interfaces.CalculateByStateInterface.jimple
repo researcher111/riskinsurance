@@ -1,0 +1,15 @@
+public interface  com.riskIt.interfaces.CalculateByStateInterface extends java.lang.Object
+{
+
+    public abstract java.util.ArrayList getStateList();
+
+    public abstract boolean isInStateList(java.lang.String);
+
+    public abstract double calculateIncomeByState(java.lang.String);
+
+    public abstract double calculateWeeklyWageByState(java.lang.String);
+
+    public abstract double calculateIncomeByAllStates();
+
+    public abstract double calculagteWeeklyWageByAllState();
+}

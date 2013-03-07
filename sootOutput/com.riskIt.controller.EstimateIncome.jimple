@@ -1,0 +1,1034 @@
+public class com.riskIt.controller.EstimateIncome extends java.lang.Object implements com.riskIt.interfaces.EstimateIncomeInterface
+{
+    private java.sql.Statement statement;
+    private java.sql.ResultSet results;
+    private com.riskIt.data.CalculateRegressionDataStructure workWeeksFindIncome;
+    private com.riskIt.data.CalculateRegressionDataStructure weeklyWageFindIncome;
+    private com.riskIt.data.CalculateRegressionDataStructure investmentIncomeFindIncome;
+
+    public void <init>()
+    {
+        com.riskIt.controller.EstimateIncome this;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        virtualinvoke this.<com.riskIt.controller.EstimateIncome: void calculateSlopesAndIntercepts()>();
+        return;
+    }
+
+    private final void calculateSlopesAndIntercepts()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        java.util.HashMap ssnWeekWage, temp$0, ssnWorkWeeks, temp$1, ssnInvestmentIncome, temp$2;
+        java.sql.Connection temp$3;
+        java.sql.Statement temp$4, temp$5, temp$29;
+        java.sql.ResultSet temp$6, temp$7, temp$9, temp$11, temp$13, temp$15, temp$17, temp$19, temp$30, temp$31, temp$33, temp$35, temp$37, temp$39, temp$41, temp$43, temp$45, temp$47;
+        boolean temp$8, temp$32, temp$64, temp$80, temp$83, temp$85, temp$96, temp$99;
+        java.lang.String temp$10, temp$12, temp$14, temp$34, temp$36, temp$38, temp$40, temp$109, temp$110, temp$114, temp$117, temp$118;
+        int ssn, temp$16, weekWage, temp$18, workWeeks, temp$20, ssn2, temp$42, capitalGains, temp$44, capitalLosses, temp$46, stockDividends, temp$48, investmentIncome, temp$49, temp$50, SSNkey, workWeeks, weekWage, temp$81, investmentIncome, temp$97, temp$113;
+        java.lang.Integer temp$21, temp$22, temp$24, temp$25, temp$26, temp$28, temp$51, temp$52, temp$54, temp$66, temp$67, temp$69, temp$70, temp$72, temp$73, temp$75, temp$76, temp$78, temp$79, temp$82, temp$84, temp$86, temp$88, temp$89, temp$91, temp$92, temp$94, temp$95, temp$98;
+        java.lang.Object temp$23, temp$27, temp$53, temp$65, temp$68, temp$71, temp$74, temp$77, temp$87, temp$90, temp$93;
+        java.util.ArrayList workWeeksList, temp$55, incomeList, temp$56, weeklyWageList, temp$57, investmentList, temp$58, incomeListForInvestment, temp$59;
+        java.util.Iterator i, temp$62, temp$63;
+        java.util.Set temp$60, temp$61;
+        com.riskIt.controller.CalculateRegression temp$100, temp$102, temp$104;
+        com.riskIt.data.CalculateRegressionDataStructure temp$101, temp$103, temp$105;
+        java.sql.SQLException e, temp$119;
+        java.io.PrintStream temp$106, temp$107, temp$111, temp$115;
+        java.lang.StringBuffer temp$108, temp$112, temp$116;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = new java.util.HashMap;
+        specialinvoke temp$0.<java.util.HashMap: void <init>()>();
+        ssnWeekWage = temp$0;
+        temp$1 = new java.util.HashMap;
+        specialinvoke temp$1.<java.util.HashMap: void <init>()>();
+        ssnWorkWeeks = temp$1;
+        temp$2 = new java.util.HashMap;
+        specialinvoke temp$2.<java.util.HashMap: void <init>()>();
+        ssnInvestmentIncome = temp$2;
+
+     label0:
+        nop;
+        temp$3 = staticinvoke <com.riskIt.util.Factory: java.sql.Connection getConnection()>();
+        temp$4 = interfaceinvoke temp$3.<java.sql.Connection: java.sql.Statement createStatement()>();
+        this.<com.riskIt.controller.EstimateIncome: java.sql.Statement statement> = temp$4;
+        temp$5 = this.<com.riskIt.controller.EstimateIncome: java.sql.Statement statement>;
+        temp$6 = interfaceinvoke temp$5.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT SSN, WEEKWAGE, WORKWEEKS from job");
+        this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results> = temp$6;
+
+     label1:
+        nop;
+        temp$7 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$8 = interfaceinvoke temp$7.<java.sql.ResultSet: boolean next()>();
+        if temp$8 == 0 goto label8;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$9 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$10 = interfaceinvoke temp$9.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("SSN");
+        if temp$10 == null goto label5;
+
+        goto label3;
+
+     label3:
+        nop;
+        temp$11 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$12 = interfaceinvoke temp$11.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("WEEKWAGE");
+        if temp$12 == null goto label5;
+
+        goto label4;
+
+        goto label4;
+
+     label4:
+        nop;
+        temp$13 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$14 = interfaceinvoke temp$13.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("WORKWEEKS");
+        if temp$14 == null goto label5;
+
+        goto label7;
+
+        goto label7;
+
+     label5:
+        nop;
+
+     label6:
+        nop;
+        goto label1;
+
+     label7:
+        nop;
+        temp$15 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$16 = interfaceinvoke temp$15.<java.sql.ResultSet: int getInt(java.lang.String)>("SSN");
+        ssn = temp$16;
+        temp$17 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$18 = interfaceinvoke temp$17.<java.sql.ResultSet: int getInt(java.lang.String)>("WEEKWAGE");
+        weekWage = temp$18;
+        temp$19 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$20 = interfaceinvoke temp$19.<java.sql.ResultSet: int getInt(java.lang.String)>("WORKWEEKS");
+        workWeeks = temp$20;
+        temp$21 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(ssn);
+        temp$22 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(weekWage);
+        temp$23 = virtualinvoke ssnWeekWage.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(temp$21, temp$22);
+        temp$24 = (java.lang.Integer) temp$23;
+        temp$25 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(ssn);
+        temp$26 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(workWeeks);
+        temp$27 = virtualinvoke ssnWorkWeeks.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(temp$25, temp$26);
+        temp$28 = (java.lang.Integer) temp$27;
+        goto label1;
+
+     label8:
+        nop;
+        temp$29 = this.<com.riskIt.controller.EstimateIncome: java.sql.Statement statement>;
+        temp$30 = interfaceinvoke temp$29.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>("SELECT SSN, CAPITALGAINS, CAPITALLOSSES, STOCKDIVIDENDS from investment");
+        this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results> = temp$30;
+
+     label9:
+        nop;
+        temp$31 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$32 = interfaceinvoke temp$31.<java.sql.ResultSet: boolean next()>();
+        if temp$32 == 0 goto label17;
+
+        goto label10;
+
+     label10:
+        nop;
+        temp$33 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$34 = interfaceinvoke temp$33.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("SSN");
+        if temp$34 == null goto label14;
+
+        goto label11;
+
+     label11:
+        nop;
+        temp$35 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$36 = interfaceinvoke temp$35.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("CAPITALGAINS");
+        if temp$36 == null goto label14;
+
+        goto label12;
+
+        goto label12;
+
+     label12:
+        nop;
+        temp$37 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$38 = interfaceinvoke temp$37.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("CAPITALLOSSES");
+        if temp$38 == null goto label14;
+
+        goto label13;
+
+        goto label13;
+
+     label13:
+        nop;
+        temp$39 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$40 = interfaceinvoke temp$39.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("STOCKDIVIDENDS");
+        if temp$40 == null goto label14;
+
+        goto label16;
+
+        goto label16;
+
+     label14:
+        nop;
+
+     label15:
+        nop;
+        goto label9;
+
+     label16:
+        nop;
+        temp$41 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$42 = interfaceinvoke temp$41.<java.sql.ResultSet: int getInt(java.lang.String)>("SSN");
+        ssn2 = temp$42;
+        temp$43 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$44 = interfaceinvoke temp$43.<java.sql.ResultSet: int getInt(java.lang.String)>("CAPITALGAINS");
+        capitalGains = temp$44;
+        temp$45 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$46 = interfaceinvoke temp$45.<java.sql.ResultSet: int getInt(java.lang.String)>("CAPITALLOSSES");
+        capitalLosses = temp$46;
+        temp$47 = this.<com.riskIt.controller.EstimateIncome: java.sql.ResultSet results>;
+        temp$48 = interfaceinvoke temp$47.<java.sql.ResultSet: int getInt(java.lang.String)>("STOCKDIVIDENDS");
+        stockDividends = temp$48;
+        temp$49 = capitalGains;
+        temp$50 = temp$49 + stockDividends;
+        investmentIncome = temp$50 + capitalLosses;
+        temp$51 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(ssn2);
+        temp$52 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(investmentIncome);
+        temp$53 = virtualinvoke ssnInvestmentIncome.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(temp$51, temp$52);
+        temp$54 = (java.lang.Integer) temp$53;
+        goto label9;
+
+     label17:
+        nop;
+        temp$55 = new java.util.ArrayList;
+        specialinvoke temp$55.<java.util.ArrayList: void <init>()>();
+        workWeeksList = temp$55;
+        temp$56 = new java.util.ArrayList;
+        specialinvoke temp$56.<java.util.ArrayList: void <init>()>();
+        incomeList = temp$56;
+        temp$57 = new java.util.ArrayList;
+        specialinvoke temp$57.<java.util.ArrayList: void <init>()>();
+        weeklyWageList = temp$57;
+        temp$58 = new java.util.ArrayList;
+        specialinvoke temp$58.<java.util.ArrayList: void <init>()>();
+        investmentList = temp$58;
+        temp$59 = new java.util.ArrayList;
+        specialinvoke temp$59.<java.util.ArrayList: void <init>()>();
+        incomeListForInvestment = temp$59;
+        temp$60 = virtualinvoke ssnWorkWeeks.<java.util.HashMap: java.util.Set keySet()>();
+        temp$61 = (java.util.Set) temp$60;
+        temp$62 = interfaceinvoke temp$61.<java.util.Set: java.util.Iterator iterator()>();
+        temp$63 = (java.util.Iterator) temp$62;
+        i = temp$63;
+
+     label18:
+        nop;
+        temp$64 = interfaceinvoke i.<java.util.Iterator: boolean hasNext()>();
+        if temp$64 == 0 goto label29;
+
+        goto label19;
+
+     label19:
+        nop;
+        temp$65 = interfaceinvoke i.<java.util.Iterator: java.lang.Object next()>();
+        temp$66 = (java.lang.Integer) temp$65;
+        SSNkey = virtualinvoke temp$66.<java.lang.Integer: int intValue()>();
+        temp$67 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(SSNkey);
+        temp$68 = virtualinvoke ssnWorkWeeks.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$67);
+        temp$69 = (java.lang.Integer) temp$68;
+        if temp$69 != null goto label20;
+
+        goto label28;
+
+     label20:
+        nop;
+        temp$70 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(SSNkey);
+        temp$71 = virtualinvoke ssnWeekWage.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$70);
+        temp$72 = (java.lang.Integer) temp$71;
+        if temp$72 != null goto label21;
+
+        goto label28;
+
+        goto label21;
+
+     label21:
+        nop;
+        temp$73 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(SSNkey);
+        temp$74 = virtualinvoke ssnWorkWeeks.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$73);
+        temp$75 = (java.lang.Integer) temp$74;
+        workWeeks = virtualinvoke temp$75.<java.lang.Integer: int intValue()>();
+        temp$76 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(SSNkey);
+        temp$77 = virtualinvoke ssnWeekWage.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$76);
+        temp$78 = (java.lang.Integer) temp$77;
+        weekWage = virtualinvoke temp$78.<java.lang.Integer: int intValue()>();
+        if workWeeks > 0 goto label22;
+
+        goto label27;
+
+     label22:
+        nop;
+        if weekWage > 0 goto label23;
+
+        goto label27;
+
+        goto label23;
+
+     label23:
+        nop;
+        temp$79 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(workWeeks);
+        temp$80 = virtualinvoke workWeeksList.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$79);
+        temp$81 = workWeeks * weekWage;
+        temp$82 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(temp$81);
+        temp$83 = virtualinvoke incomeList.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$82);
+        temp$84 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(weekWage);
+        temp$85 = virtualinvoke weeklyWageList.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$84);
+        temp$86 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(SSNkey);
+        temp$87 = virtualinvoke ssnInvestmentIncome.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$86);
+        temp$88 = (java.lang.Integer) temp$87;
+        if temp$88 != null goto label24;
+
+        goto label26;
+
+     label24:
+        nop;
+        temp$89 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(SSNkey);
+        temp$90 = virtualinvoke ssnInvestmentIncome.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$89);
+        temp$91 = (java.lang.Integer) temp$90;
+        if temp$91 != null goto label25;
+
+        goto label26;
+
+        goto label25;
+
+     label25:
+        nop;
+        temp$92 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(SSNkey);
+        temp$93 = virtualinvoke ssnInvestmentIncome.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(temp$92);
+        temp$94 = (java.lang.Integer) temp$93;
+        investmentIncome = virtualinvoke temp$94.<java.lang.Integer: int intValue()>();
+        temp$95 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(investmentIncome);
+        temp$96 = virtualinvoke investmentList.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$95);
+        temp$97 = workWeeks * weekWage;
+        temp$98 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(temp$97);
+        temp$99 = virtualinvoke incomeListForInvestment.<java.util.ArrayList: boolean add(java.lang.Object)>(temp$98);
+
+     label26:
+        nop;
+
+     label27:
+        nop;
+
+     label28:
+        nop;
+        nop;
+        goto label18;
+
+     label29:
+        nop;
+        temp$100 = new com.riskIt.controller.CalculateRegression;
+        specialinvoke temp$100.<com.riskIt.controller.CalculateRegression: void <init>()>();
+        temp$101 = virtualinvoke temp$100.<com.riskIt.controller.CalculateRegression: com.riskIt.data.CalculateRegressionDataStructure calculateRegressionNumbers(java.util.ArrayList,java.util.ArrayList)>(workWeeksList, incomeList);
+        this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure workWeeksFindIncome> = temp$101;
+        temp$102 = new com.riskIt.controller.CalculateRegression;
+        specialinvoke temp$102.<com.riskIt.controller.CalculateRegression: void <init>()>();
+        temp$103 = virtualinvoke temp$102.<com.riskIt.controller.CalculateRegression: com.riskIt.data.CalculateRegressionDataStructure calculateRegressionNumbers(java.util.ArrayList,java.util.ArrayList)>(weeklyWageList, incomeList);
+        this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure weeklyWageFindIncome> = temp$103;
+        temp$104 = new com.riskIt.controller.CalculateRegression;
+        specialinvoke temp$104.<com.riskIt.controller.CalculateRegression: void <init>()>();
+        temp$105 = virtualinvoke temp$104.<com.riskIt.controller.CalculateRegression: com.riskIt.data.CalculateRegressionDataStructure calculateRegressionNumbers(java.util.ArrayList,java.util.ArrayList)>(investmentList, incomeListForInvestment);
+        this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure investmentIncomeFindIncome> = temp$105;
+        goto label34;
+
+     label30:
+        nop;
+        e := @caughtexception;
+
+     label31:
+        nop;
+        if e != null goto label32;
+
+        goto label33;
+
+     label32:
+        nop;
+        temp$106 = <java.lang.System: java.io.PrintStream err>;
+        virtualinvoke temp$106.<java.io.PrintStream: void println(java.lang.String)>("\n----- SQLException -----");
+        temp$107 = <java.lang.System: java.io.PrintStream err>;
+        temp$108 = new java.lang.StringBuffer;
+        specialinvoke temp$108.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$108.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  SQL State:  ");
+        temp$109 = virtualinvoke e.<java.sql.SQLException: java.lang.String getSQLState()>();
+        virtualinvoke temp$108.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$109);
+        temp$110 = virtualinvoke temp$108.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$107.<java.io.PrintStream: void println(java.lang.String)>(temp$110);
+        temp$111 = <java.lang.System: java.io.PrintStream err>;
+        temp$112 = new java.lang.StringBuffer;
+        specialinvoke temp$112.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$112.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Error Code: ");
+        temp$113 = virtualinvoke e.<java.sql.SQLException: int getErrorCode()>();
+        virtualinvoke temp$112.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$113);
+        temp$114 = virtualinvoke temp$112.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$111.<java.io.PrintStream: void println(java.lang.String)>(temp$114);
+        temp$115 = <java.lang.System: java.io.PrintStream err>;
+        temp$116 = new java.lang.StringBuffer;
+        specialinvoke temp$116.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$116.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Message:    ");
+        temp$117 = virtualinvoke e.<java.sql.SQLException: java.lang.String getMessage()>();
+        virtualinvoke temp$116.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$117);
+        temp$118 = virtualinvoke temp$116.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$115.<java.io.PrintStream: void println(java.lang.String)>(temp$118);
+        temp$119 = virtualinvoke e.<java.sql.SQLException: java.sql.SQLException getNextException()>();
+        e = temp$119;
+        goto label31;
+
+     label33:
+        nop;
+        nop;
+        goto label34;
+
+     label34:
+        nop;
+        return;
+
+        catch java.sql.SQLException from label0 to label6 with label30;
+        catch java.sql.SQLException from label7 to label15 with label30;
+        catch java.sql.SQLException from label16 to label30 with label30;
+    }
+
+    public com.riskIt.interfaces.EstimateIncomeDTOInterface getValues(int)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        int ssn, occupationCode, industryCode, weeklyWage, workWeeks, investmentIncome, temp$7, ssn2, temp$14, ssn3, temp$20, temp$21, temp$22, temp$23, temp$24, temp$25, temp$26, ssn4, temp$31, temp$32, temp$33, temp$34, temp$35, temp$43;
+        java.sql.ResultSet results, temp$5, temp$12, temp$18, temp$29;
+        java.sql.Statement statement, temp$2;
+        java.lang.String ssnString, temp$0, name, race, education, temp$4, temp$8, temp$9, temp$11, temp$15, temp$17, temp$28, temp$39, temp$40, temp$44, temp$47, temp$48;
+        java.sql.Connection temp$1;
+        java.lang.StringBuffer temp$3, temp$10, temp$16, temp$27, temp$38, temp$42, temp$46;
+        boolean temp$6, temp$13, temp$19, temp$30;
+        java.sql.SQLException e, temp$49;
+        java.io.PrintStream temp$36, temp$37, temp$41, temp$45;
+        com.riskIt.interfaces.EstimateIncomeDTOInterface temp$50;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        ssn := @parameter0: int;
+        temp$0 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(ssn);
+        ssnString = temp$0;
+        name = null;
+        race = null;
+        education = null;
+        occupationCode = 0;
+        industryCode = 0;
+        weeklyWage = 0;
+        workWeeks = 0;
+        investmentIncome = 0;
+
+     label0:
+        nop;
+        temp$1 = staticinvoke <com.riskIt.util.Factory: java.sql.Connection getConnection()>();
+        temp$2 = interfaceinvoke temp$1.<java.sql.Connection: java.sql.Statement createStatement()>();
+        statement = temp$2;
+        temp$3 = new java.lang.StringBuffer;
+        specialinvoke temp$3.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT SSN, NAME, RACE from userrecord WHERE SSN = ");
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(ssnString);
+        virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        temp$4 = virtualinvoke temp$3.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$5 = interfaceinvoke statement.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$4);
+        results = temp$5;
+
+     label1:
+        nop;
+        temp$6 = interfaceinvoke results.<java.sql.ResultSet: boolean next()>();
+        if temp$6 == 0 goto label6;
+
+        goto label2;
+
+     label2:
+        nop;
+        temp$7 = interfaceinvoke results.<java.sql.ResultSet: int getInt(java.lang.String)>("SSN");
+        if temp$7 == 0 goto label3;
+
+        goto label5;
+
+     label3:
+        nop;
+
+     label4:
+        nop;
+        goto label1;
+
+     label5:
+        nop;
+        temp$8 = interfaceinvoke results.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("NAME");
+        name = temp$8;
+        temp$9 = interfaceinvoke results.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("RACE");
+        race = temp$9;
+        goto label1;
+
+     label6:
+        nop;
+        temp$10 = new java.lang.StringBuffer;
+        specialinvoke temp$10.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT SSN, EDUCATION from education WHERE SSN = ");
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(ssnString);
+        virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        temp$11 = virtualinvoke temp$10.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$12 = interfaceinvoke statement.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$11);
+        results = temp$12;
+
+     label7:
+        nop;
+        temp$13 = interfaceinvoke results.<java.sql.ResultSet: boolean next()>();
+        if temp$13 == 0 goto label12;
+
+        goto label8;
+
+     label8:
+        nop;
+        temp$14 = interfaceinvoke results.<java.sql.ResultSet: int getInt(java.lang.String)>("SSN");
+        ssn2 = temp$14;
+        if ssn2 == 0 goto label9;
+
+        goto label11;
+
+     label9:
+        nop;
+
+     label10:
+        nop;
+        goto label7;
+
+     label11:
+        nop;
+        temp$15 = interfaceinvoke results.<java.sql.ResultSet: java.lang.String getString(java.lang.String)>("EDUCATION");
+        education = temp$15;
+        goto label7;
+
+     label12:
+        nop;
+        temp$16 = new java.lang.StringBuffer;
+        specialinvoke temp$16.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT SSN, CAPITALGAINS, CAPITALLOSSES, STOCKDIVIDENDS from investment WHERE SSN = ");
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(ssnString);
+        virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        temp$17 = virtualinvoke temp$16.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$18 = interfaceinvoke statement.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$17);
+        results = temp$18;
+
+     label13:
+        nop;
+        temp$19 = interfaceinvoke results.<java.sql.ResultSet: boolean next()>();
+        if temp$19 == 0 goto label18;
+
+        goto label14;
+
+     label14:
+        nop;
+        temp$20 = interfaceinvoke results.<java.sql.ResultSet: int getInt(java.lang.String)>("SSN");
+        ssn3 = temp$20;
+        if ssn3 == 0 goto label15;
+
+        goto label17;
+
+     label15:
+        nop;
+
+     label16:
+        nop;
+        goto label13;
+
+     label17:
+        nop;
+        temp$21 = interfaceinvoke results.<java.sql.ResultSet: int getInt(java.lang.String)>("CAPITALGAINS");
+        temp$22 = interfaceinvoke results.<java.sql.ResultSet: int getInt(java.lang.String)>("CAPITALLOSSES");
+        temp$23 = temp$21 - temp$22;
+        temp$24 = temp$23;
+        temp$25 = interfaceinvoke results.<java.sql.ResultSet: int getInt(java.lang.String)>("STOCKDIVIDENDS");
+        temp$26 = temp$24 + temp$25;
+        investmentIncome = temp$26;
+        goto label13;
+
+     label18:
+        nop;
+        temp$27 = new java.lang.StringBuffer;
+        specialinvoke temp$27.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$27.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("SELECT SSN, INDUSTRYCODE, OCCUPATIONCODE, WEEKWAGE, WORKWEEKS from job WHERE SSN = ");
+        virtualinvoke temp$27.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(ssnString);
+        virtualinvoke temp$27.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("");
+        temp$28 = virtualinvoke temp$27.<java.lang.StringBuffer: java.lang.String toString()>();
+        temp$29 = interfaceinvoke statement.<java.sql.Statement: java.sql.ResultSet executeQuery(java.lang.String)>(temp$28);
+        results = temp$29;
+
+     label19:
+        nop;
+        temp$30 = interfaceinvoke results.<java.sql.ResultSet: boolean next()>();
+        if temp$30 == 0 goto label24;
+
+        goto label20;
+
+     label20:
+        nop;
+        temp$31 = interfaceinvoke results.<java.sql.ResultSet: int getInt(java.lang.String)>("SSN");
+        ssn4 = temp$31;
+        if ssn4 == 0 goto label21;
+
+        goto label23;
+
+     label21:
+        nop;
+
+     label22:
+        nop;
+        goto label19;
+
+     label23:
+        nop;
+        temp$32 = interfaceinvoke results.<java.sql.ResultSet: int getInt(java.lang.String)>("INDUSTRYCODE");
+        occupationCode = temp$32;
+        temp$33 = interfaceinvoke results.<java.sql.ResultSet: int getInt(java.lang.String)>("OCCUPATIONCODE");
+        industryCode = temp$33;
+        temp$34 = interfaceinvoke results.<java.sql.ResultSet: int getInt(java.lang.String)>("WEEKWAGE");
+        weeklyWage = temp$34;
+        temp$35 = interfaceinvoke results.<java.sql.ResultSet: int getInt(java.lang.String)>("WORKWEEKS");
+        workWeeks = temp$35;
+        goto label19;
+
+     label24:
+        nop;
+        goto label29;
+
+     label25:
+        nop;
+        e := @caughtexception;
+
+     label26:
+        nop;
+        if e != null goto label27;
+
+        goto label28;
+
+     label27:
+        nop;
+        temp$36 = <java.lang.System: java.io.PrintStream err>;
+        virtualinvoke temp$36.<java.io.PrintStream: void println(java.lang.String)>("\n----- SQLException -----");
+        temp$37 = <java.lang.System: java.io.PrintStream err>;
+        temp$38 = new java.lang.StringBuffer;
+        specialinvoke temp$38.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$38.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  SQL State:  ");
+        temp$39 = virtualinvoke e.<java.sql.SQLException: java.lang.String getSQLState()>();
+        virtualinvoke temp$38.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$39);
+        temp$40 = virtualinvoke temp$38.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$37.<java.io.PrintStream: void println(java.lang.String)>(temp$40);
+        temp$41 = <java.lang.System: java.io.PrintStream err>;
+        temp$42 = new java.lang.StringBuffer;
+        specialinvoke temp$42.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$42.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Error Code: ");
+        temp$43 = virtualinvoke e.<java.sql.SQLException: int getErrorCode()>();
+        virtualinvoke temp$42.<java.lang.StringBuffer: java.lang.StringBuffer append(int)>(temp$43);
+        temp$44 = virtualinvoke temp$42.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$41.<java.io.PrintStream: void println(java.lang.String)>(temp$44);
+        temp$45 = <java.lang.System: java.io.PrintStream err>;
+        temp$46 = new java.lang.StringBuffer;
+        specialinvoke temp$46.<java.lang.StringBuffer: void <init>()>();
+        virtualinvoke temp$46.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>("  Message:    ");
+        temp$47 = virtualinvoke e.<java.sql.SQLException: java.lang.String getMessage()>();
+        virtualinvoke temp$46.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>(temp$47);
+        temp$48 = virtualinvoke temp$46.<java.lang.StringBuffer: java.lang.String toString()>();
+        virtualinvoke temp$45.<java.io.PrintStream: void println(java.lang.String)>(temp$48);
+        temp$49 = virtualinvoke e.<java.sql.SQLException: java.sql.SQLException getNextException()>();
+        e = temp$49;
+        goto label26;
+
+     label28:
+        nop;
+        nop;
+        goto label29;
+
+     label29:
+        nop;
+        temp$50 = staticinvoke <com.riskIt.util.Factory: com.riskIt.interfaces.EstimateIncomeDTOInterface getEstimateIncomeDTO(java.lang.String,int,java.lang.String,java.lang.String,int,int,int,int,int)>(name, ssn, race, education, occupationCode, industryCode, weeklyWage, workWeeks, investmentIncome);
+        return temp$50;
+
+        catch java.sql.SQLException from label0 to label4 with label25;
+        catch java.sql.SQLException from label5 to label10 with label25;
+        catch java.sql.SQLException from label11 to label16 with label25;
+        catch java.sql.SQLException from label17 to label22 with label25;
+        catch java.sql.SQLException from label23 to label25 with label25;
+    }
+
+    public double givenWorkWeeksEstimateIncomeAll(int)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        int workWeeks;
+        double temp$0, temp$1, temp$2, temp$3, temp$4, temp$5, temp$6;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        workWeeks := @parameter0: int;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWorkWeeksEstimateIncomeGetSlopeAll()>();
+        temp$1 = (double) workWeeks;
+        temp$2 = temp$1 * temp$0;
+        temp$3 = temp$2;
+        temp$4 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWorkWeeksEstimateIncomeGetInterceptAll()>();
+        temp$5 = temp$3 + temp$4;
+        temp$6 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$5);
+        return temp$6;
+    }
+
+    public double givenWorkWeeksEstimateIncomeAll(double)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        double workWeeks, temp$0, temp$1, temp$2, temp$3, temp$4, temp$5;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        workWeeks := @parameter0: double;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWorkWeeksEstimateIncomeGetSlopeAll()>();
+        temp$1 = workWeeks * temp$0;
+        temp$2 = temp$1;
+        temp$3 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWorkWeeksEstimateIncomeGetInterceptAll()>();
+        temp$4 = temp$2 + temp$3;
+        temp$5 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$4);
+        return temp$5;
+    }
+
+    public double givenWorkWeeksEstimateIncomeMiddleTwoThirds(int)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        int workWeeks;
+        double temp$0, temp$1, temp$2, temp$3, temp$4, temp$5, temp$6;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        workWeeks := @parameter0: int;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWorkWeeksEstimateIncomeGetSlopeMiddleTwoThirds()>();
+        temp$1 = (double) workWeeks;
+        temp$2 = temp$1 * temp$0;
+        temp$3 = temp$2;
+        temp$4 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWorkWeeksEstimateIncomeGetInterceptMiddleTwoThirds()>();
+        temp$5 = temp$3 + temp$4;
+        temp$6 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$5);
+        return temp$6;
+    }
+
+    public double givenWorkWeeksEstimateIncomeMiddleTwoThirds(double)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        double workWeeks, temp$0, temp$1, temp$2, temp$3, temp$4, temp$5;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        workWeeks := @parameter0: double;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWorkWeeksEstimateIncomeGetSlopeMiddleTwoThirds()>();
+        temp$1 = workWeeks * temp$0;
+        temp$2 = temp$1;
+        temp$3 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWorkWeeksEstimateIncomeGetInterceptMiddleTwoThirds()>();
+        temp$4 = temp$2 + temp$3;
+        temp$5 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$4);
+        return temp$5;
+    }
+
+    public double givenWorkWeeksEstimateIncomeGetSlopeAll()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        com.riskIt.data.CalculateRegressionDataStructure temp$0;
+        double temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure workWeeksFindIncome>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.data.CalculateRegressionDataStructure: double getSlopeAll()>();
+        temp$2 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$1);
+        return temp$2;
+    }
+
+    public double givenWorkWeeksEstimateIncomeGetInterceptAll()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        com.riskIt.data.CalculateRegressionDataStructure temp$0;
+        double temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure workWeeksFindIncome>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.data.CalculateRegressionDataStructure: double getInterceptAll()>();
+        temp$2 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$1);
+        return temp$2;
+    }
+
+    public double givenWorkWeeksEstimateIncomeGetSlopeMiddleTwoThirds()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        com.riskIt.data.CalculateRegressionDataStructure temp$0;
+        double temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure workWeeksFindIncome>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.data.CalculateRegressionDataStructure: double getSlopeMiddleTwoThirds()>();
+        temp$2 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$1);
+        return temp$2;
+    }
+
+    public double givenWorkWeeksEstimateIncomeGetInterceptMiddleTwoThirds()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        com.riskIt.data.CalculateRegressionDataStructure temp$0;
+        double temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure workWeeksFindIncome>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.data.CalculateRegressionDataStructure: double getInterceptMiddleTwoThirds()>();
+        temp$2 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$1);
+        return temp$2;
+    }
+
+    public double givenWeeklyWageEstimateIncomeAll(int)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        int weeklyWage;
+        double temp$0, temp$1, temp$2, temp$3, temp$4, temp$5, temp$6;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        weeklyWage := @parameter0: int;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWeeklyWageEstimateIncomeGetSlopeAll()>();
+        temp$1 = (double) weeklyWage;
+        temp$2 = temp$1 * temp$0;
+        temp$3 = temp$2;
+        temp$4 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWeeklyWageEstimateIncomeGetInterceptAll()>();
+        temp$5 = temp$3 + temp$4;
+        temp$6 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$5);
+        return temp$6;
+    }
+
+    public double givenWeeklyWageEstimateIncomeAll(double)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        double weeklyWage, temp$0, temp$1, temp$2, temp$3, temp$4, temp$5;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        weeklyWage := @parameter0: double;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWeeklyWageEstimateIncomeGetSlopeAll()>();
+        temp$1 = weeklyWage * temp$0;
+        temp$2 = temp$1;
+        temp$3 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWeeklyWageEstimateIncomeGetInterceptAll()>();
+        temp$4 = temp$2 + temp$3;
+        temp$5 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$4);
+        return temp$5;
+    }
+
+    public double givenWeeklyWageEstimateIncomeMiddleTwoThirds(int)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        int weeklyWage;
+        double temp$0, temp$1, temp$2, temp$3, temp$4, temp$5, temp$6;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        weeklyWage := @parameter0: int;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWeeklyWageEstimateIncomeGetSlopeMiddleTwoThirds()>();
+        temp$1 = (double) weeklyWage;
+        temp$2 = temp$1 * temp$0;
+        temp$3 = temp$2;
+        temp$4 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWeeklyWageEstimateIncomeGetInterceptMiddleTwoThirds()>();
+        temp$5 = temp$3 + temp$4;
+        temp$6 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$5);
+        return temp$6;
+    }
+
+    public double givenWeeklyWageEstimateIncomeMiddleTwoThirds(double)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        double weeklyWage, temp$0, temp$1, temp$2, temp$3, temp$4, temp$5;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        weeklyWage := @parameter0: double;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWeeklyWageEstimateIncomeGetSlopeMiddleTwoThirds()>();
+        temp$1 = weeklyWage * temp$0;
+        temp$2 = temp$1;
+        temp$3 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenWeeklyWageEstimateIncomeGetInterceptMiddleTwoThirds()>();
+        temp$4 = temp$2 + temp$3;
+        temp$5 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$4);
+        return temp$5;
+    }
+
+    public double givenWeeklyWageEstimateIncomeGetSlopeAll()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        com.riskIt.data.CalculateRegressionDataStructure temp$0;
+        double temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure weeklyWageFindIncome>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.data.CalculateRegressionDataStructure: double getSlopeAll()>();
+        temp$2 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$1);
+        return temp$2;
+    }
+
+    public double givenWeeklyWageEstimateIncomeGetInterceptAll()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        com.riskIt.data.CalculateRegressionDataStructure temp$0;
+        double temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure weeklyWageFindIncome>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.data.CalculateRegressionDataStructure: double getInterceptAll()>();
+        temp$2 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$1);
+        return temp$2;
+    }
+
+    public double givenWeeklyWageEstimateIncomeGetSlopeMiddleTwoThirds()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        com.riskIt.data.CalculateRegressionDataStructure temp$0;
+        double temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure weeklyWageFindIncome>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.data.CalculateRegressionDataStructure: double getSlopeMiddleTwoThirds()>();
+        temp$2 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$1);
+        return temp$2;
+    }
+
+    public double givenWeeklyWageEstimateIncomeGetInterceptMiddleTwoThirds()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        com.riskIt.data.CalculateRegressionDataStructure temp$0;
+        double temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure weeklyWageFindIncome>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.data.CalculateRegressionDataStructure: double getInterceptMiddleTwoThirds()>();
+        temp$2 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$1);
+        return temp$2;
+    }
+
+    public double givenInvestmentIncomeEstimateIncomeAll(int)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        int investmentIncome;
+        double temp$0, temp$1, temp$2, temp$3, temp$4, temp$5, temp$6;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        investmentIncome := @parameter0: int;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenInvestmentIncomeEstimateIncomeGetSlopeAll()>();
+        temp$1 = (double) investmentIncome;
+        temp$2 = temp$1 * temp$0;
+        temp$3 = temp$2;
+        temp$4 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenInvestmentIncomeEstimateIncomeGetInterceptAll()>();
+        temp$5 = temp$3 + temp$4;
+        temp$6 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$5);
+        return temp$6;
+    }
+
+    public double givenInvestmentIncomeEstimateIncomeAll(double)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        double investmentIncome, temp$0, temp$1, temp$2, temp$3, temp$4, temp$5;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        investmentIncome := @parameter0: double;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenInvestmentIncomeEstimateIncomeGetSlopeAll()>();
+        temp$1 = investmentIncome * temp$0;
+        temp$2 = temp$1;
+        temp$3 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenInvestmentIncomeEstimateIncomeGetInterceptAll()>();
+        temp$4 = temp$2 + temp$3;
+        temp$5 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$4);
+        return temp$5;
+    }
+
+    public double givenInvestmentIncomeEstimateIncomeMiddleTwoThirds(int)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        int investmentIncome;
+        double temp$0, temp$1, temp$2, temp$3, temp$4, temp$5, temp$6;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        investmentIncome := @parameter0: int;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenInvestmentIncomeEstimateIncomeGetSlopeMiddleTwoThirds()>();
+        temp$1 = (double) investmentIncome;
+        temp$2 = temp$1 * temp$0;
+        temp$3 = temp$2;
+        temp$4 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenInvestmentIncomeEstimateIncomeGetInterceptMiddleTwoThirds()>();
+        temp$5 = temp$3 + temp$4;
+        temp$6 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$5);
+        return temp$6;
+    }
+
+    public double givenInvestmentIncomeEstimateIncomeMiddleTwoThirds(double)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        double investmentIncome, temp$0, temp$1, temp$2, temp$3, temp$4, temp$5;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        investmentIncome := @parameter0: double;
+        temp$0 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenInvestmentIncomeEstimateIncomeGetSlopeMiddleTwoThirds()>();
+        temp$1 = investmentIncome * temp$0;
+        temp$2 = temp$1;
+        temp$3 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double givenInvestmentIncomeEstimateIncomeGetInterceptMiddleTwoThirds()>();
+        temp$4 = temp$2 + temp$3;
+        temp$5 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$4);
+        return temp$5;
+    }
+
+    public double givenInvestmentIncomeEstimateIncomeGetSlopeAll()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        com.riskIt.data.CalculateRegressionDataStructure temp$0;
+        double temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure investmentIncomeFindIncome>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.data.CalculateRegressionDataStructure: double getSlopeAll()>();
+        temp$2 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$1);
+        return temp$2;
+    }
+
+    public double givenInvestmentIncomeEstimateIncomeGetInterceptAll()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        com.riskIt.data.CalculateRegressionDataStructure temp$0;
+        double temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure investmentIncomeFindIncome>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.data.CalculateRegressionDataStructure: double getInterceptAll()>();
+        temp$2 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$1);
+        return temp$2;
+    }
+
+    public double givenInvestmentIncomeEstimateIncomeGetSlopeMiddleTwoThirds()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        com.riskIt.data.CalculateRegressionDataStructure temp$0;
+        double temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure investmentIncomeFindIncome>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.data.CalculateRegressionDataStructure: double getSlopeMiddleTwoThirds()>();
+        temp$2 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$1);
+        return temp$2;
+    }
+
+    public double givenInvestmentIncomeEstimateIncomeGetInterceptMiddleTwoThirds()
+    {
+        com.riskIt.controller.EstimateIncome this;
+        com.riskIt.data.CalculateRegressionDataStructure temp$0;
+        double temp$1, temp$2;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        temp$0 = this.<com.riskIt.controller.EstimateIncome: com.riskIt.data.CalculateRegressionDataStructure investmentIncomeFindIncome>;
+        temp$1 = virtualinvoke temp$0.<com.riskIt.data.CalculateRegressionDataStructure: double getInterceptMiddleTwoThirds()>();
+        temp$2 = virtualinvoke this.<com.riskIt.controller.EstimateIncome: double formatReturnValue(double)>(temp$1);
+        return temp$2;
+    }
+
+    private final double formatReturnValue(double)
+    {
+        com.riskIt.controller.EstimateIncome this;
+        double returnValue, temp$0;
+
+        this := @this: com.riskIt.controller.EstimateIncome;
+        returnValue := @parameter0: double;
+        temp$0 = staticinvoke <com.riskIt.util.Factory: double getRoundMethod(double)>(returnValue);
+        return temp$0;
+    }
+}
